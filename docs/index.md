@@ -6,18 +6,17 @@ Profesor: **José Manuel Pérez Torres**.
 
 ## Cómo está organizado
 
-El módulo se planifica por **sesiones de 2 horas**, agrupadas en 6 bloques temáticos alineados con los resultados de aprendizaje:
+El módulo se planifica por **sesiones de 2 horas**. Este docente impartirá los resultados de aprendizaje **RA1, RA2 y RA3**, agrupados en tres bloques:
 
 | Bloque | RA | Temática |
 |--------|----|----------|
 | [B01](bloques/B01_RA1/index.md) | RA1 | Caracterización de sistemas de IA |
 | [B02](bloques/B02_RA2/index.md) | RA2 | Modelos de resolución de problemas |
 | [B03](bloques/B03_RA3/index.md) | RA3 | Procesamiento de lenguaje natural (PLN) |
-| [B04](bloques/B04_RA4/index.md) | RA4 | Sistemas robotizados |
-| [B05](bloques/B05_RA5/index.md) | RA5 | Sistemas expertos |
-| [B06](bloques/B06_RA6/index.md) | RA6 | Ética y legalidad en IA |
 
-El **RA7** (proyecto intermodular) lo gestionan otros docentes y no se recoge aquí.
+Cada sesión incluye **práctica guiada (con solución)** y una **práctica propuesta en forma de miniproyecto** para el alumnado (notebook en [practicas/](https://github.com/TU-USUARIO/_MIA/tree/main/practicas)).
+
+Los RA4, RA5, RA6 y el RA7 (proyecto intermodular) son impartidos por otros docentes y no se recogen aquí.
 
 ## Enlaces
 
