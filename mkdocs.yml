@@ -1,0 +1,89 @@
+site_name: Modelos de IA (5071) — Apuntes CE IA&BD
+site_description: Materiales docentes del módulo 5071 "Modelos de Inteligencia Artificial" (Comunitat Valenciana, 2026-2027)
+site_author: José Manuel Pérez Torres
+repo_url: https://github.com/TU-USUARIO/_MIA   # CAMBIAR al repo real
+edit_uri: edit/main/docs
+use_directory_urls: false
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Modo claro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Modo oscuro
+  features:
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+extra:
+  colab:
+    user: TU-USUARIO      # CAMBIAR
+    repo: _MIA            # CAMBIAR
+    branch: main
+  raw_base: https://raw.githubusercontent.com/TU-USUARIO/_MIA/main   # CAMBIAR
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - redirects
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  - mkdocs-jupyter:
+      include_source: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/js/init.js
+
+extra_css:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.css
+
+hooks:
+  - hooks.py
+
+nav:
+  - Inicio: index.md
+  - Normativa: normativa/index.md
+  - Bloques temáticos:
+      - "B01 · RA1 (Caracterización de sistemas IA)": bloques/B01_RA1/index.md
+      - "B02 · RA2 (Modelos de resolución de problemas)": bloques/B02_RA2/index.md
+      - "B03 · RA3 (Procesamiento de lenguaje natural)": bloques/B03_RA3/index.md
+      - "B04 · RA4 (Sistemas robotizados)": bloques/B04_RA4/index.md
+      - "B05 · RA5 (Sistemas expertos)": bloques/B05_RA5/index.md
+      - "B06 · RA6 (Ética y legalidad en IA)": bloques/B06_RA6/index.md

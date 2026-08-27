@@ -1,0 +1,16 @@
+# Dependencias para web MkDocs + notebooks (sin PDF).
+# Versiones de referencia verificadas en material_david/requirements.txt (2026-08-21),
+# omitiendo weasyprint/pydyf/mkdocs-with-pdf/Pillow (no se genera PDF "libro").
+
+mkdocs == 1.6.1
+mkdocs-material == 9.7.7
+mkdocs-material-extensions == 1.3.1
+mkdocs-get-deps == 0.2.2
+mkdocs-jupyter == 0.26.3
+mkdocs-minify-plugin == 0.8.0
+mkdocs-redirects == 1.2.3
+mkdocs-git-revision-date-localized-plugin == 1.5.4
+mkdocs-extra-sass-plugin == 0.1.0
+mkdocs-video == 1.5.0
+livereload == 2.7.1
+pyyaml == 6.0.3

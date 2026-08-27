@@ -1,0 +1,8 @@
+services:
+  mia:
+    container_name: mia-practicas
+    build: .            # construye la imagen desde el Dockerfile de esta carpeta
+    ports:
+      - "8888:8888"     # http://localhost:8888 (token: cursoia)
+    volumes:
+      - ../notebooks:/home/mia  # los notebooks de la unidad, en el host, no en el contenedor

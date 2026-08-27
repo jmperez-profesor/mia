@@ -1,0 +1,383 @@
+site_name: 'Modelos de IA (CE Inteligencia Artificial y Big Data)'
+site_url: https://martinezpenya.es/ModelosIA/
+repo_url: https://github.com/martinezpenya/ModelosIA
+edit_uri: edit/main/docs
+use_directory_urls: false
+
+hooks:
+  - hooks.py
+
+not_in_nav: |
+  UD0*/notebooks/*.ipynb
+
+exclude_docs: |
+  UD00/Presentacion/*.md
+  UD01/Presentacion/*.md
+  UD02/Presentacion/*.md
+  UD05/Presentacion/*.md
+  UD03/Presentacion/*.md
+  UD06/Presentacion/*.md
+  UD04/Presentacion/*.md
+
+nav:
+  - Información importante: index.md
+  - UD00:
+    - Presentación del módulo y curso rápido de Docker: UD00/UD00_ES.md
+    - Diapositivas: UD00/UD00_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD00/UD00_Ejercicios.md
+      - Notebooks guiados: UD00/UD00_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD00/UD00_Entregas.md
+      - T01 Verificación del entorno y primer contenedor: UD00/UD00_T01_Verificacion_entorno_ES.md
+      - T02 Contenedor de prácticas de IA: UD00/UD00_T02_Contenedor_practicas_ES.md
+  - UD01:
+    - Caracterización de sistemas de IA: UD01/UD01_ES.md
+    - Diapositivas: UD01/UD01_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD01/UD01_Ejercicios.md
+      - Notebooks guiados: UD01/UD01_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD01/UD01_Entregas.md
+      - N02 Mapa de sistemas inteligentes: UD01/notebooks/UD01_N02_mapa_sistemas.ipynb
+      - N03 Técnicas de IA en casos reales: UD01/notebooks/UD01_N03_tecnicas_casos.ipynb
+      - N04 Nuevas formas de interacción: UD01/notebooks/UD01_N04_nuevas_interacciones.ipynb
+      - N05 Línea del tiempo de la IA: UD01/notebooks/UD01_N05_linea_tiempo.ipynb
+  - UD02:
+    - Modelos de IA y resolución de problemas: UD02/UD02_ES.md
+    - Diapositivas: UD02/UD02_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD02/UD02_Ejercicios.md
+    - Entregas:
+      - Qué se entrega: UD02/UD02_Entregas.md
+      - N01 Control difuso con scikit-fuzzy: UD02/notebooks/UD02_N01_control_difuso.ipynb
+      - N02 Sistema basado en reglas con experta: UD02/notebooks/UD02_N02_sistema_reglas.ipynb
+      - T01 Preparar el entorno para Robocode (hecho / no hecho): UD02/UD02_T01_Preparar_entorno_ES.md
+      - T02 Control de versiones con GitHub (hecho / no hecho): UD02/UD02_T02_GitHub_ES.md
+      - T03 Documentar con Markdown (hecho / no hecho): UD02/UD02_T03_Markdown_ES.md
+      - T04 Robocode Tank Royale: UD02/UD02_T04_Robocode_ES.md
+    - Documentación de Robocode:
+      - Comparativa Java vs Python, elige lenguaje: UD02/UD02_Robocode_Comparativa_ES.md
+      - Tutorial Robocode (Java): UD02/UD02_Robocode_Java_ES.md
+      - Tutorial Robocode (Python): UD02/UD02_Robocode_Python_ES.md
+  - UD05:
+    - Sistemas expertos y controladores inteligentes: UD05/UD05_ES.md
+    - Diapositivas: UD05/UD05_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD05/UD05_Ejercicios.md
+      - Notebooks guiados: UD05/UD05_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD05/UD05_Entregas.md
+      - N10 Simular un sistema experto: UD05/notebooks/UD05_N10_simular_sistema_experto.ipynb
+      - N11 Detectar lesiones de rodilla: UD05/notebooks/UD05_N11_lesiones_rodilla.ipynb
+      - N12 Previsión del valor de mercado: UD05/notebooks/UD05_N12_valor_mercado_jugadores.ipynb
+      - N13 Centrocampistas con potencial: UD05/notebooks/UD05_N13_centrocampistas_jovenes.ipynb
+      - N14 Simulador de quemador de gas: UD05/notebooks/UD05_N14_quemador_gas.ipynb
+      - N15 Sistema experto de libre elección: UD05/notebooks/UD05_N15_sistema_experto_libre.ipynb
+  - UD03:
+    - Procesamiento del Lenguaje Natural: UD03/UD03_ES.md
+    - Diapositivas: UD03/UD03_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD03/UD03_Ejercicios.md
+      - Notebooks guiados: UD03/UD03_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD03/UD03_Entregas.md
+      - N08 Del texto al vector: UD03/notebooks/UD03_N08_del_texto_al_vector.ipynb
+      - N09 Clasificador de preguntas: UD03/notebooks/UD03_N09_clasificador_preguntas.ipynb
+      - N10 Sentimiento en IMDb: UD03/notebooks/UD03_N10_sentimiento_imdb.ipynb
+      - N11 Asistente virtual por voz: UD03/notebooks/UD03_N11_asistente_virtual.ipynb
+      - N12 Un sistema de PLN de punta a punta: UD03/notebooks/UD03_N12_sistema_pln.ipynb
+  - UD04:
+    - Análisis de sistemas robotizados: UD04/UD04_ES.md
+    - Diapositivas: UD04/UD04_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD04/UD04_Ejercicios.md
+      - Notebooks guiados: UD04/UD04_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD04/UD04_Entregas.md
+      - N04 Cinemática de un manipulador: UD04/notebooks/UD04_N04_cinematica_manipulador.ipynb
+      - N05 Ejercicios de OpenCV: UD04/notebooks/UD04_N05_ejercicios_opencv.ipynb
+      - N06 Navegar con cámara, por reglas: UD04/notebooks/UD04_N06_navegar_camara.ipynb
+      - N07 Navegar con cámara, con lógica difusa: UD04/notebooks/UD04_N07_navegar_camara_difusa.ipynb
+      - N09 Controlar el robot con una red neuronal: UD04/notebooks/UD04_N09_red_neuronal.ipynb
+      - N08 Generar los datos de entrenamiento (apto / no apto): UD04/notebooks/UD04_N08_generar_datos_entrenamiento.ipynb
+      - N10 Aprendizaje por refuerzo con NEAT (apto / no apto): UD04/notebooks/UD04_N10_neat.ipynb
+      - N11 Diseño de un sistema robotizado (apto / no apto): UD04/notebooks/UD04_N11_diseno_sistema_robotizado.ipynb
+  - UD06:
+    - Aplicación de principios legales y éticos de la IA: UD06/UD06_ES.md
+    - Diapositivas: UD06/UD06_Diapositivas.md
+    - Práctica:
+      - Ejercicios de autoevaluación: UD06/UD06_Ejercicios.md
+      - Documentales, noticias y notebooks: UD06/UD06_ActividadesGuiadas.md
+    - Entregas:
+      - Qué se entrega: UD06/UD06_Entregas.md
+      - N03 Auditoría de sesgos con Fairlearn: UD06/notebooks/UD06_N03_auditoria_sesgos.ipynb
+      - D01 Límites éticos de la IA: UD06/UD06_D01_Debate_limites_eticos_ES.md
+      - D02 El algoritmo contra el crimen: UD06/UD06_D02_Debate_algoritmo_crimen_ES.md
+  - Sobre mi: sobremi.md
+  - Fuentes de información: fuentes.md
+theme:
+  name: material
+  language: es
+  features:
+    - header.autohide
+    - content.action.edit
+    - content.code.copy
+    - content.code.select
+    - content.code.anotate
+    #- content.tabs.link
+    - toc.follow
+    - toc.integrate
+    - navigation.top
+    #- navigation.tracking
+    - navigation.footer
+    #- navigation.indexes
+  icon:
+    logo: material/robot-confused-outline
+    admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/hexagon-nodes
+      quote: fontawesome/solid/quote-left
+  favicon: assets/favicon.ico
+#  features:
+#    - navigation.footer
+  palette:
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: teal
+      accent: lime
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: teal
+      accent: lime
+  font:
+    text: Roboto
+    code: Roboto Mono
+extra_css:
+  - css/extra.css
+markdown_extensions:
+  - sane_lists
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+#      emoji_index: !!python/name:material.extensions.emoji.twemoji
+#      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+      #anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+#          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.arithmatex
+extra_javascript:
+  - js/mathjax-config.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
+  - js/mermaid-config.js
+extra:
+  search:
+    language: es
+  meta:
+    - name: description
+      content: "Apuntes de Modelos de Inteligencia Artificial para el curso de especialización de IA y Big Data"
+    - name: author
+      content: "David Martínez Peña"
+    - name: keywords
+      content: "inteligencia artificial, big data, machine learning, NLP, procesamiento lenguaje natural, robótica, ética IA, sistemas expertos"
+  social:
+    - icon: simple/youtube
+      link: https://youtube.com/@martinezpenya
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/martinezpenya
+    - icon: fontawesome/brands/github
+      link: https://github.com/martinezpenya
+    - icon: fontawesome/solid/mug-saucer
+      link: https://buymeacoffee.com/martinezpenya
+      name: Buy me a coffee
+#  consent:
+#    title: Consentimiento de cookie
+#    description: >-
+#      Esta página de apuntes utiliza cookies para reconocer las visitas, medir la #efectividad de la documentación
+#      y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes.
+#      Con tu consentimiento, me ayudas a mejorar estos materiales.
+
+copyright: "© 2025 David Martínez licensed under CC BY-NC-SA 4.0"
+
+plugins:
+    - mkdocs-video
+    # Render local de notebooks (decisión 2026-08-20: render local + enlace a Colab).
+    # Acotado a las unidades ya fusionadas; se amplía el patrón al fusionar cada una.
+    - mkdocs-jupyter:
+        include: ["UD00/notebooks/*.ipynb", "UD01/notebooks/*.ipynb", "UD02/notebooks/*.ipynb", "UD03/notebooks/*.ipynb", "UD04/notebooks/*.ipynb", "UD05/notebooks/*.ipynb", "UD06/notebooks/*.ipynb"]
+        include_source: true
+        execute: false
+        ignore_h1_titles: true
+    - redirects:
+        redirect_maps:
+            # Docker pasa a formar parte de la UD00 (decisión 2026-08-20).
+            # La URL antigua queda redirigida para no romper enlaces ya indexados.
+            'Docker/Docker.md': 'UD00/UD00_ES.md'
+            # Los redirects de 'UD02/*' hacia 'UD05/*' (de la renumeración del 2026-08-22, cuando
+            # UD02 era un identificador libre) se retiraron el 2026-08-24 al fusionar la UD02 real
+            # (RA2): 'UD02/UD02_ES.md' ya no está libre, es la página nueva y un redirect la habría
+            # tapado sin avisar.
+            # Un taller, una página (2026-08-23): la página que los reunía desaparece. Y el
+            # 2026-08-27 los talleres de la UD05 pasaron a ser notebooks, así que el destino ya no
+            # existe; el plugin no acepta `.ipynb` como destino, así que apunta al índice de
+            # entregas, que es lo que hoy hace el papel de aquella página.
+            'UD05/UD05_Talleres.md': 'UD05/UD05_Entregas.md'
+            # Los notebooks de la UD05 se renombraron al castellano el 2026-08-23 y sus URLs
+            # antiguas (publicadas ese mismo día) quedan rotas. NO se pueden redirigir: el plugin
+            # solo acepta fuentes `.md` y avisa «is not a valid markdown file» con un `.ipynb`.
+            # Se asume la rotura: el curso no ha empezado y estuvieron publicadas menos de un día.
+    # - offline  # Comentado para permitir indexación SEO
+    - search
+    - git-revision-date-localized:
+        fallback_to_build_date: true
+    - minify:
+        minify_html: true
+    - extra-sass
+    - with-pdf:
+        author: David Martinez Peña
+        #copyright: (www.martinezpenya.es)
+        #
+        cover: true
+        #cover_logo: docs/assets/images/aws_cast.png
+        cover_logo: https://martinezpenya.es/ModelosIA/assets/portada.png
+        back_cover: true
+        #cover_title: TITLE TEXT
+        cover_subtitle: IES Eduardo Primo Marques (Carlet)
+        #custom_template_path: templates
+        #
+        toc_title: Indice de contenidos
+        #heading_shift: false
+        toc_level: 3
+        ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        exclude_pages:
+            - 'UD00/assets/'
+            - 'UD00/Presentacion/'
+            - 'UD00/entorno/'
+            - 'UD01/Presentacion/'
+            - 'UD02/assets/IABDBotMaven.zip'
+            - 'UD02/Presentacion/'
+            - 'UD05/Presentacion/'
+            - 'UD06/Presentacion/'
+            - 'UD06/assets/'
+            - 'UD05/Dockerfile'
+            - 'UD05/docker-compose.yml'
+            - 'UD03/Presentacion/'
+            - 'UD04/Presentacion/'
+            # Notebooks fuera del PDF combinado (2026-08-24): mkdocs-jupyter genera su propio HTML
+            # y CSS (heredado de Jupyter), no pensado para paginar en WeasyPrint, y rompía el libro
+            # a partir del primer notebook. Se leen en el sitio web o en Colab, no en el PDF.
+            - 'UD00/notebooks/'
+            - 'UD01/notebooks/'
+            - 'UD02/notebooks/'
+            - 'UD03/notebooks/'
+            - 'UD04/notebooks/'
+            - 'UD05/notebooks/'
+            - 'UD06/notebooks/'
+            # Practica y Entregas fuera del PDF (decision del profesor, 2026-08-27): el libro es
+            # el material de estudio, y una tabla de enlaces a notebooks o el detalle de que se
+            # entrega no se leen en papel -viven en el sitio y en Moodle-. A diferencia de los
+            # notebooks, estas NO son una subcarpeta: los grupos "Practica" y "Entregas" son
+            # agrupaciones del `nav`, y sus paginas viven en `docs/UD0x/` junto a la teoria, asi
+            # que se excluyen pagina a pagina. Los patrones se comparan contra `page.url`
+            # (`Generator.on_post_page`), que con `use_directory_urls: false` es
+            # `UD01/UD01_Entregas.html`.
+            #
+            # Los enlaces que la teoria hace a estas paginas no quedan muertos: hooks.py
+            # (_fix_dead_pdf_links) lee esta misma lista del plugin y los convierte en enlaces
+            # absolutos al sitio, asi que en el PDF siguen siendo clicables hacia la web.
+            #
+            # Lo que SI se queda en el libro de la UD02: los tres documentos de Robocode
+            # (comparativa y los dos tutoriales), que son apuntes, no entregas.
+            - 'UD0\d/UD0\d_Ejercicios\.html'
+            - 'UD0\d/UD0\d_ActividadesGuiadas\.html'
+            - 'UD0\d/UD0\d_Entregas\.html'
+            # Las 8 paginas con enunciado propio que cuelgan de "Entregas": los dos talleres de
+            # Docker de la UD00, los cuatro de la UD02 (Robocode incluido) y los dos debates de
+            # la UD06.
+            - 'UD0\d/UD0\d_[TD]0\d_'
+            # 2026-08-24: se probo a excluir tambien talleres/ejercicios y las 7 paginas de
+            # diapositivas (el unico <iframe> del sitio) para ver si el corte de docs/Libro.pdf
+            # dependia del tamano del libro o del iframe sin convertir. Ninguna de las dos cosas
+            # lo arreglo -el corte cae exactamente en el mismo punto de la UD04 en todos los
+            # casos-, asi que se revierte: talleres, ejercicios y diapositivas vuelven al PDF.
+            # Excluir solo UD04_ES.md SI arreglo el corte (PDF completo, 278 paginas): confirma
+            # que el disparador esta dentro de ese fichero. Revertido aqui para acotar el tramo
+            # exacto con un cambio de contenido en vez de excluir la pagina entera.
+            # Investigacion completa en HISTORIAL.md. Ojo al leer este parrafo hoy: talleres y
+            # ejercicios han vuelto a salir del PDF el 2026-08-27, pero por decision editorial
+            # (ver arriba), no como intento de arreglar ningun corte. Las diapositivas se quedan.
+        # convert_iframe retirado (2026-08-24): nunca coincidia. El plugin compara iframe['src']
+        # ya resuelto por replace_asset_hrefs a una ruta local file:// (segun site_dir en el
+        # momento del build) contra la URL de produccion que hay aqui configurada -no pueden
+        # coincidir nunca, en ningun entorno-, asi que el <iframe> crudo llegaba sin convertir a
+        # WeasyPrint en las 7 paginas de diapositivas. Sustituido por un bloque
+        # `deck-poster-print` en cada UDxx_Diapositivas.md, oculto en pantalla y mostrado solo en
+        # impresion por CSS (docs/css/extra.css), que no depende de esta coincidencia rota.
+        #two_columns_level: 3
+        #
+        #render_js: true
+        #headless_chrome_path: headless-chromium
+        #
+        output_path: docs/Libro.pdf
+        enabled_if_env: PRERENDER_MERMAID
+        #
+        #debug_html: true
+        # show_anchors: true
+        # verbose: true

@@ -1,0 +1,191 @@
+/*
+img[alt$=">"] {
+    float: right;
+}
+
+img[alt$="<"] {
+    float: left;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    float: none !important;
+}
+*/
+.md-grid {
+    max-width: initial;
+}
+
+/* Invisible en el sitio web; se vuelve un párrafo real solo en impresión (ver @media print más
+   abajo). Insertado por hooks.py entre cualquier tabla y la admonición que la siga sin nada de
+   por medio: WeasyPrint 62.3 corrompe la paginación de todo el documento a partir de ahí si no
+   hay un párrafo con texto real entre los dos (confirmado por bisección exhaustiva; un `<p>`
+   vacío o solo con `&nbsp;` no basta, hace falta contenido textual genuino). Ver hooks.py
+   (TABLE_ADMONITION_RE) para el detalle completo del hallazgo. */
+.pdf-spacer {
+    display: none;
+}
+
+/* PDF (mkdocs-with-pdf + WeasyPrint), no afecta al sitio web: WeasyPrint renderiza con el media
+   "print" por defecto. Corrige el corte del libro hacia la página 160 (2026-08-24): varias
+   imágenes del material original usan `style="zoom: NN%"` para reducir su tamaño en el editor,
+   pero `zoom` no es una propiedad CSS estándar y WeasyPrint la ignora por completo, así que esas
+   imágenes se renderizan a su tamaño nativo en píxeles (algunas de más de 2000 px, muy por encima
+   de una página A4). Una caja más alta que una página descuadra la paginación del resto del
+   documento a partir de ahí, y el PDF se corta en seco. Límite de altura y bloques de código
+   partibles entre páginas, para que ninguna imagen o bloque vuelva a hacerlo. */
+@media print {
+    .pdf-spacer {
+        display: block;
+    }
+    /* sobremi.md: el pie con los logos del centro y la licencia CC duplica casi exactamente la
+       contraportada que mkdocs-with-pdf ya genera automáticamente (back_cover + cover_logo),
+       justo en la página anterior. Se oculta solo en el PDF; en el sitio web sigue siendo el pie
+       normal de la página. */
+    .web-only-footer {
+        display: none !important;
+    }
+    /* Solo imágenes de contenido (.md-typeset img): un selector `img, svg` sin acotar pisaba
+       tambien los iconos pequeños de la interfaz (p. ej. el reloj de "Última actualización" de
+       git-revision-date-localized-plugin, un <svg viewBox="0 0 24 24"> sin ancho/alto propios).
+       Al forzar `width/height: auto` con !important sobre ESE svg, sin nada que lo acote salvo
+       el `max-height: 24cm`, el icono podía crecer hasta casi una página entera -exactamente el
+       patron "una imagen enorme rompe la paginación de WeasyPrint" que causaba el corte real
+       del PDF (hallazgo 2026-08-24, tras aplicar sin éxito el reescalado de diagramas mermaid).
+       `:not([width])` (hallazgo 2026-08-24, mismo día): sin acotar, esta regla también pisaba
+       imágenes con un `{width=NN}` de Markdown explícito -los iconos de licencia CC de
+       fuentes.md, `width="22"`- forzando `width:auto` y haciéndolos enormes en el PDF. Las
+       imágenes con `zoom` nunca tienen atributo `width` real (por eso usaban `zoom`), así que
+       excluirlas aquí no vuelve a dejar pasar el problema original. */
+    .md-typeset img:not([width]) {
+        max-width: 100% !important;
+        max-height: 24cm !important;
+        width: auto !important;
+        height: auto !important;
+        page-break-inside: avoid;
+    }
+    /* Los iconos de licencia CC (cc/by/nc/sa.svg de creativecommons.org) declaran su propio
+       width="64px"/height="64px" dentro del propio SVG; WeasyPrint usa ese tamaño intrínseco en
+       vez del atributo width="22" de la etiqueta <img>, así que salen ~3 veces más grandes de lo
+       previsto en el PDF (aunque en el sitio web se ven bien). Se fuerza aquí el tamaño real. */
+    .md-typeset img[src*="creativecommons.org/presskit/icons/"] {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    pre, code, .highlight {
+        white-space: pre-wrap !important;
+        overflow-wrap: break-word !important;
+        overflow: visible !important;
+        page-break-inside: auto !important;
+    }
+    /* Causa real del corte (2026-08-24, hallazgo tras el de las imágenes): Material pone
+       `.tabbed-labels`/`.tabbed-content` a `display: contents` en impresión para apilar las
+       pestañas (`=== "Java" / "Python"`), y WeasyPrint no soporta bien `display: contents` — la
+       caja desaparece pero rompe el árbol de paginación de todo lo que viene después en el
+       documento, justo como con las imágenes. Se sustituye por bloques normales, sin flex ni
+       `order`. No tocar este `display: block`: sustituirlo por `display: none` sobre el
+       `.tabbed-set` completo (probado el mismo día, al añadir hooks.py/_fix_tabbed_for_print)
+       corrompe de nuevo la paginación en el mismo punto -aun con el `.tabbed-set` oculto, su
+       `.tabbed-content` interno sigue llevando `display: contents` de Material, y WeasyPrint
+       parece procesarlo igual aunque el antecesor no deba pintarse-. */
+    .md-typeset .tabbed-set {
+        display: block !important;
+    }
+    /* Redundante para impresión desde que hooks.py (_fix_tabbed_for_print) reconstruye, junto a
+       cada `.tabbed-set`, una copia `.tabbed-print` con cada etiqueta ya emparejada con su
+       bloque -ver el comentario de esa función-: sin esto, "Linux / macOS / Windows" saldría
+       primero suelto y luego otra vez como cabecera de cada bloque. Solo se oculta la fila de
+       etiquetas, nunca el `.tabbed-set` completo (ver nota de arriba). */
+    .md-typeset .tabbed-labels {
+        display: none !important;
+    }
+    .md-typeset .tabbed-content {
+        display: block !important;
+    }
+    .md-typeset .tabbed-block {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+    .tabbed-print {
+        display: block !important;
+    }
+    .tabbed-print-label {
+        margin-bottom: 0.3em;
+    }
+    /* Mismo patron que las pestañas de arriba, tercera aparicion del mismo fallo (2026-08-27):
+       las galerias de miniaturas (`<div class="grid" markdown>` con varias `<figure>`) usan el
+       `display: grid` de Material, y WeasyPrint 62.3 corrompe la paginacion de todo el documento
+       a partir de ahi: el libro se cortaba en la galeria de las seis pistas de la UD04 (215
+       paginas en vez de 303) y todo lo posterior -UD06, "Sobre mi" y "Fuentes"- desaparecia,
+       dejando 97 errores "No anchor ... for internal URI reference" que reventaban la CI. Las
+       figuras se apilan en bloque, una por linea, que en papel es lo que se quiere de todos
+       modos. */
+    .md-typeset .grid {
+        display: block !important;
+    }
+    .md-typeset .grid > figure {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+    /* Los mazos Marp se embeben con <iframe> (WeasyPrint no ejecuta HTML/JS: no los renderiza).
+       El convert_iframe del plugin with-pdf nunca coincidia porque compara el src ya resuelto a
+       ruta local file:// contra la URL de produccion configurada en mkdocs.yml -no hay forma de
+       que coincidan- asi que el <iframe> crudo llegaba tal cual a WeasyPrint. Se oculta aqui y se
+       muestra en su lugar un enlace con la miniatura de la diapositiva 1 (ver deck-poster-print
+       en cada UDxx_Diapositivas.md), controlado por display normal en pantalla. */
+    .deck-iframe {
+        display: none !important;
+    }
+    .deck-poster-print {
+        display: block !important;
+    }
+}
+
+.deck-poster-print {
+    display: none;
+}
+
+.tabbed-print {
+    display: none;
+}
+
+/* Página "Sobre mí": bloque de cabecera centrado, foto a la izquierda del texto. */
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-text {
+    text-align: left;
+}
+
+.profile-header h2 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+}
+
+.profile-header p {
+    margin: 0.2rem 0;
+}
+
+.profile-pic {
+    width: 160px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/*
+:root {
+    --md-primary-fg-color: #60102f;
+    --md-primary-fg-color--light: rgb(123, 136, 204);
+    --md-primary-fg-color--dark: #34091a;
+}
+*/

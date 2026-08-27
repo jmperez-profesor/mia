@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+scikit-fuzzy
+nltk
+spacy
+torch
+experta
+jupyter

@@ -1,0 +1,421 @@
+# Contenido de las páginas de Práctica y Entregas de cada unidad.
+#
+# Cubre TODAS las actividades, no solo los notebooks: los talleres y los debates son páginas y
+# también se entregan, así que también llevan su fila en la tabla y su resumen debajo.
+#
+# Fuente única de la tabla de notebooks Y del resumen de cada uno. Las páginas se regeneran con:
+#     python3 scripts/generar_tablas_notebooks.py
+#
+# Por notebook:
+#   que_es      · una línea, la columna «Qué es» de la tabla
+#   resumen     · dos o tres líneas: qué se pide (decisión del profesor, 2026-08-27)
+#   se_entrega  · solo en las entregas: qué hay que subir
+#   materiales  · filas de tabla con el material de apoyo (imágenes, CSV, audio, pistas)
+#
+# La clave es el nombre del fichero: `UDxx_Nnn_*.ipynb` para un notebook y `UDxx_Tnn_*_ES.md` o
+# `UDxx_Dnn_*_ES.md` para una página. El ORDEN de la tabla y de los resúmenes lo da el `nav`.
+#
+# El NOMBRE y el NÚMERO de cada notebook salen de su título H1; si es entrega o práctica lo decide
+# el `nav` de mkdocs.yml. Nada de eso se repite aquí.
+UD00:
+  _entregas_extra: 2
+  _sin_rubrica: true
+  _pagina_entregas: UD00_Entregas.md
+  _nota_practica: |
+    La UD00 **no se califica**: el entorno es un requisito, no un resultado de aprendizaje.
+  _nota_entregas: |
+    La UD00 **no se califica**: son requisito para las prácticas de la UD02, no un resultado de
+    aprendizaje, así que no tienen ítem en el libro de calificaciones.
+  _pagina_practica: UD00_ActividadesGuiadas.md
+  UD00_N01_entorno_python_ia.ipynb:
+    que_es: Comprobación del entorno · `numpy`, `pandas`, `matplotlib`
+    resumen: Repaso rápido de `numpy`, `pandas` y `matplotlib` dentro del contenedor que has montado en
+      los dos talleres de la unidad. Si este notebook se ejecuta de arriba abajo sin errores, el entorno
+      está listo para todo el módulo.
+  UD00_T01_Verificacion_entorno_ES.md:
+    que_es: Puesta a punto · Docker en tu máquina y el primer contenedor
+    resumen: |-
+      Instalar Docker, verificar que funciona y levantar un primer contenedor. Es el requisito de
+      todo lo demás: sin entorno no se pueden hacer las prácticas de la UD02.
+    se_entrega: la memoria con las capturas y las justificaciones de los ejercicios.
+  UD00_T02_Contenedor_practicas_ES.md:
+    que_es: Puesta a punto · el contenedor de prácticas del curso
+    resumen: |-
+      Construir el contenedor con el que se trabaja el resto del módulo, con Python y las librerías
+      de IA dentro. Al terminar tienes el entorno del curso levantado.
+    se_entrega: el `Dockerfile` o el `docker-compose.yml` del entorno, funcionando, y la memoria.
+UD01:
+  _ra: RA1
+  _pagina_practica: UD01_ActividadesGuiadas.md
+  _pagina_entregas: UD01_Entregas.md
+  UD01_N01_tecnicas_ia.ipynb:
+    que_es: Demo del profesor · aprendizaje supervisado y no supervisado
+    resumen: 'Muestra en código **las técnicas básicas de la IA** (RA1-c) y cómo se relacionan con la
+
+      **mejora de la eficiencia operativa** (RA1-d): aprendizaje supervisado, no supervisado y cómo se
+
+      mide la mejora, solo con `numpy`, `pandas` y `scikit-learn`.'
+  UD01_N02_mapa_sistemas.ipynb:
+    que_es: Análisis · inventario de sistemas con IA de una organización real
+    resumen: Identificar sistemas inteligentes en un entorno real y decidir, con criterio normativo, cuáles
+      son de verdad sistemas de IA.
+    se_entrega: un mapa de 3 sistemas con su ficha, su clasificación y una conclusión.
+  UD01_N03_tecnicas_casos.ipynb:
+    que_es: Análisis · clasificar técnicas y justificarlas con documentación oficial
+    resumen: Clasificar técnicas de IA, justificar la elección y comprobarla contra la documentación oficial.
+    se_entrega: una tabla de decisión técnica de 6 casos, contrastada con fuentes.
+  UD01_N04_nuevas_interacciones.ipynb:
+    que_es: Análisis · propuesta de mejora operativa con su impacto estimado
+    resumen: Diseñar una mejora operativa basada en nuevas formas de interacción, estimar su impacto y
+      anticipar sus fricciones reales.
+    se_entrega: una propuesta con línea base, indicadores, fricciones y riesgos.
+  UD01_N05_linea_tiempo.ipynb:
+    que_es: Investigación · hitos históricos conectados con la técnica de hoy
+    resumen: Afianzar los hitos históricos y conectarlos con la tecnología que se usa hoy.
+    se_entrega: una línea del tiempo documentada de 10 hitos con su herencia actual.
+UD02:
+  _entregas_extra: 4
+  _ra: RA2
+  _nota_entregas: |
+    **Robocode (`T04`) pesa mucho más que las otras dos**: son dos semanas con bot y memoria, mientras
+    que `N01` y `N02` son cortos y sus técnicas se vuelven a evaluar en el RA5. Los talleres `T01`-`T03`
+    se entregan como **hecho / no hecho**: son requisito, pero no puntúan.
+  _pagina_entregas: UD02_Entregas.md
+  UD02_N01_control_difuso.ipynb:
+    que_es: Control difuso Mamdani · la velocidad de un ventilador (§7)
+    resumen: Construir un sistema de control difuso tipo Mamdani que decida la **velocidad de un ventilador**
+      según la temperatura y la humedad de una sala, recorriendo las tres fases del razonamiento impreciso.
+    se_entrega: el notebook con el controlador funcionando y las figuras de las funciones de pertenencia.
+  UD02_N02_sistema_reglas.ipynb:
+    que_es: Sistema experto con `experta` · diagnóstico de un PC (§8)
+    resumen: Implementar un **mini sistema experto de diagnóstico** de un PC que no arranca y comprobar
+      en código el ciclo reconocer-actuar de un sistema basado en reglas (RA2-e).
+    se_entrega: el notebook con el sistema resolviendo los casos de prueba.
+  UD02_T01_Preparar_entorno_ES.md:
+    que_es: Puesta a punto · el entorno del lenguaje que elijas para Robocode
+    resumen: |-
+      Dejar listo el entorno de desarrollo del lenguaje elegido —Java con IntelliJ IDEA o Python con
+      VS Code— para poder programar el bot de `T04`.
+    se_entrega: las capturas del entorno funcionando.
+  UD02_T02_GitHub_ES.md:
+    que_es: Puesta a punto · control de versiones
+    resumen: |-
+      Crear la cuenta y el repositorio donde vivirá el bot. En `T04` se entrega el código, y saber
+      moverse en un repositorio es parte de las herramientas del oficio.
+    se_entrega: el repositorio creado.
+  UD02_T03_Markdown_ES.md:
+    que_es: Puesta a punto · documentar con Markdown
+    resumen: |-
+      Aprender Markdown lo bastante como para documentar cualquier proyecto. La memoria de `T04` se
+      escribe más rápido dominándolo, y es el lenguaje en el que están escritos estos apuntes.
+    se_entrega: el documento en Markdown.
+  UD02_T04_Robocode_ES.md:
+    que_es: La práctica de cierre del RA2 · un bot que compite
+    resumen: |-
+      Programar un bot de Robocode Tank Royale y enfrentarlo a los de referencia y a los de la clase.
+      Es donde los cinco requisitos del §4.1 y la elección de modelo del §9 dejan de ser teoría.
+    se_entrega: el código del bot y su memoria.
+UD03:
+  _ra: RA3
+  _pagina_practica: UD03_ActividadesGuiadas.md
+  _pagina_entregas: UD03_Entregas.md
+  UD03_N01_introduccion_pln.ipynb:
+    que_es: Introducción · el pipeline de PLN de punta a punta
+    resumen: 'Los fundamentos con `nltk` y TextBlob: tokenizar, quitar *stopwords*, etiquetar categorías
+      gramaticales, extraer frases nominales y construir representaciones bolsa de palabras, tf-idf y
+      *word embeddings*. !!! caution "`gensim` no instala en Python 3.14" La celda de *Word2Vec* usa `gensim`,
+      que **todavía no publica rueda para Python 3.14** (su última versión, 4.4.0, llega hasta 3.13).
+      En el contenedor de la unidad no pasa nada —lleva Python 3.12—, pero si trabajas con un intérprete
+      más nuevo, esa celda concreta fallará al instalar. El resto del notebook no depende de `gensim`.'
+  UD03_N02_clasificacion_texto_torch.ipynb:
+    que_es: Clasificación de texto con PyTorch
+    resumen: 'Construye un clasificador de texto **desde cero**: de la bolsa de palabras a los *word embeddings*,
+      con un modelo de PyTorch entrenado y evaluado. Es el notebook que `N09` repite sobre datos propios.'
+  UD03_N03_modelos_lenguaje_distilbert.ipynb:
+    que_es: Modelos de lenguaje · DistilBERT
+    resumen: '*Transfer learning* de manual: parte de un **DistilBERT** preentrenado y lo afina para análisis
+      de sentimiento con una base de datos de tuits. `N10` repite el proceso sobre reseñas de cine.'
+  UD03_N04_spacy_primeros_pasos.ipynb:
+    que_es: Primeros pasos con spaCy
+    resumen: 'El *pipeline* de spaCy de una sola pasada: tokenización, POS, dependencias y entidades,
+      sobre texto en español.'
+  UD03_N05_ampliacion_generos_musicales.ipynb:
+    que_es: Ampliación · clasificador de géneros musicales
+    resumen: 'Un sistema de PLN aplicado a **audio**: clasificar el género de una canción combinando `librosa`
+      y `transformers`. Es el notebook más largo del módulo (240 celdas) y **no cuenta horas de la unidad**:
+      queda como material de ampliación para quien quiera ir más allá de `N11`.'
+  UD03_N06_representacion_texto.ipynb:
+    que_es: Práctica · representación de texto por dos caminos
+    resumen: Tokenizar, quitar *stopwords* y construir una bolsa de palabras y un vector tf-idf, resuelto
+      **con NLTK y con TextBlob** — el mismo ejercicio, dos librerías.
+    se_entrega: 'los cuatro ejercicios resueltos por **uno** de los dos caminos —tú eliges— y una comparación
+      breve con el otro. **No se entrega**: es práctica.'
+  UD03_N07_nltk_python.ipynb:
+    que_es: Práctica · etiquetado con NLTK y `cess_esp`
+    resumen: 'Procesa el corpus español anotado `cess_esp`: separa entrenamiento y prueba, reduce el conjunto
+      de etiquetas morfosintácticas de 289 a un conjunto manejable, y valida con validación cruzada.'
+    se_entrega: 'los seis apartados resueltos. **No se entrega**: es práctica.'
+  UD03_N08_del_texto_al_vector.ipynb:
+    que_es: Clasificador de reseñas desde cero · del texto al vector
+    resumen: Construir un clasificador que determine si una reseña es positiva o negativa, con un conjunto
+      de datos anotado por vosotros y `scikit-learn`.
+    se_entrega: el notebook con el clasificador entrenado y evaluado, y las decisiones de anotación justificadas.
+  UD03_N09_clasificador_preguntas.ipynb:
+    que_es: Clasificador de preguntas entrenado y medido
+    resumen: Repite el proceso de `N02` —de la bolsa de palabras a un clasificador entrenado— sobre un
+      conjunto de **preguntas**, en vez de noticias.
+    se_entrega: 'el notebook con el clasificador entrenado y evaluado, **y una sección de conclusiones**
+      que responda: ¿qué decisiones de anotación tomaría un lingüista con este conjunto de preguntas?
+      ¿Qué perfiles harían falta si el proyecto creciera? ¿Qué formación necesitarías tú para mejorar
+      este sistema?'
+  UD03_N10_sentimiento_imdb.ipynb:
+    que_es: Análisis de sentimiento en reseñas de cine
+    resumen: '*Transfer learning*: parte del DistilBERT de `N03` —afinado para tuits— y adáptalo a reseñas
+      de IMDb, un dominio distinto.'
+    se_entrega: el notebook con el modelo afinado y evaluado sobre las reseñas.
+  UD03_N11_asistente_virtual.ipynb:
+    que_es: Sistema completo · asistente virtual por voz
+    resumen: Encadena tres modelos —voz a texto, traducción y texto a voz— en **una sola función** que
+      reciba un audio y devuelva otro.
+    se_entrega: 'el notebook con la función conjunta funcionando de punta a punta, **y una sección final**
+      que responda: ¿qué papel tendría un lingüista revisando las transcripciones y traducciones de este
+      asistente? ¿Qué formación necesitaría el equipo si el asistente tuviera que funcionar en varios
+      idiomas?'
+    materiales:
+    - '| Audio de prueba | [`OpenTheDoor.wav`](notebooks/OpenTheDoor.wav) |'
+  UD03_N12_sistema_pln.ipynb:
+    que_es: Sistema completo · extractor de entidades con spaCy
+    resumen: 'Construir un **extractor de entidades** (NER) para textos de un dominio concreto con `spaCy`,
+      siguiendo la metodología del CE g: tarea → datos → herramienta → implementar → evaluar → documentar.'
+    se_entrega: el notebook con el extractor funcionando y evaluado, y la documentación de cada paso.
+UD04:
+  _ra: RA4
+  _nota_entregas: |
+    Tres de las ocho son de **apto / no apto** —`N08`, `N10` y `N11`—: se entregan, pero no se corrigen
+    con rúbrica y pesan poco.
+  _pagina_practica: UD04_ActividadesGuiadas.md
+  _pagina_entregas: UD04_Entregas.md
+  UD04_N01_introduccion_opencv.ipynb:
+    que_es: Introducción a OpenCV
+    resumen: 'Visión por computador aplicada: cargar una imagen, detectar **bordes**, detectar **movimiento**
+      comparando fotogramas consecutivos y calcular el **flujo óptico**. Es la base de `N05` y de todo
+      lo que viene después, porque la cámara es el único sensor del robot en esta unidad.'
+    materiales:
+    - '| Vídeo de apoyo | [`1.-motionvideo.mp4`](notebooks/1.-motionvideo.mp4) |'
+    galeria:
+      titulo: Las tres imágenes de apoyo
+      imagenes:
+      - {src: notebooks/1.-line.png, pie: Línea centrada}
+      - {src: notebooks/1.-line_left.png, pie: Línea a la izquierda}
+      - {src: notebooks/1.-line_right.png, pie: Línea a la derecha}
+  UD04_N02_vehiculos_braitenberg.ipynb:
+    que_es: Vehículos de Braitenberg · comportamiento sin planificación
+    resumen: 'El control más simple que existe: conectar un sensor directamente a un motor, sin representación
+      interna ni planificación. Con dos sensores y dos motores aparecen comportamientos que **parecen**
+      intencionados —perseguir la luz, huir de ella— sin que haya ninguna intención programada. Es el
+      punto de partida del §10.3: la técnica de programación más barata, contra la que comparar todas
+      las demás.'
+  UD04_N03_ejemplos_robots.ipynb:
+    que_es: Ejemplos de robots en AITK
+    resumen: 'Recorrido por los robots del simulador: qué sensores puede llevar cada uno, cómo se define
+      un mundo con obstáculos y cómo se le pasa una función de control. Es el notebook que hay que tener
+      a mano mientras se hacen `N06` a `N10`.'
+  UD04_N04_cinematica_manipulador.ipynb:
+    que_es: Cinemática directa e inversa de un robot real (Panda, Puma 560)
+    resumen: Cargar un robot real —el Panda de Franka o el Puma 560—, calcular su cinemática directa e
+      inversa, generar una trayectoria y detectar singularidades.
+    se_entrega: el notebook con los cálculos, la trayectoria generada y las singularidades encontradas.
+  UD04_N05_ejercicios_opencv.ipynb:
+    que_es: Visión · ejercicios de OpenCV sobre imagen y vídeo
+    resumen: 'Tres ejercicios de visión sobre imagen y vídeo: detectar **bordes** y enmarcarlos, detectar
+      **movimiento** entre fotogramas consecutivos y calcular el **flujo óptico**.'
+    se_entrega: el notebook con los tres ejercicios resueltos y sus salidas.
+    materiales:
+    - '| Vídeo | [`EX1.-vtest.mp4`](notebooks/EX1.-vtest.mp4) |'
+    galeria:
+      titulo: La imagen de partida
+      imagenes:
+      - {src: notebooks/EX1.-camp.png, pie: El campo}
+  UD04_N06_navegar_camara.ipynb:
+    que_es: Navegación por reglas con la cámara
+    resumen: 'El robot tiene que **seguir una línea** en el suelo usando solo lo que ve su cámara. Aquí
+      escribes tú todas las condiciones: dónde está la línea en la imagen, y qué hacer en cada caso. Dos
+      escenarios: **línea simple** y **línea doble**.'
+    se_entrega: el notebook con el controlador funcionando en los dos escenarios.
+    galeria:
+      titulo: Las seis pistas
+      imagenes:
+      - {src: notebooks/EX2_pista_1.png, pie: Pista 1}
+      - {src: notebooks/EX2_pista_2.png, pie: Pista 2}
+      - {src: notebooks/EX2_pista_3.png, pie: Pista 3}
+      - {src: notebooks/EX2_pista_4.png, pie: Pista 4}
+      - {src: notebooks/EX2_pista_5.png, pie: Pista 5}
+      - {src: notebooks/EX2_pista_6.png, pie: Pista 6}
+  UD04_N07_navegar_camara_difusa.ipynb:
+    que_es: La misma navegación, con lógica difusa
+    resumen: 'El **mismo problema** que `N06`, resuelto con lógica difusa: variables lingüísticas, funciones
+      de pertenencia, reglas y desfuzzificación. Enlaza directamente con la UD05.'
+    se_entrega: el notebook con el sistema difuso completo y el robot navegando en los dos escenarios.
+    materiales:
+    - '| Pistas | Las mismas seis de `N06` |'
+  UD04_N08_generar_datos_entrenamiento.ipynb:
+    que_es: Insumo de `N09` · genera el conjunto de entrenamiento
+    resumen: 'Aquí no se entrena nada todavía: **conduces tú el robot** y el notebook graba lo que ve
+      la cámara junto con lo que tú decidiste hacer. El resultado es un conjunto de ejemplos etiquetados.'
+    se_entrega: 'el notebook **y el fichero `training_data.txt` con tu nombre**. Guárdatelo: es la entrada
+      de `N09`.'
+  UD04_N09_red_neuronal.ipynb:
+    que_es: Navegación con una red neuronal entrenada
+    resumen: 'Lees el `training_data.txt` de `N08`, **construyes y entrenas** una red neuronal con esos
+      ejemplos y la usas para conducir el robot. Tres celdas están vacías a propósito: la arquitectura
+      de la red, el entrenamiento y la función de control.'
+    se_entrega: el notebook **y el fichero `.keras` con tu nombre**, con la red ya entrenada. Con ese
+      fichero, la celda de carga permite **probar cómo se comporta tu red sin repetir el entrenamiento**
+      —que es largo—, y es así como se corrige.
+  UD04_N10_neat.ipynb:
+    que_es: Aprendizaje por refuerzo · evolucionar la red con NEAT
+    resumen: 'El mismo control, sin ejemplos. **NEAT** evoluciona a la vez los pesos **y la topología**
+      de la red: tú solo defines qué entra, qué sale y cómo se mide si lo está haciendo bien.'
+    se_entrega: 'el notebook y una **memoria en PDF** con tus pruebas variando `fitness_threshold` y `pop_size`,
+      la justificación de `num_inputs` y `num_outputs`, y una reflexión sobre el aprendizaje por refuerzo.
+      Es de **apto / no apto**: sin la memoria no cuenta como entregado.'
+  UD04_N11_diseno_sistema_robotizado.ipynb:
+    que_es: Diseño · evaluar alternativas para un problema real (CE d)
+    resumen: Aplicar los criterios de diseño e implementación (CE d) para proponer un sistema robotizado
+      que resuelva un caso real, justificando la selección y la seguridad.
+    se_entrega: el notebook con las alternativas evaluadas y la propuesta justificada. Es de **apto /
+      no apto**.
+UD05:
+  _ra: RA5
+  _nota_entregas: |
+    Los dominios distintos son a propósito: el criterio RA5-b pide representar y simular sistemas «de
+    muy diversos ámbitos».
+  _pagina_practica: UD05_ActividadesGuiadas.md
+  _pagina_entregas: UD05_Entregas.md
+  UD05_N01_experta_primeros_pasos.ipynb:
+    que_es: Introducción a `experta` · hechos, reglas y `DefFacts`
+    resumen: 'Primeros pasos con `experta`, la alternativa en Python a CLIPS: **hechos**, **reglas** y
+
+      `DefFacts`. Es la base de todos los notebooks de la unidad.'
+  UD05_N02_piedra_papel_tijera.ipynb:
+    que_es: Juego decidido por reglas
+    resumen: 'El juego de piedra, papel o tijera resuelto **solo con reglas**: el ejemplo más pequeño
+      posible
+
+      de motor de inferencia funcionando.'
+  UD05_N03_clasificacion_animales.ipynb:
+    que_es: Zoología · encadenamiento hacia delante
+    resumen: 'El sistema experto de la teoría, completo y ejecutado: a partir de las características dadas,
+
+      adivinar de qué animal se trata. Aquí se ve el **encadenamiento hacia delante**.'
+  UD05_N04_reglas_desde_datos_titanic.ipynb:
+    que_es: Reglas **extraídas** de datos, no escritas a mano (§7)
+    resumen: 'Reglas **extraídas de los datos** en vez de escritas a mano, sobre el Titanic y con varios
+      grados
+
+      de automatismo, usando *Human Learn* (§7).'
+  UD05_N05_logica_difusa_propinas.ipynb:
+    que_es: Introducción a `scikit-fuzzy` · el caso canónico (§8.4)
+    resumen: 'El ejemplo difuso de la teoría (§8.4) de principio a fin: **fuzzificación**, **evaluación
+      de
+
+      reglas** y **desfuzzificación**. Es la introducción a `scikit-fuzzy` y hace falta para `N06` y `N07`.'
+  UD05_N06_logica_difusa_quien_jugara.ipynb:
+    que_es: Deporte · cuántos minutos jugará un futbolista (§8)
+    resumen: 'Sistema difuso que decide **cuántos minutos jugará un futbolista** a partir de tres entradas:
+
+      rendimiento en el entrenamiento, recambio disponible y relación con el entrenador.'
+  UD05_N07_control_difuso_riego.ipynb:
+    que_es: Control difuso · regar el césped (§8, §10)
+    resumen: 'El riego del césped de un campo de fútbol con **control difuso**: dos sensores —temperatura
+      y
+
+      humedad del terreno— deciden cuánto se riega (§8, §10).'
+  UD05_N08_controlador_experto.ipynb:
+    que_es: Control de una sala con `experta` (§10-11)
+    resumen: 'Un **controlador experto** que regula la temperatura de una sala, definiendo las especificaciones
+
+      de respuesta (CE d) y viendo cómo influyen en el comportamiento del sistema (CE e).'
+  UD05_N09_referencia_tasacion_vehiculos.ipynb:
+    que_es: Referencia resuelta · un sistema experto grande, original en CLIPS
+    resumen: 'Un sistema experto **grande y ya resuelto**, portado de una práctica original en CLIPS:
+      la tasación
+
+      de vehículos usados. No es un enunciado, es la referencia para ver cómo se estructura un sistema
+
+      experto de principio a fin, con más reglas y más profundidad que los ejemplos de arriba.'
+  UD05_N10_simular_sistema_experto.ipynb:
+    que_es: Motor de inferencia a mano · diagnóstico frente a clasificación
+    resumen: Construir un sistema experto que **diagnostique** un problema y compararlo con uno de **clasificación**,
+      para ver que un mismo motor simula comportamientos de ámbitos distintos (CE b).
+    se_entrega: el notebook con los dos sistemas funcionando y la comparación entre ambos.
+  UD05_N11_lesiones_rodilla.ipynb:
+    que_es: Medicina · sistema experto de diagnóstico
+    resumen: 'Sistema experto de **diagnóstico médico**: a partir de los síntomas, distinguir entre las
+      lesiones de rodilla más comunes —ligamento cruzado, menisco, esguince—.'
+    se_entrega: el notebook con el sistema resolviendo los casos de prueba y las reglas justificadas.
+  UD05_N12_valor_mercado_jugadores.ipynb:
+    que_es: Deporte · sistema híbrido reglas + aprendizaje (§7)
+    resumen: 'Sistema **híbrido**: reglas escritas a mano sobre la salida de un modelo de aprendizaje
+      automático, para prever el valor de mercado de jugadores emergentes (§7).'
+    se_entrega: el notebook con el sistema híbrido funcionando sobre los datos del FIFA 22.
+  UD05_N13_centrocampistas_jovenes.ipynb:
+    que_es: Deporte · lógica difusa sobre datos reales del FIFA 22 (§8)
+    resumen: Sistema experto con **lógica difusa** para detectar centrocampistas jóvenes con buen potencial,
+      partiendo del trabajo publicado de Luka Radovanović (§8).
+    se_entrega: el notebook con las variables difusas, las reglas y los jugadores detectados.
+  UD05_N14_quemador_gas.ipynb:
+    que_es: Industria · control de un proceso real (§10-11)
+    resumen: '**Control de un proceso industrial**: un quemador con sensor de temperatura y un actuador
+      que regula el gas, con el objetivo de mantener la consigna (§10-11).'
+    se_entrega: el notebook con el controlador y la respuesta del sistema medida.
+  UD05_N15_sistema_experto_libre.ipynb:
+    que_es: El dominio que tú elijas · «muy diversos ámbitos» (CE b)
+    resumen: 'Un sistema basado en reglas del **dominio que tú elijas**. Es la entrega que cubre el «muy
+      diversos ámbitos» del CE b: cada alumno trae un dominio distinto.'
+    se_entrega: el notebook y una memoria con la descripción del sistema, el esquema del conocimiento
+      integrado y los casos de prueba.
+UD06:
+  _entregas_extra: 2
+  _ra: RA6
+  _nota_practica: |
+    Los documentales de partida **se ven en casa**, antes de la sesión que les corresponde: la unidad
+    tiene 6 horas y en clase se debate, no se proyecta. Los enlaces se comprobaron el **22 de agosto
+    de 2026**.
+  _nota_entregas: |
+    Los dos debates son en la **sesión 2** y la **sesión 4**, y la auditoría en la **sesión 3**.
+    **70 de los 100 puntos** de la rúbrica de debate se observan en directo, así que faltar a la
+    sesión no se recupera repitiéndola.
+  _pagina_practica: UD06_ActividadesGuiadas.md
+  _pagina_entregas: UD06_Entregas.md
+  UD06_N01_sesgos_ia.ipynb:
+    que_es: Detección y corrección de sesgos · da soporte a `N03`
+    resumen: 'Auditoría de equidad de un modelo real con **Fairlearn**: medir el sesgo por grupos, mitigarlo
+      con
+
+      postprocesado y ver el precio que se paga. Es el soporte técnico de `N03`.'
+  UD06_N02_analisis_caso_etico.ipynb:
+    que_es: Método de análisis ético sobre un caso real
+    resumen: 'Un método de análisis ético reproducible aplicado a un caso real de sesgo o riesgo de la
+      IA
+
+      (RA6-a, RA6-c, RA6-f), argumentando con principios deontológicos, métricas y normativa. Trae una
+
+      tabla con ocho casos reales y sus cifras para elegir.'
+  UD06_N03_auditoria_sesgos.ipynb:
+    que_es: Auditoría con Fairlearn · medir, mitigar y ver el precio que se paga
+    resumen: Medir el sesgo de un modelo real con **Fairlearn**, mitigarlo y **comprobar el precio que
+      se paga** por hacerlo (RA6-f, con conexión a RA6-b y RA6-e).
+    se_entrega: el informe con las métricas antes y después de mitigar, y las seis respuestas.
+  UD06_D01_Debate_limites_eticos_ES.md:
+    que_es: Debate por roles · ¿debe usarse la IA en medicina, en la guerra o en política?
+    resumen: |-
+      Debate por roles a partir de un documental que se ve en casa. Cada alumno defiende un personaje
+      asignado, no su propia opinión.
+    se_entrega: la participación en el aula **más** una reflexión escrita de máx. **300 palabras** en Moodle.
+  UD06_D02_Debate_algoritmo_crimen_ES.md:
+    que_es: Debate por roles · el algoritmo contra el crimen
+    resumen: |-
+      Segundo debate, sobre justicia algorítmica y predicción del delito. Misma mecánica y misma
+      rúbrica que el primero.
+    se_entrega: la participación en el aula **más** una reflexión escrita de máx. **300 palabras** en Moodle.

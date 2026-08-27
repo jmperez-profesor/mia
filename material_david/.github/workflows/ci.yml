@@ -1,0 +1,81 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          key: pip-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          path: ~/.cache/pip
+          restore-keys: |
+            pip-${{ runner.os }}-
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Install mermaid-cli for PDF pre-rendering
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+      # Un solo `PRERENDER_MERMAID=1 mkdocs gh-deploy` aplicaba el pre-render de Mermaid a
+      # TODO el build, sitio web incluido: en producción los diagramas salían como PNG
+      # estático (mmdc) en vez de renderizarse en vivo con JS, más pequeños y con otro tema
+      # de color que el resto del sitio. El pre-render solo hace falta para el PDF
+      # combinado (WeasyPrint no ejecuta JS), así que se separan los dos builds y solo se
+      # fusiona el PDF en el sitio real antes de desplegar.
+      - name: Build site (Mermaid en vivo, para la web)
+        run: mkdocs build --strict
+      # mkdocs-with-pdf falla de forma intermitente en el runner de GitHub Actions con
+      # "No anchor ... for internal URI reference" en páginas sin relación con el commit
+      # (2026-08-25), así que se reintenta antes de dar el build por roto.
+      #
+      # OJO antes de volver a dar por intermitente ese error (2026-08-27): esa misma clase de
+      # error aparece también de forma DETERMINISTA cuando algo rompe la paginación de
+      # WeasyPrint (una rejilla `display: grid`, un `display: contents`, una imagen sin
+      # acotar). El documento combinado se corta en seco por ahí y todas las anclas de lo que
+      # venía después dejan de existir, en páginas que efectivamente no tienen relación con el
+      # commit. Los tres reintentos fallan igual, con el mismo número exacto de errores.
+      #
+      # Para reproducirlo en local hay que exportar la variable, porque el plugin del PDF está
+      # condicionado a ella (`enabled_if_env` en mkdocs.yml) y sin ella el build sale limpio
+      # sin generar nada:
+      #
+      #     PRERENDER_MERMAID=1 mkdocs build --strict -d /tmp/site-pdf
+      #
+      # Si el número de errores es estable entre ejecuciones, no es el fallo intermitente:
+      # abrir el Libro.pdf que se genera de todos modos y buscar en qué página se corta.
+      - name: Build solo para extraer el PDF (Mermaid pre-renderizado, lo necesita WeasyPrint)
+        run: |
+          for intento in 1 2 3; do
+            PRERENDER_MERMAID=1 mkdocs build --strict -d site-pdf && exit 0
+            echo "Intento $intento de generar el PDF ha fallado, reintentando…"
+            rm -rf site-pdf
+          done
+          exit 1
+      - name: Fusionar únicamente el PDF en el sitio real
+        run: |
+          mkdir -p site/docs
+          cp site-pdf/docs/Libro.pdf site/docs/Libro.pdf
+      - name: Deploy a GitHub Pages
+        run: |
+          MKDOCS_VERSION="$(python -c 'import mkdocs; print(mkdocs.__version__)')"
+          ghp-import -n -p -f -m "Deployed $(git rev-parse --short HEAD) with MkDocs version: $MKDOCS_VERSION" site

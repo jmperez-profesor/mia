@@ -1,0 +1,272 @@
+# FUENTE ÚNICA de horas, semanas, RA/CE, pesos y calendario del módulo 5071.
+# Copia AUTORITATIVA: este fichero, en ModelosIA (sitio maestro desde 2026-08-20).
+# Ninguna tabla de estos datos se escribe a mano: se edita aquí y se ejecuta
+#   python3 scripts/generar_tablas.py
+# que rellena los bloques <!-- AUTO:x inicio/fin --> de docs/index.md.
+# Fuente única de verdad curricular del módulo 5071.
+#
+# Toda tabla de unidades, horas, pesos o RA/CE que aparezca en el repositorio debe
+# generarse desde aquí con `scripts/generar_tablas.py`, nunca escribirse a mano.
+# Los bloques destino van marcados con <!-- AUTO:<tabla> inicio --> ... <!-- AUTO:<tabla> fin -->.
+
+modulo:
+  codigo: "5071"
+  denominacion: Modelos de Inteligencia Artificial
+  curso_especializacion: Inteligencia Artificial y Big Data (Grado E)
+  centro: IES Eduardo Primo Marqués (Carlet)
+  curso_academico: "2026-2027"
+  horas: 90
+  ects: 4
+  horas_semanales: 3
+  semanas: 30
+  fin_contenidos: finales de abril (semana 24)
+
+# RA/CE prescriptivos: RD 279/2021 (art. 3.2 del Decreto 95/2026 CV).
+# RA7 no figura en el RD: es un proyecto integrador acordado por el equipo docente del curso.
+resultados_aprendizaje:
+  - id: RA1
+    ce: 4
+    enunciado: >-
+      Caracteriza sistemas de Inteligencia Artificial relacionándolos con la mejora de la
+      eficiencia operativa de las organizaciones y empresas.
+  - id: RA2
+    ce: 6
+    enunciado: >-
+      Utiliza modelos de sistemas de Inteligencia Artificial implementando sistemas de
+      resolución de problemas.
+  - id: RA3
+    ce: 7
+    enunciado: >-
+      Relaciona el procesamiento de lenguaje natural con sus aplicaciones determinando su
+      potencial e identificando sus limitaciones.
+  - id: RA4
+    ce: 4
+    enunciado: Analiza sistemas robotizados, evaluando opciones de diseño e implementación.
+  - id: RA5
+    ce: 5
+    enunciado: >-
+      Aplica sistemas expertos evaluando la influencia de los controladores inteligentes en el
+      comportamiento del sistema.
+  - id: RA6
+    ce: 6
+    enunciado: >-
+      Aplica principios legales y éticos al desarrollo de la Inteligencia Artificial
+      integrándolos como parte del proceso.
+  - id: RA7
+    ce: 9
+    enunciado: >-
+      Desarrolla un proyecto integrador que combine técnicas de IA y análisis de datos masivos
+      para resolver un problema real o simulado, gestionando todo el ciclo de vida del proyecto.
+    nota: Transversal al curso de especialización; lo imparte y califica todo el equipo docente.
+
+# Temporalización de PLAN.md §4 (coherente: cada semana = 3 h).
+# ORDEN DE IMPARTICIÓN (decisión 2026-08-20): RA1 → RA2 → RA5 → RA3 → RA4 → RA6.
+# El identificador UDxx queda ligado a su RA (UD05 = RA5 siempre) y NO al orden de
+# impartición: el orden lo llevan las semanas y el orden de esta lista, que es el que
+# reproduce scripts/generar_tablas.py. Motivo del cambio: RA5 (sistemas expertos y
+# controladores) se construye sobre las reglas (RA2-e, `experta`) y la lógica difusa
+# (RA2-d, scikit-fuzzy) de RA2; con el orden anterior quedaban a nueve semanas de
+# distancia. Coincide además con el orden de los apuntes en producción del profesor.
+unidades:
+  - id: UD00
+    titulo: Presentación y curso rápido de Docker
+    ra: null
+    horas: 6
+    semana_inicio: 1
+    semana_fin: 2
+    fecha_inicio: 2026-10-01
+    fecha_fin: 2026-10-08
+  - id: UD01
+    titulo: Caracterización de sistemas de IA
+    ra: RA1
+    horas: 12
+    semana_inicio: 3
+    semana_fin: 6
+    fecha_inicio: 2026-10-12
+    fecha_fin: 2026-11-06
+  - id: UD02
+    titulo: Modelos de IA y resolución de problemas
+    ra: RA2
+    horas: 12
+    semana_inicio: 7
+    semana_fin: 10
+    fecha_inicio: 2026-11-09
+    fecha_fin: 2026-12-03
+  - id: UD05
+    titulo: Sistemas expertos
+    ra: RA5
+    horas: 12
+    semana_inicio: 11
+    semana_fin: 15
+    fecha_inicio: 2026-12-07
+    fecha_fin: 2027-01-14
+  - id: UD03
+    titulo: Procesamiento del Lenguaje Natural
+    ra: RA3
+    horas: 12
+    semana_inicio: 16
+    semana_fin: 19
+    fecha_inicio: 2027-01-18
+    fecha_fin: 2027-02-11
+  - id: UD04
+    titulo: Análisis de sistemas robotizados
+    ra: RA4
+    horas: 12
+    semana_inicio: 20
+    semana_fin: 23
+    fecha_inicio: 2027-02-15
+    fecha_fin: 2027-03-11
+  - id: UD06
+    titulo: Principios legales y éticos de la IA
+    ra: RA6
+    horas: 6
+    semana_inicio: 24
+    semana_fin: 28
+    fecha_inicio: 2027-03-15
+    fecha_fin: 2027-04-23
+  - id: UD07
+    titulo: Proyecto integrador (común al curso)
+    ra: RA7
+    horas: 15
+    semana_inicio: 29
+    semana_fin: 33
+    fecha_inicio: 2027-04-26
+    fecha_fin: 2027-05-28
+  - id: Cierre
+    titulo: Presentaciones RA7 y prueba ordinaria (solo RA no superados)
+    ra: null
+    horas: 3
+    semana_inicio: 34
+    semana_fin: 35
+    fecha_inicio: 2027-06-01
+    fecha_fin: 2027-06-18
+
+# Calendario real del curso 2026-2027 (fuente única; no escribir fechas a mano en otros ficheros).
+# Verificado en fuentes/Instrucciones_26-27_FP_DOGV.pdf (Resolución SAE 15/07/2026, DOGV 2026/24495):
+# «La docencia de los cursos de especialización se iniciará el 1 de octubre de 2026 y finalizará como
+# máximo el 18 de junio de 2027». Vacaciones y festivos: calendario escolar de Carlet 26-27
+# facilitado por el profesor. Horario del CE: LUNES A JUEVES (los viernes no hay clase; el alumnado
+# los aprovecha para tareas y talleres en casa).
+calendario:
+  inicio_docencia: 2026-10-01        # jueves
+  fin_curso_centro: 2027-05-28       # el CE acaba en mayo; junio es para la prueba ordinaria
+  fin_maximo_legal: 2027-06-18
+  dias_clase: [lunes, martes, miércoles, jueves]
+  horas_semanales_curso: 20          # 600 h / 30 semanas nominales · el módulo 5071 son 3 h/semana
+  vacaciones:
+    navidad: [2026-12-22, 2027-01-06]
+    pascua: [2027-03-25, 2027-04-05]
+  festivos:
+    - {fecha: 2026-10-09, dia: viernes, afecta: false}   # Comunitat Valenciana
+    - {fecha: 2026-10-12, dia: lunes, afecta: true}      # Fiesta Nacional
+    - {fecha: 2026-12-07, dia: lunes, afecta: true}      # puente
+    - {fecha: 2026-12-08, dia: martes, afecta: true}     # Inmaculada
+    - {fecha: 2027-03-17, dia: miércoles, afecta: true}  # Fallas
+    - {fecha: 2027-03-18, dia: jueves, afecta: true}     # Fallas
+    - {fecha: 2027-03-19, dia: viernes, afecta: false}   # Fallas
+  # Horario del módulo 5071 — POR CONFIRMAR (probable 2 h un día + 1 h otro día).
+  # Sesiones disponibles por día del 01/10/26 al 28/05/27, ya descontadas vacaciones y festivos:
+  #   lunes 28 (pierde 12/10 y 07/12) · martes 29 (pierde 08/12)
+  #   miércoles 29 (pierde 17/03)     · jueves 30 (pierde 18/03)
+  # El jueves es el mejor día: el curso arranca en jueves (01/10) y también es lectivo el 07/01.
+  # Horas resultantes del módulo según el reparto (nominal 90 h):
+  #   2 h jueves + 1 h miércoles o martes = 89 h  ← el mejor reparto 2+1
+  #   2 h lunes  + 1 h martes o miércoles = 85 h  ← el peor, 5 h por debajo
+  #   3 h en un solo día: jueves 90 h · martes/miércoles 87 h · lunes 84 h
+  horario_modulo:
+    confirmado: false
+    hipotesis: 2h+1h            # dos sesiones semanales en días distintos
+    recomendacion_bloque_2h: jueves
+    evitar_bloque_2h: lunes
+    consecuencia_didactica: >
+      Con 2 h + 1 h hay DOS sesiones por semana, no una de 3 h: el bloque de 2 h es el único que
+      admite notebooks, talleres y Robocode (montaje + ejecución), y la sesión de 1 h sirve para
+      teoría breve, ejercicios, repaso y la prueba por RA en Moodle. Las tablas «Sesiones» de las
+      siete unidades están escritas para UN bloque semanal de 3 h y habría que dividirlas en 2 h + 1 h.
+  semanas_con_clase: 33              # 01/10/26–28/05/27 · 25 completas (4 d) + 8 reducidas
+  semanas_reducidas: [2026-09-28, 2026-10-12, 2026-12-07, 2026-12-21, 2027-01-04,
+                      2027-03-15, 2027-03-22, 2027-04-05]
+  nota: >
+    El módulo necesita 30 semanas de 3 h y hay 33 con clase: 3 de margen. Ese margen se coloca en
+    los tramos ya fragmentados (diciembre-enero para RA5, y Fallas/Pascua para RA6), no en semanas
+    de repaso: el profesor hace una prueba por RA en Moodle al cierre de cada unidad, así que no se
+    reservan semanas de parcial. Los festivos del 9 de octubre y del 19 de marzo caen en viernes y
+    no cuestan sesión. AVISO: el día de la semana asignado al módulo aún no se conoce, así que
+    según cuál sea se perderán 1 o 2 sesiones por festivo (lunes: 12/10, 07/12 y 05/04; martes:
+    08/12; miércoles: 17/03; jueves: 18/03). Dejar una sesión de holgura por unidad.
+
+evaluacion:
+  peso_actividades: 40
+  peso_prueba_escrita: 60
+  nota_minima_por_ra: 5
+  # Orden 8/2025 art. 5.1, verificado en el PDF oficial: «entre 1 y 10, sin decimales».
+  escala_calificacion: 1 a 10, sin decimales
+  pesos_ra:
+    RA1: 14.55
+    RA2: 14.55
+    RA3: 14.55
+    RA4: 14.55
+    RA5: 14.55
+    RA6: 7.27
+    RA7: 20
+  nota: >-
+    Pesos proporcionales a las horas lectivas de cada RA (decisión del profesor, 2026-08-25,
+    autorizada por la Orden 8/2025 art. 5): RA1-RA5 tienen 12 h cada uno y pesan
+    12/66 × 80 % ≈ 14,55 %; RA6 tiene solo 6 h y pesa 6/66 × 80 % ≈ 7,27 % (66 h = horas de
+    RA1-RA6, excluidas las 15 h de RA7 y las 3 h de cierre). RA7 se mantiene al 20 %. La suma
+    exacta es 100 % antes de redondear a dos decimales para mostrar (el reparto plano anterior,
+    13,33 % × 6 + 20 % = 99,98 %, ya tenía el mismo redondeo de visualización). Alcanzar TODOS
+    los RA del módulo es exigencia NORMATIVA, no del centro: art. 5.1 de la Orden 8/2025 (la
+    calificación del módulo va «en función de la consecución de los RA») e Instrucciones 26-27,
+    ap. 9.6.3 y 15.1.6 (un módulo con RA no superados no se puede calificar positivamente). El
+    centro solo concreta el umbral: «≥5 en cada RA». Verificado contra las fuentes primarias el
+    2026-08-22.
+
+# Divergencias conocidas frente a otras fuentes, PENDIENTES DE DECISIÓN
+# (PROPUESTAS_MEJORA.md §10.3 y §10.4). No resolver sin el profesor.
+conflictos:
+  - asunto: pesos por RA
+    aqui: RA1-RA5 al 14,55 % (12 h cada uno) + RA6 al 7,27 % (6 h) + RA7 al 20 %, proporcional a
+      las horas lectivas de cada RA
+    programacion_docx: RA3-RA6 al 20 % cada uno (suma 120 %)
+    alternativa_index_modelosia: RA1=10, RA2=10, RA3..RA6=15, RA7=20 (suma 100 %)
+    estado: >-
+      RESUELTO 2026-08-20 (reparto plano 13,33 % × 6) — REVISADO 2026-08-25 a petición del
+      profesor: RA6 tiene la mitad de horas (6 h) que el resto (12 h) y no tiene sentido que pese
+      igual; se pasa a ponderación proporcional a horas lectivas, que la Orden 8/2025 art. 5
+      permite. El RA7 sí cuenta en el módulo y se mantiene al 20 %.
+  - asunto: horas por unidad
+    aqui: UD01 = 12 h (RA1 solo) · RA1 + RA2 = 24 h
+    programacion_docx: UD01 = 27 h (RA1 + RA2 juntos)
+    estado: >
+      Resuelto en lo esencial 2026-08-20 (una UD por RA + temporalización real). Fleco: 3 h de
+      diferencia entre las 24 h de aquí y las 27 h del .docx; cuadrarlas al unificar en F6.
+  - asunto: ubicación de Docker
+    aqui: dentro de UD00 (6 h con la presentación)
+    modelosia: sección propia en la navegación; en Moodle es «Taller UD00_T01»
+    estado: >
+      RESUELTO 2026-08-27: Docker se queda DENTRO de UD00, como hasta ahora. Evaluación ya resuelta
+      el 2026-08-20: UD00 y el taller de Docker son REQUISITO NO CALIFICABLE, sin ítem en el
+      cuaderno de Moodle; todo el peso sigue en RA1-RA7.
+  - asunto: horas de RA6 frente a su carga real
+    aqui: UD06 = 6 h (semanas 24-28, el tramo de Fallas y Pascua)
+    carga_real: >
+      Los DOS debates por roles son evaluables (decisión del profesor 2026-08-22) y suman ~2 h 20
+      solo de debate, sobre 6 h totales.
+    estado: >
+      RESUELTO 2026-08-27: RA6 se queda en 6 h. El módulo necesita 30 semanas y hay 33 con clase,
+      así que si sobra colchón se le da alguna sesión a la UD06; no se cambia la temporalización
+      nominal. Consecuencia asumida en moodle/spec/CALIFICABLE.md: RA6 tiene 3 actividades
+      evaluables y los CE b, d y e se evidencian solo con la prueba escrita.
+  - asunto: pesos de las actividades dentro de cada RA
+    aqui: peso explícito por actividad, sumando 100 dentro de cada RA
+    estado: >
+      RESUELTO 2026-08-27. Sustituye al promedio simple que decían las páginas de entregables.
+      Las cifras por actividad viven en moodle/spec/CALIFICABLE.md (repo privado MIA_IA), que es su
+      fuente; las páginas de Entregas de cada unidad las publican. Robocode se lleva el 60 % del
+      RA2 porque son dos semanas con bot y memoria y porque las técnicas de sus otros dos
+      entregables se vuelven a evaluar en el RA5.
+  - asunto: sitio maestro de la fusión
+    estado: RESUELTO 2026-08-20 — ModelosIA (URL en producción, CI, historial y .mbz real)
+  - asunto: numeración de las unidades
+    estado: RESUELTO 2026-08-20 — se mantiene UDxx = RA; el orden lo llevan fechas y nav
