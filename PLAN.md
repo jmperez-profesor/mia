@@ -73,6 +73,41 @@
 
 > Tabla editable: el profesor puede ajustar fechas/títulos/contenidos. Las fechas se calculan sobre días lectivos lun/mié (sin vacaciones ni festivos de lun/mié).
 
+### 5.1 Detalle de sesiones (contenido y ejercicios)
+
+Tabla de trabajo para redactar, sesión a sesión, el contenido y los ejercicios adaptados al grupo. Las columnas **Contenidos detallados**, **Ejercicios y práctica en clase**, **Materiales / Recursos** y **Observaciones** se dejan en blanco para que las rellenes; el resto se copia de la tabla §5.
+
+| # | Bloque/RA | Fecha | Título | Contenidos detallados (objetivos/conceptos) | Ejercicios y práctica en clase | Materiales / Recursos | Observaciones |
+|---|-----------|-------|--------|---------------------------------------------|--------------------------------|-----------------------|---------------|
+| 1 | B01/RA1 | 2026-10-05 | Introducción a la IA y tipos de sistemas |  |  |  |  |
+| 2 | B01/RA1 | 2026-10-07 | Agentes y entornos |  |  |  |  |
+| 3 | B01/RA1 | 2026-10-14 | Arquitecturas de agentes |  |  |  |  |
+| 4 | B01/RA1 | 2026-10-19 | Representación del conocimiento |  |  |  |  |
+| 5 | B01/RA1 | 2026-10-21 | Sistemas basados en conocimiento en la empresa |  |  |  |  |
+| 6 | B01/RA1 | 2026-10-26 | IA y eficiencia operativa I |  |  |  |  |
+| 7 | B01/RA1 | 2026-10-28 | IA y eficiencia operativa II |  |  |  |  |
+| 8 | B01/RA1 | 2026-11-02 | Evaluación crítica y Miniproyecto RA1 |  |  |  |  |
+| 9 | B02/RA2 | 2026-11-04 | Espacios de estados y búsqueda no informada |  |  |  |  |
+| 10 | B02/RA2 | 2026-11-09 | Búsqueda informada: A* y heurísticas |  |  |  |  |
+| 11 | B02/RA2 | 2026-11-11 | Búsqueda local |  |  |  |  |
+| 12 | B02/RA2 | 2026-11-16 | Algoritmos genéticos I |  |  |  |  |
+| 13 | B02/RA2 | 2026-11-18 | Algoritmos genéticos II |  |  |  |  |
+| 14 | B02/RA2 | 2026-11-23 | Satisfacción de restricciones (CSP) |  |  |  |  |
+| 15 | B02/RA2 | 2026-11-25 | Planificación: STRIPS |  |  |  |  |
+| 16 | B02/RA2 | 2026-11-30 | Programación lógica con Prolog |  |  |  |  |
+| 17 | B02/RA2 | 2026-12-02 | Motores de reglas e inferencia |  |  |  |  |
+| 18 | B02/RA2 | 2026-12-09 | Miniproyecto RA2 |  |  |  |  |
+| 19 | B03/RA3 | 2026-12-14 | Introducción al PLN |  |  |  |  |
+| 20 | B03/RA3 | 2026-12-16 | Preprocesamiento de texto |  |  |  |  |
+| 21 | B03/RA3 | 2026-12-21 | Representación de texto |  |  |  |  |
+| 22 | B03/RA3 | 2027-01-11 | Word embeddings |  |  |  |  |
+| 23 | B03/RA3 | 2027-01-13 | Modelos de lenguaje y transformers |  |  |  |  |
+| 24 | B03/RA3 | 2027-01-18 | Clasificación de texto y sentimiento |  |  |  |  |
+| 25 | B03/RA3 | 2027-01-20 | Generación y LLMs |  |  |  |  |
+| 26 | B03/RA3 | 2027-01-25 | Miniproyecto RA3 |  |  |  |  |
+
+> Sugerencia de uso: rellena "Contenidos detallados" con los objetivos de aprendizaje y el hilo conductor; "Ejercicios y práctica en clase" con los ejercicios propuestos para esa sesión (enlaza al notebook `sesionNN_miniproyecto.ipynb` cuando proceda); "Materiales / Recursos" con enlaces, PDFs de `fuentes/` o demo; "Observaciones" con adaptaciones al grupo, refuerzo o evaluación.
+
 ## 6. Estructura de carpetas (actualizada)
 
 ```
