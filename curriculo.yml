@@ -157,19 +157,17 @@ calendario:
   inicio_docencia: 2026-10-01
   fin_curso_centro: 2027-05-28
   fin_maximo_legal: 2027-06-18
-  dias_clase: [lunes, martes, miércoles, jueves]
+  dias_clase: [lunes, miércoles, viernes] # Los viernes son para RA7 (otros docentes)
   horas_semanales_curso: 20
   vacaciones:
     navidad: [2026-12-22, 2027-01-06]
     pascua: [2027-03-25, 2027-04-05]
   festivos:
-    - {fecha: 2026-10-09, dia: viernes, afecta: false}
+    - {fecha: 2026-10-09, dia: viernes, afecta: true}
     - {fecha: 2026-10-12, dia: lunes, afecta: true}
     - {fecha: 2026-12-07, dia: lunes, afecta: true}
-    - {fecha: 2026-12-08, dia: martes, afecta: true}
     - {fecha: 2027-03-17, dia: miércoles, afecta: true}
-    - {fecha: 2027-03-18, dia: jueves, afecta: true}
-    - {fecha: 2027-03-19, dia: viernes, afecta: false}
+    - {fecha: 2027-03-19, dia: viernes, afecta: true}
   horario_modulo:
     confirmado: true
     sesiones_por_semana: 2
