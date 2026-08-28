@@ -78,6 +78,7 @@
 ```
 _MIA/
 ├── PLAN.md, AGENTS.md, FUENTES.md, README.md, .gitignore, requirements.txt, serve.sh
+├── curriculo.yml       # datos curriculares adaptados (RA/CE, calendario, pesos) en la raíz
 ├── mkdocs.yml, hooks.py
 ├── fuentes/           # PDFs de normativa oficial (pendiente de descarga)
 ├── legislacion/       # análisis normativo + plantilla_sesion.md
