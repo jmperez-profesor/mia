@@ -14,7 +14,7 @@ El módulo se planifica por **sesiones de 2 horas**. Este docente impartirá los
 | [B02](bloques/B02_RA2/index.md) | RA2 | Modelos de resolución de problemas |
 | [B03](bloques/B03_RA3/index.md) | RA3 | Procesamiento de lenguaje natural (PLN) |
 
-Cada sesión incluye **práctica guiada (con solución)** y una **práctica propuesta en forma de miniproyecto** para el alumnado (notebook en [practicas/](https://github.com/jmperez-profesor/mia/tree/main/practicas)).
+Cada sesión incluye **práctica guiada (con solución)** y una **práctica propuesta en forma de miniproyecto** para el alumnado (notebook en `docs/bloques/`).
 
 Los RA4, RA5, RA6 y el RA7 (proyecto intermodular) son impartidos por otros docentes y no se recogen aquí.
 
