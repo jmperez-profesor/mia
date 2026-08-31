@@ -40,172 +40,111 @@
 - **Festivos que afectan a lun/mié:** 2026-10-12 (lunes), 2026-12-07 (lunes), 2027-03-17 (miércoles).
 - **Sesiones de 2h disponibles:** 57. **Sesiones planificadas (RA1–RA3):** 26 (ver §5). Las restantes se dejan como margen para refuerzo, evaluación y pruebas por RA.
 
-## 5. Tabla de sesiones (fecha · título · contenidos)
-
-| # | Bloque/RA | Fecha | Título de la sesión | Contenidos a tratar |
-|---|-----------|-------|---------------------|---------------------|
-| 1 | B01/RA1 | 2026-10-05 | Introducción a la IA y tipos de sistemas | Historia y definición; IA débil/fuerte; tipos (reactiva, memoria limitada, teoría de mente, autoconsciente); ejemplos. |
-| 2 | B01/RA1 | 2026-10-07 | Agentes y entornos | Concepto de agente; propiedades de entornos (observable, determinista, episódico, estático); taxonomía. |
-| 3 | B01/RA1 | 2026-10-14 | Arquitecturas de agentes | Reactivo, deliberativo e híbrido; comparativa y casos. |
-| 4 | B01/RA1 | 2026-10-19 | Representación del conocimiento | Lógica, reglas, ontologías y grafos de conocimiento. |
-| 5 | B01/RA1 | 2026-10-21 | Sistemas basados en conocimiento en la empresa | Sistemas expertos (intro) y cuadros de mando. |
-| 6 | B01/RA1 | 2026-10-26 | IA y eficiencia operativa I | Automatización de procesos y RPA; casos. |
-| 7 | B01/RA1 | 2026-10-28 | IA y eficiencia operativa II | Mantenimiento predictivo, optimización de rutas e inventario. |
-| 8 | B01/RA1 | 2026-11-02 | Evaluación crítica y Miniproyecto RA1 | Métricas, sesgos y limitaciones + Miniproyecto RA1. |
-| 9 | B02/RA2 | 2026-11-04 | Espacios de estados y búsqueda no informada | BFS, DFS, costo uniforme; árboles de búsqueda. |
-| 10 | B02/RA2 | 2026-11-09 | Búsqueda informada: A* y heurísticas | Heurísticas admisibles, A*; comparativa. |
-| 11 | B02/RA2 | 2026-11-11 | Búsqueda local | Escalada, escalada por máxima pendiente, recocido simulado. |
-| 12 | B02/RA2 | 2026-11-16 | Algoritmos genéticos I | Selección, cruce, mutación; fundamentos. |
-| 13 | B02/RA2 | 2026-11-18 | Algoritmos genéticos II | Implementación y aplicación a un problema. |
-| 14 | B02/RA2 | 2026-11-23 | Satisfacción de restricciones (CSP) | Backtracking, propagación de restricciones. |
-| 15 | B02/RA2 | 2026-11-25 | Planificación: STRIPS | Representación de estados, acciones y planes. |
-| 16 | B02/RA2 | 2026-11-30 | Programación lógica con Prolog | Hechos, reglas, consultas; inferencia. |
-| 17 | B02/RA2 | 2026-12-02 | Motores de reglas e inferencia | Sistemas basados en reglas; encadenamiento. |
-| 18 | B02/RA2 | 2026-12-09 | Miniproyecto RA2 | Sistema de resolución de problemas con entrega. |
-| 19 | B03/RA3 | 2026-12-14 | Introducción al PLN | Pipeline, niveles y retos del lenguaje. |
-| 20 | B03/RA3 | 2026-12-16 | Preprocesamiento de texto | Tokenización, lematización, POS, NER básica. |
-| 21 | B03/RA3 | 2026-12-21 | Representación de texto | Bolsa de palabras y TF-IDF. |
-| 22 | B03/RA3 | 2027-01-11 | Word embeddings | Word2Vec/GloVe; similitud semántica. |
-| 23 | B03/RA3 | 2027-01-13 | Modelos de lenguaje y transformers | Concepto, mecanismo de atención (intro). |
-| 24 | B03/RA3 | 2027-01-18 | Clasificación de texto y sentimiento | scikit-learn/spaCy; análisis de sentimiento. |
-| 25 | B03/RA3 | 2027-01-20 | Generación y LLMs | Prompting, alucinaciones y limitaciones. |
-| 26 | B03/RA3 | 2027-01-25 | Miniproyecto RA3 | Análisis de un corpus real con entrega. |
-
-> Tabla editable: el profesor puede ajustar fechas/títulos/contenidos. Las fechas se calculan sobre días lectivos lun/mié (sin vacaciones ni festivos de lun/mié).
-
-### 5.1 Detalle de sesiones (contenido y ejercicios)
+## 5 Detalle de sesiones (contenido y ejercicios)
 
 Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios adaptados al grupo. Por cada sesión usa las subclaves **Contenidos detallados**, **Ejercicios y práctica en clase**, **Materiales / Recursos** y **Observaciones** (enlaza al notebook `sesionNN_miniproyecto.ipynb` cuando proceda).
 
-- **Sesión 1 · 2026-10-05 · Introducción a la IA y tipos de sistemas — B01/RA1**
+- **Sesión 1 · 2026-10-05 · Introducción a la IA y tipos de sistemas**
   - Contenidos detallados:
+    - Situación actual de la IA. Vibecoding, ChatBots, Agentes,
+    - Los agentes.
+    - Tipos de modelos: predictivos / generativos.
+    - Agentes vs fine tuning.
+    - Acciones en la dirección. Como se incorpora a la IA a la empresa
+    - Tareas basadas en proyectos:
+        - Proyecto LARA
+        - Hidrogeno verde.
+        Colmena inteligente.
+  - Ejercicios y práctica en clase: 
+    - Demo del profesor (aprendizaje supervisado y no supervisado): https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html
+    - https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N03_tecnicas_casos.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N04_nuevas_interacciones.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html
+    - https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html
+    - https://sever8a.github.io/artint/ia/introduccion/introduccion.html
+    - https://sever8a.github.io/artint/ia/introduccion/definicion.html
+  - Observaciones: Objetivo didáctico- Al finalizar esta sesión, deberías ser capaz de:
+- **Sesión 2 · 2026-10-19 · IA 1: Actualidad y fundamentos**
+  - Contenidos detallados:
+    - Concepto de ML y la importancia de los datos. Si tienes pocos datos, si tienes datos sesgados, etc.
+    - ML, que tipos de problemas resuelve.
+    - Modelos no supervisados: sirve para crear clusters.
+    - La irrupción de la IA generativa su funcionamiento. Generar textos e imágenes. Va todo muy rápido respecto a 
+    - Tipos de aprendizaje. Evolución y avances actuales.
+    - Proyecto de IA: fases y proceso de secuenciacion. Como se desarrolla un proyecto de IA. Selección de los datos.
+    - Introducción a Kaggle. Es una herramienta muy visual es Kaggle ya que hay ejemplos ya hechos. Kaggle como ejemplo
   - Ejercicios y práctica en clase:
+    - Demo del profesor (aprendizaje supervisado y no supervisado): https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html
+    - https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N03_tecnicas_casos.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N04_nuevas_interacciones.html
+    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html
+  - Materiales / Recursos: 
+    - https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html
+  - Observaciones: 
+- **Sesión 3 · 2026-10-21 · IA 2: Entornos actuales. Proyectos IA fases.**
+  - Contenidos detallados:
+    - Proceso de un proyecto de IA.
+    - Todos los pasos y su importancia.
+    - Entornos posible de desarrollo.
+  - Ejercicios y práctica en clase: 
+    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Materiales / Recursos:
+    - https://sever8a.github.io/artint/ia/fases_aa/introduccion.html
+    - https://sever8a.github.io/artint/ia/fases_aa/preprocesamiento.html
+    - https://sever8a.github.io/artint/ia/fases_aa/entrenamiento.html
+    - https://sever8a.github.io/artint/ia/fases_aa/evaluacion.html
+    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
-- **Sesión 2 · 2026-10-07 · Agentes y entornos — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
+- **Sesión 4 · 2026-10-26 · IA 3: Entornos actuales. Proyectos IA fases.**
+  - Contenidos detallados: 
+    - Proceso de un proyecto de IA. Como conseguir los datos
+    - Hacer un ejemplo con valores correctos o incorrectos.
+    - Todos los pasos y su importancia.
+    - Pasos:
+      1-Dataset
+      2-Elección del modelo
+      3-Entrenamiento
+      4-Evaluar las métricas
+      5-Comprobar los resultados
+      6-Sino funciona bien, tenemos varias opciones: Cambiar el modelo o modificar los datos (es posible que los datos estén sesgados)
+    - NOTA: lo importante son los datos.
+    - Entornos posible de desarrollo.
+    - Ejemplo del titanic (hay datos vacíos que hay que limpiar)
+    - Tienen que entender el tipo de problema que están trabajando. Regresión, clasificación, predicción, etc. Insistir mucho en eso.
+  - Ejercicios y práctica en clase: 
+    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Materiales / Recursos:
+    - https://sever8a.github.io/artint/ia/fases_aa/introduccion.html
+    - https://sever8a.github.io/artint/ia/fases_aa/preprocesamiento.html
+    - https://sever8a.github.io/artint/ia/fases_aa/entrenamiento.html
+    - https://sever8a.github.io/artint/ia/fases_aa/evaluacion.html
+    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
-- **Sesión 3 · 2026-10-14 · Arquitecturas de agentes — B01/RA1**
+- **Sesión 5 · 2026-10-28 · IA 4 de ML a LLM**
   - Contenidos detallados:
-  - Ejercicios y práctica en clase:
+    - Estamos usando Kaggle con ML pero podemos usar agentes para resolver el problema, es decir, usamos un LLM para
+    - Cambios en la perspectiva de la IA.
+    - Logros y avances.
+    - Fundamentos teóricos y conceptos fundamentales, para analizar problemas y soluciones.
+    - La importancia de los datos.
+    - Agentes agentes y agentes.
+    - Trabajamos mucho las métricas (en las sesiones anteriores nos centramos en los modelos) 
+    - En Kaggle está bien si creamos una competición. Ahí profundizan en las métricas.
+    - Ellos son los que trabajan, no hablar tanto.
+  - Ejercicios y práctica en clase: por hacer
   - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 4 · 2026-10-19 · Representación del conocimiento — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 5 · 2026-10-21 · Sistemas basados en conocimiento en la empresa — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 6 · 2026-10-26 · IA y eficiencia operativa I — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 7 · 2026-10-28 · IA y eficiencia operativa II — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 8 · 2026-11-02 · Evaluación crítica y Miniproyecto RA1 — B01/RA1**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 9 · 2026-11-04 · Espacios de estados y búsqueda no informada — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 10 · 2026-11-09 · Búsqueda informada: A* y heurísticas — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 11 · 2026-11-11 · Búsqueda local — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 12 · 2026-11-16 · Algoritmos genéticos I — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 13 · 2026-11-18 · Algoritmos genéticos II — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 14 · 2026-11-23 · Satisfacción de restricciones (CSP) — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 15 · 2026-11-25 · Planificación: STRIPS — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 16 · 2026-11-30 · Programación lógica con Prolog — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 17 · 2026-12-02 · Motores de reglas e inferencia — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 18 · 2026-12-09 · Miniproyecto RA2 — B02/RA2**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 19 · 2026-12-14 · Introducción al PLN — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 20 · 2026-12-16 · Preprocesamiento de texto — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 21 · 2026-12-21 · Representación de texto — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 22 · 2027-01-11 · Word embeddings — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 23 · 2027-01-13 · Modelos de lenguaje y transformers — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 24 · 2027-01-18 · Clasificación de texto y sentimiento — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 25 · 2027-01-20 · Generación y LLMs — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
-  - Observaciones:
-- **Sesión 26 · 2027-01-25 · Miniproyecto RA3 — B03/RA3**
-  - Contenidos detallados:
-  - Ejercicios y práctica en clase:
-  - Materiales / Recursos:
+    - https://sever8a.github.io/artint/redes-neuronales/introduccion.html
+    - https://sever8a.github.io/artint/redes-neuronales/perceptron.html
+    - https://sever8a.github.io/artint/redes-neuronales/multicapa.html
+    - https://sever8a.github.io/artint/redes-neuronales/regresion.html
+    - https://sever8a.github.io/artint/redes-neuronales/clasificacion.html
+    - https://sever8a.github.io/artint/redes-neuronales/convolucionales.html
+    - https://sever8a.github.io/artint/redes-neuronales/lstm.html
+    - https://sever8a.github.io/artint/redes-neuronales/transformers.html
   - Observaciones:
 
 ## 6. Estructura de carpetas (actualizada)
