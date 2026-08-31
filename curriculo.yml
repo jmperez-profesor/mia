@@ -42,22 +42,6 @@ resultados_aprendizaje:
     enunciado: >-
       Relaciona el procesamiento de lenguaje natural con sus aplicaciones determinando su
       potencial e identificando sus limitaciones.
-  - id: RA4
-    ce: 4
-    imparte: otros docentes
-    enunciado: Analiza sistemas robotizados, evaluando opciones de diseño e implementación.
-  - id: RA5
-    ce: 5
-    imparte: otros docentes
-    enunciado: >-
-      Aplica sistemas expertos evaluando la influencia de los controladores inteligentes en el
-      comportamiento del sistema.
-  - id: RA6
-    ce: 6
-    imparte: otros docentes
-    enunciado: >-
-      Aplica principios legales y éticos al desarrollo de la Inteligencia Artificial
-      integrándolos como parte del proceso.
   - id: RA7
     ce: 9
     imparte: otros docentes (proyecto intermodular del curso)
@@ -67,16 +51,7 @@ resultados_aprendizaje:
 
 # Temporalización de referencia del módulo 5071 completo (fuente: Decreto 95/2026 / dosier GVA).
 # Las unidades que impartimos nosotros son UD01=RA1, UD02=RA2 y UD03=RA3.
-unidades:
-  - id: UD00
-    titulo: Presentación y curso rápido de Docker
-    ra: null
-    imparte: centro
-    horas: 6
-    semana_inicio: 1
-    semana_fin: 2
-    fecha_inicio: 2026-10-01
-    fecha_fin: 2026-10-08
+unidades:  
   - id: UD01
     titulo: Caracterización de sistemas de IA
     ra: RA1
@@ -94,61 +69,16 @@ unidades:
     semana_inicio: 7
     semana_fin: 10
     fecha_inicio: 2026-11-09
-    fecha_fin: 2026-12-03
-  - id: UD05
-    titulo: Sistemas expertos
-    ra: RA5
-    imparte: otros docentes
-    horas: 12
-    semana_inicio: 11
-    semana_fin: 15
-    fecha_inicio: 2026-12-07
-    fecha_fin: 2027-01-14
-  - id: UD03
+    fecha_fin: 2026-12-03  
+  - id: UD13
     titulo: Procesamiento del Lenguaje Natural
     ra: RA3
     imparte: este docente
     horas: 12
     semana_inicio: 16
     semana_fin: 19
-    fecha_inicio: 2027-01-18
-    fecha_fin: 2027-02-11
-  - id: UD04
-    titulo: Análisis de sistemas robotizados
-    ra: RA4
-    imparte: otros docentes
-    horas: 12
-    semana_inicio: 20
-    semana_fin: 23
-    fecha_inicio: 2027-02-15
-    fecha_fin: 2027-03-11
-  - id: UD06
-    titulo: Principios legales y éticos de la IA
-    ra: RA6
-    imparte: otros docentes
-    horas: 6
-    semana_inicio: 24
-    semana_fin: 28
-    fecha_inicio: 2027-03-15
-    fecha_fin: 2027-04-23
-  - id: UD07
-    titulo: Proyecto integrador (común al curso)
-    ra: RA7
-    imparte: otros docentes
-    horas: 15
-    semana_inicio: 29
-    semana_fin: 33
-    fecha_inicio: 2027-04-26
-    fecha_fin: 2027-05-28
-  - id: Cierre
-    titulo: Presentaciones RA7 y prueba ordinaria (solo RA no superados)
-    ra: null
-    imparte: centro
-    horas: 3
-    semana_inicio: 34
-    semana_fin: 35
-    fecha_inicio: 2027-06-01
-    fecha_fin: 2027-06-18
+    fecha_inicio: 2027-04-07
+    fecha_fin: 2027-05-26  
 
 # Calendario real del curso 2026-2027 (referencia; verificado en DOGV 2026/24495,
 # Resolución SAE 15/07/2026: docencia 01/10/2026 → 18/06/2027 máx.).
@@ -160,14 +90,14 @@ calendario:
   dias_clase: [lunes, miércoles, viernes] # Los viernes son para RA7 (otros docentes)
   horas_semanales_curso: 20
   vacaciones:
-    navidad: [2026-12-22, 2027-01-06]
-    pascua: [2027-03-25, 2027-04-05]
+    navidad: [2026-12-23, 2027-01-06]
+    pascua: [2027-03-24, 2027-04-05]
   festivos:
-    - {fecha: 2026-10-09, dia: viernes, afecta: true}
-    - {fecha: 2026-10-12, dia: lunes, afecta: true}
-    - {fecha: 2026-12-07, dia: lunes, afecta: true}
-    - {fecha: 2027-03-17, dia: miércoles, afecta: true}
-    - {fecha: 2027-03-19, dia: viernes, afecta: true}
+    - {fecha: 2026-10-09, dia: viernes, afecta: true} #Dia de la comunidad Valenciana
+    - {fecha: 2026-10-12, dia: lunes, afecta: true}   #Fiesta Nacional de España
+    - {fecha: 2026-12-07, dia: lunes, afecta: true}   #No lectivo en Elche
+    - {fecha: 2026-12-08, dia: martes, afecta: false}   #Día de la Constitución Española
+    - {fecha: 2027-03-19, dia: viernes, afecta: true} #San José
   horario_modulo:
     confirmado: true
     sesiones_por_semana: 2
