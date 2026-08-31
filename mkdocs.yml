@@ -33,10 +33,10 @@ theme:
 
 extra:
   colab:
-    user: TU-USUARIO      # CAMBIAR
-    repo: _MIA            # CAMBIAR
+    user: jmperez-profesor
+    repo: mia
     branch: main
-  raw_base: https://raw.githubusercontent.com/TU-USUARIO/_MIA/main   # CAMBIAR
+  raw_base: https://raw.githubusercontent.com/jmperez-profesor/mia/main
 
 plugins:
   - search
