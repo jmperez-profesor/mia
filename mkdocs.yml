@@ -92,28 +92,28 @@ nav:
       - "S06 · IA y eficiencia operativa I": bloques/B01_RA1/sesion06.md
       - "S07 · IA y eficiencia operativa II": bloques/B01_RA1/sesion07.md
       - "S08 · Evaluación crítica y Miniproyecto RA1": bloques/B01_RA1/sesion08.md
-  - "B02 · RA2 — Modelos de resolución de problemas":
-      - Introducción: bloques/B02_RA2/index.md
-      - "S01 · Espacios de estados y búsqueda no informada": bloques/B02_RA2/sesion01.md
-      - "S02 · Búsqueda informada: A* y heurísticas": bloques/B02_RA2/sesion02.md
-      - "S03 · Búsqueda local": bloques/B02_RA2/sesion03.md
-      - "S04 · Algoritmos genéticos I": bloques/B02_RA2/sesion04.md
-      - "S05 · Algoritmos genéticos II": bloques/B02_RA2/sesion05.md
-      - "S06 · Satisfacción de restricciones (CSP)": bloques/B02_RA2/sesion06.md
-      - "S07 · Planificación: STRIPS": bloques/B02_RA2/sesion07.md
-      - "S08 · Programación lógica con Prolog": bloques/B02_RA2/sesion08.md
-      - "S09 · Motores de reglas e inferencia": bloques/B02_RA2/sesion09.md
-      - "S10 · Miniproyecto RA2": bloques/B02_RA2/sesion10.md
-  - "B03 · RA3 — Procesamiento de lenguaje natural":
-      - Introducción: bloques/B03_RA3/index.md
-      - "S01 · Introducción al PLN": bloques/B03_RA3/sesion01.md
-      - "S02 · Preprocesamiento de texto": bloques/B03_RA3/sesion02.md
-      - "S03 · Representación de texto": bloques/B03_RA3/sesion03.md
-      - "S04 · Word embeddings": bloques/B03_RA3/sesion04.md
-      - "S05 · Modelos de lenguaje y transformers": bloques/B03_RA3/sesion05.md
-      - "S06 · Clasificación de texto y sentimiento": bloques/B03_RA3/sesion06.md
-      - "S07 · Generación y LLMs": bloques/B03_RA3/sesion07.md
-      - "S08 · Miniproyecto RA3": bloques/B03_RA3/sesion08.md
+  # - "B02 · RA2 — Modelos de resolución de problemas":
+  #     - Introducción: bloques/B02_RA2/index.md
+  #     - "S01 · Espacios de estados y búsqueda no informada": bloques/B02_RA2/sesion01.md
+  #     - "S02 · Búsqueda informada: A* y heurísticas": bloques/B02_RA2/sesion02.md
+  #     - "S03 · Búsqueda local": bloques/B02_RA2/sesion03.md
+  #     - "S04 · Algoritmos genéticos I": bloques/B02_RA2/sesion04.md
+  #     - "S05 · Algoritmos genéticos II": bloques/B02_RA2/sesion05.md
+  #     - "S06 · Satisfacción de restricciones (CSP)": bloques/B02_RA2/sesion06.md
+  #     - "S07 · Planificación: STRIPS": bloques/B02_RA2/sesion07.md
+  #     - "S08 · Programación lógica con Prolog": bloques/B02_RA2/sesion08.md
+  #     - "S09 · Motores de reglas e inferencia": bloques/B02_RA2/sesion09.md
+  #     - "S10 · Miniproyecto RA2": bloques/B02_RA2/sesion10.md
+  # - "B03 · RA3 — Procesamiento de lenguaje natural":
+  #     - Introducción: bloques/B03_RA3/index.md
+  #     - "S01 · Introducción al PLN": bloques/B03_RA3/sesion01.md
+  #     - "S02 · Preprocesamiento de texto": bloques/B03_RA3/sesion02.md
+  #     - "S03 · Representación de texto": bloques/B03_RA3/sesion03.md
+  #     - "S04 · Word embeddings": bloques/B03_RA3/sesion04.md
+  #     - "S05 · Modelos de lenguaje y transformers": bloques/B03_RA3/sesion05.md
+  #     - "S06 · Clasificación de texto y sentimiento": bloques/B03_RA3/sesion06.md
+  #     - "S07 · Generación y LLMs": bloques/B03_RA3/sesion07.md
+  #     - "S08 · Miniproyecto RA3": bloques/B03_RA3/sesion08.md
   - Evaluación:
       - Índice: evaluacion/index.md
       - "RA1 · Caracterización de sistemas IA": evaluacion/RA1.md
