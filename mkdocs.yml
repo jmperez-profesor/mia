@@ -84,11 +84,11 @@ nav:
   - Normativa: normativa/index.md
   - "B01 · RA1 — Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
-      - "S01 · Introducción a la IA y tipos de sistemas": bloques/B01_RA1/sesion01.md
-      - "S02 · Agentes y entornos": bloques/B01_RA1/sesion02.md
-      - "S03 · Arquitecturas de agentes": bloques/B01_RA1/sesion03.md
-      - "S04 · Representación del conocimiento": bloques/B01_RA1/sesion04.md
-      - "S05 · Sistemas basados en conocimiento en la empresa": bloques/B01_RA1/sesion05.md
+      - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)": bloques/B01_RA1/sesion01.md
+      - "S02 · IA 1: Actualidad y fundamentos (19/10/2026)": bloques/B01_RA1/sesion02.md
+      - "S03 · IA 2: Entornos actuales y fases (21/10/2026)": bloques/B01_RA1/sesion03.md
+      - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
+      - "S05 · IA 4: De ML a LLM (28/10/2026)": bloques/B01_RA1/sesion05.md
       - "S06 · IA y eficiencia operativa I": bloques/B01_RA1/sesion06.md
       - "S07 · IA y eficiencia operativa II": bloques/B01_RA1/sesion07.md
       - "S08 · Evaluación crítica y Miniproyecto RA1": bloques/B01_RA1/sesion08.md
