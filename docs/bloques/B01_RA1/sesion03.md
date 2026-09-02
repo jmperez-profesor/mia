@@ -2,92 +2,189 @@
 sesion: "03"
 bloque: B01
 ra: RA1
-fecha_prevista: 2026-10-19
+fecha_prevista: 2026-10-21
 duracion: 120 min
 ce: [4]
-titulo: "Arquitecturas de agentes"
+titulo: "IA 2: Entornos actuales. Proyectos IA fases."
 ---
 
-# Sesión 03 · Arquitecturas de agentes
+# Sesión 03 · IA 2: Entornos actuales. Proyectos IA fases
+
+> **Hilo conductor:** cómo se hace un proyecto de IA de punta a punta y dónde se hace. Adaptado de `material_david/docs/UD00/UD00_ES.md` (§§5, 6, 10 — entorno reproducible con Docker y contenedor de prácticas) y de `artint/docs/ia/fases_aa/{introduccion,preprocesamiento,entrenamiento,evaluacion}.md` + referencia externa `logongas.es` Tema 01.
 
 ## Objetivos de la sesión
-- Distinguir arquitecturas de agente: reflejo simple, basada en modelo y orientada a objetivos.
-- Identificar qué componentes (estado, modelo del mundo, objetivo) aporta cada una.
-- Relacionar la arquitectura elegida con la eficiencia operativa en logística.
+
+Al finalizar, serás capaz de (RA1 · CE RA1-b/c/d):
+
+- Describir el **ciclo de vida** de un proyecto de IA (fases, por qué cada una importa y qué se entrega en cada una).
+- Distinguir **entornos de desarrollo** actuales (local, **Google Colab**, **Docker**/Compose) y elegir con criterio según reproducibilidad, cómputo y dato.
+- Aplicar buenas prácticas de **preprocesado**, **entrenamiento/selección** y **evaluación honesta** (sin fuga de información a test).
+- Situar tu trabajo en el **antes/después** de un KPI: no es "hacer un modelo", es mejorar una métrica de negocio.
 
 ## Contenidos
-- Arquitectura de reflejo simple (tabla condición→acción).
-- Arquitectura basada en modelo (mantiene estado interno del mundo).
-- Arquitectura orientada a objetivos (busca secuencias que cumplan un objetivo).
-- Trade-off: simplicidad vs calidad de la solución.
 
-## Temporalización (120 min)
-- **Apertura / activación (10 min):** retomar el agente de limpieza y preguntar "¿y si no ve toda la habitación?" → necesidad de modelo.
-- **Desarrollo (80 min):** tres arquitecturas con esquemas; se resuelve la práctica guiada (ruteo logístico); alumnos arrancan su notebook.
-- **Cierre y evaluación (30 min):** gráfica comparativa de costes; rúbrica de la justificación.
+### 1. El flujo de trabajo — de idea a modelo en producción
 
-## Práctica guiada (con solución)
-Comparamos tres arquitecturas de agente en un problema de reparto (grafo de 8 nodos).
-
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-np.random.seed(13)
-NODOS = 8
-distancias = np.random.randint(5, 50, size=(NODOS, NODOS))
-np.fill_diagonal(distancias, 0)
-distancias = (distancias + distancias.T) // 2
-pedidos = [1, 3, 4, 6, 2, 7, 0, 5]
-
-def ruta_reflejo(pedidos, dist):
-    return [0] + pedidos + [0]
-
-def ruta_modelo(pedidos, dist):
-    actual, ruta, pend = 0, [0], set(pedidos)
-    while pend:
-        sig = min(pend, key=lambda n: dist[actual, n])
-        ruta.append(sig); pend.discard(sig); actual = sig
-    return ruta + [0]
-
-def ruta_objetivo(pedidos, dist):
-    # como modelo pero optimiza también el regreso al almacen (nodo 0)
-    actual, ruta, pend = 0, [0], set(pedidos)
-    while pend:
-        sig = min(pend, key=lambda n: dist[actual, n] + dist[n, 0])
-        ruta.append(sig); pend.discard(sig); actual = sig
-    return ruta + [0]
-
-def coste(ruta, dist):
-    return sum(dist[ruta[i], ruta[i+1]] for i in range(len(ruta)-1))
-
-res = {a: np.mean([coste(g(pedidos, distancias), distancias) for _ in range(20)])
-       for a, g in [("Reflejo", ruta_reflejo), ("Modelo", ruta_modelo),
-                    ("Objetivo", ruta_objetivo)]}
-print(pd.DataFrame({"arquitectura": list(res), "coste_medio": [round(v,1) for v in res.values()]}))
-plt.bar(list(res), list(res.values()), color="#4a8f3c")
-plt.ylabel("Coste medio de ruta"); plt.title("Arquitecturas de agente en logística")
-plt.show()
+```mermaid
+flowchart LR
+    A[Definir problema<br/>y KPI] --> B[Conseguir datos<br/>dataset]
+    B --> C[Preprocesar<br/>limpiar · escalar · reducir]
+    C --> D[Entrenar<br/>comparar algoritmos]
+    D --> E[Evaluar<br/>validación cruzada]
+    E --> F{¿Suficiente?}
+    F -- no --> C
+    F -- sí --> G[Desplegar<br/>inferencia + monitorizar]
+    G -. nuevos datos .-> A
 ```
 
-**Resultado:** la arquitectura de reflejo da el mayor coste (orden fijo); modelo y objetivo lo reducen, siendo objetivo la más eficiente al considerar el regreso.
+Fuente: `artint/docs/ia/fases_aa/introduccion.md` (figura *fases.png*) y `UD00_ES.md` §5 (Aules → web → Docker → Jupyter).
 
-## Práctica propuesta (miniproyecto)
-**Miniproyecto:** implementar y comparar tres arquitecturas de agente (reflejo, modelo, objetivo) sobre un grafo logístico sintético, midiendo coste de ruta.
+Cada fase tiene una pregunta que no puedes saltarte:
 
-**Entregables:** implementación de las tres arquitecturas, gráfica de barras de coste medio y justificación escrita.
+| Fase | Pregunta clave | Entregable mínimo |
+|---|---|---|
+| Definición | ¿Qué KPI mejora y cuánto vale ahora? | Ficha de problema + KPI base |
+| Datos | ¿De dónde vienen, con qué calidad y permisos? | Inventario de fuentes + DIC |
+| Preproceso | ¿Qué transformaciones necesita el algoritmo? | Notebook de limpieza reproducible |
+| Entrenamiento | ¿Qué modelos comparas y con qué métrica? | Ranking de modelos |
+| Evaluación | ¿Generaliza a datos no vistos? | Informe de métricas + matriz de confusión |
+| Despliegue | ¿Cómo se usa y cómo se monitoriza? | Pipeline + *drift* vigilado |
 
-**Criterios de evaluación:** distingue componentes de cada arquitectura; argumenta arquitectura→eficiencia.
+!!! tip "No hay atajos"
+    Saltarse el preproceso o evaluar con datos de entrenamiento da métricas bonitas y modelos inútiles.
+
+### 2. Entornos — dónde ejecutar lo anterior
+
+| Entorno | Cuándo lo quieres | Ventajas | Límites |
+|---|---|---|---|
+| **Local (venv/conda)** | Pruebas rápidas | Control total | "En mi máquina funciona" |
+| **Google Colab** | Clase, sin instalar nada, GPU gratis | Cero fricción, compartir por enlace | Datos en la nube, tiempo limitado |
+| **Docker + Compose** | Proyecto serio, reproducible | *Mismo* Python/bibliotecas en cualquier equipo, `jupyter/scipy-notebook` con `numpy, pandas, sklearn` | Requiere Docker funcionando |
+
+Detalles de Docker en `UD00_ES.md` §§6–10 (imagen vs. contenedor, capas, `docker run`/`compose`, volúmenes vs. *bind mounts*) — aquí lo usamos como **idea**: reproducibilidad = capas + `Dockerfile` + montaje de tu carpeta `./practicas:/home/jovyan/work`.
+
+```mermaid
+flowchart LR
+    subgraph Host
+        A[Docker Engine]
+        C1[Contenedor Jupyter<br/>8888 + /work]
+    end
+    CLI[docker CLI] --> A
+    HUB[Docker Hub] -. pull .-> A
+    A --> C1
+```
+
+!!! note "Regla práctica del curso"
+    **Clase y prototipo → Colab.** **Entrega y proyecto → Docker** si necesitas reproducibilidad estricta. Ambos leen los mismos notebooks.
+
+Referencia externa útil para comparar visiones: `https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01` (ciclo CRISP-DM y fases).
+
+### 3. Preprocesamiento — dar forma a los datos
+
+Datos crudos casi nunca sirven tal cual (`artint/docs/ia/fases_aa/preprocesamiento.md` + `UD00_ES.md` §5 stack):
+
+- **Escalado:** muchos algoritmos sufren si las features tienen magnitudes distintas → normalizar a `[0,1]` o `z-score`.
+- **Correlación/redundancia:** features muy correlacionadas aportan poco; **reducción** (PCA) comprime y acelera sin perder señal.
+- **División honesta:** `train / test` aleatorio; el *test* no se toca hasta el final.
+- **Ejemplo Iris:** 150 flores × 4 medidas. Cada fila es un ejemplo, cada columna una feature. Proyectar a 2D permite *ver* los grupos antes de modelar.
+
+!!! warning "Fugas que arruinan la evaluación"
+    Ajustar el escalador o el PCA con **todo** el dataset (incluido test) filtra información del futuro. Los parámetros se aprenden **solo en train** y se *aplican* en test/nuevos datos.
+
+### 4. Entrenamiento y selección — comparar, no adorar un modelo
+
+Ningún algoritmo gana siempre. El flujo serio es: **probar varios → entrenar → comparar con una métrica común → elegir** (`artint/docs/ia/fases_aa/entrenamiento.md`).
+
+- **Métrica:** precisión, F1, RMSE… según tarea.
+- **Validación cruzada:** divide train en K pliegues para estimar generalización sin quemar el test.
+- **Hiperparámetros:** los que *tú* fijas (profundidad de árbol, `k` de KNN, tasa de aprendizaje). No se aprenden de los datos; se optimizan por búsqueda.
+
+### 5. Evaluación — el único número que importa
+
+Después de entrenar, mides **error de generalización** en test con los **mismos** parámetros de transformación del train (`artint/docs/ia/fases_aa/evaluacion.md`):
+
+- **Train:** ajusta modelo + define transformación (escala, PCA).
+- **Test:** evalúa con esa transformación exacta.
+- **Nuevos datos:** misma transformación; si la recalculas, la métrica es optimista y **no fiable**.
+
+Ejemplos clásicos: precio vivienda (misma normalización en train y test) y PCA en imágenes médicas (misma matriz de proyección).
+
+## Temporalización (120 min)
+
+- **Apertura (15 min):** pregunta *¿dónde ejecutarías hoy un proyecto de IA y por qué?* Lluvia rápida local/Colab/Docker + mostrar el diagrama de fases en pizarra.
+- **Desarrollo (70 min):** §§1–5 con figuras `fases.png` / `iris.png` proyectadas, demo de 3 comandos Docker (`run hello-world`, `-p 8888:8888`, bind mount) sin instalar nada en el aula, y lectura guiada de `logongas` Tema 01.
+- **Cierre (35 min):** práctica guiada en vivo (ver abajo) + creación del primer cuaderno del alumno en Colab (`df.head() / describe()`).
+
+## Práctica guiada (con solución) — en vivo
+
+Dos comprobaciones que harás en todas las S03 en adelante: **(A)** entorno reproducible y **(B)** fuga de preproceso evitada.
+
+```python
+# A) ¿Mi entorno ve las mismas bibliotecas? (Colab o Docker)
+import sys, numpy, pandas, sklearn, matplotlib
+print(sys.version.split()[0])
+print(numpy.__version__, pandas.__version__, sklearn.__version__)
+
+# B) Pipeline honesto vs. con fuga — Iris + escalado
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Honesto: scaler ajustado SOLO en train (vía Pipeline)
+pipe = Pipeline([("scaler", StandardScaler()), ("clf", DecisionTreeClassifier(random_state=42))])
+pipe.fit(X_train, y_train)
+print("Precisión honesta:", round(accuracy_score(y_test, pipe.predict(X_test)), 3))
+
+# Con fuga (NO hacer): ajustar scaler con TODO el dataset antes de split
+scaler_bad = StandardScaler().fit(X)  # ¡usa test!
+X_bad = scaler_bad.transform(X)
+Xtr_bad, Xte_bad, ytr_bad, yte_bad = train_test_split(X_bad, y, test_size=0.3, random_state=42)
+print("Con fuga (optimista):", round(DecisionTreeClassifier().fit(Xtr_bad, ytr_bad).score(Xte_bad, yte_bad), 3))
+```
+
+**Qué observar:** la precisión "con fuga" suele salir ligeramente **más alta** y engañosa. En un proyecto real esa diferencia es dinero y reputación.
+
+!!! tip "Docker en 30 segundos (si toca)"
+    ```bash
+    docker run hello-world
+    docker run --rm -p 8888:8888 -v "$PWD/practicas":/home/jovyan/work jupyter/scipy-notebook
+    # abre http://localhost:8888 con token cursoia
+    ```
+
+## Práctica propuesta (miniproyecto) — entregable
+
+**Reto:** en `sesion03_miniproyecto.ipynb`, crea tu **cuaderno base Colab** que (1) cargue un dataset pequeño (Iris u otro de Kaggle), (2) muestre `shape / head / describe / info`, (3) ejecute un `Pipeline` honesto `Scaler + Clasificador` con `train_test_split` y (4) reporte precisión y una figura simple.
+
+**Entregables:**
+
+1. Notebook ejecutado con salidas visibles.
+2. Captura del flujo `fases.png` anotada con tu dataset (una frase por fase).
+
+**Criterios (RA1):** describe fases y entornos con vocabulario propio; el notebook es reproducible y sin fuga.
 
 **Notebook:** [Abrir/Descargar miniproyecto](sesion03_miniproyecto.ipynb)
 
+## Materiales / recursos
+
+- **Apuntes base:** `material_david/docs/UD00/UD00_ES.md` §§5–10; `artint/docs/ia/fases_aa/{introduccion,preprocesamiento,entrenamiento,evaluacion}.md`.
+- **Visión externa:** `https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01`.
+- **Imágenes de apoyo:** `artint/docs/ia/fases_aa/images/{fases.png,iris.png}`.
+
 ## Evaluación (criterios CE)
-- CE4: el alumno describe estado/modelo/objetivo y argumenta la mejora de eficiencia.
+
+- **CE RA1-b/d:** identifica fases y entornos y los vincula a un KPI antes/después (no basta listar, hay que justificar por qué esa fase/entorno aporta).
 
 ## Atención a la diversidad
-- Refuerzo: dibujar la ruta a mano sobre el grafo para un solo pedido.
-- Ampliación: añadir una cuarta arquitectura basada en utilidad (penalizar tiempo).
+
+- **Refuerzo:** checklist de fases impreso; solo rellenar con tu dataset.
+- **Ampliación:** añadevalidación cruzada `cross_val_score(pipe, X_train, y_train, cv=5)` y compara con la precisión simple.
 
 ## Observaciones
-- Sustituir `np.random.randint` por `rng` en el notebook del alumno si se prefiere reproducibilidad estricta.
+
+- Esta sesión deja el andamiaje. La **limpieza profunda** (nulos, codificación, Titanic) y las **métricas** llegan en S04–S05; si tu grupo va justo, recorta Docker a demo y prioriza el pipeline honesto.
