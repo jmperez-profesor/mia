@@ -2,7 +2,7 @@
 sesion: "08"
 bloque: B01
 ra: RA1
-fecha_prevista: 2026-11-02
+fecha_prevista: 2026-11-09
 duracion: 120 min
 ce: [4]
 titulo: "Evaluación crítica y Miniproyecto RA1"
@@ -10,75 +10,126 @@ titulo: "Evaluación crítica y Miniproyecto RA1"
 
 # Sesión 08 · Evaluación crítica y Miniproyecto RA1
 
+> **Cierre de B01** — integramos todo y miramos con lupa lo que falta: riesgos, ética y cómo se evalúa. Adaptado de `material_david/docs/UD01/UD01_ES.md` §§7–10, 14–15 (beneficios/riesgos, AI Act, puntos clave, FAQ, evaluación) + `artint/docs/ia/modelos/machine.md` (R y mejora continua) + `artint/docs/llm/benchmarks.md` para evaluación de generative.
+
 ## Objetivos de la sesión
-- Integrar todo el bloque B01 caracterizando sistemas de IA de forma integral.
-- Entrenar un clasificador que predice el tipo de sistema a partir de sus atributos.
-- Emitir una evaluación crítica de riesgos y buenas prácticas.
+
+Al finalizar, serás capaz de (RA1 — CE RA1-a/b/c/d):
+
+- **Sintetizar** B01: de principios y clasificaciones a técnicas, interacciones y KPIs.
+- **Evaluar críticamente** un sistema RA1 (sesgos, explicabilidad, drift, privacidad, AI Act/RGPD).
+- **Defender** con datos el antes/después y preparar el **miniproyecto integrador RA1** evaluable (40 % actividades / 60 % prueba, ≥5 por RA).
 
 ## Contenidos
-- Caracterización integral: tipo, arquitectura, representación y eficiencia.
-- Aprendizaje supervisado aplicado a la propia caracterización (árbol de decisión).
-- Evaluación crítica: sesgos, explicabilidad, riesgos éticos y operativos.
 
-## Temporalización (120 min)
-- **Apertura / activación (10 min):** repaso del bloque y criterios de la rúbrica del miniproyecto.
-- **Desarrollo (80 min):** se resuelve la práctica guiada (pipeline + árbol + informe); los alumnos completan su notebook capstone.
-- **Cierre y evaluación (30 min):** puesta en común de informes críticos; coevaluación y cierre del RA1.
+### 1. Lo que te llevas de B01 — en 6 frases
 
-## Práctica guiada (con solución)
-Pipeline de caracterización y clasificador de sistemas de IA.
+| Idea fuerza | En una línea |
+|---|---|
+| Sistema inteligente | Percibe → razona → actúa; autonomía, adaptación, decisión |
+| Tres lentes | Débil/fuerte (tarea) · convencional/computacional (escuela) · Russell/Hintze (capacidades) |
+| Jerarquía | **IA > ML > DL > GenAI** |
+| Aprendizaje | Supervisado (clasif./regresión), no supervisado (clustering), refuerzo, semi/auto |
+| Vida real | Compras, buscadores, asistentes, traducción, coches, ciberseguridad |
+| Interacción | Chatbot/voz/visión/agente → eficiencia si baja coste/tiempo/error medido con KPI |
+
+Glosario y FAQ completos en `UD01_ES.md` §9–10 — úsalos como chuleta para el miniproyecto.
+
+### 2. Beneficios, riesgos y marco — el triángulo responsable
+
+| Beneficios (para el KPI) | Riesgos (si lo haces mal) | Marco |
+|---|---|---|
+| Automatiza lo repetitivo, más info de datos, menos error, 24×7, menos riesgo físico | Sesgos en datos, modelos robados/alterados, *model drift*, privacidad | **AI Act 2024/1689** por riesgo (prohibidas 02/02/2025, sanciones 02/08/2025, general 02/08/2026; sistémico si >10²⁵ FLOPS) + **RGPD** (minimización) |
+
+Principios de **IA responsable**: explicabilidad, equidad, robustez, rendición de cuentas. Todo se profundiza en UD06; aquí basta con *nombrarlo y evaluarlo*.
+
+!!! warning "Sesgo que se cuela"
+    Si entrenas con datos con sesgo de género, el modelo lo **amplifica**. No es un bug menor, es un riesgo operativo y legal.
+
+### 3. FAQ exprés — lo que más pregunta el alumnado
+
+- **¿Todo con datos es ML?** No. Reglas y búsqueda heurística son IA sin ML.
+- **¿IA débil vs. fuerte?** Toda la actual es débil; la fuerte es teórica.
+- **¿Clasificación vs. regresión?** Categoría vs. número continuo.
+- **¿DL cuándo?** Con muchos datos y tarea compleja (imagen/audio/texto); si no, árbol/KNN explicable gana.
+- **¿El chatbot *entiende*?** Procesa estadísticamente y genera plausible; verifica siempre.
+- **¿Sustituirá empleos?** Automatiza *tareas*, no profesiones enteras.
+- **¿Predictiva vs. generativa?** Una estima, otra crea.
+
+### 4. Cómo se evalúa RA1 — sin sorpresas
+
+| Peso | Instrumento | Qué mira |
+|---|---|---|
+| **40 %** actividades | 4 talleres (media) + miniproyecto S08 | Rúbrica por tarea |
+| **60 %** prueba | Test + desarrollo en Moodle | Contenido §§3–7 |
+
+**Normativa:** se superan **todos los RA** (Orden 8/2025 art. 5.1); el centro exige **≥5 en cada RA**. Recuperación: repetir caso con datos distintos + autoevaluación.
+
+## Práctica guiada (con solución) — en vivo
+
+Integramos B01 en un **clasificador de tipos de sistema** y dejamos el informe crítico semi-hecho para que veas el nivel esperado.
 
 ```python
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier, export_text
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-np.random.seed(8)
-n = 15
-sistemas = pd.DataFrame({
-    "nombre": [f"Sistema_{i:02d}" for i in range(1, n + 1)],
-    "usa_reglas": np.random.randint(0, 2, n),
-    "usa_ml":     np.random.randint(0, 2, n),
-    "autonomo":   np.random.randint(0, 2, n),
-    "simbolico":  np.random.randint(0, 2, n),
-    "ganancia_pct": np.random.uniform(2, 35, n).round(1),
+# Catálogo sintético (usa los atributos de S01)
+df = pd.DataFrame({
+    "usa_reglas":[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
+    "usa_ml":[0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
+    "autonomo":[0,0,1,1,0,1,0,1,1,0,0,1,1,0,1],
+    "simbolico":[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
 })
-sistemas["tipo"] = np.where(sistemas["usa_ml"] == 1, "ML",
-                    np.where(sistemas["usa_reglas"] == 1, "Reglas", "Hibrido"))
-sistemas["arquitectura"] = np.where(sistemas["autonomo"] == 1, "Deliberativa",
-                                     "Reactiva")
+df["tipo"] = ["Reglas" if r else "ML" for r in df["usa_reglas"]==1]
+# Pequeño truco: híbrido cuando ambos están a 1 (no ocurre aquí por construcción)
 
-X = sistemas[["usa_reglas", "usa_ml", "autonomo", "simbolico"]]
-y = sistemas["tipo"]
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, random_state=0, stratify=y)
-clf = DecisionTreeClassifier(max_depth=3, random_state=0).fit(X_tr, y_tr)
-print("Accuracy:", round(accuracy_score(y_te, clf.predict(X_te)), 3))
-print(export_text(clf, feature_names=list(X.columns)))
+X_train, X_test, y_train, y_test = train_test_split(df.drop(columns="tipo"), df["tipo"], test_size=0.3, random_state=0, stratify=df["tipo"])
+clf = DecisionTreeClassifier(max_depth=3, random_state=0).fit(X_train, y_train)
+print("Accuracy:", round(accuracy_score(y_test, clf.predict(X_test)), 3))
+print(export_text(clf, feature_names=list(df.columns[:-1])))
 
-sistemas.to_csv("caracterizacion_sistemas.csv", index=False)
-print(sistemas[["nombre", "tipo", "arquitectura", "ganancia_pct"]])
+# Informe crítico — plantilla que el alumnado amplía
+informe = """
+**Riesgos:** sesgo en datos de entrenamiento (ej. sobrerrepresentación de casos de devolución), drift si cambia el catálogo, explicabilidad limitada en autónomos.
+**Mitigaciones:** validación con test no visto, log de decisiones, revisión humana en casos de baja confianza, minimización RGPD y registro AI Act según riesgo.
+**KPI:** FCR/AHT antes/después con números ficticios pero plausibles.
+"""
+print(informe)
 ```
 
-**Resultado:** el árbol clasifica el tipo de sistema a partir de sus atributos y se exporta `caracterizacion_sistemas.csv`. El informe crítico (markdown) debe incluir, al menos: (1) riesgo de sesgo en datos de entrenamiento, (2) necesidad de explicabilidad en decisiones autónomas, (3) mantenimiento de la base de conocimiento, (4) supervisión humana y (5) impacto en puestos de trabajo.
+**Salida esperada:** `Accuracy 1.0` en este toy (trivial), árbol `usa_reglas ≤0.5 → ML else Reglas`, e informe con 5 viñetas mínimas.
 
-## Práctica propuesta (miniproyecto)
-**Miniproyecto:** integrar el bloque B01 caracterizando 15 sistemas de IA sintéticos (tipo, arquitectura, ganancia), entrenando un clasificador y redactando un informe crítico de riesgos.
+## Práctica propuesta (miniproyecto) — entregable RA1
 
-**Entregables:** `caracterizacion_sistemas.csv`, clasificador con reporte de accuracy e informe crítico (3–5 viñetas).
+**Capstone B01 (individual):** caracteriza **15 sistemas sintéticos** (los de arriba + 5 que inventes con `ganancia_pct` y `arquitectura` reactiva/deliberativa), entrena el **árbol**, exporta `caracterizacion_sistemas.csv` y redacta un **informe crítico** (300–400 palabras) que incluya: *sesgo, explicabilidad, drift, privacidad/RGPD y AI Act, supervisión humana e impacto laboral*, con **un KPI antes/después** inventado pero creíble (ej. tienda 200 reclamaciones 8 min/15 % error → 2.8 min/<5 %).
 
-**Criterios de evaluación:** caracteriza integralmente cada sistema; evalúa críticamente impacto y riesgos.
+**Entregables en `sesion08_miniproyecto.ipynb`:**
+
+1. CSV + `accuracy` + texto del árbol.
+2. Informe crítico en Markdown (5 viñetas + 1 tabla KPI).
+
+**Rúbrica (resumen):** caracteriza con criterios explícitos (tipo+escuela+Hintze+KPI) · clasifica coherentemente · crítica fundamentada (no genérica).
 
 **Notebook:** [Abrir/Descargar miniproyecto](sesion08_miniproyecto.ipynb)
 
+## Materiales / recursos
+
+- **Apuntes base:** `material_david/docs/UD01/UD01_ES.md` §§7–10, 14; `artint/docs/ia/modelos/machine.md`.
+- **Normativa:** AI Act 2024/1689 + RGPD (ver `UD01_ES.md` §7).
+- **Glosario/FAQ:** §§9–10 de UD01.
+
 ## Evaluación (criterios CE)
-- CE4: el alumno caracteriza sistemas de IA y emite juicio crítico fundamentado.
+
+- **CE RA1 (4):** integra principios, campos, técnicas e interacciones y emite juicio crítico con KPI.
 
 ## Atención a la diversidad
-- Refuerzo: rúbrica desglosada con ejemplos de nivel "logro" vs "en proceso".
-- Ampliación: añadir métrica de equidad al informe crítico.
+
+- **Refuerzo:** informe con huecos (`Riesgo: ___ → Mitigación: ___`).
+- **Ampliación:** añade métrica de equidad (p. ej. paridad de error por grupo) al informe.
 
 ## Observaciones
-- Sesión de cierre de RA1: conviene reservar tiempo para la coevaluación del informe.
+
+- Sesión de cierre: deja 30 min para **coevaluación** rápida con rúbrica. El miniproyecto S08 es la **evidencia principal de RA1** para el 40 %.
+- Si el grupo va justo, el árbol puede quedar como demo y el informe como tarea para casa (entrega en Aules).
