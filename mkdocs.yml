@@ -89,9 +89,10 @@ nav:
       - "S03 · IA 2: Entornos actuales y fases (21/10/2026)": bloques/B01_RA1/sesion03.md
       - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
       - "S05 · IA 4: De ML a LLM (28/10/2026)": bloques/B01_RA1/sesion05.md
-      - "S06 · IA y eficiencia operativa I": bloques/B01_RA1/sesion06.md
-      - "S07 · IA y eficiencia operativa II": bloques/B01_RA1/sesion07.md
-      - "S08 · Evaluación crítica y Miniproyecto RA1": bloques/B01_RA1/sesion08.md
+      - "S06 · Introducción a las redes neuronales (02/11/2026)": bloques/B01_RA1/sesion06.md
+      - "S07 · IA y eficiencia operativa II (04/11/2026)": bloques/B01_RA1/sesion07.md
+      - "S08 · Evaluación crítica y Miniproyecto RA1 (09/11/2026)": bloques/B01_RA1/sesion08.md
+      - Ejercicios de autoevaluación (B01): bloques/B01_RA1/ejercicios.md
   # - "B02 · RA2 — Modelos de resolución de problemas":
   #     - Introducción: bloques/B02_RA2/index.md
   #     - "S01 · Espacios de estados y búsqueda no informada": bloques/B02_RA2/sesion01.md
