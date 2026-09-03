@@ -84,7 +84,13 @@ nav:
   - Normativa: normativa/index.md
   - "B01 · RA1 — Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
-      - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)": bloques/B01_RA1/sesion01.md
+      - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
+          - Apuntes: bloques/B01_RA1/sesion01.md
+          - Práctica:
+              - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios.md
+              - Notebook guiado: bloques/B01_RA1/sesion01.md#práctica-guiada-con-solución-en-vivo
+          - Entregas:
+              - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
       - "S02 · IA 1: Actualidad y fundamentos (19/10/2026)": bloques/B01_RA1/sesion02.md
       - "S03 · IA 2: Entornos actuales y fases (21/10/2026)": bloques/B01_RA1/sesion03.md
       - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
