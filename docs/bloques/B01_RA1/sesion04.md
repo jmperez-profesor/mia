@@ -17,7 +17,7 @@ titulo: "IA 3: Entornos actuales. Proyectos IA fases."
 Al finalizar, serás capaz de (RA1 · CE RA1-b/c):
 
 - Explicar **cómo conseguir datos** (fuentes, licencias, Kaggle, APIs) y qué criterios hacen un **dataset** útil o inútil.
-- Detectar **valores correctos vs. incorrectos** (nulos, outliers, sesgo, fuga) con un ejemplo real (*Titanic*).
+- Detectar **valores correctos vs. incorrectos** (nulos, outliers, sesgo, fuga) con un ejemplo real (**Telco Churn**; *Titanic* se menciona solo como apunte y lo trabajará a fondo el siguiente docente en Kaggle).
 - Recorrer los **6 pasos** Dataset → Modelo → Entrenamiento → Métricas → Comprobación → Ajuste, y decidir si **cambiar el modelo o arreglar los datos**.
 - Clasificar el **tipo de problema** (regresión, clasificación, *clustering*, predicción temporal) antes de tocar código.
 
@@ -39,10 +39,10 @@ Al finalizar, serás capaz de (RA1 · CE RA1-b/c):
 
 **Síntomas de "dato malo":**
 
-- **Nulos sistemáticos** (ej. *Titanic*: `Age` y `Cabin` vacíos no al azar — los pasajeros de 3ª clase tienen menos registro).
-- **Tipos mezclados** (`"23"` como texto, fechas como `12/03/2026` vs. `2026-03-12`).
-- **Fuera de rango / atípicos** (edad 300, tarifa negativa).
-- **Sesgo / fuga:** usar en *train* una columna que no existirá en producción (ej. `superviviente` para predecir `superviviente`).
+- **Nulos sistemáticos** (ej. **Telco Churn**: `TotalCharges` con huecos en clientes nuevos de 0 meses; *Titanic* sería `Age`/`Cabin` — lo veréis con el siguiente docente).
+- **Tipos mezclados** (`TotalCharges` como texto con huecos, `"23"` como texto, fechas como `12/03/2026` vs. `2026-03-12`).
+- **Fuera de rango / atípicos** (antigüedad 300 meses, cargo negativo).
+- **Sesgo / fuga:** usar en *train* una columna que no existirá en producción (ej. `Churn` para predecir `Churn`).
 
 **Reglas de `artint/docs/ia/modelos/datos.md`:**
 
@@ -75,28 +75,27 @@ flowchart LR
 
 **Cómo decidir en 5–6:** si al añadir datos limpios la métrica sube, el cuello era el **dato**; si con más datos no mejora y el train ya va bien, prueba **otro modelo** o hiperparámetros.
 
-### 4. Titanic — el laboratorio de lo imperfecto
+### 4. Telco Churn — el laboratorio de lo imperfecto (Titanic, solo mención)
 
-Dataset clásico de Kaggle: 891 pasajeros, 12 columnas (`Survived, Pclass, Sex, Age, Fare, Cabin, Embarked…`), ~20 % de `Age` nulo y 77 % de `Cabin` vacío.
+Dataset **Telco Customer Churn** (Kaggle/IBM, ~7043 clientes, 21 columnas: `tenure, MonthlyCharges, TotalCharges, Contract, PaymentMethod…`, target `Churn` Sí/No). *Titanic* (891 pasajeros, `Age`/`Cabin` con huecos) se cita solo como apunte: lo trabajaréis a fondo en Kaggle con el siguiente docente.
 
-| Problema en Titanic | Qué significa | Arreglo habitual |
+| Problema en Telco | Qué significa | Arreglo habitual |
 |---|---|---|
-| `Age` nulo | Falta no aleatoria | Mediana por `Pclass+Sex`, o modelo que imputa |
-| `Cabin` casi vacío | Demasiado hueco | Descartar o crear `tiene_cabin` binaria |
-| `Sex` texto | Categórica nominal | One-Hot `sex_female/male` |
-| `Fare` con colas largas | Escala | `log(Fare+1)` o `StandardScaler` |
-| `Embarked` 2 nulos | Pocos | Moda |
+| `TotalCharges` con huecos/bonitos como texto | Falta en clientes con `tenure=0` (no es aleatoria) | Convertir a numérico + mediana o 0 condicionado |
+| `Contract` / `PaymentMethod` texto | Categórica nominal | One-Hot |
+| `MonthlyCharges` con colas | Escala | `StandardScaler` |
+| `tenure` 0–72 | Numérica con sentido | Mantener + `TotalCharges/tenure` como feature derivada |
 
-Trabajar *Titanic* obliga a **entender el problema** antes de codificar: ¿es **clasificación** (`Survived` 0/1), **regresión** (predecir `Fare`), o **agrupación** (segmentar pasajeros)? Cada uno pide métrica y modelo distintos.
+Trabajar **Telco Churn** obliga a **entender el problema** antes de codificar: ¿es **clasificación** (`Churn` 0/1), **regresión** (predecir `MonthlyCharges`), o **agrupación** (segmentar clientes por riesgo)? Cada uno pide métrica y modelo distintos.
 
 ### 5. ¿Qué tipo de problema tengo?
 
-| Tipo | Pregunta que responde | Métrica típica | Ejemplo Titanic |
+| Tipo | Pregunta que responde | Métrica típica | Ejemplo Telco |
 |---|---|---|---|
-| **Clasificación** | ¿A qué clase pertenece? | Accuracy, F1, ROC-AUC | ¿Sobrevive? |
-| **Regresión** | ¿Qué valor numérico? | MAE, RMSE | ¿Cuánto pagó? |
-| **Clustering** | ¿Qué grupos hay sin etiqueta? | Silueta, inercia | Segmentar pasajeros |
-| **Serie temporal / predicción** | ¿Qué pasará después? | MAE temporal | Evolución de embarques |
+| **Clasificación** | ¿A qué clase pertenece? | Accuracy, F1, ROC-AUC | ¿Abandona (`Churn`)? |
+| **Regresión** | ¿Qué valor numérico? | MAE, RMSE | ¿Cuánto pagará? |
+| **Clustering** | ¿Qué grupos hay sin etiqueta? | Silueta, inercia | Segmentar clientes por riesgo |
+| **Serie temporal / predicción** | ¿Qué pasará después? | MAE temporal | Evolución de churn mensual |
 
 !!! tip "Insistir mucho (tu nota)"
     Si no sabes si tu problema es clasificación o regresión, cualquier modelo y cualquier métrica serán al azar. Clasifica primero, codifica después.
@@ -108,15 +107,15 @@ Trabajar *Titanic* obliga a **entender el problema** antes de codificar: ¿es **
 ## Temporalización (120 min)
 
 - **Apertura (15 min):** *¿de dónde saldrían los datos de hidrógeno verde / colmena?* Tormenta de fuentes + criterio "¿lo puedo usar mañana en producción?".
-- **Desarrollo (70 min):** §§2–5 con tabla de codificación en pizarra, recorrido del CSV de *Titanic* (`head/isna/summary`) y diagrama de los 6 pasos.
+- **Desarrollo (70 min):** §§2–5 con tabla de codificación en pizarra, recorrido del CSV de **Telco Churn** (`head/isna/summary`) y diagrama de los 6 pasos. *Titanic* se nombra solo como referencia futura.
 - **Cierre (35 min):** práctica guiada en vivo (ver abajo) y arranque del notebook del alumno.
 
 ## Práctica guiada (con solución) — en vivo
 
-Limpieza mínima y honesta de *Titanic* (vía `seaborn` para no descargar) + un baseline que **no** filtra fuga.
+Limpieza mínima y honesta de **Telco Churn** + un baseline que **no** filtra fuga. *Titanic* queda como ejercicio Kaggle del siguiente docente.
 
 ```python
-import pandas as pd, numpy as np, seaborn as sns
+import pandas as pd, numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
@@ -125,15 +124,19 @@ from sklearn.impute import SimpleImputer
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# 1) Cargar (seaborn trae titanic ya limpio a medias; simula tu CSV)
-df = sns.load_dataset("titanic")[["survived","pclass","sex","age","fare","embarked"]]
-print(df.isna().sum())  # ver nulos
+# 1) Cargar Telco Churn (IBM, 7043 filas). En Colab: pd.read_csv(url)
+url = "https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+df = pd.read_csv(url)
+# TotalCharges viene como texto con huecos (" ") en clientes con tenure 0
+df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+print(df[["tenure","MonthlyCharges","TotalCharges","Contract","PaymentMethod","Churn"]].isna().sum())
 print(df.head(3))
 
-X = df.drop(columns="survived"); y = df["survived"]
+X = df.drop(columns=["customerID","Churn"]); y = (df["Churn"]=="Yes").astype(int)
 
 # 2) Columnas por tipo — según artint/docs/ia/modelos/datos.md
-num = ["age","fare"]; cat = ["pclass","sex","embarked"]
+num = ["tenure","MonthlyCharges","TotalCharges"]
+cat = ["Contract","PaymentMethod","InternetService","OnlineSecurity"]
 
 # 3) Preprocesador honesto (ajustado SOLO en train vía Pipeline)
 pre = ColumnTransformer([
@@ -150,16 +153,15 @@ print("Accuracy honesta:", round(accuracy_score(y_test, pred), 3))
 print(classification_report(y_test, pred, digits=3))
 
 # 4) ¿Qué pasa si imputas con TODO antes de split? (fuga — NO hacer)
-bad_age_median = df["age"].median()  # usa test
-df_bad = df.copy(); df_bad["age"] = df_bad["age"].fillna(bad_age_median)
-print("Mediana con fuga vs. mediana solo-train: ", round(bad_age_median,2), " vs ", round(X_train['age'].median(),2))
+bad_median = df["TotalCharges"].median()  # usa test
+print("Mediana con fuga vs. mediana solo-train: ", round(bad_median,2), " vs ", round(X_train["TotalCharges"].median(),2))
 ```
 
-**Qué llevarte:** `SimpleImputer(median/most_frequent)` + `StandardScaler` para numéricas y `OneHot` para categóricas, todo **dentro** del `Pipeline`. La métrica honesta es la única que cuenta.
+**Qué llevarte:** `SimpleImputer(median/most_frequent)` + `StandardScaler` para numéricas y `OneHot` para categóricas, todo **dentro** del `Pipeline`. La métrica honesta es la única que cuenta. *Titanic* lo retomaréis en Kaggle con el siguiente docente.
 
 ## Práctica propuesta (miniproyecto) — entregable
 
-**Reto:** en `sesion04_miniproyecto.ipynb`, aplica el flujo de 6 pasos a tu dataset elegido (o *Titanic* si dudas): **(1)** inspecciona nulos/tipos, **(2)** decide tipo de problema, **(3)** construye un `ColumnTransformer` honesto y **(4)** reporta métrica + una frase: "¿cambiarías el modelo o arreglarías los datos y por qué?".
+**Reto:** en `sesion04_miniproyecto.ipynb`, aplica el flujo de 6 pasos a **Telco Churn** (o tu dataset, evitando *Titanic* para no solapar con el siguiente docente): **(1)** inspecciona nulos/tipos, **(2)** decide tipo de problema, **(3)** construye un `ColumnTransformer` honesto y **(4)** reporta métrica + una frase: "¿cambiarías el modelo o arreglarías los datos y por qué?".
 
 **Entregables:**
 
@@ -174,7 +176,7 @@ print("Mediana con fuga vs. mediana solo-train: ", round(bad_age_median,2), " vs
 ## Materiales / recursos
 
 - **Apuntes base:** `material_david/docs/UD01/UD01_ES.md` §§5.2–6.2 (casos y KPIs); `artint/docs/ia/fases_aa/{preprocesamiento,entrenamiento,evaluacion}.md`; `artint/docs/ia/modelos/datos.md` (num/categórica/fecha/texto).
-- **Dataset:** `seaborn.load_dataset("titanic")` o `kaggle datasets download titanic` + `logongas` Tema 01 para contrastar fases.
+- **Dataset:** **Telco Churn** (`WA_Fn-UseC_-Telco-Customer-Churn.csv` vía URL IBM) — *Titanic* se menciona solo como apunte y lo veréis en Kaggle con el siguiente docente + `logongas` Tema 01 para contrastar fases.
 - **KPI a mano:** FCR/AHT/OEE si tu caso es atención/industria (ver UD01 §6.3).
 
 ## Evaluación (criterios CE)
@@ -188,5 +190,5 @@ print("Mediana con fuga vs. mediana solo-train: ", round(bad_age_median,2), " vs
 
 ## Observaciones
 
-- Si el grupo viene flojo en `pandas`, reserva 10 min para `df["age"].median()` vs. `df.groupby("pclass")["age"].median()` y la idea de imputación condicionada.
-- *Titanic* tiene sesgo histórico (clase/sexo). Úsalo para hablar de equidad y de por qué nunca se despliega sin revisar sesgos (puente a ética).
+- Si el grupo viene flojo en `pandas`, reserva 10 min para `pd.to_numeric(errors="coerce")` y la idea de imputación condicionada.
+- **Telco Churn** (y *Titanic* como caso futuro) tiene sesgo (tipo de contrato, antigüedad). Úsalo para hablar de equidad y de por qué nunca se despliega sin revisar sesgos (puente a ética).
