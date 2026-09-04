@@ -92,7 +92,14 @@ nav:
               - N02 Mapa de sistemas inteligentes: bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
-      - "S02 · IA 1: Actualidad y fundamentos (19/10/2026)": bloques/B01_RA1/sesion02.md
+      - "S02 · IA 1: Actualidad y fundamentos (19/10/2026)":
+          - Apuntes: bloques/B01_RA1/sesion02.md
+          - Práctica:
+              - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios.md
+              - N03 Técnicas de IA en casos reales: bloques/B01_RA1/sesion02_tecnicas_casos.ipynb
+              - N05 Línea del tiempo de la IA: bloques/B01_RA1/sesion02_linea_tiempo.ipynb
+          - Entregas:
+              - Miniproyecto: bloques/B01_RA1/sesion02_miniproyecto.ipynb
       - "S03 · IA 2: Entornos actuales y fases (21/10/2026)": bloques/B01_RA1/sesion03.md
       - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
       - "S05 · IA 4: De ML a LLM (28/10/2026)": bloques/B01_RA1/sesion05.md
