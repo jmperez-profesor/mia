@@ -104,6 +104,7 @@ nav:
           - Apuntes: bloques/B01_RA1/sesion03.md
           - Práctica:
               - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s03.md
+              - N01 Entorno Python IA: bloques/B01_RA1/sesion03_entorno_python.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion03_miniproyecto.ipynb
       - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
