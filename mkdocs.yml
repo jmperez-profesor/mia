@@ -107,7 +107,13 @@ nav:
               - N01 Entorno Python IA: bloques/B01_RA1/sesion03_entorno_python.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion03_miniproyecto.ipynb
-      - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
+      - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)":
+          - Apuntes: bloques/B01_RA1/sesion04.md
+          - Práctica:
+              - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s04.md
+              - N04 Nuevas formas de interacción: bloques/B01_RA1/sesion04_nuevas_interacciones.ipynb
+          - Entregas:
+              - Miniproyecto: bloques/B01_RA1/sesion04_miniproyecto.ipynb
       - "S05 · IA 4: De ML a LLM (28/10/2026)": bloques/B01_RA1/sesion05.md
       - "S06 · Introducción a las redes neuronales (02/11/2026)": bloques/B01_RA1/sesion06.md
       - "S07 · IA y eficiencia operativa II (04/11/2026)": bloques/B01_RA1/sesion07.md
