@@ -100,7 +100,12 @@ nav:
               - N05 Línea del tiempo de la IA: bloques/B01_RA1/sesion02_linea_tiempo.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion02_miniproyecto.ipynb
-      - "S03 · IA 2: Entornos actuales y fases (21/10/2026)": bloques/B01_RA1/sesion03.md
+      - "S03 · IA 2: Entornos actuales y fases (21/10/2026)":
+          - Apuntes: bloques/B01_RA1/sesion03.md
+          - Práctica:
+              - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s03.md
+          - Entregas:
+              - Miniproyecto: bloques/B01_RA1/sesion03_miniproyecto.ipynb
       - "S04 · IA 3: Ciclo del dato y preprocesamiento (26/10/2026)": bloques/B01_RA1/sesion04.md
       - "S05 · IA 4: De ML a LLM (28/10/2026)": bloques/B01_RA1/sesion05.md
       - "S06 · Introducción a las redes neuronales (02/11/2026)": bloques/B01_RA1/sesion06.md
