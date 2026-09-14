@@ -131,6 +131,10 @@ nav:
   #     - "S08 · Programación lógica con Prolog": bloques/B02_RA2/sesion08.md
   #     - "S09 · Motores de reglas e inferencia": bloques/B02_RA2/sesion09.md
   #     - "S10 · Miniproyecto RA2": bloques/B02_RA2/sesion10.md
+  - "B05 · RA5 — Sistemas expertos y motores de reglas":
+      - Introducción: bloques/B05_RA5/index.md
+      - Apuntes (12 h): bloques/B05_RA5/apuntes.md
+      - Ejercicios de autoevaluación: bloques/B05_RA5/ejercicios.md
   - Evaluación:
       - Índice: evaluacion/index.md
       - "RA1 · Caracterización de sistemas IA": evaluacion/RA1.md
