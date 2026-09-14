@@ -482,10 +482,12 @@ Un lazo de control compara el setpoint (SP) con la variable medida (PV), calcula
 import collections, collections.abc
 if not hasattr(collections, "Mapping"):
     collections.Mapping = collections.abc.Mapping
+    collections.Iterable = collections.abc.Iterable
+    collections.MutableMapping = collections.abc.MutableMapping
 from experta import *
 
 def planta(temp, potencia, inercia=0.05, exterior=15.0):
-    # modelo simple con inercia térmica
+    # modelo simple con inercia térmica; equilibrio: temp = exterior + 10·potencia
     return temp + inercia * (potencia * 10 - (temp - exterior))
 
 class ControladorClima(KnowledgeEngine):
@@ -495,18 +497,19 @@ class ControladorClima(KnowledgeEngine):
 
     @DefFacts()
     def _hechos(self):
-        yield Fact(temp=self._temp)
+        # self sí está disponible aquí (se ejecuta en reset())
+        yield Fact(error=self.setpoint - self._temp)
 
-    @Rule(Fact(temp=P(lambda t: self.setpoint - t > 3)))
+    @Rule(Fact(error=P(lambda e: e > 3)))
     def alta(self): self.potencia = 1.0
 
-    @Rule(Fact(temp=P(lambda t: 1 < self.setpoint - t <= 3)))
-    def media(self): self.potencia = 0.5
+    @Rule(Fact(error=P(lambda e: 1 < e <= 3)))
+    def media(self): self.potencia = 0.8
 
-    @Rule(Fact(temp=P(lambda t: 0 < self.setpoint - t <= 1)))
-    def baja(self): self.potencia = 0.2
+    @Rule(Fact(error=P(lambda e: 0 < e <= 1)))
+    def baja(self): self.potencia = 0.6
 
-    @Rule(Fact(temp=P(lambda t: t >= self.setpoint)))
+    @Rule(Fact(error=P(lambda e: e <= 0)))
     def apagar(self): self.potencia = 0.0
 
     def paso(self, temp):
@@ -522,6 +525,9 @@ for i in range(60):
     if i % 10 == 0:
         print(f"t={i:2d}  temp={temp:5.2f}  potencia={potencia}")
 ```
+
+!!! warning "Por qué NO se puede usar `self` dentro de `P(...)`"
+    El decorador `@Rule(...)` se evalúa al **definir la clase**, cuando `self` todavía no existe; un `lambda` que use `self` falla al llamarse. Por eso el controlador declara el **error** como hecho en `DefFacts` (donde `self` sí existe, porque se ejecuta en `reset()`) y las reglas solo comparan contra constantes.
 
 **Actividad S6.** Mide con este controlador: error en régimen permanente, tiempo de asentamiento (banda 20,5-21,5 ºC) y sobreimpulso. Después cambia el umbral de la regla «media» de 3 a 1,5 y compara. ¿Qué trade-off observas? ¿Cuándo elegirías un PID y cuándo un controlador experto/difuso?
 
