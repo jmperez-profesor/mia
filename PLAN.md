@@ -1,6 +1,6 @@
 # PLAN.md — Proyecto `_MIA` (Módulo 5071 "Modelos de Inteligencia Artificial")
 
-> Plan maestro recuperable entre sesiones. Última actualización: 2026-08-27 (sesión 2: acotado a RA1–RA3 y tabla de sesiones).
+> Plan maestro recuperable entre sesiones. Última actualización: 2026-09-15 (reestructuración del bloque RA5 en 3 sesiones, nav y curriculo.yml).
 
 ## 1. Contexto
 
@@ -9,7 +9,7 @@
 - **Comunidad:** Comunitat Valenciana · **Curso académico:** 2026-2027.
 - **Profesor:** José Manuel Pérez Torres.
 - **Unidad mínima de planificación:** **sesión de 2 horas**.
-- **Alcance de este docente:** **RA1, RA2 y RA3** (ver §3).
+- **Alcance de este docente:** **RA1, RA5 y RA4** (ver §3).
 
 ## 2. Normativa aplicable (resumen; fichas en `FUENTES.md`)
 
@@ -27,10 +27,10 @@
 | Bloque | RA | Enunciado (resumen oficial) |
 |--------|----|------------------------------|
 | B01 | RA1 | Caracteriza sistemas de IA relacionándolos con la mejora de la eficiencia operativa. |
-| B02 | RA2 | Utiliza modelos de sistemas de IA implementando sistemas de resolución de problemas. |
-| B03 | RA3 | Relaciona el procesamiento de lenguaje natural (PLN) con sus aplicaciones y limitaciones. |
+| B05 | RA5 | Aplicar sistemas expertos y valorar los controladores inteligentes. |
+| B04 | RA4 | Analizar sistemas robotizados y evaluar su diseño e implementación. |
 
-**Fuera de alcance de este proyecto:** RA4 (sistemas robotizados), RA5 (sistemas expertos), RA6 (ética y legalidad) y RA7 (proyecto intermodular), que los imparten otros docentes.
+**Fuera de alcance de este proyecto:** RA6 (ética y legalidad) y RA7 (proyecto intermodular), que los imparten otros docentes.
 
 ## 4. Calendario 26-27 (sesiones de 2h: lunes y miércoles)
 
@@ -38,23 +38,20 @@
 - **Fin de centro:** 2027-05-28.
 - **Vacaciones:** Navidad 2026-12-22 → 2027-01-06 · Pascua 2027-03-25 → 2027-04-05.
 - **Festivos que afectan a lun/mié:** 2026-10-12 (lunes), 2026-12-07 (lunes), 2027-03-17 (miércoles).
-- **Sesiones de 2h disponibles:** 57. **Sesiones planificadas (RA1–RA3):** 26 (ver §5). Las restantes se dejan como margen para refuerzo, evaluación y pruebas por RA.
+- **Sesiones de 2h disponibles:** 57. **Sesiones planificadas (RA1, RA5 y RA4):** 6 en este tramo (ver §5). Las restantes se dejan como margen para refuerzo, evaluación y pruebas por RA.
 
 ## 5 Detalle de sesiones (contenido y ejercicios)
 
 Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios adaptados al grupo. Por cada sesión usa las subclaves **Contenidos detallados**, **Ejercicios y práctica en clase**, **Materiales / Recursos** y **Observaciones** (enlaza al notebook `sesionNN_miniproyecto.ipynb` cuando proceda).
 
 - **Sesión 1 · 2026-10-05 · Introducción a la IA y tipos de sistemas**
+  - RA: RA1
+  - Compactar el RA1 en una sola sesión. Utilizar los apuntes de y las prácticas de David Martínez    
   - Contenidos detallados:
     - Situación actual de la IA. Vibecoding, ChatBots, Agentes,
     - Los agentes.
     - Tipos de modelos: predictivos / generativos.
     - Agentes vs fine tuning.
-    - Acciones en la dirección. Como se incorpora a la IA a la empresa
-    - Tareas basadas en proyectos:
-        - Proyecto LARA
-        - Hidrogeno verde.
-        Colmena inteligente.
   - Ejercicios y práctica en clase: 
     - Demo del profesor (aprendizaje supervisado y no supervisado): https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html
     - https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html
@@ -66,75 +63,75 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - https://sever8a.github.io/artint/ia/introduccion/introduccion.html
     - https://sever8a.github.io/artint/ia/introduccion/definicion.html
   - Observaciones: Objetivo didáctico- Al finalizar esta sesión, deberías ser capaz de:
-- **Sesión 2 · 2026-10-19 · IA 1: Actualidad y fundamentos**
+- **Sesión 2 · 2026-10-19 · RA5-1 · Sistemas expertos**
+  - RA: RA5
+  - Hilo conductor: **Pagarium** (pasarela de pagos que decide sobre transacciones).
   - Contenidos detallados:
-    - Concepto de ML y la importancia de los datos. Si tienes pocos datos, si tienes datos sesgados, etc.
-    - ML, que tipos de problemas resuelve.
-    - Modelos no supervisados: sirve para crear clusters.
-    - La irrupción de la IA generativa su funcionamiento. Generar textos e imágenes. Va todo muy rápido respecto a 
-    - Tipos de aprendizaje. Evolución y avances actuales.
-    - Proyecto de IA: fases y proceso de secuenciacion. Como se desarrolla un proyecto de IA. Selección de los datos.
-    - Introducción a Kaggle. Es una herramienta muy visual es Kaggle ya que hay ejemplos ya hechos. Kaggle como ejemplo
+    - Por qué reglas en 2026 (BRMS, guardarraíles, compliance); anatomía de un sistema experto; ciclo reconocer-resolver-actuar.
+    - **Micro-motor propio en 35 líneas** y su fallo didáctico (dos decisiones contradictorias → razonamiento no monótono y `salience`).
+    - Encadenamiento forward/backward; sensibilidad y umbrales; factores de certeza.
+    - `experta` (con parche, docencia); **RETE/PHREAK**; **`clipspy`** (CLIPS 6.4) para producción.
   - Ejercicios y práctica en clase:
-    - Demo del profesor (aprendizaje supervisado y no supervisado): https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html
-    - https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html
-    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html
-    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N03_tecnicas_casos.html
-    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N04_nuevas_interacciones.html
-    - https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html
-  - Materiales / Recursos: 
-    - https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html
-  - Observaciones: 
-- **Sesión 3 · 2026-10-21 · IA 2: Entornos actuales. Proyectos IA fases.**
-  - Contenidos detallados:
-    - Proceso de un proyecto de IA.
-    - Todos los pasos y su importancia.
-    - Entornos posible de desarrollo.
-  - Ejercicios y práctica en clase: 
-    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
+    - Apuntes S2 y ejercicios bloque A: `docs/bloques/B05_RA5/apuntes.md`, `docs/bloques/B05_RA5/ejercicios.md`.
+    - Notebook: `docs/bloques/B05_RA5/sesion02_sistemas_expertos.ipynb`.
+    - Actividad A1 (1,5 h).
   - Materiales / Recursos:
-    - https://sever8a.github.io/artint/ia/fases_aa/introduccion.html
-    - https://sever8a.github.io/artint/ia/fases_aa/preprocesamiento.html
-    - https://sever8a.github.io/artint/ia/fases_aa/entrenamiento.html
-    - https://sever8a.github.io/artint/ia/fases_aa/evaluacion.html
+    - `material_david/docs/UD05/UD05_ES.md` (solo la parte de sistemas expertos) y `sistemas_expertos.md`.
+    - https://martinezpenya.es/ModelosIA/UD05/UD05_ES.html
+  - Observaciones:
+    - La lógica difusa y los controladores inteligentes de la UD05 se ven en otro bloque.
+- **Sesión 3 · 2026-10-21 · RA5-2 · Motores de reglas**
+  - RA: RA5
+  - Contenidos detallados:
+    - **Decision management** y BRMS (Drools/KIE, ODM, Blaze).
+    - **Tablas de decisión** y **hit policy** (first, unique, priority, collect).
+    - **DMN** (estándar OMG) aplicado a Pagarium.
+    - **GoRules ZEN** (fintech, formato JDM) y **`rule-engine`** en Python.
+    - **Verificador de cobertura** (huecos/solapes) y **benchmark** (µs/pago: if/else vs ZEN vs CLIPS vs experta).
+  - Ejercicios y práctica en clase:
+    - Apuntes S3 y ejercicios bloque B.
+    - Notebook: `docs/bloques/B05_RA5/sesion03_motores_reglas.ipynb`.
+    - Actividad A2 (2 h).
+  - Materiales / Recursos:
+    - https://martinezpenya.es/ModelosIA/UD05/
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
-- **Sesión 4 · 2026-10-26 · IA 3: Entornos actuales. Proyectos IA fases.**
-  - Contenidos detallados: 
-    - Proceso de un proyecto de IA. Como conseguir los datos
-    - Hacer un ejemplo con valores correctos o incorrectos.
-    - Todos los pasos y su importancia.
-    - Pasos:
-      1-Dataset
-      2-Elección del modelo
-      3-Entrenamiento
-      4-Evaluar las métricas
-      5-Comprobar los resultados
-      6-Sino funciona bien, tenemos varias opciones: Cambiar el modelo o modificar los datos (es posible que los datos estén sesgados)
-    - NOTA: lo importante son los datos.
-    - Entornos posible de desarrollo.
-    - Ejemplo del titanic (hay datos vacíos que hay que limpiar)
-    - Tienen que entender el tipo de problema que están trabajando. Regresión, clasificación, predicción, etc. Insistir mucho en eso.
-  - Ejercicios y práctica en clase: 
-    - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
+    - El benchmark sirve para decidir **cuándo NO usar** un motor de reglas.
+- **Sesión 4 · 2026-10-26 · RA5-3 · Motores de reglas 2 (híbridos y guardarraíles)**
+  - RA: RA5
+  - Contenidos detallados:
+    - Reglas **extraídas de datos** con **FIGS** (política latente de Pagarium).
+    - **Guardarraíles** de agentes LLM con reglas; **sistemas neuro-simbólicos**.
+    - **AI Act** y decisiones automatizadas (calendario actualizado; verificar).
+    - **Proyecto integrador Pagarium** (capa de negocio + capa guardarraíl).
+  - Ejercicios y práctica en clase:
+    - Apuntes S4 y ejercicios bloque C.
+    - Notebook: `docs/bloques/B05_RA5/sesion04_hibridos_guardarrailes.ipynb`.
+    - Actividad A3 (3 h) + proyecto (3,5 h).
   - Materiales / Recursos:
-    - https://sever8a.github.io/artint/ia/fases_aa/introduccion.html
-    - https://sever8a.github.io/artint/ia/fases_aa/preprocesamiento.html
-    - https://sever8a.github.io/artint/ia/fases_aa/entrenamiento.html
-    - https://sever8a.github.io/artint/ia/fases_aa/evaluacion.html
+    - https://martinezpenya.es/ModelosIA/UD05/
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
-- **Sesión 5 · 2026-10-28 · IA 4 de ML a LLM**
+    - Cierre del RA5: entrega del proyecto Pagarium.
+- **Sesión 5 · 2026-10-28 · RA4.1 Sistemas robotizados. Brazo robótico**
+  - RA: RA4
   - Contenidos detallados:
-    - Estamos usando Kaggle con ML pero podemos usar agentes para resolver el problema, es decir, usamos un LLM para
-    - Cambios en la perspectiva de la IA.
-    - Logros y avances.
-    - Fundamentos teóricos y conceptos fundamentales, para analizar problemas y soluciones.
-    - La importancia de los datos.
-    - Agentes agentes y agentes.
-    - Trabajamos mucho las métricas (en las sesiones anteriores nos centramos en los modelos) 
-    - En Kaggle está bien si creamos una competición. Ahí profundizan en las métricas.
-    - Ellos son los que trabajan, no hablar tanto.
+     - Ellos son los que trabajan, no hablar tanto.
+  - Ejercicios y práctica en clase: por hacer
+  - Materiales / Recursos:
+    - https://sever8a.github.io/artint/redes-neuronales/introduccion.html
+    - https://sever8a.github.io/artint/redes-neuronales/perceptron.html
+    - https://sever8a.github.io/artint/redes-neuronales/multicapa.html
+    - https://sever8a.github.io/artint/redes-neuronales/regresion.html
+    - https://sever8a.github.io/artint/redes-neuronales/clasificacion.html
+    - https://sever8a.github.io/artint/redes-neuronales/convolucionales.html
+    - https://sever8a.github.io/artint/redes-neuronales/lstm.html
+    - https://sever8a.github.io/artint/redes-neuronales/transformers.html
+  - Observaciones:
+- **Sesión 6 · 2026-11-04 · RA4.2 Sistemas robotizados. Brazo robótico 2**
+  - RA: RA4
+  - Contenidos detallados:
+     - Ellos son los que trabajan, no hablar tanto.
   - Ejercicios y práctica en clase: por hacer
   - Materiales / Recursos:
     - https://sever8a.github.io/artint/redes-neuronales/introduccion.html
@@ -159,11 +156,11 @@ _MIA/
 ├── material_david/    # copia de referencia del proyecto de David (solo análisis)
 ├── docs/
 │   ├── index.md, normativa/index.md
-│   ├── evaluacion/    # bancos de pruebas y rúbricas por RA1–RA3
+│   ├── evaluacion/    # bancos de pruebas y rúbricas por RA
 │   └── bloques/
-│       ├── B01_RA1/  (sesion01.md … sesion08.md + notebooks de miniproyecto)
-│       ├── B02_RA2/  (sesion01.md … sesion10.md + notebooks de miniproyecto)
-│       └── B03_RA3/  (sesion01.md … sesion08.md + notebooks de miniproyecto)
+│       ├── B01_RA1/  (sesion01.md + notebooks y ejercicios)
+│       ├── B05_RA5/  (apuntes.md + 3 notebooks de sesión + ejercicios)
+│       └── B04_RA4/  (pendiente)
 └── PROPUESTAS_MEJORA.md
 ```
 
@@ -179,11 +176,15 @@ Cada `docs/bloques/Bxx_RAy/sesionNN.md` sigue `legislacion/plantilla_sesion.md` 
 - 2026-08-27 (s1): solo web + notebooks, sin PDF. Festivos desde `material_david/datos/curriculo.yml`.
 - 2026-08-27 (s2): **alcance acotado a RA1, RA2 y RA3**; RA4–RA6 y RA7 fuera de este proyecto.
 - 2026-08-27 (s2): 26 sesiones planificadas para RA1–RA3; cada sesión con práctica guiada (solución) + miniproyecto propuesto.
+- 2026-09-03: RA1 compactado en 1 sesión (2 h) y desplegado en Pages.
+- 2026-09-15: alcance redefinido a **RA1, RA5 y RA4**. RA5 reestructurado en **3 sesiones** (19/10, 21/10, 26/10) con enfoque de mercado (Pagarium, DMN, ZEN, FIGS, guardarraíles).
 
 ## 9. Pendientes
 
-1. Generar el contenido de las 26 sesiones (en curso, ver `docs/bloques/`).
-2. Crear los notebooks de miniproyecto en `practicas/`.
-3. ~~Bancos de pruebas y rúbricas en `evaluacion/` por RA1–RA3.~~ **Hecho (sesión 2).**
+1. ~~Generar el contenido de las sesiones (RA1 y RA5).~~ **Hecho** (`docs/bloques/B01_RA1/` y `B05_RA5/`).
+2. ~~Crear los notebooks de sesión.~~ **Hecho** (RA1 y RA5, con botones Colab/Descargar).
+3. ~~Bancos de pruebas y rúbricas en `evaluacion/`.~~ **Hecho**.
 4. Descargar PDFs oficiales a `fuentes/`.
-5. Fijar `repo_url` / `extra.colab` / `extra.raw_base` en `mkdocs.yml`.
+5. ~~Fijar `repo_url` / `extra.colab` / `extra.raw_base` en `mkdocs.yml`.~~ **Hecho**.
+6. Generar el bloque **RA4** (sistemas robotizados) para las sesiones 5 y 6 (28/10 y 04/11).
+7. Completar `curriculo.yml` con las semanas/fechas de UD01 y UD05 (hecho) y revisar UD04.

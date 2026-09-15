@@ -1,115 +1,59 @@
 # B05 · RA5 — Ejercicios de autoevaluación
 
-> Para las 12 h del RA5. No son entregables; se corrigen en clase. Adaptados de `material_david/docs/UD05/UD05_Ejercicios.md` (CC BY-NC-SA 4.0) y de los apuntes de este bloque.
+> Para las 3 sesiones del RA5 (S2, S3, S4). No son entregables; se corrigen en clase. Hilo conductor: **Pagarium**. Adaptados de la UD05 de David Martínez Peña (CC BY-NC-SA 4.0) y de los apuntes de este bloque.
 
-## A. Del conocimiento a la arquitectura (RA5-a) · S1
+## A. Sistemas expertos (RA5-a/c) · S2
 
-**A1.** Sitúa en la jerarquía DIKW: «37», «la temperatura es 37 ºC», «si supera 37 ºC hay fiebre», «si hay fiebre, pauta paracetamol».
+**A1.** ¿Por qué las reglas siguen usándose en 2026 junto a la IA generativa? Cita dos motivos y un sector.
 
-**A2.** Define **sistema experto** y en qué se diferencia de un programa tradicional.
+**A2.** Enumera los componentes de un sistema experto y la función de cada uno.
 
-**A3.** Enumera los componentes de un sistema experto y la función de cada uno.
+**A3.** Explica el ciclo **reconocer → resolver → actuar** con tus palabras.
 
-**A4.** Explica el ciclo **reconocer-actuar** (match, resolve, act) con tus palabras.
+**A4.** El micro-motor de Pagarium emite `aprobar` y `rechazar` para el mismo pago. ¿Por qué ocurre y cómo se corrige? (relaciónalo con `salience` y con el razonamiento no monótono).
 
 **A5.** Diferencia **forward** y **backward chaining** con un ejemplo de cada uno.
 
-**A6.** Enuncia **Modus Ponens** y **Modus Tollens** y relaciónalos con cada encadenamiento.
+**A6.** ¿Qué son los **factores de certeza** y por qué los introdujo MYCIN?
 
-**A7.** ¿Qué son los **factores de certeza** y por qué los introdujo MYCIN? Pon el ejemplo fiebre (0,6) + rigidez (0,4).
+**A7.** ¿Por qué `experta` falla en Python 3.10+ y qué alternativa mantenida usarías en producción?
 
-**A8.** ¿Por qué la **explicación** es una ventaja clave frente al ML?
+**A8.** Explica qué aporta **RETE/PHREAK** frente a un *match* ingenuo.
 
-## B. Representación y motores (RA5-a) · S2
+**A9.** Un sensor de Pagarium oscila alrededor del umbral y el sistema conmuta sin parar. ¿Cómo lo mitiga la **histéresis**?
 
-**B1.** Completa: pares atributo-valor, reglas de producción, jerarquías, frames, lógica formal, redes semánticas y ontologías (estructura + inferencia típica).
+## B. Motores de reglas (RA5-b) · S3
 
-**B2.** Escribe «si llueve, coge el paraguas» en tres representaciones distintas.
+**B1.** ¿Qué es *decision management* y en qué se diferencia de tener las reglas dentro del código?
 
-**B3.** ¿Cuándo conviene una **ontología** y cuándo **reglas**?
+**B2.** Define **hit policy** y explica `first`, `unique`, `priority` y `collect`.
 
-**B4.** ¿Qué es el *bottleneck* de la adquisición de conocimiento?
+**B3.** Escribe la política de Pagarium como **tabla DMN** (importe, antigüedad, intentos → decisión).
 
-**B5.** Cita 3 motores de reglas del mercado actual y un uso de cada uno. ¿Qué es **DMN**?
+**B4.** ¿Qué es **DMN** y por qué lo entiende el área de negocio?
 
-**B6.** Diferencia un **BRMS** (Drools) de un **policy engine** (OPA/Rego). Pon un caso de cada uno.
+**B5.** ¿Qué es **GoRules ZEN** y por qué se usa en fintech? ¿Qué formato usa el grafo de decisión?
 
-## C. Simular con `experta` (RA5-b) · S3
+**B6.** Escribe con `rule-engine` una regla que apruebe si `importe < 500` y `n_intentos < 4`.
 
-**C1.** ¿Por qué `experta` falla en Python 3.10+ y cuál es la solución?
+**B7.** ¿Qué comprueba un **verificador de cobertura** y qué evita?
 
-**C2.** Escribe un sistema `experta` que clasifique una incidencia como crítica si `impacto=alto` o `usuarios>50`.
+**B8.** Con el benchmark (~0,1 µs `if/else`, ~54 ZEN, ~96 CLIPS, ~190 `experta`): ¿cuándo merece la pena un motor de reglas y cuándo no?
 
-**C3.** Explica qué hacen `engine.reset()` y `engine.run()`.
+## C. Híbridos y tendencias (RA5-b/d/e) · S4
 
-**C4.** ¿Qué hace `P(...)` y qué error sutil provoca olvidarlo? (pista: el motor se queda congelado sin excepción).
+**C1.** Diferencia **deducir reglas de los datos** (FIGS) de **mejorar reglas propias con ML**.
 
-**C5.** Propón un dominio distinto a los vistos y describe 3 reglas de su sistema experto.
+**C2.** En el caso de Pagarium, FIGS recupera `importe > 997.45` cuando la política real era `> 1000`. ¿Por qué no coincide exactamente?
 
-## D. Híbridos reglas/datos (RA5-b) · S4
+**C3.** ¿Qué ventaja de interpretabilidad tiene FIGS frente a un árbol de decisión grande?
 
-**D1.** Diferencia **deducir reglas de datos** de **mejorar reglas propias con ML**.
+**C4.** Explica las **reglas como guardarraíl** de un agente LLM con un ejemplo de pago.
 
-**D2.** ¿Qué aporta **FIGS** frente a un árbol de decisión grande en interpretabilidad?
+**C5.** ¿Qué aportan los **sistemas neuro-simbólicos** frente a un LLM solo? Cita tres cosas.
 
-**D3.** En un notebook con `FIGSClassifier`, ¿quién escribe las reglas: el experto o el algoritmo?
+**C6.** ¿Qué es el **AI Act** y por qué el *scoring* crediticio es de alto riesgo? ¿Qué cambió el Ómnibus Digital?
 
-**D4.** Propón un caso donde usarías **skope-rules** en lugar de escribir reglas a mano.
+**C7.** Diseña las dos capas del **proyecto Pagarium**: reglas de negocio y guardarraíl.
 
-**D5.** Explica las **reglas como guardarraíl** de un LLM con un ejemplo (importes, rangos, acciones permitidas).
-
-## E. Lógica difusa (RA5-b/d) · S5
-
-**E1.** Diferencia lógica proposicional y difusa con el ejemplo de «hace frío».
-
-**E2.** Define **variable lingüística**, **valor lingüístico** y **función de pertenencia**.
-
-**E3.** Describe los tres pasos: fuzzificación, evaluación de reglas y desfuzzificación.
-
-**E4.** Con servicio 9,8 y comida 6,5, ¿por qué la propina (≈19,24 €) sale en la banda alta?
-
-**E5.** ¿Qué función de pertenencia usarías para un ciclo (hora del día) y por qué no una triangular?
-
-## F. Variación y dinámica (RA5-c) · S5
-
-**F1.** Diferencia **sensibilidad** y **robustez**.
-
-**F2.** ¿Qué ocurre si añades demasiadas condiciones a una regla crítica? ¿Y si simplificas en exceso?
-
-**F3.** Explica la **histéresis** en un sistema de ventilación con sensor de CO y su solución.
-
-**F4.** ¿Cómo afecta **subir el umbral de certeza** a falsos positivos y a alertas tempranas?
-
-## G. Estrategias de control (RA5-d) · S6
-
-**G1.** ¿Qué es la **salience** y por qué se usa para emergencias?
-
-**G2.** ¿Qué es el **control de meta**? Relaciónalo con la «sabiduría» del DIKW.
-
-**G3.** Define las **especificaciones de respuesta**: precisión, tiempo de asentamiento, sobreimpulso y estabilidad.
-
-**G4.** Para controlar una sala a 21 ºC con error ±0,5 ºC y sobreimpulso máximo 1 ºC, ¿qué controlador elegirías y por qué?
-
-## H. Controladores inteligentes (RA5-e) · S6
-
-**H1.** Describe el **lazo de control** (SP, error, controlador, actuador, planta, PV) y la fórmula del PID.
-
-**H2.** ¿Qué limitaciones tiene el PID ante no linealidades o retraso?
-
-**H3.** Enumera los cuatro controladores inteligentes y su ventaja sobre el PID.
-
-**H4.** Con los datos de los apuntes: ¿qué mejora aportó el control difuso (asentamiento y sobreimpulso)?
-
-**H5.** Explica cómo un sistema experto actúa como controlador **directo** y **supervisor**, y qué aporta la explicación.
-
-## I. Aplicaciones y tendencias · S6
-
-**I1.** Enumera 4 sectores donde se aplican sistemas expertos y un uso en cada uno.
-
-**I2.** ¿Qué es un **BRMS** y cuál es la herramienta más conocida?
-
-**I3.** ¿Qué son los **sistemas neuro-simbólicos** y qué relación tienen con los híbridos del bloque D?
-
-**I4.** ¿Qué es la **XAI** y qué relación tiene con MYCIN y con el RGPD?
-
-**I5.** Explica el uso de **reglas como guardarraíl** del ML/LLM con un ejemplo.
+**C8.** ¿Qué es un **policy engine** (OPA/Rego) y en qué se diferencia de un BRMS?
