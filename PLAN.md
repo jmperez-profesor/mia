@@ -1,6 +1,6 @@
 # PLAN.md — Proyecto `_MIA` (Módulo 5071 "Modelos de Inteligencia Artificial")
 
-> Plan maestro recuperable entre sesiones. Última actualización: 2026-09-15 (reestructuración del bloque RA5 en 3 sesiones, nav y curriculo.yml).
+> Plan maestro recuperable entre sesiones. Última actualización: 2026-09-15 (RA5 en 3 sesiones y RA4/UD04 planificado en las sesiones 5 y 6).
 
 ## 1. Contexto
 
@@ -113,36 +113,36 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
     - Cierre del RA5: entrega del proyecto Pagarium.
-- **Sesión 5 · 2026-10-28 · RA4.1 Sistemas robotizados. Brazo robótico**
+- **Sesión 5 · 2026-10-28 · RA4-1 · Sistemas robotizados: robot, cinemática y problemas**
   - RA: RA4
-  - Contenidos detallados:
-     - Ellos son los que trabajan, no hablar tanto.
-  - Ejercicios y práctica en clase: por hacer
+  - Contenidos detallados (UD04 de David, §§4–7):
+    - **Métodos y aplicaciones** de la robótica: qué es un robot (percibe-procesa-actúa), tipos (manipulador, móvil, patas, UAV/AUV, cobot), sensores (entorno/ubicación/propioceptivos) y actuadores (eléctrico/hidráulico/neumático); aplicaciones con datos IFR 2025 (542.000 robots, España 3.er mercado europeo).
+    - **Qué problema resuelve** la robótica y la jerarquía **tarea → movimiento → control**.
+    - **Modelado y control cinemático**: grados de libertad, articulaciones R/P, configuración articulado/cartesiano/SCARA/delta; **cinemática directa con parámetros DH** y **cinemática inversa**; jacobiano; control P/PD/PID y par calculado.
+    - **Problemas**: múltiples soluciones (hasta 16), redundancia, sin solución y **singularidades** (muñeca/hombro/codo/límite); **precisión ≠ repetibilidad**; espacio de configuración.
+  - Ejercicios y práctica en clase:
+    - Cinemática directa e inversa con **`roboticstoolbox-python`** (Panda, Puma 560): `fkine`, `ikine_LM`, tabla DH.
+    - Resolución a mano de un brazo plano 3R y cálculo de la pose.
   - Materiales / Recursos:
-    - https://sever8a.github.io/artint/redes-neuronales/introduccion.html
-    - https://sever8a.github.io/artint/redes-neuronales/perceptron.html
-    - https://sever8a.github.io/artint/redes-neuronales/multicapa.html
-    - https://sever8a.github.io/artint/redes-neuronales/regresion.html
-    - https://sever8a.github.io/artint/redes-neuronales/clasificacion.html
-    - https://sever8a.github.io/artint/redes-neuronales/convolucionales.html
-    - https://sever8a.github.io/artint/redes-neuronales/lstm.html
-    - https://sever8a.github.io/artint/redes-neuronales/transformers.html
+    - `material_david/docs/UD04/UD04_ES.md` §§4–7 · https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html
+    - `pip install roboticstoolbox-python spatialmath-python`
   - Observaciones:
-- **Sesión 6 · 2026-11-04 · RA4.2 Sistemas robotizados. Brazo robótico 2**
+    - Es el bloque RA4-a; el foco es *entender el problema* (cinemática y singularidades), no memorizar álgebra.
+- **Sesión 6 · 2026-11-04 · RA4-2 · Planificación, percepción, programación y diseño**
   - RA: RA4
-  - Contenidos detallados:
-     - Ellos son los que trabajan, no hablar tanto.
-  - Ejercicios y práctica en clase: por hacer
+  - Contenidos detallados (UD04 de David, §§8–12):
+    - **Planificación de movimiento**: espacio de configuración, espacio libre, grafo de visibilidad (más corto), diagrama de Voronoi (más seguro), descomposición celular y **muestreo (RRT/PRM)**; plan vs. política y control óptimo (LQR/iLQR).
+    - **Percepción y SLAM**: localización, mapeo y SLAM; filtro de partículas (MCL); estado de creencia; incertidumbre y **sim-to-real**; aprendizaje por refuerzo en robótica.
+    - **Programación de robots**: teach pendant, guiado manual, textual (RAPID/KRL/URScript), offline (OLP) y ROS 2; cobots e **ISO 10218:2025**.
+    - **Diseño e implementación**: criterios de selección (payload con herramienta, alcance, repetibilidad, precisión, entorno), sensores de célula, ciclo de vida, célula e Industria 4.0 (PLC, OPC UA/MQTT, gemelo digital) y normativa (ISO 12100, 10218, 9283).
+  - Ejercicios y práctica en clase:
+    - Navegación con **AITK** (`aitk.robots`): seguir una línea con **reglas** y con **lógica difusa** (mismo problema, dos técnicas).
+    - Ejemplo guiado de **selección de robot** (payload + alcance + repetibilidad + seguridad) y verificación en simulación.
   - Materiales / Recursos:
-    - https://sever8a.github.io/artint/redes-neuronales/introduccion.html
-    - https://sever8a.github.io/artint/redes-neuronales/perceptron.html
-    - https://sever8a.github.io/artint/redes-neuronales/multicapa.html
-    - https://sever8a.github.io/artint/redes-neuronales/regresion.html
-    - https://sever8a.github.io/artint/redes-neuronales/clasificacion.html
-    - https://sever8a.github.io/artint/redes-neuronales/convolucionales.html
-    - https://sever8a.github.io/artint/redes-neuronales/lstm.html
-    - https://sever8a.github.io/artint/redes-neuronales/transformers.html
+    - `material_david/docs/UD04/UD04_ES.md` §§8–12 · https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html
+    - `pip install aitk aitk.robots` · (alternativas 3D: Webots, CoppeliaSim Edu)
   - Observaciones:
+    - Cierre del RA4: comparar técnicas de programación resolviendo **un mismo problema** (reglas / difusa / red / NEAT) y justificar la elección.
 
 ## 6. Estructura de carpetas (actualizada)
 
@@ -186,5 +186,5 @@ Cada `docs/bloques/Bxx_RAy/sesionNN.md` sigue `legislacion/plantilla_sesion.md` 
 3. ~~Bancos de pruebas y rúbricas en `evaluacion/`.~~ **Hecho**.
 4. Descargar PDFs oficiales a `fuentes/`.
 5. ~~Fijar `repo_url` / `extra.colab` / `extra.raw_base` en `mkdocs.yml`.~~ **Hecho**.
-6. Generar el bloque **RA4** (sistemas robotizados) para las sesiones 5 y 6 (28/10 y 04/11).
-7. Completar `curriculo.yml` con las semanas/fechas de UD01 y UD05 (hecho) y revisar UD04.
+6. ~~Planificar el bloque **RA4** en las sesiones 5 y 6 (28/10 y 04/11).~~ **Hecho** (§5). Pendiente: generar los apuntes y notebooks de `docs/bloques/B04_RA4/`.
+7. ~~Completar `curriculo.yml` con las semanas/fechas de UD01, UD05 y UD04.~~ **Hecho**.
