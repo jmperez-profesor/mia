@@ -116,19 +116,13 @@ nav:
       - Ejercicios de autoevaluación: bloques/B05_RA5/ejercicios.md
   - "B04 · RA4 — Análisis de sistemas robotizados":
       - Introducción: bloques/B04_RA4/index.md
-      - "Apuntes (3 presenciales + 3 autónomas)": bloques/B04_RA4/apuntes.md
-      - "S1 (presencial) · El robot y su cinemática":
-          - Notebook: bloques/B04_RA4/sesion01_cinematica.ipynb
-      - "A1 (autónomo) · Cinemática de un manipulador":
-          - Notebook: bloques/B04_RA4/autonomo01_cinematica.ipynb
-      - "S2 (presencial) · Planificación y percepción":
-          - Notebook: bloques/B04_RA4/sesion02_planificacion_percepcion.ipynb
-      - "A2 (autónomo) · Planificación y navegación":
-          - Notebook: bloques/B04_RA4/autonomo02_planificacion.ipynb
-      - "S3 (presencial) · Programación y diseño":
-          - Notebook: bloques/B04_RA4/sesion03_diseno_programacion.ipynb
-      - "A3 · Autónomo: proyecto Célula-07":
-          - Notebook: bloques/B04_RA4/autonomo03_proyecto_celula.ipynb
+      - "Apuntes (3 sesiones presenciales)": bloques/B04_RA4/apuntes.md
+      - "S5 · Robot y cinemática (28/10/2026)":
+          - Notebook: bloques/B04_RA4/sesion05_robot_cinematica.ipynb
+      - "S6 · Planificación y percepción (04/11/2026)":
+          - Notebook: bloques/B04_RA4/sesion06_planificacion_percepcion.ipynb
+      - "S7 · Diseño de sistemas robotizados (09/11/2026)":
+          - Notebook: bloques/B04_RA4/sesion07_diseno_sistema.ipynb
       - Ejercicios guiados y propuestos: bloques/B04_RA4/ejercicios.md
   - Evaluación:
       - Índice: evaluacion/index.md

@@ -1,80 +1,76 @@
 # B04 · RA4 — Ejercicios guiados y propuestos
 
-> 3 sesiones presenciales + 3 autónomas. Los **guiados** se hacen en clase con el profesor (no se entregan); los **propuestos** son las actividades autónomas que **sí se entregan** y se corrigen con rúbrica. Hilo conductor: **Célula-07**. Adaptados de la UD04 de David Martínez Peña (CC BY-NC-SA 4.0).
+> Guiados: se resuelven **en clase** (las soluciones se comentan, no se publican). Propuestos: **entregables** de las 3 sesiones autónomas (A1, A2, A3). Hilo conductor: **la célula LARA**.
 
-## Sesión 1 · Robot y cinemática (RA4-a)
+## Guiados · Sesión 5 (cinemática)
 
-### Guiados (en clase)
+**G1.** Con el brazo plano 3R de `roboticstoolbox` (`l₁=l₂=l₃=1`): calcula la posición del efector para `[0,0,0]`, `[π/2,0,0]` y `[π/2,π/2,0]`, y compárala con la fórmula a mano:
+$$x = l_1\cos\theta_1 + l_2\cos(\theta_1{+}\theta_2) + l_3\cos(\theta_1{+}\theta_2{+}\theta_3)$$
 
-**G1.** Clasifica por tipo (manipulador, móvil, patas, UAV/AUV, cobot) 6 robots de la Célula-07 y de dos casos reales (KUKA KR AGILUS, Amazon Robotics).
+**G2.** Con el Panda: obtén la pose con `fkine` y devuélvela a ángulos con `ikine_LM`. ¿La solución de la IK coincide con los ángulos originales? ¿Por qué no siempre?
 
-**G2.** Para una tarea de *pick-and-place*, elige sensor (entorno/ubicación/propioceptivo) y actuador (eléctrico/hidráulico/neumático). Justifica.
+**G3.** ¿Qué es una **singularidad**? Busca una configuración del Panda (o del Puma 560) donde `ikine_LM` no converja o lo haga a una solución muy distinta. ¿Qué le pasa al jacobiano ahí?
 
-**G3.** Ejecuta `sesion01_cinematica.ipynb`: calcula la FK de un brazo 3R con `q=[0,0,0]` y `q=[π/2,0,0]`. ¿Dónde está el efector en cada caso?
+## Guiados · Sesión 6 (planificación, percepción, programación)
 
-**G4.** Con el jacobiano del brazo 3R, detecta una configuración cercana a singularidad (codo estirado) y explica por qué la velocidad articular se dispara.
+**G4.** Diferencia **grafo de visibilidad** y **diagrama de Voronoi**: ¿cuál da el camino más corto y cuál el más seguro? ¿Cuándo eliges cada uno?
 
-**G5.** Con `roboticstoolbox`, resuelve la IK del Panda para una pose y comprueba el resultado con `fkine`.
+**G5.** Explica con tus palabras por qué la **odometría** se degrada sin límite y cómo lo corrige la **localización probabilística** (filtro de partículas).
 
-### Propuestos (autónomo A1, entregable)
+**G6.** Ejecuta el *line follower* por **reglas** del notebook S6 y describe en 3 líneas qué hace cada bloque (píxeles oscuros → centroide → desvío → giro).
 
-**P1.** Tabla DH de un manipulador 6R + FK con `roboticstoolbox`.
+**G7.** Tabla comparativa de las **5 técnicas de programación** (teach pendant, guiado, textual, OLP, ROS 2): ventaja, coste y cuándo usarla.
 
-**P2.** IK para 3 poses; indica cuáles tienen **múltiples soluciones**.
+## Guiados · Sesión 7 (diseño)
 
-**P3.** Jacobiano en 3 configuraciones; localiza una **singularidad**.
+**G8.** Reproduce el ejemplo guiado de selección para la célula LARA: payload (pieza + EOAT), alcance, repetibilidad y seguridad. ¿UR5e o KUKA KR AGILUS? Justifica.
 
-**P4.** Informe (5 líneas): configuración recomendada para evitar la singularidad.
+**G9.** ¿Por qué la ISO 10218:2025 dice que «colaborativo» no es una propiedad del hardware? Pon un contraejemplo.
 
-## Sesión 2 · Planificación y percepción (RA4-b)
+**G10.** Dibuja el diagrama de la célula (PLC → robot → sensores → MES/gemelo digital) y explica qué aporta cada conexión (PROFINET, OPC UA/MQTT).
 
-### Guiados (en clase)
+---
 
-**G6.** Dibuja el **espacio de configuración** de un robot móvil 2D con 2 obstáculos y marca el espacio libre.
+## Propuestos (autónomos, entregables)
 
-**G7.** Ejecuta `sesion02_planificacion_percepcion.ipynb`: genera un camino con **RRT** y explica por qué el resultado es irregular.
+### A1 · Cinemática directa e inversa (2 h) — entre S5 y S6
 
-**G8.** Ejecuta el **filtro de partículas**: ¿cuántas medidas hacen falta para que la estimación converja a 5,0?
+**Reto:** en `sesion05_robot_cinematica.ipynb` (sección «Actividad A1»):
 
-**G9.** Con AITK, define un mundo y un robot con cámara; ¿qué devuelve el sensor de cada píxel?
+1. Construye con `DHRobot` un brazo **RR** planar (`l₁=1, l₂=1`) y calcula la FK para 4 configuraciones, comparándola con la fórmula a mano.
+2. Para la pose `(1, 1)`, encuentra **dos soluciones** de IK (codo arriba / codo abajo) y verifica ambas con `fkine`.
+3. Añade el Panda: FK + IK (`ikine_LM`) para una pose arbitraria; reporta si converge y el error de posición.
 
-### Propuestos (autónomo A2, entregable)
+**Entregables:** notebook ejecutado con las 3 partes y un párrafo explicando por qué la IK tiene múltiples soluciones y qué son las singularidades.
 
-**P5.** Planificador (RRT o PRM) para el AMR con 3 obstáculos + comparación con **A\*** en rejilla.
+**Criterios (RA4-a/b):** FK correcta y verificada; dos soluciones de IK encontradas y comprobadas; explicación conceptual propia.
 
-**P6.** Navegación con AITK: seguir una línea con **reglas** y luego con **lógica difusa** (o control proporcional).
+### A2 · Navegación: reglas vs. lógica difusa (2 h) — entre S6 y S7
 
-**P7.** Tabla comparativa: longitud del camino, suavidad y tiempo. Justifica la técnica elegida.
+**Reto:** en `sesion06_planificacion_percepcion.ipynb` (sección «Actividad A2»):
 
-## Sesión 3 · Programación y diseño (RA4-c/d)
+1. Ejecuta el *line follower* por **reglas** y captura la imagen final (`world.display()`).
+2. Implementa una variante **difusa** (con `scikit-fuzzy`): el desvío del centroide se fuzzifica (izquierda / centro / derecha) y la salida es el giro.
+3. Compara ambos: ¿cuál sigue la línea con menos oscilación? ¿Cuál entiendes mejor?
 
-### Guiados (en clase)
+**Entregables:** notebook con los dos controladores, una imagen de cada uno y una tabla comparativa (oscilación, código, explicabilidad).
 
-**G10.** Clasifica 5 formas de programar un robot (teach pendant, guiado manual, textual, OLP, ROS 2) y di cuándo usarías cada una.
+**Criterios (RA4-c):** dos técnicas funcionando sobre el mismo problema; comparación con criterios (no «cuál es mejor» sin argumentos).
 
-**G11.** Ejecuta `sesion03_diseno_programacion.ipynb`: filtra el catálogo por payload (pieza + pinza + cables) y alcance.
+### A3 · Proyecto: diseño de la célula LARA (2 h) — tras S7
 
-**G12.** Compara control por **reglas** vs. **proporcional** sobre la planta simulada; ¿cuál estabiliza antes?
+**Reto:** diseña la célula completa en `sesion07_diseno_sistema.ipynb` (sección «Proyecto A3»):
 
-**G13.** Dado un brazo que comparte espacio con personas, decide: aplicación colaborativa (ISO 10218:2025) o vallado. Justifica.
+1. **Tarea:** pick & place de tarros de miel (0,5 kg, cinta a caja a 700 mm, 20 piezas/min).
+2. **Selección:** tabla comparativa de ≥2 modelos (payload, alcance, repetibilidad, precisión) y decisión justificada.
+3. **Layout y singularidades:** describe la célula y comprueba que la trayectoria no cruza singularidades (o cambia el layout).
+4. **Seguridad:** decide aplicación **colaborativa o vallada** (ISO 10218:2025) y justifica.
+5. **Industria 4.0:** qué sensores, qué bus y qué datos publica al gemelo digital.
 
-### Propuestos (autónomo A3, proyecto, entregable)
+**Entregables:** notebook con la tabla de decisión, el esquema de la célula y una conclusión de 300 palabras.
 
-**P8.** Diseña la Célula-07: tarea, selección de robot, seguridad y verificación en simulación.
+**Criterios (RA4-d):** criterios de selección explícitos; verificación de singularidades; decisión de seguridad fundamentada en normativa; integración con la célula (PLC/sensores/IIoT).
 
-**P9.** Propón la célula 4.0: PLC, telemetría (OPC UA/MQTT) y un uso del gemelo digital.
+---
 
-**P10.** Memoria de 1 página (tarea → criterios → selección → seguridad → riesgos).
-
-## Autoevaluación (repaso tipo test)
-
-**A1.** ¿Cuántos DoF hacen falta para pose libre en 3D? ¿Por qué?
-**A2.** ¿Qué diferencia hay entre precisión y repetibilidad? Pon un ejemplo.
-**A3.** ¿Por qué la FK tiene solución única y la IK no?
-**A4.** ¿Qué es una singularidad y cómo se evita?
-**A5.** ¿Qué método de planificación da el camino más corto? ¿Y el más seguro?
-**A6.** Diferencia plan y política.
-**A7.** ¿Qué resuelve SLAM y por qué es difícil?
-**A8.** ¿Por qué el aprendizaje por refuerzo falla en un robot real?
-**A9.** ¿Qué significa que «colaborativo» no es una propiedad del hardware?
-**A10.** Enumera los criterios de selección de un robot y el error típico con el payload.
+> Fuente base: `material_david/docs/UD04/UD04_ES.md` y sus entregables N04 (cinemática), N06/N07 (navegación) y N11 (diseño de sistema robotizado), adaptados a 3 sesiones autónomas.

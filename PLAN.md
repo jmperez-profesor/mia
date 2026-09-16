@@ -1,6 +1,6 @@
 # PLAN.md — Proyecto `_MIA` (Módulo 5071 "Modelos de Inteligencia Artificial")
 
-> Plan maestro recuperable entre sesiones. Última actualización: 2026-09-15 (RA5 en 3 sesiones y RA4/UD04 planificado en las sesiones 5 y 6).
+> Plan maestro recuperable entre sesiones. Última actualización: 2026-09-15 (RA5 en 3 sesiones y RA4 en 3 presenciales + 3 autónomas).
 
 ## 1. Contexto
 
@@ -32,16 +32,16 @@
 
 **Fuera de alcance de este proyecto:** RA6 (ética y legalidad) y RA7 (proyecto intermodular), que los imparten otros docentes.
 
-## 4. Calendario 26-27 (sesiones de 2h: lunes y miércoles)
+## 4. Calendario 26-27 (sesiones de 2h presenciales: lunes y miércoles)
 
 - **Inicio docencia:** 2026-10-01. **Primera sesión:** 2026-10-05 (lunes).
 - **Fin de centro:** 2027-05-28.
 - **Vacaciones:** Navidad 2026-12-22 → 2027-01-06 · Pascua 2027-03-25 → 2027-04-05.
 - **Festivos que afectan a lun/mié:** 2026-10-12 (lunes), 2026-12-07 (lunes), 2027-03-17 (miércoles).
-- **Sesiones de 2h disponibles:** 57. **Sesiones planificadas (RA1, RA5 y RA4):** 6 en este tramo (ver §5). Las restantes se dejan como margen para refuerzo, evaluación y pruebas por RA.
+- **Sesiones de 2h disponibles:** 57. **Sesiones presenciales planificadas (RA1, RA5 y RA4):** 7 en este tramo + **3 sesiones autónomas de 2 h** (A1–A3) (ver §5). Las restantes se dejan como margen para refuerzo, evaluación y pruebas por RA.
 
 ## 5 Detalle de sesiones (contenido y ejercicios)
-
+Planifica para 3 sesiones de 2h presenciales y 3 sesiones de 2h de trabajo autónomo para realizar las actividades autónomas y su alcance por sesión.
 Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios adaptados al grupo. Por cada sesión usa las subclaves **Contenidos detallados**, **Ejercicios y práctica en clase**, **Materiales / Recursos** y **Observaciones** (enlaza al notebook `sesionNN_miniproyecto.ipynb` cuando proceda).
 
 - **Sesión 1 · 2026-10-05 · Introducción a la IA y tipos de sistemas**
@@ -113,36 +113,60 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
     - Cierre del RA5: entrega del proyecto Pagarium.
-- **Sesión 5 · 2026-10-28 · RA4-1 · Sistemas robotizados: robot, cinemática y problemas**
+- **Sesión 5 · 2026-10-28 · RA4-1 · Sistemas robotizados: robot, cinemática y problemas** *(presencial 2 h)*
   - RA: RA4
-  - Contenidos detallados (UD04 de David, §§4–7):
-    - **Métodos y aplicaciones** de la robótica: qué es un robot (percibe-procesa-actúa), tipos (manipulador, móvil, patas, UAV/AUV, cobot), sensores (entorno/ubicación/propioceptivos) y actuadores (eléctrico/hidráulico/neumático); aplicaciones con datos IFR 2025 (542.000 robots, España 3.er mercado europeo).
+  - Contenidos detallados (apuntes B04 S5; UD04 de David §§4–7):
+    - **Métodos y aplicaciones** de la robótica: qué es un robot (percibe-procesa-actúa), tipos (manipulador, móvil, patas, UAV/AUV, cobot), sensores (entorno/ubicación/propioceptivos) y actuadores (eléctrico/hidráulico/neumático); datos IFR 2025 (542.000 robots, España 3.er mercado europeo); humanoides y *foundation models* (VLA).
     - **Qué problema resuelve** la robótica y la jerarquía **tarea → movimiento → control**.
     - **Modelado y control cinemático**: grados de libertad, articulaciones R/P, configuración articulado/cartesiano/SCARA/delta; **cinemática directa con parámetros DH** y **cinemática inversa**; jacobiano; control P/PD/PID y par calculado.
     - **Problemas**: múltiples soluciones (hasta 16), redundancia, sin solución y **singularidades** (muñeca/hombro/codo/límite); **precisión ≠ repetibilidad**; espacio de configuración.
   - Ejercicios y práctica en clase:
-    - Cinemática directa e inversa con **`roboticstoolbox-python`** (Panda, Puma 560): `fkine`, `ikine_LM`, tabla DH.
-    - Resolución a mano de un brazo plano 3R y cálculo de la pose.
+    - Cinemática directa e inversa con **`roboticstoolbox-python`** (Panda, Puma 560, brazo 3R): `fkine`, `ikine_LM`, tabla DH y manipulabilidad.
   - Materiales / Recursos:
+    - Apuntes y notebook: `docs/bloques/B04_RA4/apuntes.md`, `sesion05_robot_cinematica.ipynb`.
     - `material_david/docs/UD04/UD04_ES.md` §§4–7 · https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html
-    - `pip install roboticstoolbox-python spatialmath-python`
   - Observaciones:
-    - Es el bloque RA4-a; el foco es *entender el problema* (cinemática y singularidades), no memorizar álgebra.
-- **Sesión 6 · 2026-11-04 · RA4-2 · Planificación, percepción, programación y diseño**
+    - Bloque RA4-a; foco en *entender el problema* (cinemática y singularidades), no en memorizar álgebra.
+- **Sesión autónoma A1 · 2026-11-02 · Cinemática con roboticstoolbox** *(2 h, entregable)*
   - RA: RA4
-  - Contenidos detallados (UD04 de David, §§8–12):
-    - **Planificación de movimiento**: espacio de configuración, espacio libre, grafo de visibilidad (más corto), diagrama de Voronoi (más seguro), descomposición celular y **muestreo (RRT/PRM)**; plan vs. política y control óptimo (LQR/iLQR).
-    - **Percepción y SLAM**: localización, mapeo y SLAM; filtro de partículas (MCL); estado de creencia; incertidumbre y **sim-to-real**; aprendizaje por refuerzo en robótica.
-    - **Programación de robots**: teach pendant, guiado manual, textual (RAPID/KRL/URScript), offline (OLP) y ROS 2; cobots e **ISO 10218:2025**.
-    - **Diseño e implementación**: criterios de selección (payload con herramienta, alcance, repetibilidad, precisión, entorno), sensores de célula, ciclo de vida, célula e Industria 4.0 (PLC, OPC UA/MQTT, gemelo digital) y normativa (ISO 12100, 10218, 9283).
+  - Alcance: brazo RR/3R (FK a mano vs. código), **dos soluciones de IK** (codo arriba/abajo), Panda FK+IK y convergencia.
+  - Entregable: `docs/bloques/B04_RA4/sesion05_robot_cinematica.ipynb` (sección «Actividad A1») + párrafo sobre múltiples soluciones y singularidades.
+- **Sesión 6 · 2026-11-04 · RA4-2 · Planificación, percepción y programación** *(presencial 2 h)*
+  - RA: RA4
+  - Contenidos detallados (apuntes B04 S6; UD04 de David §§8–11):
+    - **Planificación de movimiento**: espacio de configuración, grafo de visibilidad (corto), Voronoi (seguro), descomposición celular y **muestreo (RRT/PRM)**; plan vs. política; LQR/iLQR.
+    - **Percepción y SLAM**: localización, mapeo y SLAM; filtro de partículas (MCL); odometría y su degradación.
+    - **Incertidumbre y aprendizaje**: sim-to-real, RL en robótica, modelos VLA.
+    - **Programación de robots**: teach pendant, guiado manual, textual (RAPID/KRL/URScript), OLP y ROS 2/MoveIt 2; cobots e **ISO 10218:2025**.
   - Ejercicios y práctica en clase:
-    - Navegación con **AITK** (`aitk.robots`): seguir una línea con **reglas** y con **lógica difusa** (mismo problema, dos técnicas).
-    - Ejemplo guiado de **selección de robot** (payload + alcance + repetibilidad + seguridad) y verificación en simulación.
+    - Navegación con **AITK** (`aitk.robots`): seguir una línea con **reglas** sobre los píxeles (pista dibujada con PIL en el propio notebook).
   - Materiales / Recursos:
-    - `material_david/docs/UD04/UD04_ES.md` §§8–12 · https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html
-    - `pip install aitk aitk.robots` · (alternativas 3D: Webots, CoppeliaSim Edu)
+    - Apuntes y notebook: `docs/bloques/B04_RA4/apuntes.md`, `sesion06_planificacion_percepcion.ipynb`.
+    - `material_david/docs/UD04/UD04_ES.md` §§8–11 · `pip install aitk aitk.robots pillow`
   - Observaciones:
-    - Cierre del RA4: comparar técnicas de programación resolviendo **un mismo problema** (reglas / difusa / red / NEAT) y justificar la elección.
+    - La variante **difusa** del mismo problema queda para la sesión autónoma A2.
+- **Sesión autónoma A2 · 2026-11-06 · Navegación: reglas vs. lógica difusa** *(2 h, entregable)*
+  - RA: RA4
+  - Alcance: *line follower* por **reglas** (capturar resultado) y variante **difusa** con `scikit-fuzzy` (desvío → giro); comparación (oscilación, código, explicabilidad).
+  - Entregable: `docs/bloques/B04_RA4/sesion06_planificacion_percepcion.ipynb` (sección «Actividad A2») + tabla comparativa.
+- **Sesión 7 · 2026-11-09 · RA4-3 · Diseño e implementación de sistemas robotizados** *(presencial 2 h)*
+  - RA: RA4
+  - Contenidos detallados (apuntes B04 S7; UD04 de David §12):
+    - **Selección del robot**: payload (pieza + EOAT), alcance, repetibilidad, precisión y entorno; ejemplo guiado de la célula LARA (UR5e vs. KUKA KR AGILUS).
+    - **Célula e Industria 4.0**: PLC (PROFINET/EtherCAT), OPC UA/MQTT, gemelo digital y ciclo de vida.
+    - **Seguridad y normativa**: ISO 12100, ISO 10218:2025 (absorbe la TS 15066), ISO 9283 y AI Act (alto riesgo).
+    - **Mercado 2026**: AMR, cobots, humanoides y *foundation models*.
+  - Ejercicios y práctica en clase:
+    - Tabla de selección con `pandas` (payload/alcance/repetibilidad) y checklist ISO 10218:2025.
+  - Materiales / Recursos:
+    - Apuntes y notebook: `docs/bloques/B04_RA4/apuntes.md`, `sesion07_diseno_sistema.ipynb`.
+    - `material_david/docs/UD04/UD04_ES.md` §12
+  - Observaciones:
+    - Cierre del RA4: comparar técnicas de programación resolviendo **un mismo problema** y justificar la elección.
+- **Sesión autónoma A3 · 2026-11-11 · Proyecto: diseño de la célula LARA** *(2 h, entregable)*
+  - RA: RA4
+  - Alcance: tarea (cadencia/pieza/recorrido), **tabla de selección ≥2 modelos**, layout sin singularidades, seguridad (colaborativa o vallada, ISO 10218:2025) e integración (sensores, bus, gemelo digital).
+  - Entregable: `docs/bloques/B04_RA4/sesion07_diseno_sistema.ipynb` (sección «Proyecto A3») + conclusión de 300 palabras.
 
 ## 6. Estructura de carpetas (actualizada)
 
@@ -160,11 +184,11 @@ _MIA/
 │   └── bloques/
 │       ├── B01_RA1/  (sesion01.md + notebooks y ejercicios)
 │       ├── B05_RA5/  (apuntes.md + 3 notebooks de sesión + ejercicios)
-│       └── B04_RA4/  (pendiente)
+│       └── B04_RA4/  (apuntes.md + 3 notebooks de sesión + ejercicios)
 └── PROPUESTAS_MEJORA.md
 ```
 
-## 7. Plantilla de sesión de 2h
+## 7. Plantilla de sesión de 2h presenciales y 3 horas en casa
 
 Cada `docs/bloques/Bxx_RAy/sesionNN.md` sigue `legislacion/plantilla_sesion.md` e incluye además:
 - **Práctica guiada (con solución):** ejemplo resuelto, con código Python (numpy/pandas/scikit-learn/spaCy/Prolog según toque) y explicación.
@@ -186,5 +210,5 @@ Cada `docs/bloques/Bxx_RAy/sesionNN.md` sigue `legislacion/plantilla_sesion.md` 
 3. ~~Bancos de pruebas y rúbricas en `evaluacion/`.~~ **Hecho**.
 4. Descargar PDFs oficiales a `fuentes/`.
 5. ~~Fijar `repo_url` / `extra.colab` / `extra.raw_base` en `mkdocs.yml`.~~ **Hecho**.
-6. ~~Planificar el bloque **RA4** en las sesiones 5 y 6 (28/10 y 04/11).~~ **Hecho** (§5). Pendiente: generar los apuntes y notebooks de `docs/bloques/B04_RA4/`.
+6. ~~Planificar el bloque **RA4** en las sesiones 5 y 6 (28/10 y 04/11).~~ **Hecho**: RA4 reestructurado en **3 presenciales (S5–S7) + 3 autónomas (A1–A3)** con apuntes, notebooks y ejercicios en `docs/bloques/B04_RA4/`.
 7. ~~Completar `curriculo.yml` con las semanas/fechas de UD01, UD05 y UD04.~~ **Hecho**.

@@ -16,6 +16,7 @@ modulo:
   horas: 90                 # currículo CV (Decreto 95/2026)
   ects: 4
   horas_semanales: 3        # dosier CEICE-GVA (nosotros lo damos en 2 sesiones de 2 h)
+  nuestras_horas: 12 h presenciales (6 sesiones de 2 h) + 6 h no presenciales (trabajo autónomo)
   semanas: 30
   fin_contenidos: finales de abril (semana 24)
   alcance_docente: [RA1, RA5, RA4]
@@ -31,13 +32,13 @@ resultados_aprendizaje:
       eficiencia operativa de las organizaciones y empresas.
   - id: RA2
     ce: 6
-    imparte: otro docente
+    imparte: este docente pero más adelante (en otro bloque)
     enunciado: >-
       Utiliza modelos de sistemas de Inteligencia Artificial implementando sistemas de
       resolución de problemas.
   - id: RA3
     ce: 7
-    imparte: otro docente
+    imparte: este docente pero más adelante (en otro bloque)
     enunciado: >-
       Relaciona el procesamiento de lenguaje natural con sus aplicaciones determinando su
       potencial e identificando sus limitaciones.
@@ -87,14 +88,21 @@ unidades:
     fecha_inicio: 2026-10-19
     fecha_fin: 2026-10-26
   - id: UD04
-    titulo: Sistemas robotizados
+    titulo: Análisis de sistemas robotizados
     ra: RA4
     imparte: este docente
-    horas: 4 h presenciales (2 sesiones en este tramo)
+    horas: 6 h presenciales (3 sesiones) + 6 h trabajo autónomo (3 sesiones)
     semana_inicio: 5
-    semana_fin: 6
+    semana_fin: 7
     fecha_inicio: 2026-10-28
-    fecha_fin: 2026-11-04
+    fecha_fin: 2026-11-09
+    sesiones:
+      - {id: S5, fecha: 2026-10-28, tipo: presencial, contenido: "Robot, cinemática y problemas (FK/IK, singularidades)"}
+      - {id: A1, fecha: 2026-11-02, tipo: autonoma, contenido: "Cinemática con roboticstoolbox-python (entregable)"}
+      - {id: S6, fecha: 2026-11-04, tipo: presencial, contenido: "Planificación, percepción y programación (RRT, SLAM, ROS 2)"}
+      - {id: A2, fecha: 2026-11-06, tipo: autonoma, contenido: "Navegación AITK: reglas vs. lógica difusa (entregable)"}
+      - {id: S7, fecha: 2026-11-09, tipo: presencial, contenido: "Diseño e implementación de sistemas robotizados (ISO 10218:2025)"}
+      - {id: A3, fecha: 2026-11-11, tipo: autonoma, contenido: "Proyecto: diseño de la célula LARA (entregable)"}
 
 # Calendario real del curso 2026-2027 (referencia; verificado en DOGV 2026/24495,
 # Resolución SAE 15/07/2026: docencia 01/10/2026 → 18/06/2027 máx.).
