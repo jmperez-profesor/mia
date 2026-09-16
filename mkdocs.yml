@@ -92,18 +92,6 @@ nav:
               - N02 Mapa de sistemas inteligentes: bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
-  # - "B02 · RA2 — Modelos de resolución de problemas":
-  #     - Introducción: bloques/B02_RA2/index.md
-  #     - "S01 · Espacios de estados y búsqueda no informada": bloques/B02_RA2/sesion01.md
-  #     - "S02 · Búsqueda informada: A* y heurísticas": bloques/B02_RA2/sesion02.md
-  #     - "S03 · Búsqueda local": bloques/B02_RA2/sesion03.md
-  #     - "S04 · Algoritmos genéticos I": bloques/B02_RA2/sesion04.md
-  #     - "S05 · Algoritmos genéticos II": bloques/B02_RA2/sesion05.md
-  #     - "S06 · Satisfacción de restricciones (CSP)": bloques/B02_RA2/sesion06.md
-  #     - "S07 · Planificación: STRIPS": bloques/B02_RA2/sesion07.md
-  #     - "S08 · Programación lógica con Prolog": bloques/B02_RA2/sesion08.md
-  #     - "S09 · Motores de reglas e inferencia": bloques/B02_RA2/sesion09.md
-  #     - "S10 · Miniproyecto RA2": bloques/B02_RA2/sesion10.md
   - "B05 · RA5 — Sistemas expertos y motores de reglas":
       - Introducción: bloques/B05_RA5/index.md
       - "Apuntes (3 sesiones)": bloques/B05_RA5/apuntes.md
@@ -127,5 +115,5 @@ nav:
   - Evaluación:
       - Índice: evaluacion/index.md
       - "RA1 · Caracterización de sistemas IA": evaluacion/RA1.md
-      - "RA2 · Modelos de resolución de problemas": evaluacion/RA2.md
-      - "RA3 · PLN": evaluacion/RA3.md
+      - "RA5 · Sistemas expertos y motores de reglas": evaluacion/RA5.md
+      - "RA4 · Análisis de sistemas robotizados": evaluacion/RA4.md
