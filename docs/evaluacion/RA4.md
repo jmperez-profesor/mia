@@ -7,22 +7,31 @@
 
 1. Un robot es, en esencia:
    a) Un programa de escritorio · b) **Un agente encarnado que percibe, procesa y actúa sobre el mundo físico** ✅ · c) Una base de datos · d) Una red neuronal
+
 2. Los sensores **propioceptivos** informan de:
    a) El entorno · b) La ubicación global · c) **El estado interno del propio robot (encoders, giroscopio, fuerza)** ✅ · d) La red
+
 3. Un manipulador necesita al menos **6 grados de libertad** para:
    a) Moverse en línea recta · b) **Colocar el efector en cualquier posición y orientación en 3D** ✅ · c) Levantar 10 kg · d) Nada especial
+
 4. La **cinemática directa** (FK):
    a) Tiene múltiples soluciones · b) **Tiene solución única y se resuelve con matrices DH** ✅ · c) Es imposible · d) Solo vale para móviles
+
 5. La **cinemática inversa** de un 6R general puede tener hasta:
    a) 1 solución · b) 2 soluciones · c) **16 soluciones** ✅ · d) Infinitas siempre
+
 6. Una **singularidad** cinemática se produce cuando:
    a) El robot se apaga · b) **El jacobiano pierde rango y la velocidad articular tiende a infinito** ✅ · c) Falta batería · d) El efector es grande
+
 7. Un robot **repetible** pero **impreciso**:
    a) No existe · b) **Vuelve siempre al mismo punto, que no es el programado** ✅ · c) Nunca acierta · d) No necesita calibración
+
 8. Para planificar movimiento con muchas dimensiones se usa:
    a) Grafo de visibilidad · b) **Muestreo (RRT/PRM)** ✅ · c) Diagrama de Voronoi · d) Fuerza bruta
+
 9. El **filtro de partículas (MCL)** representa la posición del robot como:
    a) Un número exacto · b) **Una distribución de probabilidad (nube de hipótesis)** ✅ · c) Un mapa · d) Una regla
+
 10. La **ISO 10218:2025** establece que «colaborativo» es una propiedad de:
     a) El brazo aislado · b) **La aplicación completa (robot + herramienta + entorno + tarea)** ✅ · c) El PLC · d) El software ROS 2
 

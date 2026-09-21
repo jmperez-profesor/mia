@@ -7,22 +7,31 @@
 
 1. La jerarquía DIKW ordena, de menor a mayor:
    a) Sabiduría, conocimiento, información, dato · b) **Dato, información, conocimiento, sabiduría** ✅ · c) Dato, conocimiento, información, sabiduría · d) Información, dato, sabiduría, conocimiento
+
 2. El ciclo de inferencia de un motor de reglas es:
    a) Compilar, ejecutar, depurar · b) **Reconocer, resolver, actuar** ✅ · c) Entrenar, validar, probar · d) Cargar, guardar, cerrar
+
 3. El encadenamiento hacia atrás (backward) es típico de:
    a) Control en tiempo real · b) **Diagnóstico guiado por metas** ✅ · c) Planificación de rutas · d) Visión artificial
+
 4. Los factores de certeza los introdujo:
    a) XCON · b) **MYCIN** ✅ · c) Drools · d) DENDRAL
+
 5. `experta` falla en Python 3.10+ porque:
    a) Usa TensorFlow · b) **`collections.Mapping` se eliminó** ✅ · c) No soporta Windows · d) Requiere GPU
+
 6. RETE y PHREAK son:
    a) Lenguajes de programación · b) **Algoritmos de *matching* eficiente de reglas** ✅ · c) Formatos de imagen · d) Tipos de sensor
+
 7. En una tabla de decisión DMN, la *hit policy* `unique` exige:
    a) Que gane la primera fila · b) **Que solo una fila encaje** ✅ · c) Devolver todas las filas · d) Ignorar solapes
+
 8. Un BRMS como Drools sirve para:
    a) Entrenar redes neuronales · b) **Gestionar reglas de negocio separadas del código** ✅ · c) Simular robots · d) Comprimir datos
+
 9. FIGS aplicado a un histórico de decisiones:
    a) Las encripta · b) **Extrae reglas legibles de los datos** ✅ · c) Borra duplicados · d) Genera imágenes
+
 10. Usar reglas como «guardarraíl» de un LLM consiste en:
     a) Entrenar el modelo · b) **Validar y acotar su salida antes de ejecutarla** ✅ · c) Aumentar la temperatura · d) Desactivar el modelo
 
