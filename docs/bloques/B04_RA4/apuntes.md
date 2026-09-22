@@ -2,404 +2,269 @@
 bloque: B04
 ra: RA4
 duracion: 6 h presenciales + 6 h autonomo
-titulo: "Análisis de sistemas robotizados"
+titulo: "Análisis de sistemas robotizados (DOBOT Magician)"
 ---
 
 # B04 · RA4 — Análisis de sistemas robotizados
 
-> **3 sesiones presenciales de 2 h + 3 sesiones autónomas de 2 h** (PLAN.md §5): S5 (28/10), S6 (04/11), S7 (09/11). Apuntes reescritos a partir de la UD04 de David Martínez Peña (`material_david/docs/UD04/UD04_ES.md`, CC BY-NC-SA 4.0; capítulo 26 *Robotics* de Russell & Norvig) y actualizados al **estado del arte 2026**: humanoides, *foundation models* para robótica (VLA), ROS 2, Isaac Sim/Lab y sim-to-real.
->
-> **Hilo conductor: la célula LARA** — un brazo que recoge tarros de miel de una cinta y los coloca en cajas. Cada sesión añade una capa: mover el brazo → moverlo sin chocar → diseñar la célula completa.
+> **UD04 · 12 h** = 3 sesiones presenciales de 2 h (S1, S2, S3) + 3 sesiones autónomas de 2 h (TA1, TA2, TA3).
+> **Resultado de aprendizaje RA4:** *Analiza sistemas robotizados, evaluando opciones de diseño e implementación.*
+> **Hardware del aula:** un brazo **DOBOT Magician** (4 ejes) + cinta transportadora con fotocélula y sensor de color. Trabajo en 3-4 equipos por turnos.
 
-## RA4 y criterios
+**Criterios de evaluación y dónde se trabajan:**
 
-**RA4** — Analiza sistemas robotizados, evaluando opciones de diseño e implementación.
+| CE | Criterio oficial | Sección | Sesión |
+|----|------------------|---------|--------|
+| **4a** | Se han recopilado los problemas del modelado y control cinemático en robots manipuladores. | §2–§4 | S1, S2 |
+| **4b** | Se han buscado soluciones a los problemas de los robots. | §4, §6, §7 | S2 |
+| **4c** | Se han valorado las características diferenciadoras de las técnicas de programación de robots y de sistemas robotizados. | §6 | S1, S2 |
+| **4d** | Se han evaluado diferentes opciones en el diseño e implementación de sistemas robotizados. | §5, §8 | S2, S3 |
 
-| CE | Criterio | Sesión |
-|---|---|---|
-| RA4-a | Recopila los problemas del modelado y control cinemático en robots manipuladores. | S5 |
-| RA4-b | Busca soluciones a los problemas de los robots. | S5, S6 |
-| RA4-c | Valora las características diferenciadoras de las técnicas de programación de robots. | S6 |
-| RA4-d | Evalúa diferentes opciones en el diseño e implementación de sistemas robotizados. | S7 |
+## 1. ¿Qué es un robot?
 
-## Planificación (6 h presenciales + 6 h autónomas)
+> **Definición (ISO 8373).** Un **robot industrial** es un manipulador multifuncional, reprogramable y controlado automáticamente, programable en tres o más ejes, que puede estar fijo o móvil, y que se usa en aplicaciones de automatización industrial.
 
-| Sesión | Tipo | Contenido | CE |
-|---|---|---|---|
-| **S5 · 28/10** | Presencial 2 h | El robot, su cinemática y sus problemas: hardware, jerarquía tarea→movimiento→control, DH, FK/IK, singularidades | RA4-a/b |
-| **A1 · 02/11** | Autónoma 2 h | Cinemática con `roboticstoolbox-python`: FK/IK de un brazo 3R y del Panda; singularidades | RA4-a/b |
-| **S6 · 04/11** | Presencial 2 h | Planificación, percepción y programación: espacio de configuración, RRT, SLAM, sim-to-real, teach pendant→ROS 2 | RA4-b/c |
-| **A2 · ~06/11** | Autónoma 2 h | Navegación con `aitk.robots`: seguir una línea con **reglas** y con **lógica difusa** | RA4-c |
-| **S7 · 09/11** | Presencial 2 h | Diseño e implementación: selección del robot, célula, seguridad ISO 10218:2025, Industria 4.0 | RA4-d |
-| **A3 · ~11/11** | Autónoma 2 h | Proyecto: diseño de la célula LARA (selección, layout, seguridad) | RA4-d |
-
----
-
-# Sesión 5 · El robot, su cinemática y sus problemas (28/10)
-
-## 5.1 Por qué robótica en 2026
-
-La robótica es el campo de la IA que **cambia el estado del mundo físico**, y sus números no dejan de crecer (IFR *World Robotics* 2025, datos de 2024):
-
-| Dato | Valor |
-|---|---|
-| Robots industriales instalados en 2024 | **542.000** (4.º año sobre 500.000) |
-| Stock operativo mundial | **4,66 millones** (+9 %) |
-| País líder en densidad | Corea del Sur (>1.000 robots/10.000 empleados) |
-| Mayor instalador | China (54 % de las instalaciones) |
-| **España** | **3.er mercado europeo** (5.100 unidades, tirón de la automoción) |
-| Robótica médica | **+91 %** (sistema da Vinci como referencia) |
-
-Y lo nuevo de 2025-26: **robots humanoides** (Figure, Tesla Optimus, Unitree, Agility Digit), **AMR** en logística (Amazon Robotics supera el millón de unidades) y **cobots** (Universal Robots, Franka, KUKA LBR) que comparten espacio con personas. Detrás de todo ello, los **modelos fundacionales para robótica** (VLA: *vision-language-action*), la simulación a escala (Isaac Sim/Lab, MuJoCo) y el **sim-to-real**.
-
-!!! note "Qué aporta la IA a la robótica hoy"
-    Un robot industrial clásico ejecuta programas fijos y **no necesita IA**. La IA aparece cuando hay que **percibir** (visión para piezas en cualquier orientación), **adaptarse** (entornos cambiantes) o **aprender** (tareas que no se saben programar). Si la pieza llega siempre igual, un programa fijo es la respuesta correcta.
-
-## 5.2 Anatomía de un robot
-
-Un **robot** es una máquina programable que **percibe, procesa y actúa** sobre el entorno físico:
+Un robot es un **agente encarnado**: percibe su entorno, lo procesa y **actúa físicamente** sobre él. Es el único sistema de IA de este módulo que puede cambiar el estado del mundo físico — y por eso un fallo no produce una etiqueta errónea, sino una pieza rota o un accidente.
 
 ```mermaid
 flowchart LR
-    S[Sensores<br/>visión, lidar, fuerza, encoders] --> C[Controlador<br/>percibe, planifica, decide]
-    C --> A[Actuadores<br/>motores, cilindros, pinzas]
+    S[Sensores<br/>encoders, fotocélula, visión] --> C[Controlador<br/>programa, decide]
+    C --> A[Actuadores<br/>motores + efectores]
     A --> E[Entorno físico]
     E -. medición .-> S
 ```
 
-| Bloque | Qué aporta |
-|---|---|
-| **Sensores** | Del entorno (cámara, lidar, sonar), de ubicación (GPS, balizas) o **propioceptivos** (encoders, giroscopio, fuerza/par) |
-| **Actuadores** | Eléctricos (los más comunes), hidráulicos (mucha fuerza) o neumáticos (rápidos y simples) |
-| **Efectores** | Ruedas, patas, articulaciones o **pinzas** (EOAT) |
+**Tipos de robot** (por su mecánica y su relación con las personas):
 
-!!! tip "El caso de la bombilla"
-    Un brazo de una tonelada enroscando una bombilla no se rompe por ser suave, sino por **medir rápido**: los sensores de **fuerza y par** toman cientos de medidas por segundo y corrigen antes de romper el cristal. Manipular con cuidado = sensar con frecuencia.
+| Tipo | Qué es | Ejemplo del aula |
+|---|---|---|
+| **Manipulador / brazo** | Cadena de eslabones que mueve un efector | DOBOT Magician |
+| **Móvil** | Se desplaza sobre ruedas o patas | AGV/AMR de almacén |
+| **Colaborativo (cobot)** | Comparte espacio con personas con fuerza limitada | DOBOT en modo guiado |
+| **Pórtico / cartesiano** | Ejes lineales | Máquina de pick & place |
 
-## 5.3 La jerarquía tarea → movimiento → control
+> **Más información · Historia.** El primer robot industrial fue **Unimate** (1961), instalado en la cadena de montaje de General Motors para manipular piezas calientes de fundición. Desde entonces, la robótica industrial ha crecido hasta superar los **500.000 robots instalados al año** (IFR *World Robotics*), con España como uno de los principales mercados europeos, impulsado por la automoción. En 2025-26, la ola nueva son los **AMR** en logística, los **cobots** y los primeros **humanoides** en pilotos.
 
-Entre los píxeles del sensor y «lleva los tarros a la caja» hay un abismo; la robótica lo parte en tres niveles:
+## 2. Anatomía de un manipulador
 
-```mermaid
-flowchart TD
-    T["Planificación de tareas<br/>acciones discretas"] --> M["Planificación de movimiento<br/>camino sin colisiones"]
-    M --> C["Control<br/>seguir ese camino"]
-    C --> P[Planta física]
-    P -. sensores .-> T
-```
+Un manipulador es una **cadena cinemática**: eslabones rígidos unidos por articulaciones.
 
-- **Tarea:** qué submetas (ir a la cinta, coger tarro, colocarlo).
-- **Movimiento:** qué camino sin colisiones une dos configuraciones.
-- **Control:** que los actuadores sigan ese camino (P/PD/PID, par calculado).
-
-## 5.4 Modelado: la cadena cinemática
-
-Un manipulador se modela como **eslabones rígidos unidos por articulaciones**:
+> **Definición · Grado de libertad (GDL o DoF).** Cada movimiento independiente de una articulación. Hacen falta **al menos 3** para alcanzar cualquier punto del espacio (posición) y **6** para fijar además la orientación. El DOBOT Magician tiene **4** (base, brazo trasero, antebrazo y rotación de muñeca), lo que basta para pick & place y dibujo, pero **no** para orientar libremente una herramienta en 3D.
 
 | Concepto | Definición |
 |---|---|
-| **Grado de libertad (DoF)** | Movimiento independiente; hacen falta **≥ 6** para pose libre en 3D |
+| **Eslabón** | Pieza rígida entre dos articulaciones |
 | **Articulación de revolución (R)** | Gira: variable ángulo θ |
 | **Articulación prismática (P)** | Se desliza: variable distancia d |
-| **Espacio articular** | Vector `q` con la posición de cada articulación |
-| **Espacio cartesiano** | Pose del efector: posición + orientación |
+| **Espacio articular** | Vector con el valor de cada articulación `[J1, J2, J3, J4]` |
+| **Espacio cartesiano** | Pose del efector `[X, Y, Z, RZ]` (posición + giro de muñeca) |
 
-Configuraciones típicas: **articulado** (≥3R, el 6-ejes industrial), **cartesiano** (3P), **SCARA** (RRP, montaje) y **delta** (empaquetado rápido).
-
-## 5.5 Cinemática directa (FK) — única y fácil
-
-`pose = f(q)`: de los ángulos a la pose, multiplicando **transformaciones homogéneas** 4×4 descritas con los **parámetros de Denavit-Hartenberg (DH)** (θ, d, a, α por articulación).
-
-**Código verificado** con `roboticstoolbox-python`:
-
-```python
-%pip install roboticstoolbox-python spatialmath-python
-import numpy as np
-import roboticstoolbox as rtb
-from roboticstoolbox import DHRobot, RevoluteDH
-
-# Brazo plano 3R (l1 = l2 = l3 = 1) construido con DH
-brazo = DHRobot([
-    RevoluteDH(a=1.0),
-    RevoluteDH(a=1.0),
-    RevoluteDH(a=1.0),
-], name="Brazo3R")
-
-print(brazo.fkine([0, 0, 0]).t)          # → posición (3, 0)
-print(brazo.fkine([np.pi/2, 0, 0]).t)    # → posición (0, 3)
-
-# Puma 560, el brazo clásico, con su tabla DH resuelta
-puma = rtb.models.DH.Puma560()
-print(puma.fkine([0, 0.2, 0.3, 0.4, 0.5, 0.6]).t)
-# → [0.234, -0.15, 1.146]: la pose del efector para esos ángulos
+```mermaid
+flowchart TD
+    B[Base fija] --> A1[Articulación 1<br/>giro J1]
+    A1 --> L1[Brazo trasero J2]
+    L1 --> L2[Antebrazo J3]
+    L2 --> W[Muñeca / giro J4]
+    W --> EF[Efector final]
 ```
 
-La FK **siempre tiene una única solución**: es pura geometría encadenada.
+## 3. Cinemática: el problema de los manipuladores (CE 4a)
 
-## 5.6 Cinemática inversa (IK) — el problema de verdad
+### 3.1 Cinemática directa (FK)
 
-`q = f⁻¹(pose)`: dada la pose deseada, ¿qué ángulos la consiguen? Aquí están casi todos los problemas del RA4-a:
+La **cinemática directa** calcula la **pose del efector** a partir de los valores de las articulaciones: `pose = f(q)`. Siempre tiene **una única solución** y es pura geometría.
 
-| Problema | En qué consiste | Cómo se aborda |
+> **Ejemplo · Brazo plano 2R resoluble a mano.** Dos eslabones de longitud `l₁ = 150 mm` y `l₂ = 120 mm`, con ángulos `θ₁` y `θ₂`. La punta está en:
+> $$x = l_1\cos\theta_1 + l_2\cos(\theta_1+\theta_2)$$
+> $$y = l_1\sin\theta_1 + l_2\sin(\theta_1+\theta_2)$$
+> Con `θ₁ = 0°`, `θ₂ = 0°`: `x = 270 mm`, `y = 0 mm`. Con `θ₁ = 90°`, `θ₂ = 0°`: `x = 0`, `y = 270 mm`. Ese punto (270 mm) está **dentro** del alcance de 320 mm del DOBOT.
+
+### 3.2 Cinemática inversa (IK)
+
+La **cinemática inversa** va al revés: dada la pose deseada, calcula los ángulos `q = f⁻¹(pose)`. Es **el problema difícil** y la raíz de casi todos los fallos de un manipulador:
+
+| Problema | En qué consiste | Consecuencia práctica |
 |---|---|---|
-| **Múltiples soluciones** | Un 6R general tiene **hasta 16** (8 con muñeca esférica) | Elegir por criterio: codo arriba/abajo, evitar obstáculos, menor recorrido |
-| **Redundancia** | Más DoF de los necesarios → **infinitas** soluciones | Optimizar en el espacio nulo del jacobiano |
-| **Sin solución** | El objetivo está fuera del alcance | Detectarlo y avisar, no iterar sin fin |
-| **Singularidad** | El jacobiano pierde rango → velocidad articular → ∞ | Evitarla al planificar o cruzarla bajando la velocidad |
+| **Múltiples soluciones** | Un mismo punto se alcanza con «codo arriba» o «codo abajo» | Dos scripts distintos dibujan el mismo punto |
+| **Singularidad** | El jacobiano pierde rango: la velocidad articular tiende a infinito | Vibración, sobrecorriente o parada de seguridad |
+| **Fuera de alcance** | El objetivo está más allá de 320 mm | El robot no llega: hay que rediseñar la célula |
+| **Límites articulares** | Cada eje tiene un rango válido | Movimiento imposible aunque el punto sea alcanzable |
 
-```python
-robot = rtb.models.Panda()
-pose = robot.fkine([0, -0.8, 0.8, 0, 0.8, 0, 0])
+> **Más información.** En un brazo de 6 ejes la IK puede tener **hasta 16 soluciones**; el DOBOT, con 4 ejes, tiene menos margen y por eso su **espacio de trabajo** es un casquete cilíndrico en torno a su base. Programar «a ciegas» sin comprobar el alcance es la primera causa de error en el aula.
 
-sol = robot.ikine_LM(pose)      # Levenberg-Marquardt
-print("¿ha convergido?:", sol.success)
-print("q:", np.round(sol.q, 3))
-# IK numérica: converge… o se queda en un mínimo local cerca de una singularidad
-```
+### 3.3 Control
 
-!!! important "Qué pasa de verdad en una singularidad"
-    No es álgebra abstracta: las velocidades articulares necesarias **tienden a infinito**, así que en la célula se ve **sobrecorriente, vibración o parada de seguridad**. Por eso se evitan al planificar —o se cruzan despacio—.
+Los ejes se mueven con **servomotores con encoder** en lazo cerrado. El control clásico por eje es **P → PD → PID**; los robots industriales añaden **par calculado** (dinámica inversa). En el DOBOT, la velocidad y la aceleración de cada tramo se fijan con parámetros (`SetPTPJointParams`, `SetPTPCoordinateParams`).
 
-## 5.7 Control y precisión
+## 4. Actuadores, sensores y efectores finales
 
-- **P** (proporcional), **PD** (amortigua), **PID** (elimina el error persistente) por eje; **par calculado** usa la dinámica inversa y deja al PID solo el error residual.
-- Los robots industriales usan **servomotores con encoder** en lazo cerrado: sin realimentación no se sabe si el eje llegó.
-- **Precisión ≠ repetibilidad**: un robot puede volver siempre al mismo punto equivocado (repetible pero impreciso). Con *teach pendant* basta la repetibilidad; con **programación offline** hay que calibrar.
+**Actuadores:**
 
-**Práctica guiada (en clase).** FK de un brazo 3R a mano (ángulos 0 → (3,0); 90° → (0,3)), FK/IK del Panda y detección de una singularidad en `roboticstoolbox`. Notebook: [sesion05_robot_cinematica.ipynb](sesion05_robot_cinematica.ipynb).
-
----
-
-# Sesión 6 · Planificación, percepción y programación (04/11)
-
-## 6.1 Planificar el movimiento: el espacio de configuración
-
-En vez de mover el robot por la habitación, se mueve un **punto por el espacio de configuración** (una dimensión por articulación). Los obstáculos se convierten en regiones prohibidas; queda el **espacio libre**, y el problema pasa de geométrico a **búsqueda de camino**:
-
-| Método | Idea | Fuerte en | Flojo en |
-|---|---|---|---|
-| **Grafo de visibilidad** | Nodos en los vértices de los obstáculos, aristas con línea de visión | Camino **más corto** en 2D | Escala mal; **roza** las esquinas |
-| **Diagrama de Voronoi** | Caminos por los bordes entre regiones | Camino **más seguro** | Más largo |
-| **Descomposición celular** | Trocea el espacio libre en celdas | Simple y completo | Explota con la dimensión |
-| **Muestreo (RRT, PRM)** | Configuraciones al azar conectadas hasta unir inicio y meta | **Lo único práctico con 6-7 ejes** | Sin optimalidad; hay que suavizar |
-
-!!! tip "Plan ≠ política"
-    Un **plan** dice qué camino seguir; una **política** dice qué hacer desde cualquier estado. La robótica real planifica en cinemática y convierte el plan en política; el **control óptimo** (LQR/iLQR) optimiza las dos cosas a la vez.
-
-## 6.2 Percepción: localización, mapeo y SLAM
-
-| Problema | Se conoce | Se busca |
+| Tipo | Cómo funciona | Dónde |
 |---|---|---|
-| **Localización** | El mapa | Dónde está el robot |
-| **Mapeo** | Dónde está el robot | El mapa |
-| **SLAM** | Nada | **Las dos a la vez** |
+| **Eléctrico** | Motor que gira | Articulaciones (el del DOBOT) |
+| **Neumático** | Aire comprimido | Pinza y ventosa |
+| **Hidráulico** | Fluido a presión | Maquinaria pesada |
 
-SLAM parece un imposible (para saber dónde estás necesitas el mapa y viceversa), pero se resuelve **probabilísticamente**: el robot mantiene una **distribución de probabilidad** sobre su posición (estado de creencia) y la afina con cada medida. Herramientas: **filtros de Kalman**, modelos ocultos de Markov, **filtro de partículas (MCL)** — la creencia como una nube de hipótesis que colapsa a un único sitio con suficientes medidas.
+**Sensores:** los **propioceptivos** informan del propio robot (**encoders** de eje, finales de carrera) y los **exteroceptivos** del entorno (**fotocélula**, **sensor de color**, **visión**). El DOBOT usa encoders internos y, con el kit de cinta, una fotocélula y un sensor de color.
 
-!!! warning "Por qué la odometría no basta"
-    Contar vueltas de rueda es barato… durante unos metros: las ruedas **patinan** y el error **se acumula sin límite**. La odometría siempre se combina con sensores inerciales y referencias externas. Es la razón de ser de la localización probabilística.
+> **Definición · Efector final (EOAT, *end of arm tooling*).** La herramienta del extremo del brazo. El DOBOT Magician los tiene intercambiables:
 
-## 6.3 Incertidumbre, aprendizaje y sim-to-real
-
-El aprendizaje por refuerzo funciona muy bien en simulación y muy mal en el robot real, por dos razones:
-
-- El mundo real **no va más rápido que el tiempo real**: los millones de pruebas de una hora de simulación son **años** en la realidad.
-- El robot **no puede arriesgarse** a la prueba que lo dañaría — que es justo la que más enseñaría.
-
-De ahí el problema central de la robótica aprendida: **sim-to-real**. En 2026 se ataca con **datos sintéticos**, **domain randomization**, teleoperación + **aprendizaje por imitación**, y modelos VLA entrenados a escala que ya ejecutan tareas de manipulación nunca vistas.
-
-## 6.4 Programar un robot: cinco técnicas
-
-| Técnica | Cómo funciona | Ventaja | Coste | Cuándo |
-|---|---|---|---|---|
-| **Teach pendant** | Guías el brazo por los puntos y los grabas | Mínima curva de aprendizaje | **Para la producción** mientras programas | Trayectorias básicas, paletizado |
-| **Guiado manual** | Mueves el efector con la mano | Intuitivo, sin código | Solo cobots | Montaje asistido |
-| **Textual** (RAPID/KRL/URScript) | Código nativo del fabricante | Determinista, se integra con PLC | Sintaxis propietaria, no portable | Células de alta cadencia |
-| **Offline (OLP)** | Programas en simulación sobre CAD | **Cero paro de producción** | Licencias + robot calibrado | Geometrías complejas |
-| **ROS 2 + MoveIt 2 / Nav2** | Middleware de nodos y *topics* | Estándar abierto, acceso a la IA | Curva de aprendizaje | Móviles, investigación, multi-robot |
-
-**Estado del arte:** ROS 2 (Jazzy) con MoveIt 2 para manipulación y Nav2 para navegación; simulación con **Isaac Sim/Isaac Lab** (NVIDIA), **MuJoCo** (DeepMind) y Gazebo Harmonic; y **modelos fundacionales** (RT-2, OpenVLA, π0, GR00T) que convierten un prompt o una demo en una política de manipulación.
-
-## 6.5 Cobots y la ISO que cambió en 2025
-
-Los **cobots** comparten espacio con personas gracias a la **limitación de potencia y fuerza** (UR e-Series ±0,03-0,05 mm de repetibilidad, Franka Research 3, KUKA LBR).
-
-!!! important "«Colaborativo» no es una propiedad del hardware"
-    La **ISO 10218:2025** prohíbe llamar colaborativo a un brazo aislado: lo que puede ser colaborativa es la **aplicación completa** (robot + herramienta + entorno + tarea). Un cobot con un cuchillo en la pinza no es una aplicación colaborativa. Es el matiz legal que decide si hace falta vallado.
-
-**Práctica guiada (en clase).** Navegación con `aitk.robots`: un Scribbler con cámara sigue una línea usando **reglas** sobre los píxeles (la misma que usará A2 en versión difusa). Notebook: [sesion06_planificacion_percepcion.ipynb](sesion06_planificacion_percepcion.ipynb).
-
-```python
-%pip install aitk aitk.robots pillow
-import numpy as np
-from PIL import Image, ImageDraw
-import aitk.robots as bots
-
-# Pista circular dibujada en el propio notebook (autocontenido)
-img = Image.new("RGB", (220, 180), "white")
-ImageDraw.Draw(img).ellipse([50, 30, 170, 150], outline="black", width=14)
-img.save("pista.png")
-
-world = bots.World(220, 180, boundary_wall_color="yellow", ground_image_filename="pista.png")
-robot = bots.Scribbler(x=105, y=95, a=90)
-robot.add_device(bots.Camera(64, 32))
-world.add_robot(robot)
-
-def seguir_por_reglas(robot):
-    a = np.asarray(robot["camera"].get_image())
-    oscuros = np.where(a.mean(axis=2) < 100)          # píxeles de la línea
-    if len(oscuros[0]) == 0:
-        robot.move(0.2, 0.3)                          # no ve línea: busca
-        return
-    desvio = (oscuros[1].mean() / a.shape[1]) - 0.5   # centroide x
-    robot.move(0.5, desvio * 1.5)                     # avanza y corrige
-
-world.reset()
-world.seconds(8, [seguir_por_reglas], real_time=False)
-world.display()   # imagen final; world.watch() para el vídeo
-```
-
----
-
-# Sesión 7 · Diseño e implementación de sistemas robotizados (09/11)
-
-## 7.1 Elegir el robot: la tarea manda
-
-| Criterio | Pregunta guía | Dato típico |
+| Efector | Para qué | Dato |
 |---|---|---|
-| **Payload** | ¿Qué masa mueve el efector **con herramienta** (EOAT)? | UR3e 3 kg … UR16e 16 kg; FANUC hasta 2,3 t |
-| **Alcance** | ¿Distancia máxima? | KUKA KR AGILUS 726-1.101 mm; FANUC 4,7 m |
-| **Repetibilidad** | ¿Dispersión al volver al mismo punto? | UR e-Series ±0,03-0,05 mm |
-| **Precisión** | ¿Coincide el punto con el programado? | Mejora con calibración (ISO 9283) |
-| **Entorno** | ¿Temperatura, polvo, ATEX? | Versiones IP / ATEX |
+| **Portaminas / rotulador** | Dibujar y escribir | Ø 10 mm |
+| **Pinza neumática** | Coger objetos rígidos | recorrido 27,5 mm, fuerza 8 N |
+| **Ventosa** | Coger objetos planos/lisos | Ø 20 mm, −35 kPa |
+| **Impresión 3D / láser** | Mención (no se usan en clase) | — |
 
-!!! warning "El payload no es el peso de la pieza"
-    Es la pieza **más** la herramienta, la brida, los cables y los sensores — y hay que comprobar los **momentos de inercia**: un robot puede aguantar 10 kg pegados a la brida y no 6 kg en el extremo de una herramienta larga.
+> **Ejemplo · El caso de la ventosa.** Una ventosa no «agarra»: **aspira**. Con −35 kPa y Ø 20 mm, la fuerza teórica de sujeción es `F = P · A ≈ 35000 Pa × π·(0,01 m)² ≈ 11 N`, suficiente para un cubo ligero pero **no** para una pieza pesada o porosa. Elegir efector es parte del diseño.
 
-**Ejemplo guiado (la célula LARA).** Recoger tarros de miel de 0,5 kg de una cinta y colocarlos en una caja a 700 mm, con repetibilidad ±0,1 mm:
+## 5. El sistema robotizado: robot + controlador + entorno (CE 4d)
 
-1. **Payload:** tarro (0,5) + pinza (0,5) + cables ≈ **1,2 kg** → payload ≥ 2 kg. Un **UR5e** (5 kg, 850 mm) o un KUKA KR AGILUS (6 kg) cumplen.
-2. **Repetibilidad:** ±0,1 mm pedida; ambos van sobrados (±0,05 mm). Puntos **enseñados**, no de CAD: no hace falta calibrar.
-3. **Singularidades:** se simula la célula y se comprueba que la trayectoria no pasa por codo estirado ni muñeca alineada; si el *layout* obligara a cruzarla, **se cambia el layout**, no el controlador.
-4. **Seguridad:** comparte espacio con personas → **aplicación colaborativa** (ISO 10218:2025); si es célula cerrada de alta cadencia → vallado con enclavamientos.
-
-## 7.2 La célula y la Industria 4.0
+Un **sistema robotizado** no es solo el brazo: es la **célula** completa.
 
 ```mermaid
 flowchart LR
-    PLC[PLC de seguridad] <-->|PROFINET / EtherCAT| R[Robot]
-    R --> S[Sensores<br/>visión, fuerza]
-    R --> H[Herramienta EOAT]
-    R -->|OPC UA / MQTT| IIOT[Plataforma IIoT / MES]
-    IIOT --> DT[Gemelo digital<br/>mantenimiento predictivo]
+    PLC[PLC / controlador] <-->|Ethernet / USB| R[Robot DOBOT]
+    C[Cinta transportadora] -->|fotocélula| R
+    R --> EF[Pinza / ventosa]
+    R --> SC[Sensor de color]
+    R -->|telemetría| MES[Supervisión]
 ```
 
-- El **PLC** coordina la célula con buses deterministas (PROFINET, EtherCAT, EtherNet/IP).
-- La telemetría viaja con **OPC UA** o **MQTT** al MES y al **gemelo digital**, que anticipa fallos (fatiga de reductoras) antes de que paren la línea.
-- El ciclo de vida: requisitos → selección → simulación → integración → puesta en marcha → mantenimiento predictivo.
-
-## 7.3 Seguridad y normativa (y el AI Act)
-
-| Norma | Qué regula |
+| Elemento | Función |
 |---|---|
-| **ISO 12100** | Evaluación de riesgos de máquinas (la base) |
-| **ISO 10218-1/-2** | Robots y sistemas robotizados industriales |
-| **ISO 10218:2025** | **Versión vigente**: absorbe la ISO/TS 15066 (límites biomecánicos de cobots) y añade **ciberseguridad industrial** |
-| **ISO 9283** | Cómo se miden repetibilidad y precisión |
+| **Robot + controlador** | Ejecuta el programa y gobierna los ejes |
+| **Entorno** | Cinta, sensor de presencia, sensor de color, mesa de trabajo |
+| **PLC / comunicaciones** | Coordina robot y periféricos (en el DOBOT, por su API) |
+| **Seguridad** | Paradas, límites de movimiento, no invadir la trayectoria |
 
-Además, el **AI Act** considera de **alto riesgo** los componentes de seguridad de productos y la maquinaria con IA (Anexo I); una célula con visión y decisión autónoma entra en ese perímetro, con sus obligaciones de documentación y supervisión humana.
+**Aplicaciones típicas** (las que se practican en el aula): **pick & place**, **paletizado** (dejar piezas en filas y capas), **clasificación por color** y **dibujo/escritura** con portaminas.
 
-## 7.4 Mercado y tendencias (2026)
+> **Más información.** En la industria, la célula se diseña **empezando por la tarea**: qué pieza, qué peso, qué cadencia, qué precisión y qué entorno. Después se elige robot (carga útil, alcance, repetibilidad) y efector. El DOBOT tiene **500 g de carga útil**, **320 mm de alcance** y **±0,2 mm de repetibilidad**: suficiente para piezas ligeras y trabajos de precisión de laboratorio, no para piezas de varios kilos.
 
-- **AMR y logística:** Amazon Robotics (>1 M de robots), MiR, Locus; el *pick & place* sigue siendo el 60 % de las ventas de brazos industriales.
-- **Humanoides:** primeras implantaciones piloto en logística (Figure, Agility, Unitree); el coste aún supera el de un AMR.
-- **Cobots:** segmento de mayor crecimiento; el criterio de compra ya no es «cuántos kilos» sino **facilidad de integrar IA** (visión, OLP, ROS 2).
-- **Foundation models:** la promesa de «aprende la tarea viéndome hacerla 20 veces» está en pilotos, no en líneas de producción.
-- **Regulación:** ISO 10218:2025 y AI Act obligan a **documentar la aplicación completa** y a evaluar la célula, no solo el robot.
+## 6. Técnicas de programación de robots (CE 4c)
 
-**Proyecto integrador (A3).** Diseñar la célula LARA completa: tarea, selección del robot (payload/alcance/repetibilidad), layout sin singularidades, sensores, seguridad (colaborativa o vallada) y una tabla de decisión final. Se entrega como notebook.
+> **Definición.** Programar un robot es decirle **qué trayectoria** seguir y **cuándo** actuar sobre el efector. Hay varias técnicas, y cada una cambia quién escribe el movimiento y cuánto se tarda.
+
+| Técnica | Cómo funciona | Ventaja | Inconveniente | Cuándo |
+|---|---|---|---|---|
+| **Guiado / teach pendant** | Mueves el brazo a mano o con la botonera y grabas puntos | Rapidísima, sin código | Poco flexible; el robot está parado | Trayectorias simples, puntos de paso |
+| **Programación por bloques (Blockly)** | Encajas bloques de movimiento | Muy visual, ideal para aprender | Limitada (p. ej. sin arcos) | Docencia, prototipos |
+| **Programación textual (Python + API)** | Escribes el script con `pydobot`/`dType` | Repetible, parametrizable, versionable | Requiere saber programar | Aula y producción real |
+| **Online** | Se ejecuta sobre el robot conectado | Feedback inmediato | Ocupa el robot mientras programas | Puesta a punto |
+| **Offline** | Se escribe y **valida sin el robot** | **Cero paro**; varios equipos a la vez | Exige comprobar límites por software | Nuestro caso: un solo brazo |
+
+> **Ejemplo · Nuestro flujo (offline con validación).** Con **un solo brazo** para todo el grupo: cada equipo escribe y **comprueba** su script en un cuaderno Colab (sintaxis, número de parámetros, rangos, límites del espacio de trabajo) → lo entrega → el docente lo carga y lo ejecuta en el brazo → si falla, se depura en directo. Es el ciclo real **programo → compruebo → envío → miro qué sale**.
+
+## 7. El DOBOT Magician y su API
+
+| Especificación | Valor |
+|---|---|
+| Ejes | **4** (base, brazo trasero, antebrazo, muñeca) |
+| Carga útil | **500 g** |
+| Alcance | **320 mm** |
+| Repetibilidad | **±0,2 mm** |
+| Comunicación | USB / Wi-Fi / Bluetooth |
+| Alimentación | 12 V CC |
+| Accesorio | Cinta transportadora con fotocélula y sensor de color |
+
+**Dos formas de programarlo:**
+
+1. **DobotStudio / DobotLab** (interfaz gráfica): teach, Blockly y editor de script.
+2. **Python** con la API oficial (`dType`) o la librería **`pydobot`** (más cómoda).
+
+> **Definición · Comandos inmediatos vs. encolados.** La API permite ejecutar una orden **ya** (inmediata) o **encolarla** en una cola FIFO (`isQueued=1`). Encolar es lo que permite **construir una secuencia de movimiento** sin esperar: el robot la ejecuta en orden. Es la diferencia entre **teleoperar** (orden a orden) y **programar** (una secuencia completa). Para sincronizar, se puede consultar la pose con `GetPose` hasta que el robot llegue al punto.
+
+```python
+# API oficial (dType) — movimiento cartesiano lineal a un punto
+dType.SetPTPCoordinateParams(api, 150, 500, 150, 500, isQueued=0)  # vel, ac
+dType.SetPTPCmd(api, 2, x, y, z, r, isQueued=1)                    # modo 2 = lineal
+dType.SetWAITCmd(api, 500, isQueued=1)                             # esperar 0,5 s
+```
+
+```python
+# pydobot — misma idea, API de alto nivel
+from pydobot import Dobot
+robot = Dobot(port="/dev/ttyUSB0")
+robot.move_to(250, 0, 50, 0)     # x, y, z, r
+robot.gripper(close=False)        # abrir pinza (ventosa: robot.suck(True))
+robot.wait(500)
+robot.home()
+robot.close()
+```
+
+> **Más información.** En el cuaderno Colab usamos una clase **`BrazoSimulado`** que imita esta API: registra las órdenes, **valida rangos** (X entre 150 y 320 mm, radio ≤ 320 mm, Z dentro de límites) y **dibuja la trayectoria XY** con matplotlib. Así el equipo **verifica su dibujo antes de enviarlo al robot real**, sin hardware y sin instalar simuladores 3D.
+
+## 8. Autoevaluación
+
+<details>
+<summary>1. ¿Cuántos grados de libertad tiene el DOBOT Magician y para qué alcanzan?</summary>
+
+Cuatro (base, brazo trasero, antebrazo y muñeca). Alcanzan para pick & place y dibujo, pero **no** para orientar libremente una herramienta en 3D (harían falta 6).
+</details>
+
+<details>
+<summary>2. ¿Por qué la cinemática directa es «fácil» y la inversa «difícil»?</summary>
+
+La directa es geometría encadenada y tiene **solución única**; la inversa puede tener **varias soluciones**, atravesar **singularidades** o no tener solución (fuera de alcance).
+</details>
+
+<details>
+<summary>3. ¿Qué diferencia hay entre espacio articular y cartesiano?</summary>
+
+El **articular** da el valor de cada eje `[J1..J4]`; el **cartesiano** da la pose del efector `[X, Y, Z, RZ]`. Un mismo punto cartesiano puede lograrse con distintas configuraciones articulares.
+</details>
+
+<details>
+<summary>4. ¿Qué es una singularidad y qué se ve en la célula?</summary>
+
+Configuración en la que el jacobiano pierde rango: la velocidad articular tiende a infinito. En la práctica se ve **vibración, sobrecorriente o parada de seguridad**.
+</details>
+
+<details>
+<summary>5. Empareja efector y tarea: pinza, ventosa, portaminas.</summary>
+
+**Pinza** → objetos rígidos (cubos); **ventosa** → objetos planos y lisos; **portaminas** → dibujar/escribir.
+</details>
+
+<details>
+<summary>6. ¿Qué significa que un comando esté «encolado» (`isQueued=1`)?</summary>
+
+Que se añade a una **cola FIFO** y el robot lo ejecutará en orden. Permite construir una **secuencia** de movimiento sin esperar a cada orden; es la base de la programación frente a la teleoperación.
+</details>
+
+<details>
+<summary>7. ¿Por qué usamos programación offline si tenemos el robot delante?</summary>
+
+Porque hay **un solo brazo** para todo el grupo: los equipos escriben y **validan sin el robot** (Colab + `BrazoSimulado`) y el docente ejecuta por turnos. Reduce el paro del robot y permite trabajar a varios equipos a la vez.
+</details>
+
+<details>
+<summary>8. ¿Qué diferencia hay entre MoveJ y MoveL?</summary>
+
+**MoveJ** interpola en el **espacio articular** (movimiento curvo, más rápido, no garantiza trayectoria recta); **MoveL** mueve la herramienta en **línea recta** (más preciso, pero puede acercarse a singularidades).
+</details>
+
+<details>
+<summary>9. ¿Qué mide la repetibilidad y en qué se diferencia de la precisión?</summary>
+
+La **repetibilidad** es la dispersión al volver al mismo punto programado (±0,2 mm en el DOBOT); la **precisión** es si ese punto coincide con el que se quería alcanzar. Un robot puede ser repetible pero impreciso.
+</details>
+
+<details>
+<summary>10. ¿Qué comprueba el `BrazoSimulado` antes de enviar el script al robot?</summary>
+
+El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radio ≤ 320 mm, Z dentro de límites) y dibuja la **trayectoria XY** para que el equipo vea si su dibujo tiene sentido.
+</details>
 
 ---
 
-## Puntos clave
+## Cobertura de criterios
 
-- Un robot es un **agente encarnado**: el único sistema de IA que cambia el mundo físico, en un entorno **parcialmente observable, estocástico y multiagente**.
-- La robótica parte el problema en **tarea → movimiento → control**; cada nivel tiene sus técnicas.
-- La **cinemática directa** (DH) es única; la **inversa** tiene hasta **16 soluciones**, redundancia y **singularidades**.
-- **Precisión no es repetibilidad**; la odometría se degrada sin límite: siempre hay que corregirla.
-- Planificar es buscar camino en el **espacio de configuración**: visibilidad (corto), Voronoi (seguro), **RRT/PRM** (muchas dimensiones).
-- **SLAM** mantiene una **distribución de probabilidad** sobre la posición, no una respuesta única.
-- El **RL** funciona en simulación y falla en lo real: **sim-to-real** es el problema abierto de la robótica aprendida.
-- Hay **cinco formas** de programar un robot; la IA aparece con **visión, adaptación y aprendizaje**.
-- «**Colaborativo**» es una propiedad de la **aplicación completa** (ISO 10218:2025), no del hardware.
-- Diseñar es **emparejar la tarea con el modelo** (payload, alcance, repetibilidad, seguridad) y **verificarlo en simulación**.
-
-## Glosario
-
-| Término | Definición |
-|---|---|
-| **Robot** | Máquina programable que percibe, procesa y actúa físicamente |
-| **Efector / EOAT** | Pieza que actúa sobre el entorno / herramienta del extremo del brazo |
-| **Manipulador / cobot** | Brazo robótico / robot seguro entre personas |
-| **DoF** | Grados de libertad; ≥ 6 para pose libre en 3D |
-| **Espacio articular / cartesiano** | Vector de articulaciones / pose del efector |
-| **DH** | Parámetros de Denavit-Hartenberg (θ, d, a, α) |
-| **FK / IK** | Cinemática directa / inversa |
-| **Jacobiano** | Relaciona velocidades articulares y cartesianas |
-| **Singularidad** | Configuración donde el jacobiano pierde rango |
-| **Redundancia** | Más DoF de los necesarios → infinitas soluciones |
-| **Precisión / repetibilidad** | Error frente al punto programado / dispersión al repetir |
-| **Espacio de configuración / espacio libre** | Todas las configuraciones / las que no colisionan |
-| **RRT / PRM** | Planificadores por muestreo aleatorio |
-| **Plan / política** | Camino concreto / acción desde cualquier estado |
-| **SLAM / MCL** | Localización y mapeo simultáneos / filtro de partículas |
-| **Sim-to-real** | Transferir lo aprendido en simulación al robot real |
-| **Teach pendant / OLP** | Programación manual por puntos / offline sobre CAD |
-| **ROS 2 / MoveIt 2 / Nav2** | Middleware robótico / manipulación / navegación |
-| **VLA** | Modelo *vision-language-action* para robótica |
-| **Payload** | Carga útil máxima contando herramienta y sensores |
-| **Célula robotizada** | Robot + herramientas + PLC + sensores |
-| **Gemelo digital** | Réplica virtual alimentada con datos reales |
-| **ISO 10218:2025** | Norma vigente de seguridad de robots (absorbe la TS 15066) |
-
-## FAQ
-
-??? question "¿Un robot necesita inteligencia artificial?"
-    No siempre. Si la pieza llega siempre al mismo sitio, un programa fijo es la respuesta correcta. La IA aparece con **visión, adaptación o aprendizaje**.
-
-??? question "¿Qué pasa si el robot entra en una singularidad?"
-    Las velocidades articulares tienden a infinito: sobrecorriente, vibración o **parada de seguridad**. No «se rompe» sin más, pero el ciclo se cae. Se evita al planificar.
-
-??? question "¿Por qué un 6-ejes llega al mismo punto de varias formas?"
-    Porque la **IK tiene múltiples soluciones** (hasta 16). Codo arriba o abajo llegan igual; el controlador elige por criterio (obstáculos, recorrido).
-
-??? question "¿Por qué no resolver la IK probando ángulos al azar?"
-    Porque el espacio es continuo y de 6 dimensiones. Los métodos numéricos usan el **jacobiano** para saber en qué dirección mover cada articulación — y aun así pueden quedarse en mínimos locales.
-
-??? question "¿Planificar y controlar es lo mismo?"
-    No. **Planificar** es decidir el camino, una vez. **Controlar** es seguirlo corrigiendo miles de veces por segundo. El plan es el dibujo; el control, el movimiento.
-
-??? question "¿Por qué el robot no aprende directamente en el mundo real?"
-    Porque el mundo no va más rápido que el tiempo real y el robot **no puede permitirse la prueba que lo dañaría**. De ahí el **sim-to-real**.
-
-??? question "¿Qué lenguaje usan los robots industriales?"
-    Propietarios: **RAPID** (ABB), **KRL** (KUKA), **URScript** (Universal Robots, muy parecido a Python). El estándar abierto es **ROS 2** con Python.
-
-??? question "¿Cuándo un cobot no es colaborativo?"
-    Cuando la aplicación completa (robot + herramienta + entorno + tarea) no cumple la ISO 10218:2025. Un cobot con una herramienta cortante no es una aplicación colaborativa.
-
-## Evaluación (RA4)
-
-| Peso | Instrumento |
-|---|---|
-| **40 %** actividades | A1 (cinemática), A2 (navegación reglas/difusa) y A3 (proyecto de diseño de célula), con rúbrica |
-| **60 %** prueba escrita | Test y desarrollo sobre RA4 (hardware, FK/IK, singularidades, planificación, SLAM, programación, diseño y normativa) |
-
-La normativa exige **todos los RA** y **≥5 en cada RA** (Orden 8/2025, art. 5.1). Recuperación: repetir el análisis/diseño con un caso distinto (art. 14.4).
-
-## Recursos
-
-- `material_david/docs/UD04/UD04_ES.md` (fuente base, CC BY-NC-SA 4.0; cap. 26 *Robotics* de Russell & Norvig, 4.ª ed.).
-- [roboticstoolbox-python](https://petercorke.github.io/robotics-toolbox-python/) · [aitk.robots](https://github.com/ArtificialIntelligenceToolkit/aitk.robots)
-- [ROS 2](https://docs.ros.org/) · [MoveIt 2](https://moveit.ai/) · [Isaac Sim/Lab](https://developer.nvidia.com/isaac) · [MuJoCo](https://mujoco.org/)
-- [IFR World Robotics](https://ifr.org/) · [ISO 10218:2025](https://www.iso.org/standard/51330.html)
+| CE | Dónde se evidencia |
+|----|--------------------|
+| **4a** | §2–§4 (anatomía, cinemática, singularidades) + Actividad 1 (cinemática) |
+| **4b** | §4, §6, §7 (soluciones: efectores, validación offline, depuración) + Actividades 2 y 3 |
+| **4c** | §6 (tabla comparativa de técnicas) + guiado vs. código en la sesión 2 |
+| **4d** | §5 y §8 (diseño de la célula) + Actividad 3 (pick & place) y memoria |

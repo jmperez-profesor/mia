@@ -92,17 +92,18 @@ unidades:
     ra: RA4
     imparte: este docente
     horas: 6 h presenciales (3 sesiones) + 6 h trabajo autónomo (3 sesiones)
+    hardware: DOBOT Magician (4 ejes, 500 g, 320 mm, ±0,2 mm) + cinta con fotocélula y sensor de color
     semana_inicio: 5
     semana_fin: 7
     fecha_inicio: 2026-10-28
     fecha_fin: 2026-11-09
     sesiones:
-      - {id: S5, fecha: 2026-10-28, tipo: presencial, contenido: "Robot, cinemática y problemas (FK/IK, singularidades)"}
-      - {id: A1, fecha: 2026-11-02, tipo: autonoma, contenido: "Cinemática con roboticstoolbox-python (entregable)"}
-      - {id: S6, fecha: 2026-11-04, tipo: presencial, contenido: "Planificación, percepción y programación (RRT, SLAM, ROS 2)"}
-      - {id: A2, fecha: 2026-11-06, tipo: autonoma, contenido: "Navegación AITK: reglas vs. lógica difusa (entregable)"}
-      - {id: S7, fecha: 2026-11-09, tipo: presencial, contenido: "Diseño e implementación de sistemas robotizados (ISO 10218:2025)"}
-      - {id: A3, fecha: 2026-11-11, tipo: autonoma, contenido: "Proyecto: diseño de la célula LARA (entregable)"}
+      - {id: S5, fecha: 2026-10-28, tipo: presencial, contenido: "Teoría: tipos, anatomía, cinemática FK/IK, efectores, célula y programación"}
+      - {id: A1, fecha: 2026-11-02, tipo: autonoma, contenido: "Ficha de cinemática + Colab FK/IK 2R (entregable)"}
+      - {id: S6, fecha: 2026-11-04, tipo: presencial, contenido: "Brazo I: teach, espacio de trabajo y reto de dibujo con portaminas"}
+      - {id: A2, fecha: 2026-11-06, tipo: autonoma, contenido: "Script del reto de dibujo con BrazoSimulado (entregable)"}
+      - {id: S7, fecha: 2026-11-09, tipo: presencial, contenido: "Brazo II: pinza/ventosa y pick & place con cinta"}
+      - {id: A3, fecha: 2026-11-11, tipo: autonoma, contenido: "Script pick & place + memoria del equipo (entregable)"}
 
 # Calendario real del curso 2026-2027 (referencia; verificado en DOGV 2026/24495,
 # Resolución SAE 15/07/2026: docencia 01/10/2026 → 18/06/2027 máx.).
