@@ -186,6 +186,8 @@ Cada `docs/bloques/Bxx_RAy/sesionNN.md` sigue `legislacion/plantilla_sesion.md` 
 - 2026-08-27 (s2): 26 sesiones planificadas para RA1–RA3; cada sesión con práctica guiada (solución) + miniproyecto propuesto.
 - 2026-09-03: RA1 compactado en 1 sesión (2 h) y desplegado en Pages.
 - 2026-09-15: alcance redefinido a **RA1, RA5 y RA4**. RA5 reestructurado en **3 sesiones** (19/10, 21/10, 26/10) con enfoque de mercado (Pagarium, DMN, ZEN, FIGS, guardarraíles).
+- 2026-09-15: **B01/RA1**: apuntes de referencia completos (~4.000 palabras, con imágenes y fuentes) manteniendo la sesión compacta (`apuntes.md` + `sesion01.md`).
+- 2026-09-15: **B04/RA4**: UD04 reescrita con DOBOT Magician y apuntes ampliados (~4.000 palabras, con imágenes y vídeos).
 
 ## 9. Pendientes
 

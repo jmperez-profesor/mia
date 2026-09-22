@@ -84,8 +84,9 @@ nav:
   - Normativa: normativa/index.md
   - "B01 · RA1 — Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
+      - "Apuntes (RA1)": bloques/B01_RA1/apuntes.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
-          - Apuntes: bloques/B01_RA1/sesion01.md
+          - Plan de sesión: bloques/B01_RA1/sesion01.md
           - Práctica:
               - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s01.md
               - N01 Técnicas de IA: bloques/B01_RA1/sesion01_tecnicas_ia.ipynb
