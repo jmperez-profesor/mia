@@ -40,6 +40,10 @@ extra:
 
 plugins:
   - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      zoomable: true
   - minify:
       minify_html: true
   - redirects
@@ -51,6 +55,8 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences:
@@ -85,6 +91,7 @@ nav:
   - "B01 · RA1 — Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
       - "Apuntes (RA1)": bloques/B01_RA1/apuntes.md
+      - "Recursos NotebookLM": bloques/B01_RA1/recursos_nbl.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
           - Plan de sesión: bloques/B01_RA1/sesion01.md
           - Práctica:
