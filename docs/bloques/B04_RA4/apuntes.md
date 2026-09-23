@@ -366,7 +366,8 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 
 **Materiales del módulo (David Martínez):**
 - [UD04 · Análisis de sistemas robotizados](https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html)
-- [N04 · Cinemática de un manipulador](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N04_cinematica_manipulador.html) · [N11 · Diseño de un sistema robotizado](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N11_diseno_sistema_robotizado.html)
+- [N04 · Cinemática de un manipulador](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N04_cinematica_manipulador.html)
+- [N11 · Diseño de un sistema robotizado](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N11_diseno_sistema_robotizado.html)
 
 **Vídeos (YouTube):**
 - [Robots industriales y brazos manipuladores](https://www.youtube.com/results?search_query=robot+industrial+brazo+manipulador)
@@ -379,8 +380,11 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 - [IFR · *World Robotics*](https://ifr.org/) — estadísticas oficiales del sector.
 - [ISO 8373 · Robots y componentes robóticos (vocabulario)](https://www.iso.org/standard/55890.html).
 - [ISO 10218:2025 · Seguridad de robots industriales](https://www.iso.org/standard/51330.html).
-- [NVIDIA Isaac Sim/Lab](https://developer.nvidia.com/isaac) · [MuJoCo](https://mujoco.org/) · [ROS 2](https://docs.ros.org/).
-- [DOBOT · documentación oficial](https://www.dobot.cc/) · [pydobot](https://github.com/luismesas/pydobot).
+- [NVIDIA Isaac Sim/Lab](https://developer.nvidia.com/isaac)
+- [MuJoCo](https://mujoco.org/)
+- [ROS 2](https://docs.ros.org/).
+- [DOBOT · documentación oficial](https://www.dobot.cc/)
+- [pydobot](https://github.com/luismesas/pydobot).
 
 > Créditos de imágenes: foto del DOBOT del kit del aula (INDALevante); ilustraciones de robótica adaptadas de los materiales de la UD04 de David Martínez Peña (CC BY-NC-SA 4.0).
 

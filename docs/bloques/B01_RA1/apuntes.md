@@ -429,7 +429,10 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
 **Materiales del módulo (David Martínez):**
 - [UD01 · Caracterización de sistemas de IA](https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html)
 - [Ejercicios de autoevaluación UD01](https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html)
-- Notebooks: [N01 Técnicas de IA](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html) · [N02 Mapa de sistemas](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html) · [N05 Línea del tiempo](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html)
+- Notebooks:
+    - [N01 Técnicas de IA](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html)
+    - [N02 Mapa de sistemas](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html)
+    - [N05 Línea del tiempo](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html)
 
 **Vídeos (YouTube):**
 - [¿Qué es la inteligencia artificial?](https://www.youtube.com/results?search_query=que+es+la+inteligencia+artificial)
@@ -439,10 +442,12 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
 - [AlphaGo y Deep Blue](https://www.youtube.com/results?search_query=alphago+deep+blue)
 
 **Fuentes y organismos:**
-- [IBM · ¿Qué es la inteligencia artificial?](https://www.ibm.com/topics/artificial-intelligence) · [IBM · ¿Qué es el machine learning?](https://www.ibm.com/topics/machine-learning)
+- [IBM · ¿Qué es la inteligencia artificial?](https://www.ibm.com/topics/artificial-intelligence)
+- [IBM · ¿Qué es el machine learning?](https://www.ibm.com/topics/machine-learning)
 - [Parlamento Europeo · ¿Qué es la IA y cómo se usa?](https://www.europarl.europa.eu/topics/en/article/20200827STO85804/artificial-intelligence-opportunities-and-risks)
 - [AI Act (Reglamento UE 2024/1689)](https://www.boe.es/doue/2024/1689/L00001-00144.pdf)
-- [Russell y Norvig · AIMA](https://aima.cs.berkeley.edu/) · [Arend Hintze · «The four types of AI» (2016)](https://theconversation.com/understanding-the-four-types-of-ai-from-reactive-robots-to-self-aware-beings-67616)
+- [Russell y Norvig · AIMA](https://aima.cs.berkeley.edu/)
+- [Arend Hintze · «The four types of AI» (2016)](https://theconversation.com/understanding-the-four-types-of-ai-from-reactive-robots-to-self-aware-beings-67616)
 - [Vaswani et al. · *Attention Is All You Need* (2017)](https://arxiv.org/abs/1706.03762)
 
 > Créditos de imágenes: ilustraciones adaptadas de los materiales de la UD01 de David Martínez Peña (CC BY-NC-SA 4.0).

@@ -45,7 +45,10 @@ flowchart LR
 
 **Ficha de 1 minuto (plantilla que usarás en la práctica):**
 
-1. ¿Qué *percibe*? 2. ¿Con *reglas o datos* razona? 3. ¿Qué *acción* produce? 4. ¿Tarea estrecha cuál?
+1. ¿Qué *percibe*?
+2. ¿Con *reglas o datos* razona?
+3. ¿Qué *acción* produce?
+4. ¿Tarea estrecha cuál?
 
 *Ejemplo resuelto:* chatbot de reclamaciones → percibe texto del correo → razona con clasificador entrenado (datos etiquetados) → actúa enrutando. Tarea estrecha: clasificar devolución/cambio/defecto.
 

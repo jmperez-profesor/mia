@@ -483,5 +483,11 @@ La normativa exige **todos los RA** y **≥5 en cada RA** (Orden 8/2025, art. 5.
 ## Recursos
 
 - `material_david/docs/UD05/UD05_ES.md` (fuente base, CC BY-NC-SA 4.0).
-- [experta](https://experta.readthedocs.io/) · [CLIPS](https://www.clipsrules.net/) · [clipspy](https://clipspy.readthedocs.io/) · [Drools / Apache KIE](https://www.drools.org/) · [GoRules ZEN](https://gorules.io/) · [rule-engine](https://zerosteiner.github.io/rule-engine/)
-- [imodels (FIGS)](https://github.com/csinva/imodels) · [OPA](https://www.openpolicyagent.org/)
+- [experta](https://experta.readthedocs.io/)
+- [CLIPS](https://www.clipsrules.net/)
+- [clipspy](https://clipspy.readthedocs.io/)
+- [Drools / Apache KIE](https://www.drools.org/)
+- [GoRules ZEN](https://gorules.io/)
+- [rule-engine](https://zerosteiner.github.io/rule-engine/)
+- [imodels (FIGS)](https://github.com/csinva/imodels)
+- [OPA](https://www.openpolicyagent.org/)

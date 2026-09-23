@@ -6,34 +6,74 @@
 ## 1. Prueba tipo test (10 ítems)
 
 1. ¿Cuál de estos NO es un tipo de IA según la taxonomía clásica de Russell & Norvig?
-   a) Reactiva · b) Memoria limitada · c) Teoría de la mente · d) **Supervisada** ✅
+
+    - a) Reactiva
+    - b) Memoria limitada
+    - c) Teoría de la mente
+    - d) **Supervisada** ✅
 
 2. Un sistema de "memoria limitada" puede:
-   a) Razonar sobre creencias ajenas · b) **Usar experiencias recientes para decidir** ✅ · c) Autoconsciencia plena · d) Solo reglas fijas
+
+    - a) Razonar sobre creencias ajenas
+    - b) **Usar experiencias recientes para decidir** ✅
+    - c) Autoconsciencia plena
+    - d) Solo reglas fijas
 
 3. Un agente racional:
-   a) Siempre acierta · b) **Maximiza la medida de desempeño esperada** ✅ · c) No usa sensores · d) Es igual que un agente simple
+
+    - a) Siempre acierta
+    - b) **Maximiza la medida de desempeño esperada** ✅
+    - c) No usa sensores
+    - d) Es igual que un agente simple
 
 4. Entorno "episódico" significa que:
-   a) Hay un único estado · b) **Cada decisión no afecta a las siguientes** ✅ · c) Es determinista · d) No observable
+
+    - a) Hay un único estado
+    - b) **Cada decisión no afecta a las siguientes** ✅
+    - c) Es determinista
+    - d) No observable
 
 5. La representación del conocimiento con reglas "SI-ENTONCES" se denomina:
-   a) Conexionista · b) **Simbólica / a base de reglas** ✅ · c) Estadística · d) Subsimbólica
+
+    - a) Conexionista
+    - b) **Simbólica / a base de reglas** ✅
+    - c) Estadística
+    - d) Subsimbólica
 
 6. Un grafo de conocimiento permite:
-   a) Entrenar redes neuronales · b) **Modelar entidades y relaciones** ✅ · c) Solo almacenar imágenes · d) Ninguna
+
+    - a) Entrenar redes neuronales
+    - b) **Modelar entidades y relaciones** ✅
+    - c) Solo almacenar imágenes
+    - d) Ninguna
 
 7. El RPA (automatización robótica de procesos) mejora la eficiencia operativa porque:
-   a) Sustituye a todas las personas · b) **Automatiza tareas repetitivas y regladas** ✅ · c) Elimina la IA · d) Solo sirve en finanzas
+
+    - a) Sustituye a todas las personas
+    - b) **Automatiza tareas repetitivas y regladas** ✅
+    - c) Elimina la IA
+    - d) Solo sirve en finanzas
 
 8. El mantenimiento predictivo usa IA para:
-   a) Reparar después de la avería · b) **Anticipar fallos y programar la intervención** ✅ · c) Descartar sensores · d) Aumentar costes
+
+    - a) Reparar después de la avería
+    - b) **Anticipar fallos y programar la intervención** ✅
+    - c) Descartar sensores
+    - d) Aumentar costes
 
 9. Un sesgo en un sistema de IA puede aparecer por:
-   a) Datos no representativos · b) **Tanto por datos como por diseño** ✅ · c) Solo por el hardware · d) Nunca
+
+    - a) Datos no representativos
+    - b) **Tanto por datos como por diseño** ✅
+    - c) Solo por el hardware
+    - d) Nunca
 
 10. Para evaluar un sistema de IA conviene usar:
-    a) Solo la opinión del proveedor · b) **Métricas (precisión, recall, ROI) y revisión crítica** ✅ · c) Ninguna métrica · d) La fecha de instalación
+
+    - a) Solo la opinión del proveedor
+    - b) **Métricas (precisión, recall, ROI) y revisión crítica** ✅
+    - c) Ninguna métrica
+    - d) La fecha de instalación
 
 ## 2. Prueba de desarrollo (3 ejercicios)
 
