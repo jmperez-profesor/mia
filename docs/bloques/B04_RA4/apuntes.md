@@ -65,6 +65,7 @@ flowchart LR
 ![Manipulador de un ROV](assets/manipulador_rov.png)
 
 > **Más información · Historia de la robótica industrial.**
+>
 > - **1961 — Unimate.** El primer robot industrial entra en la cadena de montaje de General Motors (Ewing, Nueva Jersey) para manipular piezas calientes de fundición. Nace la robótica industrial.
 > - **1966 — Shakey.** El primer robot móvil con «inteligencia» (SRI), pionero de la percepción y la planificación.
 > - **1978 — PUMA.** Brazo de 6 ejes que se convierte en el estándar de la industria durante dos décadas (el `Puma560` sigue siendo el ejemplo canónico de la cinemática).
@@ -365,11 +366,13 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 ## 13. Recursos, vídeos y fuentes
 
 **Materiales del módulo (David Martínez):**
+
 - [UD04 · Análisis de sistemas robotizados](https://martinezpenya.es/ModelosIA/UD04/UD04_ES.html)
 - [N04 · Cinemática de un manipulador](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N04_cinematica_manipulador.html)
 - [N11 · Diseño de un sistema robotizado](https://martinezpenya.es/ModelosIA/UD04/notebooks/UD04_N11_diseno_sistema_robotizado.html)
 
 **Vídeos (YouTube):**
+
 - [Robots industriales y brazos manipuladores](https://www.youtube.com/results?search_query=robot+industrial+brazo+manipulador)
 - [DOBOT Magician: pick & place con cinta](https://www.youtube.com/results?search_query=dobot+magician+conveyor+pick+and+place)
 - [Cinemática directa e inversa de un brazo](https://www.youtube.com/results?search_query=cinematica+directa+inversa+robot+brazo)
@@ -377,6 +380,7 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 - [ROS 2 y MoveIt en manipulación](https://www.youtube.com/results?search_query=ros2+moveit+manipulation)
 
 **Fuentes y organismos:**
+
 - [IFR · *World Robotics*](https://ifr.org/) — estadísticas oficiales del sector.
 - [ISO 8373 · Robots y componentes robóticos (vocabulario)](https://www.iso.org/standard/55890.html).
 - [ISO 10218:2025 · Seguridad de robots industriales](https://www.iso.org/standard/51330.html).

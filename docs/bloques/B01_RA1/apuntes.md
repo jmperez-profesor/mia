@@ -252,6 +252,7 @@ Muchas tecnologías que usas a diario son IA, aunque no lo parezca:
 **KPIs con nombre propio:** **FCR** (resolución al primer contacto), **AHT** (tiempo medio de gestión), **Containment rate** (% cerradas por la IA), **OEE** (efectividad de equipo), **MTBF** (tiempo medio entre averías), **Cycle time** y **coste por documento**.
 
 > **Ejemplo resuelto · El KPI decide.** Un centro recibe **1.000 consultas/día** a **3 €** y 5 min cada una. Un chatbot resuelve el **60 %** en 10 s a **0,10 €**.
+>
 > - Antes: `1.000 × 3 € = 3.000 €/día`.
 > - Después: `600 × 0,10 € + 400 × 3 € = 1.260 €/día` → **−58 % de coste** y tiempo medio de ~5 a ~2 min.
 >
@@ -427,6 +428,7 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
 ## 15. Recursos, vídeos y fuentes
 
 **Materiales del módulo (David Martínez):**
+
 - [UD01 · Caracterización de sistemas de IA](https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html)
 - [Ejercicios de autoevaluación UD01](https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html)
 - Notebooks:
@@ -435,6 +437,7 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
     - [N05 Línea del tiempo](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html)
 
 **Vídeos (YouTube):**
+
 - [¿Qué es la inteligencia artificial?](https://www.youtube.com/results?search_query=que+es+la+inteligencia+artificial)
 - [Historia de la IA: de Turing a los LLM](https://www.youtube.com/results?search_query=historia+inteligencia+artificial)
 - [Machine learning explicado](https://www.youtube.com/results?search_query=machine+learning+explicado)
@@ -442,6 +445,7 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
 - [AlphaGo y Deep Blue](https://www.youtube.com/results?search_query=alphago+deep+blue)
 
 **Fuentes y organismos:**
+
 - [IBM · ¿Qué es la inteligencia artificial?](https://www.ibm.com/topics/artificial-intelligence)
 - [IBM · ¿Qué es el machine learning?](https://www.ibm.com/topics/machine-learning)
 - [Parlamento Europeo · ¿Qué es la IA y cómo se usa?](https://www.europarl.europa.eu/topics/en/article/20200827STO85804/artificial-intelligence-opportunities-and-risks)

@@ -12,7 +12,12 @@ titulo: "Introducción a la IA y tipos de sistemas"
 
 > **Filosofía:** mejor 2 cosas bien que 4 mal. Esta sesión compacta toda la UD01 de David (12 h / 4 sesiones de 3 h) en **2 h**: dos ideas concretas, sin profundizar. Todo lo demás queda como mapa de lectura, no como temario.
 >
-> **Las 2 cosas:** (1) caracterizar un sistema IA en 1 minuto · (2) decidir con 1 KPI si aporta eficiencia. Base: `material_david/docs/UD01/UD01_ES.md` + `artint/docs/ia/introduccion/`.
+> **Las 2 cosas:**
+>
+> 1. Caracterizar un sistema IA en 1 minuto.
+> 2. Decidir con 1 KPI si aporta eficiencia.
+>
+> Base: `material_david/docs/UD01/UD01_ES.md` + `artint/docs/ia/introduccion/`.
 
 ## Objetivos (solo 2)
 
