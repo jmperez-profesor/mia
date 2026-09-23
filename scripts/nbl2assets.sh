@@ -72,7 +72,7 @@ case "$TIPO" in
       echo "Pega esto en el .md (ajusta la ruta relativa y el texto):"
       echo "----------------------------------------------------------------"
       echo '<figure markdown>'
-      echo "  ![Descripción](../assets/nbl/${SLUG}-1.jpg){ width=\"700\" }"
+      echo "  ![Descripción](../../assets/nbl/${SLUG}-1.jpg){ width=\"700\" }"
       echo "  <figcaption>Descripción · elaborado con NotebookLM</figcaption>"
       echo '</figure>'
     else
@@ -82,7 +82,7 @@ case "$TIPO" in
       echo "Pega esto en el .md:"
       echo "----------------------------------------------------------------"
       echo '<figure markdown>'
-      echo "  ![Descripción](../assets/nbl/${SLUG}.jpg){ width=\"700\" }"
+      echo "  ![Descripción](../../assets/nbl/${SLUG}.jpg){ width=\"700\" }"
       echo "  <figcaption>Descripción · elaborado con NotebookLM</figcaption>"
       echo '</figure>'
     fi
@@ -98,9 +98,9 @@ case "$TIPO" in
     echo
     echo "Pega esto en el .md:"
     echo "----------------------------------------------------------------"
-    echo "- [$(echo "$NAME" | tr '_' ' ') (PDF)](../assets/pdf/$(basename "$OUT"))"
+    echo "- [$(echo "$NAME" | tr '_' ' ') (PDF)](../../assets/pdf/$(basename "$OUT"))"
     echo
-    echo '<iframe src="../assets/pdf/'"$(basename "$OUT")"'" width="100%" height="620" style="border:1px solid #ccc;border-radius:8px"></iframe>'
+    echo '<iframe src="../../assets/pdf/'"$(basename "$OUT")"'" width="100%" height="620" style="border:1px solid #ccc;border-radius:8px"></iframe>'
     ;;
   audio)
     ffmpeg -y -i "$FILE" -codec:a libmp3lame -q:a 5 "$AUDIO/${SLUG}.mp3" >/dev/null 2>&1
@@ -109,7 +109,7 @@ case "$TIPO" in
     echo "Pega esto en el .md:"
     echo "----------------------------------------------------------------"
     echo '<audio controls style="width:100%">'
-    echo "  <source src=\"../assets/audio/${SLUG}.mp3\" type=\"audio/mpeg\">"
+    echo "  <source src=\"../../assets/audio/${SLUG}.mp3\" type=\"audio/mpeg\">"
     echo '</audio>'
     ;;
   *)

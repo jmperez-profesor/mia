@@ -1,74 +1,56 @@
 # B01 · RA1 — Recursos NotebookLM
 
-Materiales complementarios generados con **NotebookLM** a partir de las fuentes del bloque (infografías, presentaciones, resúmenes y audio). Son material de **apoyo y repaso**, no sustituyen a los [apuntes](apuntes.md).
+Materiales complementarios generados con **NotebookLM** a partir de las fuentes del bloque (mapa mental, presentación, resúmenes y audio). Son material de **apoyo y repaso**, no sustituyen a los [apuntes](apuntes.md).
 
 !!! info "Cómo se ha generado"
     Estos artefactos se han elaborado con NotebookLM a partir de las fuentes del RA1 (RD 279/2021, apuntes de la UD01 y artículos de referencia). Se citan las fuentes originales; el material se comparte bajo **CC BY-NC-SA 4.0**.
 
-## Infografías
+## Mapa mental
 
-> Pulsa en una imagen para ampliarla (glightbox).
-
-| Infografía | Qué resume |
-|---|---|
-| *(pendiente de añadir)* | — |
-
-<!--
-Cuando tengas el fichero en docs/assets/nbl/, descomenta y ajusta:
+Visión general del bloque en un solo vistazo. Pulsa para ampliarlo.
 
 <figure markdown>
-  ![Tipos de sistemas de IA](../assets/nbl/ra1_tipos_ia.jpg){ width="700" }
-  <figcaption>Tipos de sistemas de IA · elaborado con NotebookLM</figcaption>
+  ![Mapa mental del RA1](../../assets/nbl/b01_mapa_mental.jpg){ width="100%" }
+  <figcaption>Mapa mental del RA1 · elaborado con NotebookLM</figcaption>
 </figure>
--->
 
-## Presentaciones e informes
+## Presentación: «El Atlas de la Inteligencia Artificial»
 
-- *(pendiente de añadir)*
+Guía visual de 15 diapositivas (IA, Machine Learning, Deep Learning y Big Data) pensada como repaso del bloque.
 
-<!--
-- [Presentación RA1 (PDF)](../assets/pdf/ra1_presentacion.pdf)
-- [Informe de investigación (PDF)](../assets/pdf/ra1_informe.pdf)
+- [Descargar la presentación (PDF, 15 diapositivas)](../../assets/pdf/b01_atlas_ia.pdf)
 
-O incrustar un visor:
-
-<iframe src="../assets/pdf/ra1_presentacion.pdf" width="100%" height="620" style="border:1px solid #ccc;border-radius:8px"></iframe>
--->
+<iframe src="../../assets/pdf/b01_atlas_ia.pdf" width="100%" height="640" style="border:1px solid #ccc;border-radius:8px"></iframe>
 
 ## Audio Overview (podcast)
 
+*(pendiente de añadir)*
+
 <!--
 <audio controls style="width:100%">
-  <source src="../assets/audio/ra1_overview.mp3" type="audio/mpeg">
+  <source src="../../assets/audio/b01_overview.mp3" type="audio/mpeg">
   Tu navegador no soporta audio.
 </audio>
 -->
 
-*(pendiente de añadir)*
-
 ## Resúmenes y notas
 
-Aquí se pueden pegar los **resúmenes** de NotebookLM adaptados a Markdown (con cita de la fuente).
-
-- *(pendiente de añadir)*
+*(pendiente de añadir)*
 
 ## Flashcards y autoevaluación
 
-Los cuestionarios de NotebookLM pueden convertirse en preguntas plegables como las de la [autoevaluación](apuntes.md#12-autoevaluacion):
-
-??? question "Pregunta de ejemplo (sustituir)"
-    Respuesta de ejemplo. Añade tantas como quieras con `??? question "..."`.
+*(pendiente de añadir)*
 
 ## Cuaderno público
 
-- *(pendiente de añadir enlace al cuaderno compartido de NotebookLM)*
+*(pendiente de añadir enlace al cuaderno compartido de NotebookLM)*
 
 ## Cómo añadir más material (guía rápida)
 
 1. Descarga el artefacto de NotebookLM (PDF/PNG para infografías y presentaciones; `.wav`/`.mp3` para el audio).
 2. Convierte y optimiza con el script del repositorio:
    ```bash
-   ./scripts/nbl2assets.sh B01 infografia.pdf
+   ./scripts/nbl2assets.sh B01 <fichero>
    ```
-3. Copia el bloque de `embed` que imprime el script en esta página (o descomenta el ejemplo).
+3. Copia el bloque que imprime el script en esta página.
 4. Cita siempre la **fuente original** y mantén la licencia CC BY-NC-SA 4.0.

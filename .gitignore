@@ -4,3 +4,5 @@ __pycache__/
 .cache/
 .ipynb_checkpoints/
 *.pdf
+# Excepción: PDFs de artefactos (NotebookLM, etc.) que sí se sirven en la web
+!docs/assets/pdf/*.pdf
