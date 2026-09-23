@@ -1,4 +1,0 @@
-# Backend MT5 Windows - 1 worker por terminal (limitación IPC de MetaTrader5)
-fastapi>=0.110
-uvicorn>=0.29
-MetaTrader5>=5.0.45
