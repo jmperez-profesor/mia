@@ -436,6 +436,11 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
     - [N02 Mapa de sistemas](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html)
     - [N05 Línea del tiempo](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html)
 
+**Recursos de vídeo (DotCSV):**
+
+- [Selección de vídeos del canal DotCSV para el RA1](recursos_video.md)
+- [Catálogo completo del canal DotCSV](../../recursos/dotcsv.md)
+
 **Vídeos (YouTube):**
 
 - [¿Qué es la inteligencia artificial?](https://www.youtube.com/results?search_query=que+es+la+inteligencia+artificial)

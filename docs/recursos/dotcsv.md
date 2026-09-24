@@ -1,6 +1,6 @@
 # Recursos · Canal DotCSV (vídeos de IA/ML)
 
-> Catálogo de vídeos recomendados del canal **DotCSV**, con enlace directo y uso didáctico. Se usa como **material de apoyo** en los bloques [B01 (RA1)](../bloques/B01_RA1/recursos_video.md), [B05 (RA5)](../bloques/B05_RA5/recursos_video.md) y [B04 (RA4)](../bloques/B04_RA4/recursos_video.md), que recogen la selección relevante para cada uno.
+> Catálogo de vídeos recomendados del canal **DotCSV**, con enlace directo y uso didáctico. La selección relevante para el bloque [B01 (RA1)](../bloques/B01_RA1/recursos_video.md) está recogida en su página de recursos. (DotCSV no cubre los bloques RA5 ni RA4.)
 
 ## Análisis del canal DotCSV para aprendizaje de IA/ML
 
