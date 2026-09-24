@@ -111,7 +111,6 @@ nav:
       - "S4 · Motores de reglas 2 (26/10/2026)":
           - Notebook: bloques/B05_RA5/sesion04_hibridos_guardarrailes.ipynb
       - Ejercicios de autoevaluación: bloques/B05_RA5/ejercicios.md
-      - "Recursos de vídeo (DotCSV)": bloques/B05_RA5/recursos_video.md
   - "B04 · RA4 — Análisis de sistemas robotizados":
       - Introducción: bloques/B04_RA4/index.md
       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
@@ -125,7 +124,6 @@ nav:
           - "Reto de dibujo (plantilla)": bloques/B04_RA4/colab/UD04_reto_dibujo_plantilla.ipynb
           - "Pick & place (plantilla)": bloques/B04_RA4/colab/UD04_pick_place_plantilla.ipynb
       - "Rúbrica RA4": bloques/B04_RA4/rubrica.md
-      - "Recursos de vídeo (DotCSV)": bloques/B04_RA4/recursos_video.md
   - Recursos:
       - "Canal DotCSV": recursos/dotcsv.md
   - Evaluación:
