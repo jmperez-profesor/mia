@@ -93,6 +93,7 @@ nav:
       - "Apuntes (RA1)": bloques/B01_RA1/apuntes.md
       - "Recursos NotebookLM": bloques/B01_RA1/recursos_nbl.md
       - "Recursos de vídeo (DotCSV)": bloques/B01_RA1/recursos_video.md
+      - "Guion de sesión con vídeo": bloques/B01_RA1/guion_video.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
           - Plan de sesión: bloques/B01_RA1/sesion01.md
           - Práctica:
