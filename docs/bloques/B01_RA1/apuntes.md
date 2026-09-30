@@ -240,6 +240,59 @@ Muchas tecnologías que usas a diario son IA, aunque no lo parezca:
 
 ![Robots de servicio](assets/robots.png)
 
+### 8.1 ¿Qué es un KPI?
+
+Un **KPI** (*Key Performance Indicator* → **indicador clave de rendimiento**) no es «un dato» ni
+«una cifra bonita»: es un **número elegido a propósito para decidir**. Un KPI que sirve siempre
+tiene esta pinta:
+
+```text
+KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (después)>
+```
+
+*Ejemplo completo:* **coste de atención** (€/día, media de septiembre de 2026) — antes **3.000 €**,
+objetivo **≤ 1.400 €**.
+
+| Criterio | La pregunta que te haces | No sirve | Sí sirve |
+|---|---|---|---|
+| **Medible** | ¿Tiene número y unidad? | «mejoramos la atención» | 3,00 € → 1,26 €/consulta |
+| **Comparado** | ¿Tiene antes/después? | «cuesta 1,26 €» suelto | 3,00 → 1,26 € (**−58 %**) |
+| **Atribuible** | ¿Lo mueve la IA que pongo? | suben las ventas (es diciembre) | baja el tiempo de las consultas automatizadas |
+| **Honesto** | ¿Cuenta todo lo que cuesta? | solo los 0,10 € del bot | + licencia, mantenimiento y revisión humana |
+| **Accionable** | Si falla, ¿sé qué hacer? | «el número está mal» | si la automatización cae del 60 % al 40 %, reentreno |
+
+#### KPI de negocio ≠ métrica de modelo
+
+| **KPI de negocio** (decide la empresa) | **Métrica de modelo** (decide el ML) |
+|---|---|
+| Coste por consulta, AHT, FCR, *containment rate* | Precisión, *recall*, F1, AUC |
+| Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
+| Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
+
+> **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI** — es una
+> métrica de modelo sobre 15 filas de Iris. Para **decidir** hace falta un KPI de negocio con
+> antes y después.
+
+#### Ejemplos con números (uno por tipo de mejora)
+
+| Quiero bajar… | KPI y unidad | Antes → Después (caso de clase) | Técnica |
+|---|---|---|---|
+| **Coste** | €/día | 3.000 € → 1.260 € (**−58 %**) | PLN / chatbot |
+| **Tiempo** | min/caso | 8 min → 5,8 min (**−27 %**) | Clasificación supervisada (§11) |
+| **Error** | % de clasificación errónea | 15 % → <5 % (**−10 p.p.**) | PLN supervisado |
+| **Cobertura** | *containment rate* (%) | 0 % → 60 % | Chatbot 24/7 |
+| **Disponibilidad** | MTBF (días) | 40 → 70 (**+75 %**) | Mantenimiento predictivo |
+
+**Ampliación:**
+
+- [Indicador clave de desempeño (Wikipedia, es)](https://es.wikipedia.org/wiki/Indicador_clave_de_desempe%C3%B1o) · [Key performance indicator (Wikipedia, en)](https://en.wikipedia.org/wiki/Key_performance_indicator)
+- [IBM · ¿Qué es un KPI?](https://www.ibm.com/topics/kpi)
+- [SMART criteria (Wikipedia)](https://en.wikipedia.org/wiki/SMART_criteria) — que el objetivo sea concreto y con fecha.
+- [Vanity metric (Wikipedia)](https://en.wikipedia.org/wiki/Vanity_metric) — la métrica que solo hace quedar bien.
+- [Cuadro de mando integral (Wikipedia, es)](https://es.wikipedia.org/wiki/Cuadro_de_mando_integral) · [Balanced Scorecard Institute](https://www.balancedscorecard.org/)
+- **KPIs de IA:** [NIST · AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [Stanford HAI · AI Index Report](https://aiindex.stanford.edu/report/) · [Google re:Work](https://rework.withgoogle.com/)
+- Materia del módulo: [UD01 · Caracterización de sistemas de IA (D. Martínez)](https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html)
+
 **KPIs que se suelen mejorar:**
 
 | Caso | Antes (sin IA) | Después (con IA) |
@@ -258,7 +311,7 @@ Muchas tecnologías que usas a diario son IA, aunque no lo parezca:
 >
 > Esquema que se repite siempre: **problema → KPI base → técnica → antes/después → decisión** (con riesgos).
 
-### 8.1 De la técnica al beneficio
+### 8.2 De la técnica al beneficio
 
 | Técnica | Ejemplo de uso | Mejora operativa |
 |---|---|---|
@@ -294,6 +347,7 @@ Muchas tecnologías que usas a diario son IA, aunque no lo parezca:
 - Aprendizaje **supervisado**, **no supervisado**, **por refuerzo**, **semi** y **auto-supervisado**.
 - La IA ya está en la vida cotidiana y en la empresa; las **nuevas interacciones** mejoran la eficiencia reduciendo coste, tiempo o error.
 - Sin **KPI comparado** (antes/después), no hay mejora demostrable.
+- Un **KPI** es un número con **unidad, periodo y referencia**: `métrica · unidad · periodo · antes · después`. **KPI de negocio ≠ métrica de modelo** — la precisión no decide, el coste o el tiempo sí.
 
 ## 11. Ejemplo guiado: de un problema de negocio a una solución de IA
 

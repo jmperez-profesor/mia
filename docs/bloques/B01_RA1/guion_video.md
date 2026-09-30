@@ -33,7 +33,7 @@
 | 32–50 | **Tu esquema** IA > ML > DL > GenAI (pizarra) + **Ejercicio 2**: clasifica supervisado / no supervisado |
 | 50–54 | **Vídeo · fragmento 3** (05:37–07:46) a 1,25× → RN/DL, big data, cierre y mapa |
 | 54–60 | **Puesta en común** del mapa conceptual (3 preguntas orales) |
-| 60–95 | **Cosa 2 · KPI**: caso de las 1.000 consultas resuelto + esquema *problema → KPI → técnica → antes/después* |
+| 60–95 | **Cosa 2 · KPI**: caso de las 1.000 consultas resuelto + esquema *problema → KPI → técnica → antes/después* → [desarrollo y ejemplos](#kpi) |
 | 95–110 | **Ejercicio 3**: calcula antes/después (código del apunte o a mano) |
 | 110–120 | **Cierre:** ficha + 1 riesgo + rúbrica del entregable |
 
@@ -138,6 +138,102 @@ FICHA DE 1 MINUTO  —  <sistema>
 
 !!! info "Materiales de estos 10 minutos"
     Pizarra con la ficha escrita antes de que entren · temporizador visible · tus objetivos ya en la pizarra · enlace al fragmento 1 abierto en una pestaña (no lo busques delante de ellos).
+
+---
+
+## Cosa 2 · KPI (60–95 min) {#kpi}
+
+### 1. Qué es un KPI (60–68 min) — texto literal
+
+**Dices:**
+
+> «Un KPI **no es “un dato”** ni una cifra que queda bonita en un informe. Es un **número con el
+> que se decide**. Y para que sirva, tiene que tener cinco piezas.»
+
+Escribe en la pizarra, al lado de la ficha:
+
+```text
+KPI = <métrica> · <unidad> · <periodo> · <ANTES> · <DESPUÉS>
+
+Ejemplo:  coste de atención · €/día · sept 2026 · antes 3.000 € · objetivo ≤ 1.400 €
+```
+
+**Las 5 comprobaciones** (las dices; van en voz alta, no en la pizarra):
+
+| | Pregunta | Si falla… |
+|---|---|---|
+| **Medible** | ¿Tiene número **y unidad**? | «mejoramos la atención» no es un KPI |
+| **Comparado** | ¿Tiene **antes y después**? | sin referencia, es una opinión |
+| **Atribuible** | ¿Lo mueve **la IA que pongo yo**? | «suben las ventas» = diciembre, no el modelo |
+| **Honesto** | ¿Cuenta **todo** lo que cuesta? | te olvidas de la licencia y del humano que revisa |
+| **Accionable** | Si falla, ¿**sé qué hacer**? | «el número está mal» no dice nada |
+
+> **Distinción que evita el error 1 de la entrega:** *precisión, recall, F1* son **métricas de
+> modelo**; *coste, tiempo y error de proceso* son **KPI de negocio**. **La precisión de 1,00 de
+> la práctica no decide nada**: decide el −58 %.
+
+### 2. El caso resuelto, paso a paso en la pizarra (68–80 min)
+
+**Dices el problema:**
+
+> «Centro con **1.000 consultas/día**, **3 €** y **5 minutos** cada una. Llega un chatbot que
+> resuelve el **60 %** a **0,10 €** en 10 segundos. ¿Compensa?»
+
+Resuelve **en la pizarra, en voz alta y en este orden:**
+
+| Paso | Qué escribes | Resultado |
+|---|---|---|
+| 1 · KPI base | coste de atención · €/día | **3.000 €** (`1.000 × 3`) |
+| 2 · Después | 600 automatizadas + 400 manuales | `600 × 0,10 + 400 × 3` = **1.260 €** |
+| 3 · Δ | `1 − 1.260/3.000` | **−58 %** |
+| 4 · Segundo KPI (tiempo) | 5 min → 2 min de media | **−60 %** |
+| 5 · Decisión | ¿sí/no? | **Sí**, con 1 riesgo |
+
+**Errores que corriges en la pizarra mientras lo resuelven:**
+
+- Sumar el bot **a** las manuales (`600×0,10 + 1.000×3`) → se cuentan dos veces.
+- Decir «ahorra 58 %» **sin €/día**: el % no se paga; se paga el euro.
+- Olvidar la licencia: si el bot cuesta ≈18 €/día, el ahorro pasa de 1.740 a 1.722 €/día.
+- Confundir **−11 p.p.** con **−11 %** cuando comparas dos porcentajes.
+
+### 3. Tres ejemplos más, en 3 minutos (80–86 min)
+
+| Quiero bajar… | KPI y unidad | Antes → Después | Técnica |
+|---|---|---|---|
+| **Tiempo** | min/caso | 8 min → 5,8 min (**−27 %**) | Clasificación supervisada |
+| **Error** | % de clasificación errónea | 15 % → <5 % (**−10 p.p.**) | PLN supervisado |
+| **Paradas** | MTBF (días) | 40 → 70 (**+75 %**) | Mantenimiento predictivo |
+
+**Dices:** «Fijaos en la columna de la **unidad**: €/día, min/caso, %, días. **Si no cabe una
+unidad, no es un KPI.**»
+
+### 4. El esquema que se repite (86–90 min)
+
+Escrito en la pizarra, bajo la ficha:
+
+```text
+problema  ->  KPI base  ->  técnica que encaja  ->  antes/después  ->  SÍ/NO + 1 riesgo
+```
+
+> «Esto es lo que significa **caracterizar un sistema de IA** para el RA1: no hay que entrenar
+> nada todavía. Solo identificar qué técnica encaja y qué mejora aporta.»
+
+### 5. Preguntas orales para comprobar (90–95 min)
+
+1. «¿Cuál es el KPI de *“priorizar incidencias”*?» → **tiempo de primera respuesta** o % resuelto a la primera.
+2. «Si el chatbot solo resuelve el 30 %, ¿gasta más o menos?» → **relativamente más ahorro (77 %), pero menos en €**; por eso se mira el euro, no el %.
+3. «¿La precisión del modelo es el KPI?» → no: es métrica de modelo. **El KPI es de negocio.**
+
+### Ampliación (para quien quiera más)
+
+- Definición, criterios y ejemplos con unidades: [apuntes §8.1 ¿Qué es un KPI?](apuntes.md#81-que-es-un-kpi)
+- [Indicador clave de desempeño (Wikipedia, es)](https://es.wikipedia.org/wiki/Indicador_clave_de_desempe%C3%B1o) · [Key performance indicator (Wikipedia, en)](https://en.wikipedia.org/wiki/Key_performance_indicator)
+- [IBM · ¿Qué es un KPI?](https://www.ibm.com/topics/kpi)
+- [SMART criteria](https://en.wikipedia.org/wiki/SMART_criteria) · [Vanity metric](https://en.wikipedia.org/wiki/Vanity_metric)
+- [Cuadro de mando integral (es)](https://es.wikipedia.org/wiki/Cuadro_de_mando_integral) · [Balanced Scorecard Institute](https://www.balancedscorecard.org/)
+- **KPIs de IA:** [NIST · AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) · [Stanford HAI · AI Index](https://aiindex.stanford.edu/report/) · [Google re:Work](https://rework.withgoogle.com/)
+- Materia del módulo: [UD01 (D. Martínez)](https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html)
+
 
 
 ## Enlaces para la presentación (embed con `start`/`end`)
