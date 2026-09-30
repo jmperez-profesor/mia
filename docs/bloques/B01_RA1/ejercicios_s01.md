@@ -27,3 +27,9 @@
 **10.** Nombra 1 riesgo (sesgo, privacidad, drift) de tu propuesta y su mitigación en 1 línea. *(UD01 §7)*
 
 > Original completo (31 ejercicios A–F): `https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html`
+
+---
+
+**Corrección guiada:** [Soluciones de los 10 ejercicios](soluciones_s01.md#2-ejercicios-de-autoevaluacion-110) · [Preguntas frecuentes de la sesión](faq_s01.md)
+
+> *Ambos enlaces están publicados para consulta durante el curso y se retiran del menú en fechas de evaluación.*

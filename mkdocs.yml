@@ -102,6 +102,9 @@ nav:
               - N02 Mapa de sistemas inteligentes: bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
           - Entregas:
               - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
+          - "Consulta (retirable en evaluación)":
+              - "Soluciones de prácticas": bloques/B01_RA1/soluciones_s01.md
+              - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
   - "B05 · RA5 — Sistemas expertos y motores de reglas":
       - Introducción: bloques/B05_RA5/index.md
       - "Apuntes (3 sesiones)": bloques/B05_RA5/apuntes.md

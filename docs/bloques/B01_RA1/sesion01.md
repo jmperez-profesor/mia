@@ -131,6 +131,12 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 - **Apuntes (1 lectura):** `material_david/docs/UD01/UD01_ES.md` §§3, 6.2–6.5 (el resto es mapa).
 - **Guiados en nav:** N01 Técnicas (demo) + N02 Mapa (plantilla de ficha).
 - **Complemento:** `artint/docs/ia/introduccion/definicion.md`.
+- **Guion con vídeo:** [plan minuto a minuto con DotCSV](guion_video.md).
+
+**Para consulta durante el curso (se retiran del menú en evaluación):**
+
+- [Soluciones de prácticas](soluciones_s01.md) — práctica guiada, los 10 ejercicios, N01, N02 y miniproyecto.
+- [Preguntas frecuentes con respuesta](faq_s01.md) — dudas habituales de esta sesión.
 
 ## Evaluación (CE RA1)
 
