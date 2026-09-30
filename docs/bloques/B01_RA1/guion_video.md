@@ -26,7 +26,7 @@
 
 | Min | Momento |
 |---|---|
-| 0–10 | **Apertura:** gancho *¿es inteligente tu lavadora?* + objetivos y la ficha de 1 minuto |
+| 0–10 | **Apertura:** gancho *¿es inteligente tu lavadora?* + objetivos y la ficha de 1 minuto → [desarrollo literal](#apertura) |
 | 10–14 | **Vídeo · fragmento 1** (00:00–03:26) a 1,25× → presentación, qué es la IA, débil/fuerte, imitación |
 | 14–28 | **Ejercicio 1** (apuntes): rellena la ficha de 1 minuto de un sistema conocido + clasifícalo débil/fuerte |
 | 28–32 | **Vídeo · fragmento 2** (03:26–05:37) a 1,25× → subcampos, ML, ML dentro de la IA, técnicas |
@@ -39,6 +39,106 @@
 
 !!! tip "Regla de oro"
     **Nunca dos fragmentos seguidos**: vídeo → ejercicio → vídeo. Y una **pregunta oral** tras cada corte antes de continuar.
+
+---
+
+## Apertura · 0–10 min {#apertura}
+
+### 1. Gancho (0–4 min) — texto literal
+
+**Dices:**
+
+> «Levad la mano quien tenga una lavadora en casa. …Bien. Ahora la pregunta seria: **¿vuestra lavadora es inteligente?**»
+
+*Deja que respondan. Casi todos dirán que sí.*
+
+**Dices:**
+
+> «Perfecto. Entonces **¿qué hace de “inteligente”?**»
+
+*Espera respuestas (“se adapta”, “elige el programa sola”, “es que la compré con Wi-Fi”). Anótalas en una columna de la pizarra.*
+
+**Dices:**
+
+> «Vamos allá con lo que hace: tú metes ropa, agua y detergente, y ella **ejecuta el mismo guion de siempre** —tiempos, giros, temperatura—. Si le echas una manta pesada, **no “piensa” nada nuevo**: sigue exactamente el mismo programa. Esto es **automatización**, no inteligencia.»
+>
+> «Ahora cambiad una sola cosa: que un **sensor de carga ajuste el agua aprendiendo de los 10.000 lavados anteriores**, sin que nadie haya escrito la regla. ¿Eso ya es inteligencia? **Eso ya es IA.**»
+
+**La frase que cierras en la pizarra y que se queda ahí toda la sesión:**
+
+```text
+¿Qué cambió?  No la lavadora: el que DECIDE.
+
+      PERCIBE  ->  RAZONA  ->  ACTÚA
+```
+
+> «Durante los próximos 120 minutos vais a ser capaces de hacer eso con **cualquier** sistema, **en un minuto**.»
+
+### 2. Objetivos (4–6 min) — texto literal
+
+**Dices:**
+
+> «Solo dos cosas hoy. **Nada más.**»
+
+Escribe estas dos filas en la pizarra (no las leas del portátil):
+
+| # | Objetivo | Cómo lo compruebo al final |
+|---|---|---|
+| **1** | **Caracterizar** cualquier sistema IA con la ficha de 1 minuto | Rellenas una ficha completa en el entregable |
+| **2** | **Decidir con 1 KPI** si compensa | Calculas antes/después y dices **sí/no + 1 riesgo** |
+
+**Dices:**
+
+> «Lo que no entra hoy —historia, transformers, el AI Act— **queda como lectura de mapa**, no como temario de examen. Si sobra tiempo, **ampliamos por el KPI**, nunca por teoría.»
+
+### 3. Ficha de 1 minuto (6–10 min) — plantilla para la pizarra
+
+Escribe en la pizarra **exactamente esto**:
+
+```text
+FICHA DE 1 MINUTO  —  <sistema>
+
+1. ¿Qué PERCIBE?               (datos de entrada)
+2. ¿Razona con REGLAS o con DATOS?
+3. ¿Qué ACCIÓN produce?        (qué hace al final)
+4. Tarea ESTRECHA: ¿cuál?      (solo una; lo que NO hace)
+```
+
+**Rellénasela tú en directo, al lado**, con el ejemplo de los apuntes:
+
+| Campo | Chatbot de reclamaciones |
+|---|---|
+| **Percibe** | El texto del correo y el historial del cliente |
+| **Reglas o datos** | **Datos**: clasificador entrenado con reclamaciones etiquetadas |
+| **Acción** | Enruta el caso (devolución / cambio / defecto / consulta) |
+| **Tarea estrecha** | Clasificar esas 4 categorías. **No** conversa de otra cosa |
+
+**Dices:**
+
+> «Minuto y medio. Coged un papel, el móvil o vuestro Drive, elegid **un sistema que conozcáis de verdad** —el del curro, el del DAW, una tienda de barrio— y rellenad las 4 casillas. Quien acabe, levanta la mano.»
+>
+> «**No valen frases de folleto.** Si ponéis “us IA”, lo tiramos y lo volvemos a hacer.»
+
+*Pon el temporizador en pantalla (1:30) y circula mientras responden.*
+
+**Errores que corriges en directo al levantar las manos:**
+
+| Lo que escriben | Por qué falla | Cómo lo enderezas |
+|---|---|---|
+| *«Usa IA»* en la casilla 2 | No dice **cómo** decide | «¿Alguien escribió las reglas o salió de los datos?» |
+| Tarea estrecha: *«ayudar a los usuarios»* | No se puede encajar | «Si mañana os piden otra cosa, ¿el sistema la hace? Entonces no es estrecha» |
+| Solo 3 casillas | Se olvida la 4 | La 4 es la más importante: **qué NO hace** |
+| *«Es inteligente»* en la 3 | Describe, no actúa | «¿Qué **hace**? ¿Responde, recomienda, controla?» |
+
+**Transición (min 10) — dices:**
+
+> «Ahora mirad el primer fragmento: por qué esto de “IA” no está tan claro como parece.»
+
+→ **Vídeo · fragmento 1** (00:00–03:26) · [enlace directo](https://www.youtube.com/watch?v=KytW151dpqU&t=0s)
+
+!!! info "Materiales de estos 10 minutos"
+    Pizarra con la ficha escrita antes de que entren · temporizador visible · tus objetivos ya en la pizarra · enlace al fragmento 1 abierto en una pestaña (no lo busques delante de ellos).
+
 
 ## Enlaces para la presentación (embed con `start`/`end`)
 
