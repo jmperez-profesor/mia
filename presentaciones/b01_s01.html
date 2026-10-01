@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S01 · B01 · RA1 — Caracterización de sistemas de IA</title>
+<style>
+  :root{
+    --primary:#4051b5; --primary-2:#5c6bc0; --accent:#26a69a;
+    --bg:#f6f7fb; --slide-bg:#ffffff; --ink:#1a1a2e; --muted:#5a5f7a;
+    --line:#e4e7f2; --code-bg:#f0f2f9; --good:#2e7d32; --warn:#c62828;
+  }
+  body.dark{
+    --bg:#0e0f16; --slide-bg:#181a24; --ink:#e8e9f2; --muted:#a0a4bd;
+    --line:#2a2d3d; --code-bg:#1f2231; --good:#6fbf73; --warn:#ef6c6c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    overflow:hidden; transition:background .2s,color .2s;
+  }
+  /* ---- chrome ---- */
+  .progressbar{position:fixed;top:0;left:0;height:4px;width:100%;background:var(--line);z-index:60}
+  .progressbar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .2s}
+  .hud{position:fixed;bottom:12px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);z-index:60;pointer-events:none}
+  .hud b{color:var(--ink)}
+  .hud .keys{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .badge-sol{position:fixed;top:12px;right:16px;font-size:12px;background:var(--accent);color:#fff;padding:3px 10px;border-radius:999px;display:none;z-index:60}
+  body.show-sol .badge-sol{display:block}
+  /* ---- stage ---- */
+  .stage{position:fixed;left:50%;top:50%;width:1280px;height:720px;transform-origin:center center;z-index:10}
+  .slide{
+    position:absolute;inset:0;background:var(--slide-bg);
+    border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.22);
+    padding:48px 64px;display:none;flex-direction:column;overflow:hidden;
+    color:var(--ink);
+  }
+  .slide.active{display:flex}
+  .slide .head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+  .slide .k{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-2);font-weight:700}
+  body.dark .slide .k{color:#9aa4ff}
+  .slide h1{font-size:42px;line-height:1.12;margin:0;font-weight:800;letter-spacing:-.01em}
+  .slide h2{font-size:26px;margin:0 0 12px;font-weight:700}
+  .slide .sub{font-size:18px;color:var(--muted);margin-top:6px}
+  .slide .range{display:inline-block;font-size:16px;font-family:ui-monospace,Menlo,monospace;background:var(--code-bg);color:var(--accent);padding:3px 10px;border-radius:6px;margin-left:12px;font-weight:700;vertical-align:middle}
+  .cols{display:grid;gap:24px;flex:1;min-height:0}
+  .cols.c2{grid-template-columns:1fr 1fr}
+  .cols.c3{grid-template-columns:1fr 1fr 1fr}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .card h3{margin:0 0 8px;font-size:19px}
+  .card p{margin:6px 0}
+  ul{margin:8px 0;padding-left:22px}
+  li{margin:7px 0;font-size:19px;line-height:1.4}
+  .big{font-size:56px;font-weight:800;color:var(--primary)}
+  body.dark .big{color:#9aa4ff}
+  .big small{font-size:22px;color:var(--muted);font-weight:600}
+  .pill{display:inline-block;font-size:14px;font-weight:700;padding:4px 12px;border-radius:999px;margin:2px}
+  .pill.blue{background:#e3e7ff;color:#3949ab} body.dark .pill.blue{background:#2a3060;color:#aeb6ff}
+  .pill.teal{background:#dcf3ef;color:#00897b} body.dark .pill.teal{background:#17423c;color:#7fe0d0}
+  .pill.red{background:#fde4e4;color:#c62828} body.dark .pill.red{background:#4a2121;color:#ff9a9a}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code-bg);padding:2px 7px;border-radius:6px;font-size:.92em}
+  .slide img{max-width:100%;max-height:100%;border-radius:10px;display:block}
+  .imgbox{display:flex;align-items:center;justify-content:center;min-height:0}
+  .video .print-note{display:none}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:16px;overflow:auto;line-height:1.45}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  table{border-collapse:collapse;width:100%;font-size:17px}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:var(--code-bg);font-weight:700}
+  .q{border-left:4px solid var(--accent);background:var(--code-bg);padding:14px 18px;border-radius:0 10px 10px 0;font-size:20px;font-style:italic;color:var(--ink)}
+  .flow{display:flex;align-items:center;gap:14px;font-size:24px;font-weight:700;justify-content:center;flex-wrap:wrap}
+  .flow .node{background:var(--primary);color:#fff;padding:14px 22px;border-radius:12px}
+  .flow .arr{color:var(--accent);font-size:28px}
+  .video{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+  .video iframe{width:860px;height:460px;border:0;border-radius:12px;background:#000}
+  .foot{margin-top:auto;font-size:14px;color:var(--muted)}
+  a{color:var(--primary);text-decoration:none;font-weight:600}
+  body.dark a{color:#9aa4ff}
+  a:hover{text-decoration:underline}
+  .good{color:var(--good);font-weight:700}
+  .warn{color:var(--warn);font-weight:700}
+  .grid-note{font-size:15px;color:var(--muted);margin-top:8px}
+  .kbd{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--code-bg);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px}
+  /* overview */
+  .overview{position:fixed;inset:0;background:var(--bg);z-index:50;display:none;flex-wrap:wrap;gap:18px;padding:30px;overflow:auto;align-content:flex-start}
+  body.overview .overview{display:flex}
+  .ov-item{width:340px;height:191px;background:var(--slide-bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;position:relative;flex:none}
+  .ov-item:hover{outline:3px solid var(--accent)}
+  .ov-item .n{position:absolute;top:8px;left:10px;font-size:12px;color:var(--muted);font-family:ui-monospace,monospace}
+  .ov-item .t{padding:10px 14px;font-size:15px;font-weight:700;color:var(--ink)}
+  .ov-item.sol{display:none} body.show-sol .ov-item.sol{display:block}
+  /* print */
+  @media print{
+    body{overflow:visible;background:#fff}
+    .progressbar,.hud,.overview,.badge-sol{display:none!important}
+    .stage{position:static;transform:none!important;width:auto;height:auto}
+    .slide{position:relative;inset:auto;display:block!important;width:1280px;height:720px;box-shadow:none;border-radius:0;page-break-after:always;break-inside:avoid}
+    .slide:last-child{page-break-after:auto}
+    .video iframe{display:none}
+    .video .print-note{display:block;font-size:24px;line-height:1.5;text-align:center;padding:30px;color:var(--ink)}
+  }
+  @page{size:1280px 720px;margin:0}
+</style>
+</head>
+<body class="light">
+  <div class="progressbar"><div class="fill" id="fill"></div></div>
+  <div class="badge-sol" id="badgeSol">soluciones visibles</div>
+  <div class="overview" id="overview"></div>
+
+  <div class="stage" id="stage">
+
+    <!-- 0 · PORTADA -->
+    <section class="slide" id="s-portada">
+      <div class="head"><span class="k">Módulo 5071 · Modelos de Inteligencia Artificial</span></div>
+      <h1>Caracterización de sistemas de Inteligencia Artificial</h1>
+      <div class="sub">B01 · RA1 · Sesión 01 — «mejor 2 cosas bien que 4 mal»</div>
+      <div style="margin-top:28px">
+        <span class="pill blue">05/10/2026</span>
+        <span class="pill teal">120 min</span>
+        <span class="pill blue">RA1 · CE 4a–4d</span>
+      </div>
+      <div class="cols c2" style="margin-top:36px">
+        <div class="card"><h3>Cosa 1</h3><p>Caracterizar cualquier sistema de IA con la <b>ficha de 1 minuto</b>.</p></div>
+        <div class="card"><h3>Cosa 2</h3><p>Decidir con <b>1 KPI</b> (antes/después) si compensa.</p></div>
+      </div>
+      <div class="foot">Curso de Especialización en Inteligencia Artificial y Big Data · Comunitat Valenciana · <a href="../assets/pdf/b01_s01_presentacion.pdf">descargar en PDF</a></div>
+    </section>
+
+    <!-- 1 · ÍNDICE -->
+    <section class="slide" id="s-indice">
+      <div class="head"><span class="k">Guion de la sesión · 120 min</span></div>
+      <h1>Los 10 momentos</h1>
+      <table style="margin-top:16px">
+        <tr><th style="width:90px">Min</th><th>Momento</th></tr>
+        <tr><td>0–10</td><td><a href="#s-apertura-gancho" data-goto="3">Apertura: gancho <i>¿es inteligente tu lavadora?</i> + ficha de 1 minuto</a></td></tr>
+        <tr><td>10–14</td><td><a href="#s-video1" data-goto="9">Vídeo · fragmento 1 (00:00–03:26)</a></td></tr>
+        <tr><td>14–28</td><td><a href="#s-ej1" data-goto="10">Ejercicio 1 · ficha de un sistema conocido</a></td></tr>
+        <tr><td>28–32</td><td><a href="#s-video2" data-goto="11">Vídeo · fragmento 2 (03:26–05:37)</a></td></tr>
+        <tr><td>32–50</td><td><a href="#s-esquema" data-goto="12">Esquema IA &gt; ML &gt; DL &gt; GenAI + Ejercicio 2</a></td></tr>
+        <tr><td>50–54</td><td><a href="#s-video3" data-goto="14">Vídeo · fragmento 3 (05:37–07:46)</a></td></tr>
+        <tr><td>54–60</td><td><a href="#s-comun" data-goto="15">Puesta en común del mapa (3 preguntas)</a></td></tr>
+        <tr><td>60–95</td><td><a href="#s-kpi-def" data-goto="16">Cosa 2 · KPI: caso de las 1.000 consultas</a></td></tr>
+        <tr><td>95–110</td><td><a href="#s-ej3" data-goto="23">Ejercicio 3 · calcula antes/después</a></td></tr>
+        <tr><td>110–120</td><td><a href="#s-cierre" data-goto="25">Cierre · ficha + 1 riesgo + rúbrica</a></td></tr>
+      </table>
+      <div class="foot">← → para navegar · <span class="kbd">O</span> índice · <span class="kbd">S</span> soluciones · <span class="kbd">D</span> claro/oscuro · <span class="kbd">P</span> imprimir</div>
+    </section>
+
+    <!-- 2 · OBJETIVOS + regla de oro -->
+    <section class="slide" id="s-objetivos">
+      <div class="head"><span class="k">Solo dos cosas hoy</span></div>
+      <h1>Objetivos</h1>
+      <table style="margin-top:16px">
+        <tr><th style="width:40px">#</th><th>Objetivo</th><th>Cómo lo compruebo al final</th></tr>
+        <tr><td><b>1</b></td><td><b>Caracterizar</b> cualquier sistema IA con la ficha de 1 minuto</td><td>Rellenas una ficha completa en el entregable</td></tr>
+        <tr><td><b>2</b></td><td><b>Decidir con 1 KPI</b> si compensa</td><td>Calculas antes/después y dices <b>sí/no + 1 riesgo</b></td></tr>
+      </table>
+      <div class="q" style="margin-top:26px"><b>Regla de oro:</b> nunca dos fragmentos de vídeo seguidos → vídeo, ejercicio, vídeo. Y una pregunta oral tras cada corte.</div>
+      <div class="foot">Lo que no entra hoy —historia, transformers, AI Act— queda como <b>lectura de mapa</b>, no como temario de examen.</div>
+    </section>
+
+    <!-- 3 · APERTURA GANCHO -->
+    <section class="slide" id="s-apertura-gancho">
+      <div class="head"><span class="k">Apertura · 0–4 min</span></div>
+      <h1>¿Es inteligente tu lavadora?</h1>
+      <div class="cols c2" style="margin-top:18px">
+        <div class="card">
+          <h3>Lo que hace</h3>
+          <p>Tú metes ropa, agua y detergente. Ella <b>ejecuta el mismo guion de siempre</b>: tiempos, giros, temperatura. Con una manta pesada <b>no piensa nada nuevo</b>.</p>
+          <p style="margin-top:12px">Esto es <span class="pill red">automatización</span>, no inteligencia.</p>
+        </div>
+        <div class="card">
+          <h3>Lo que lo cambiaría</h3>
+          <p>Un <b>sensor de carga</b> que ajuste el agua <b>aprendiendo de los 10.000 lavados anteriores</b>, sin que nadie escriba la regla.</p>
+          <p style="margin-top:12px">Eso ya es <span class="pill teal">IA</span>.</p>
+        </div>
+      </div>
+      <div class="q" style="margin-top:18px">La frase que se queda en la pizarra toda la sesión: <b>¿Qué cambió? No la lavadora: el que DECIDE.</b></div>
+      <div class="foot">«Durante los próximos 120 minutos seréis capaces de hacer eso con <b>cualquier</b> sistema, en un minuto.»</div>
+    </section>
+
+    <!-- 4 · PERCIBE RAZONA ACTUA -->
+    <section class="slide" id="s-pra">
+      <div class="head"><span class="k">Apertura · el esquema</span></div>
+      <h1>El ciclo de un sistema inteligente</h1>
+      <div class="flow" style="margin-top:60px">
+        <div class="node">PERCIBE</div><span class="arr">→</span>
+        <div class="node">RAZONA</div><span class="arr">→</span>
+        <div class="node">ACTÚA</div>
+      </div>
+      <div class="cols c3" style="margin-top:50px">
+        <div class="card"><h3>Percepción</h3><p>datos del mundo: texto, imagen, audio, sensores, logs</p></div>
+        <div class="card"><h3>Razonamiento</h3><p>reglas, búsqueda o modelo entrenado</p></div>
+        <div class="card"><h3>Acción</h3><p>responder, recomendar, controlar</p></div>
+      </div>
+    </section>
+
+    <!-- 5 · OBJETIVOS PIZARRA -->
+    <section class="slide" id="s-objetivos-pizarra">
+      <div class="head"><span class="k">Apertura · 4–6 min · en la pizarra</span></div>
+      <h1>Objetivos (no leídos del portátil)</h1>
+      <pre style="margin-top:24px;font-size:22px">1 · Caracterizar  →  ficha de 1 minuto completa
+2 · Decidir      →  KPI antes/después + sí/no + 1 riesgo</pre>
+      <div class="grid-note">Si sobra tiempo, se amplía por el KPI — nunca por teoría.</div>
+    </section>
+
+    <!-- 6 · FICHA PLANTILLA -->
+    <section class="slide" id="s-ficha-plantilla">
+      <div class="head"><span class="k">Apertura · 6–10 min</span></div>
+      <h1>Ficha de 1 minuto</h1>
+      <pre style="margin-top:20px;font-size:21px">FICHA DE 1 MINUTO  —  &lt;sistema&gt;
+
+1. ¿Qué PERCIBE?               (datos de entrada)
+2. ¿Razona con REGLAS o con DATOS?
+3. ¿Qué ACCIÓN produce?        (qué hace al final)
+4. Tarea ESTRECHA: ¿cuál?      (solo una; lo que NO hace)</pre>
+      <div class="grid-note">La casilla 4 es la más importante: <b>qué NO hace</b> el sistema.</div>
+    </section>
+
+    <!-- 7 · FICHA EJEMPLO -->
+    <section class="slide" id="s-ficha-ejemplo">
+      <div class="head"><span class="k">Ejemplo resuelto</span></div>
+      <h1>Chatbot de reclamaciones</h1>
+      <table style="margin-top:18px">
+        <tr><th>Campo</th><th>Respuesta</th></tr>
+        <tr><td><b>Percibe</b></td><td>El texto del correo y el historial del cliente</td></tr>
+        <tr><td><b>Reglas o datos</b></td><td><b>Datos</b>: clasificador entrenado con reclamaciones etiquetadas</td></tr>
+        <tr><td><b>Acción</b></td><td>Enruta el caso (devolución / cambio / defecto / consulta)</td></tr>
+        <tr><td><b>Tarea estrecha</b></td><td>Clasificar esas 4 categorías. <b>No</b> conversa de otra cosa</td></tr>
+      </table>
+      <div class="q" style="margin-top:18px">«Minuto y medio. Elegid un sistema que conozcáis de verdad. <b>No valen frases de folleto</b>: si ponéis “us IA”, lo tiramos y lo volvemos a hacer.»</div>
+    </section>
+
+    <!-- 8 · 4 ERRORES -->
+    <section class="slide" id="s-errores">
+      <div class="head"><span class="k">Apertura · errores que corriges en directo</span></div>
+      <h1>4 errores típicos en la ficha</h1>
+      <table style="margin-top:18px">
+        <tr><th>Lo que escriben</th><th>Por qué falla</th><th>Cómo lo enderezas</th></tr>
+        <tr><td>«Usa IA» en la casilla 2</td><td>No dice <b>cómo</b> decide</td><td>«¿Alguien escribió las reglas o salió de los datos?»</td></tr>
+        <tr><td>Tarea estrecha: «ayudar a los usuarios»</td><td>No se puede encajar</td><td>«Si mañana os piden otra cosa, ¿la hace? Entonces no es estrecha»</td></tr>
+        <tr><td>Solo 3 casillas</td><td>Se olvida la 4</td><td>La 4 es <b>qué NO hace</b></td></tr>
+        <tr><td>«Es inteligente» en la 3</td><td>Describe, no actúa</td><td>«¿Qué <b>hace</b>? ¿Responde, recomienda, controla?»</td></tr>
+      </table>
+    </section>
+
+    <!-- 9 · VÍDEO 1 -->
+    <section class="slide" id="s-video1">
+      <div class="head"><span class="k">Vídeo · DotCSV · fragmento 1</span></div>
+      <h1>Qué es la IA <span class="range">00:00–03:26</span></h1>
+      <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/KytW151dpqU?start=0&end=206" title="Fragmento 1" allowfullscreen></iframe><div class="print-note">Fragmento 1 · ¿Qué es la IA? · 00:00–03:26<br>mapa conceptual · IA débil vs. fuerte · imitar ≠ comprender<br><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=0s">youtube.com/watch?v=KytW151dpqU&amp;t=0s</a></div></div>
+      <div class="cols c3">
+        <div class="card"><h3>Mirar</h3><p>mapa conceptual: IA, ML, RN, big data, DL se solapan</p></div>
+        <div class="card"><h3>Mirar</h3><p>IA débil vs. fuerte (toda la actual es débil)</p></div>
+        <div class="card"><h3>Mirar</h3><p>imitar ≠ comprender</p></div>
+      </div>
+      <div class="foot"><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=0s">Abrir en YouTube (00:00)</a> · reproducir a 1,25×</div>
+    </section>
+
+    <!-- 10 · EJERCICIO 1 -->
+    <section class="slide" id="s-ej1">
+      <div class="head"><span class="k">Ejercicio 1 · 14–28 min</span></div>
+      <h1>Ficha de un sistema conocido</h1>
+      <div class="cols c2" style="margin-top:16px;flex:1;min-height:0">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card">
+            <h3>Consigna</h3>
+            <p>Rellena la ficha de 1 minuto de <b>un sistema que conozcas de verdad</b> (tu curro, una tienda, un DAW…). Después, clasifícalo: <span class="pill blue">IA débil</span> (una tarea) — toda la IA actual lo es.</p>
+          </div>
+          <div class="card"><h3>Reglas</h3><p>Alguien escribió las reglas → termostato <span class="mono">si T&lt;18 → enciende</span></p></div>
+          <div class="card"><h3>Datos</h3><p>Aprendió de ejemplos → filtro de spam, recomendador</p></div>
+        </div>
+        <div class="card imgbox"><img src="../bloques/B01_RA1/assets/ia_debil_fuerte.png" alt="IA débil vs. IA fuerte"></div>
+      </div>
+      <div class="foot">Pon el temporizador (1:30) y circula. Corrige los 4 errores al levantar las manos.</div>
+    </section>
+
+    <!-- 11 · VÍDEO 2 -->
+    <section class="slide" id="s-video2">
+      <div class="head"><span class="k">Vídeo · DotCSV · fragmento 2</span></div>
+      <h1>ML dentro de la IA <span class="range">03:26–05:37</span></h1>
+      <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/KytW151dpqU?start=206&end=337" title="Fragmento 2" allowfullscreen></iframe><div class="print-note">Fragmento 2 · ML dentro de la IA · 03:26–05:37<br>subcampos (robótica, NLP, voz) · supervisado / no supervisado / refuerzo · técnicas<br><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=206s">youtube.com/watch?v=KytW151dpqU&amp;t=206s</a></div></div>
+      <div class="cols c3">
+        <div class="card"><h3>Mirar</h3><p>subcampos: robótica, NLP, voz</p></div>
+        <div class="card"><h3>Mirar</h3><p>ML: supervisado, no supervisado, refuerzo</p></div>
+        <div class="card"><h3>Mirar</h3><p>técnicas: árboles, regresión, clasificación, clustering</p></div>
+      </div>
+      <div class="foot"><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=206s">Abrir en YouTube (03:26)</a></div>
+    </section>
+
+    <!-- 12 · ESQUEMA IA>ML>DL>GEN -->
+    <section class="slide" id="s-esquema">
+      <div class="head"><span class="k">Tu esquema · en la pizarra</span></div>
+      <h1>Cajas anidadas</h1>
+      <div class="flow" style="margin-top:36px">
+        <div class="node">IA</div><span class="arr">&gt;</span>
+        <div class="node">ML</div><span class="arr">&gt;</span>
+        <div class="node">DL</div><span class="arr">&gt;</span>
+        <div class="node" style="background:var(--accent)">GenAI</div>
+      </div>
+      <div class="q" style="margin-top:40px"><b>Todo ML es IA, pero no toda IA es ML.</b> Todo DL es ML; la generativa es una parte del DL.</div>
+      <div class="grid-note">Hay IA sin ML: sistemas basados en reglas y búsquedas heurísticas.</div>
+    </section>
+
+    <!-- 13 · EJERCICIO 2 -->
+    <section class="slide" id="s-ej2">
+      <div class="head"><span class="k">Ejercicio 2 · 32–50 min</span></div>
+      <h1>Clasifica: supervisado o no supervisado</h1>
+      <table style="margin-top:20px">
+        <tr><th>Ítem</th><th>Técnica</th><th>Tipo</th></tr>
+        <tr><td>(a) Grietas por foto</td><td>Visión artificial</td><td>Supervisado</td></tr>
+        <tr><td>(b) Agrupar clientes</td><td>Clustering</td><td><b>No supervisado</b></td></tr>
+        <tr><td>(c) Spam</td><td>Clasificación de texto</td><td>Supervisado</td></tr>
+        <tr><td>(d) Asistente por voz</td><td>PLN</td><td>Supervisado / secuencial</td></tr>
+      </table>
+      <div class="grid-note" style="margin-top:16px">Clave: (b) es el único <b>sin etiquetas previas</b>. Si nadie te dio las respuestas → clustering.</div>
+    </section>
+
+    <!-- 14 · VÍDEO 3 -->
+    <section class="slide" id="s-video3">
+      <div class="head"><span class="k">Vídeo · DotCSV · fragmento 3</span></div>
+      <h1>Redes neuronales y big data <span class="range">05:37–07:46</span></h1>
+      <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/KytW151dpqU?start=337&end=466" title="Fragmento 3" allowfullscreen></iframe><div class="print-note">Fragmento 3 · Redes neuronales y big data · 05:37–07:46<br>aprendizaje jerárquico · deep learning = muchas capas · big data · IA ⊃ ML ⊃ RN/DL<br><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=337s">youtube.com/watch?v=KytW151dpqU&amp;t=337s</a></div></div>
+      <div class="cols c3">
+        <div class="card"><h3>Mirar</h3><p>aprendizaje jerárquico: capas concretas → abstractas</p></div>
+        <div class="card"><h3>Mirar</h3><p>deep learning = muchas capas</p></div>
+        <div class="card"><h3>Mirar</h3><p>big data: acumular y analizar; IA ⊃ ML ⊃ RN/DL</p></div>
+      </div>
+      <div class="foot"><a href="https://www.youtube.com/watch?v=KytW151dpqU&t=337s">Abrir en YouTube (05:37)</a></div>
+    </section>
+
+    <!-- 15 · PUESTA EN COMÚN -->
+    <section class="slide" id="s-comun">
+      <div class="head"><span class="k">Puesta en común · 54–60 min</span></div>
+      <h1>Tres preguntas orales</h1>
+      <div class="cols" style="margin-top:20px;gap:18px">
+        <div class="card"><h3>1 · ¿Todo ML es IA? ¿Y toda IA es ML?</h3><p>Todo ML <b>es</b> IA; pero no toda IA es ML (hay IA de reglas y de búsqueda).</p></div>
+        <div class="card"><h3>2 · Un ejemplo de IA sin ML</h3><p>Un sistema experto con reglas <span class="mono">si… entonces…</span>: es IA y <b>no aprende</b> de datos.</p></div>
+        <div class="card"><h3>3 · ¿Dónde encaja la generativa?</h3><p>Dentro del deep learning: IA &gt; ML &gt; DL &gt; GenAI.</p></div>
+      </div>
+    </section>
+
+    <!-- 16 · KPI DEFINICIÓN -->
+    <section class="slide" id="s-kpi-def">
+      <div class="head"><span class="k">Cosa 2 · KPI · 60–68 min</span></div>
+      <h1>¿Qué es un KPI?</h1>
+      <p class="sub">Un <b>número con el que se decide</b> — no un dato, ni una cifra bonita.</p>
+      <pre style="margin-top:24px;font-size:21px">KPI = &lt;métrica&gt; · &lt;unidad&gt; · &lt;periodo&gt; · &lt;ANTES&gt; · &lt;DESPUÉS&gt;
+
+Ejemplo:  coste de atención · €/día · sept 2026 · antes 3.000 € · objetivo ≤ 1.400 €</pre>
+      <div class="q" style="margin-top:20px"><b>Distinción clave:</b> precisión, recall y F1 son <b>métricas de modelo</b>; coste, tiempo y error de proceso son <b>KPI de negocio</b>. La precisión de 1,00 de la práctica <b>no decide nada</b>: decide el −58 %.</div>
+    </section>
+
+    <!-- 17 · KPI 5 CRITERIOS -->
+    <section class="slide" id="s-kpi-criterios">
+      <div class="head"><span class="k">KPI · las 5 comprobaciones</span></div>
+      <h1>Cinco piezas, cinco preguntas</h1>
+      <table style="margin-top:18px">
+        <tr><th>Criterio</th><th>Pregunta</th><th>Si falla…</th></tr>
+        <tr><td><b>Medible</b></td><td>¿Tiene número <b>y unidad</b>?</td><td>«mejoramos la atención» no es un KPI</td></tr>
+        <tr><td><b>Comparado</b></td><td>¿Tiene <b>antes y después</b>?</td><td>sin referencia, es una opinión</td></tr>
+        <tr><td><b>Atribuible</b></td><td>¿Lo mueve <b>la IA que pongo yo</b>?</td><td>«suben las ventas» = diciembre, no el modelo</td></tr>
+        <tr><td><b>Honesto</b></td><td>¿Cuenta <b>todo</b> lo que cuesta?</td><td>te olvidas de la licencia y del humano que revisa</td></tr>
+        <tr><td><b>Accionable</b></td><td>Si falla, ¿<b>sé qué hacer</b>?</td><td>«el número está mal» no dice nada</td></tr>
+      </table>
+    </section>
+
+    <!-- 18 · KPI CASO PASO A PASO -->
+    <section class="slide" id="s-kpi-caso">
+      <div class="head"><span class="k">KPI · 68–80 min · en la pizarra</span></div>
+      <h1>El caso de las 1.000 consultas</h1>
+      <p class="sub">1.000 consultas/día · 3 € y 5 min cada una. Chatbot resuelve el <b>60 %</b> a <b>0,10 €</b> en 10 s. ¿Compensa?</p>
+      <table style="margin-top:18px">
+        <tr><th>Paso</th><th>Qué escribes</th><th>Resultado</th></tr>
+        <tr><td>1 · KPI base</td><td>coste de atención · €/día</td><td><b>3.000 €</b> (1.000 × 3)</td></tr>
+        <tr><td>2 · Después</td><td>600 automatizadas + 400 manuales</td><td>600×0,10 + 400×3 = <b>1.260 €</b></td></tr>
+        <tr><td>3 · Δ</td><td>1 − 1.260/3.000</td><td><b>−58 %</b></td></tr>
+        <tr><td>4 · Segundo KPI</td><td>tiempo: 5 min → 2 min de media</td><td><b>−60 %</b></td></tr>
+        <tr><td>5 · Decisión</td><td>¿sí/no?</td><td><b>Sí</b>, con 1 riesgo</td></tr>
+      </table>
+    </section>
+
+    <!-- 19 · KPI 4 ERRORES -->
+    <section class="slide" id="s-kpi-errores">
+      <div class="head"><span class="k">KPI · errores en la pizarra</span></div>
+      <h1>4 errores al resolverlo</h1>
+      <ul style="margin-top:16px;font-size:21px">
+        <li>Sumar el bot <b>a</b> las manuales: <span class="mono">600×0,10 + 1.000×3</span> → se cuentan dos veces.</li>
+        <li>Decir «ahorra 58 %» <b>sin €/día</b>: el % no se paga, se paga el euro.</li>
+        <li>Olvidar la licencia: si el bot cuesta ≈18 €/día, el ahorro pasa de 1.740 a 1.722 €/día.</li>
+        <li>Confundir <b>−11 p.p.</b> con <b>−11 %</b> al comparar dos porcentajes.</li>
+      </ul>
+    </section>
+
+    <!-- 20 · KPI 3 EJEMPLOS -->
+    <section class="slide" id="s-kpi-ejemplos">
+      <div class="head"><span class="k">KPI · 80–86 min</span></div>
+      <h1>Tres ejemplos más</h1>
+      <table style="margin-top:18px">
+        <tr><th>Quiero bajar…</th><th>KPI y unidad</th><th>Antes → Después</th><th>Técnica</th></tr>
+        <tr><td><b>Tiempo</b></td><td>min/caso</td><td>8 min → 5,8 min (<b>−27 %</b>)</td><td>Clasificación supervisada</td></tr>
+        <tr><td><b>Error</b></td><td>% de clasificación errónea</td><td>15 % → &lt;5 % (<b>−10 p.p.</b>)</td><td>PLN supervisado</td></tr>
+        <tr><td><b>Paradas</b></td><td>MTBF (días)</td><td>40 → 70 (<b>+75 %</b>)</td><td>Mantenimiento predictivo</td></tr>
+      </table>
+      <div class="q" style="margin-top:20px">«Fijaos en la columna de la unidad: €/día, min/caso, %, días. <b>Si no cabe una unidad, no es un KPI.</b>»</div>
+    </section>
+
+    <!-- 21 · KPI ESQUEMA -->
+    <section class="slide" id="s-kpi-esquema">
+      <div class="head"><span class="k">KPI · 86–90 min</span></div>
+      <h1>El esquema que se repite</h1>
+      <div class="flow" style="margin-top:50px">
+        <div class="node">problema</div><span class="arr">→</span>
+        <div class="node">KPI base</div><span class="arr">→</span>
+        <div class="node" style="background:var(--accent)">técnica</div><span class="arr">→</span>
+        <div class="node">antes/después</div><span class="arr">→</span>
+        <div class="node">SÍ/NO + 1 riesgo</div>
+      </div>
+      <div class="q" style="margin-top:50px">Caracterizar un sistema para el RA1 no es entrenar nada: es identificar qué técnica encaja y qué mejora aporta.</div>
+    </section>
+
+    <!-- 22 · KPI 3 PREGUNTAS -->
+    <section class="slide" id="s-kpi-preguntas">
+      <div class="head"><span class="k">KPI · 90–95 min</span></div>
+      <h1>Tres preguntas orales</h1>
+      <div class="cols" style="margin-top:20px;gap:18px">
+        <div class="card"><h3>1 · ¿Cuál es el KPI de «priorizar incidencias»?</h3><p><b>Tiempo de primera respuesta</b> o % resuelto a la primera.</p></div>
+        <div class="card"><h3>2 · Si el chatbot solo resuelve el 30 %…</h3><p>Más ahorro relativo (77 %), pero <b>menos en €</b>. Por eso se mira el euro, no el %.</p></div>
+        <div class="card"><h3>3 · ¿La precisión del modelo es el KPI?</h3><p>No: es <b>métrica de modelo</b>. El KPI es de negocio.</p></div>
+      </div>
+    </section>
+
+    <!-- 23 · EJERCICIO 3 -->
+    <section class="slide" id="s-ej3">
+      <div class="head"><span class="k">Ejercicio 3 · 95–110 min</span></div>
+      <h1>Calcula antes/después</h1>
+      <div class="card" style="margin-top:18px">
+        <h3>Enunciado (variante)</h3>
+        <p>Un proceso recibe <b>300 reclamaciones/día</b> a <b>2 €</b> cada una. Un clasificador resuelve el <b>80 %</b> a <b>0,20 €</b>. Calcula: coste antes, coste después y % de ahorro.</p>
+      </div>
+      <pre style="margin-top:18px">antes   = 300 * 2.0
+despues = 240 * 0.20 + 60 * 2.0
+print((1 - despues/antes) * 100)</pre>
+      <div class="foot">Hazlo a mano o con el código del apunte. Solución en la siguiente slide (tecla <span class="kbd">S</span> o avanza).</div>
+    </section>
+
+    <!-- 24 · EJERCICIO 3 CORRECCIÓN (solución) -->
+    <section class="slide sol" id="s-ej3-sol">
+      <div class="head"><span class="k">Ejercicio 3 · corrección</span><span class="pill teal">solución</span></div>
+      <h1>300 reclamaciones → −72 %</h1>
+      <table style="margin-top:18px">
+        <tr><th></th><th>Cálculo</th><th>Resultado</th></tr>
+        <tr><td><b>Antes</b></td><td>300 × 2</td><td><b>600 €/día</b></td></tr>
+        <tr><td><b>Después · autom.</b></td><td>240 × 0,20</td><td>48 €</td></tr>
+        <tr><td><b>Después · manual</b></td><td>60 × 2</td><td>120 €</td></tr>
+        <tr><td><b>Después · total</b></td><td>48 + 120</td><td><b>168 €/día</b></td></tr>
+        <tr><td><b>Ahorro</b></td><td>1 − 168/600</td><td><b>72 %</b></td></tr>
+      </table>
+      <div class="grid-note" style="margin-top:14px">Coste por reclamación: de 2 € a 0,56 €. Mayor % que el caso de clase (72 % vs 58 %) porque el automatizado es mayor y más barato — pero <b>los KPIs no se comparan entre casos sin contexto</b>.</div>
+    </section>
+
+    <!-- 25 · CIERRE -->
+    <section class="slide" id="s-cierre">
+      <div class="head"><span class="k">Cierre · 110–120 min</span></div>
+      <h1>Lo que te llevas</h1>
+      <div class="cols c3" style="margin-top:20px">
+        <div class="card"><h3>Ficha</h3><p>percibe / reglas o datos / acción / tarea estrecha.</p></div>
+        <div class="card"><h3>KPI</h3><p>2 números con unidad, antes y después, + el %.</p></div>
+        <div class="card"><h3>Decisión</h3><p>«sí/no» + 1 riesgo con 1 mitigación.</p></div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <h3>Rúbrica del entregable (RA1)</h3>
+        <p>Caracterizas con vocabulario propio · el KPI es plausible · la decisión es explícita.</p>
+      </div>
+    </section>
+
+    <!-- 26 · ENLACES AMPLIACIÓN -->
+    <section class="slide" id="s-enlaces">
+      <div class="head"><span class="k">Ampliación</span></div>
+      <h1>Para quien quiera más</h1>
+      <ul style="margin-top:14px;font-size:18px">
+        <li>Definición y criterios: apuntes §8.1 «¿Qué es un KPI?»</li>
+        <li><a href="https://es.wikipedia.org/wiki/Indicador_clave_de_desempe%C3%B1o">Indicador clave de desempeño (Wikipedia, es)</a> · <a href="https://en.wikipedia.org/wiki/Key_performance_indicator">KPI (Wikipedia, en)</a></li>
+        <li><a href="https://www.ibm.com/topics/kpi">IBM · ¿Qué es un KPI?</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/SMART_criteria">SMART criteria</a> · <a href="https://en.wikipedia.org/wiki/Vanity_metric">Vanity metric</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/Cuadro_de_mando_integral">Cuadro de mando integral (es)</a> · <a href="https://www.balancedscorecard.org/">Balanced Scorecard Institute</a></li>
+        <li>KPIs de IA: <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST · AI RMF</a> · <a href="https://aiindex.stanford.edu/report/">Stanford HAI · AI Index</a> · <a href="https://rework.withgoogle.com/">Google re:Work</a></li>
+        <li>Materia del módulo: <a href="https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html">UD01 (D. Martínez)</a></li>
+      </ul>
+    </section>
+
+    <!-- 27 · DOTCSV -->
+    <section class="slide" id="s-dotcsv">
+      <div class="head"><span class="k">Repaso · canal DotCSV</span></div>
+      <h1>Vídeos para repasar en casa</h1>
+      <div class="cols c2" style="margin-top:16px;flex:1;min-height:0">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card"><h3>Fundamentos</h3><ul style="font-size:17px;margin:4px 0">
+            <li><a href="https://www.youtube.com/watch?v=KytW151dpqU">¿Qué es el ML? ¿Y Deep Learning? (mapa conceptual)</a> — el vídeo de hoy</li>
+            <li><a href="https://www.youtube.com/watch?v=oT3arRRB2Cw">¿Qué es el Aprendizaje Supervisado y No Supervisado?</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Sb8XVheowVQ">Modelos para entender una realidad caótica (¿qué es un modelo?)</a></li>
+          </ul></div>
+          <div class="card"><h3>Machine learning clásico</h3><ul style="font-size:17px;margin:4px 0">
+            <li><a href="https://www.youtube.com/watch?v=k964_uNn3l0">Regresión Lineal y Mínimos Cuadrados</a></li>
+            <li><a href="https://www.youtube.com/watch?v=A6FiCDoz8_4">¿Qué es el Descenso del Gradiente?</a></li>
+          </ul></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card"><h3>Redes neuronales y DL</h3><ul style="font-size:17px;margin:4px 0">
+            <li><a href="https://www.youtube.com/watch?v=MRIv2IwFTPg">¿Qué es una Red Neuronal? P1: La Neurona</a></li>
+            <li><a href="https://www.youtube.com/watch?v=7-6X3DTt3R8">¿Aprenden o memorizan? Overfitting</a></li>
+          </ul></div>
+          <div class="card"><h3>Dónde encontrar más</h3><ul style="font-size:17px;margin:4px 0">
+            <li><a href="https://www.youtube.com/c/dotcsv">Canal DotCSV</a> (Carlos Santana Vega)</li>
+            <li><a href="../bloques/B01_RA1/recursos_video.html">Recursos de vídeo (DotCSV) del bloque</a></li>
+            <li><a href="../../recursos/dotcsv.html">Catálogo completo del canal</a></li>
+          </ul></div>
+        </div>
+      </div>
+      <div class="foot">Material de apoyo y repaso — no sustituye a los apuntes.</div>
+    </section>
+
+    <!-- ===== SOLUCIONES (ocultas, tecla S) ===== -->
+
+    <!-- SOL 1-3 -->
+    <section class="slide sol" id="sol-1-3">
+      <div class="head"><span class="k">Soluciones · ejercicios 1–3</span><span class="pill teal">solución</span></div>
+      <h1>Caracterizar</h1>
+      <div class="cols" style="margin-top:16px;gap:14px">
+        <div class="card"><h3>1 · Chatbot</h3><p><b>Percibe</b> texto del correo. <b>Datos</b>: clasificador entrenado. <b>Acción</b>: enruta (devolución/cambio/defecto/consulta). <b>Estrecha</b>: clasificar 4 categorías.</p></div>
+        <div class="card"><h3>2 · Termostato vs spam</h3><p>Termostato = IA de <b>reglas</b> (simbólica). Spam = ML <b>supervisado</b>. Reglas si caben en una hoja; datos si no.</p></div>
+        <div class="card"><h3>3 · Débil</h3><p>Cada sistema resuelve <b>una</b> tarea; no transfiere. Ej.: GPT redacta pero <b>no presupuesta</b>; se inventa los números.</p></div>
+      </div>
+    </section>
+
+    <!-- SOL 4-6 -->
+    <section class="slide sol" id="sol-4-6">
+      <div class="head"><span class="k">Soluciones · ejercicios 4–6</span><span class="pill teal">solución</span></div>
+      <h1>Supervisado vs. no supervisado</h1>
+      <div class="cols" style="margin-top:16px;gap:14px">
+        <div class="card"><h3>4 · N01</h3><p>Supervisada: devuelve la <b>etiqueta</b> (0/1 con respuesta correcta). No supervisada: devuelve <b>grupos inventados</b> (0/1 = identificador, no sí/no).</p></div>
+        <div class="card"><h3>5 · N02</h3><p>Recomendador: razona con <b>datos</b> (el criterio no está escrito y cambia con cada usuario). Tarea estrecha: ordenar catálogo para <i>ese</i> usuario.</p></div>
+        <div class="card"><h3>6 · Clasifica</h3><p>(a) visión/supervisado · (b) clustering/<b>no supervisado</b> · (c) texto/supervisado · (d) PLN/supervisado.</p></div>
+      </div>
+    </section>
+
+    <!-- SOL 7-8 -->
+    <section class="slide sol" id="sol-7-8">
+      <div class="head"><span class="k">Soluciones · ejercicios 7–8</span><span class="pill teal">solución</span></div>
+      <h1>Decidir con KPI</h1>
+      <div class="cols c2" style="margin-top:16px">
+        <div class="card"><h3>7 · 1.000 consultas</h3><p><b>Antes</b> 1.000×3 = 3.000 €/día. <b>Después</b> 600×0,10 + 400×3 = 1.260 €/día. <b>Ahorro 58 %</b>. KPI: coste de atención (€/día).</p></div>
+        <div class="card"><h3>8 · 300 reclamaciones</h3><p><b>Antes</b> 600 €/día. <b>Después</b> 240×0,20 + 60×2 = 168 €/día. <b>Ahorro 72 %</b>.</p></div>
+      </div>
+    </section>
+
+    <!-- SOL 9-10 -->
+    <section class="slide sol" id="sol-9-10">
+      <div class="head"><span class="k">Soluciones · ejercicios 9–10</span><span class="pill teal">solución</span></div>
+      <h1>Tu propuesta + riesgo</h1>
+      <div class="cols c2" style="margin-top:16px">
+        <div class="card"><h3>9 · Ejemplo</h3><p>Gestoría de alquileres → <b>clasificación</b>. KPI tiempo 25 min → 4 min (−84 %); error 12 % → 4 % (−8 p.p.).</p><p style="margin-top:6px">Variantes: colmena (regresión), hidrógeno (MTBF 40→70, +75 %), LARA (AHT 6→2 min).</p></div>
+        <div class="card"><h3>10 · Riesgo → mitigación</h3><p><b>Sesgo</b> → auditar distribución y reequilibrar. <b>Privacidad</b> → minimización RGPD. <b>Drift</b> → vigilar el KPI cada mes y reentrenar.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ A -->
+    <section class="slide sol" id="faq-a">
+      <div class="head"><span class="k">FAQ · conceptos</span><span class="pill teal">respuestas</span></div>
+      <h1>Conceptos de la sesión</h1>
+      <div class="cols c2" style="margin-top:12px;gap:12px;font-size:16px">
+        <div class="card"><b>¿Es IA Excel / autocompletar / antidesbordes?</b> No: son <b>automatización</b>. Test: ¿cambia con los datos sin que nadie reescriba el programa?</div>
+        <div class="card"><b>¿Un termostato es IA?</b> Sí, de <b>reglas</b> (percibe/razona/actúa). La lavadora solo <b>ejecuta</b> un guion: automatización.</div>
+        <div class="card"><b>¿ChatGPT es ML, DL o generativa?</b> Las tres, en capas anidadas. Sigue siendo <b>débil</b>.</div>
+        <div class="card"><b>¿Todo lo que usa datos es ML?</b> No. ML = aprender un patrón que nadie escribió.</div>
+        <div class="card"><b>¿Chatbot entiende?</b> No: calcula texto probable. Turing mide si engaña; Lovelace, si comprende.</div>
+        <div class="card"><b>¿Cuándo DL?</b> Muchos datos + tarea compleja (imagen/audio/texto).</div>
+      </div>
+    </section>
+
+    <!-- FAQ B -->
+    <section class="slide sol" id="faq-b">
+      <div class="head"><span class="k">FAQ · práctica y entregas</span><span class="pill teal">respuestas</span></div>
+      <h1>Práctica, entregas y repaso</h1>
+      <div class="cols c2" style="margin-top:12px;gap:12px;font-size:16px">
+        <div class="card"><b>¿«Precisión 1.0» está bien?</b> Sí, pero <b>no es evidencia</b>: 15 flores, dataset fácil. Válido como demo, no como validación.</div>
+        <div class="card"><b>¿Para qué train/test y random_state=42?</b> Test = examen con preguntas nuevas; 42 = reproducibilidad; max_depth limita el overfitting.</div>
+        <div class="card"><b>¿Puedo usar 2 KPIs?</b> Sí (coste + error). <b>No</b> hagas la media: unidades distintas. Entre % la diferencia es en <b>p.p.</b>.</div>
+        <div class="card"><b>¿Es IA según art. 3.1?</b> Sí si <b>se adapta tras el despliegue</b> e <b>infiere</b>. Escáner de caja no; recomendador que reentrena sí.</div>
+        <div class="card"><b>¿Cuándo no meter IA?</b> Reglas que caben en una hoja, sin datos, fallo caro sin supervisión, o no es el cuello de botella.</div>
+        <div class="card"><b>¿Ficha de empresa real?</b> Sí: de tu entorno (LARA, hidrógeno, colmena, tu centro). Sin KPI falta el 60 % del criterio.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="hud">
+    <span id="counter">1/1</span>
+    <span class="keys">← → espacio · <span class="kbd">O</span> índice · <span class="kbd">S</span> soluciones · <span class="kbd">D</span> oscuro · <span class="kbd">F</span> pantalla completa · <span class="kbd">P</span> imprimir</span>
+  </div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var overview = document.getElementById('overview');
+  var fill = document.getElementById('fill');
+  var counter = document.getElementById('counter');
+  var showSol = false;
+  var cur = 0;
+
+  function visible(){ return slides.filter(function(s){ return s.classList.contains('sol') ? showSol : true; }); }
+
+  function resize(){
+    var W = 1280, H = 720;
+    var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+  }
+
+  function render(){
+    var v = visible();
+    if (cur < 0) cur = 0;
+    if (cur >= v.length) cur = v.length - 1;
+    slides.forEach(function(s){ s.classList.remove('active'); });
+    v[cur].classList.add('active');
+    counter.textContent = (cur + 1) + '/' + v.length;
+    fill.style.width = ((cur + 1) / v.length * 100) + '%';
+  }
+
+  function go(i){ cur = i; render(); }
+
+  function next(){ var v = visible(); if (cur < v.length - 1) { cur++; render(); } }
+  function prev(){ if (cur > 0) { cur--; render(); } }
+
+  function buildOverview(){
+    overview.innerHTML = '';
+    slides.forEach(function(s, i){
+      var it = document.createElement('div');
+      it.className = 'ov-item' + (s.classList.contains('sol') ? ' sol' : '');
+      var title = s.querySelector('h1');
+      it.innerHTML = '<span class="n">' + (i + 1) + '</span><div class="t">' + (title ? title.textContent : '') + '</div>';
+      it.addEventListener('click', function(){ closeOverview(); cur = visible().indexOf(s); render(); });
+      overview.appendChild(it);
+    });
+  }
+  function openOverview(){ buildOverview(); document.body.classList.add('overview'); }
+  function closeOverview(){ document.body.classList.remove('overview'); }
+
+  function toggleSol(){
+    showSol = !showSol;
+    document.body.classList.toggle('show-sol', showSol);
+    cur = 0; render();
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (document.body.classList.contains('overview')){
+      if (e.key === 'Escape' || e.key.toLowerCase() === 'o'){ closeOverview(); }
+      return;
+    }
+    switch (e.key){
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); cur = 0; render(); break;
+      case 'End': e.preventDefault(); cur = visible().length - 1; render(); break;
+      case 'o': case 'O': openOverview(); break;
+      case 's': case 'S': toggleSol(); break;
+      case 'd': case 'D': document.body.classList.toggle('dark'); break;
+      case 'f': case 'F': if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen(); break;
+      case 'p': case 'P': window.print(); break;
+      case 'Escape': if (document.fullscreenElement) document.exitFullscreen(); break;
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    var g = e.target.closest && e.target.closest('[data-goto]');
+    if (g){
+      e.preventDefault();
+      var target = visible().indexOf(slides.find(function(s){ return s.id === g.getAttribute('href').slice(1); }));
+      if (target >= 0){ cur = target; render(); }
+    }
+  });
+
+  window.addEventListener('resize', resize);
+  resize(); buildOverview(); render();
+})();
+</script>
+</body>
+</html>
