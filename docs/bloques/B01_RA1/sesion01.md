@@ -132,6 +132,7 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 - **Guiados en nav:** N01 Técnicas (demo) + N02 Mapa (plantilla de ficha).
 - **Complemento:** `artint/docs/ia/introduccion/definicion.md`.
 - **Guion con vídeo:** [plan minuto a minuto con DotCSV](guion_video.md).
+- **Presentación de clase:** [ver en pantalla](../../presentaciones/b01_s01.html) · [descargar en PDF](../../assets/pdf/b01_s01_presentacion.pdf).
 
 **Para consulta durante el curso (se retiran del menú en evaluación):**
 

@@ -96,6 +96,7 @@ nav:
       - "Guion de sesión con vídeo": bloques/B01_RA1/guion_video.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
           - Plan de sesión: bloques/B01_RA1/sesion01.md
+          - "Presentación de clase": presentaciones/b01_s01.html
           - Práctica:
               - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s01.md
               - N01 Técnicas de IA: bloques/B01_RA1/sesion01_tecnicas_ia.ipynb
