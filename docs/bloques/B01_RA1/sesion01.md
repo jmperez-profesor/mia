@@ -28,7 +28,7 @@ Al finalizar, serás capaz de (RA1):
 
 ## Contenidos
 
-### Cosa 1 (60 min) · Caracterizar un sistema en 1 minuto
+### Tarea 1 (60 min) · Caracterizar un sistema en 1 minuto
 
 **Definición operativa (3 líneas):** un sistema inteligente *percibe* su entorno (datos), *razona* (reglas o modelo aprendido) y *actúa* (responde, recomienda, controla) para lograr un objetivo.
 
@@ -57,7 +57,7 @@ flowchart LR
 
 *Ejemplo resuelto:* chatbot de reclamaciones → percibe texto del correo → razona con clasificador entrenado (datos etiquetados) → actúa enrutando. Tarea estrecha: clasificar devolución/cambio/defecto.
 
-### Cosa 2 (45 min) · Decidir con 1 KPI
+### Tarea 2 (45 min) · Decidir con 1 KPI
 
 La IA aporta **eficiencia** solo si baja **coste, tiempo o error** medido antes/después. Sin número, es opinión.
 
@@ -86,8 +86,8 @@ Para que conste que existe, sin tiempo de aula: historia (Turing 1950 → Dartmo
 ## Temporalización (120 min)
 
 - **0–15 Apertura:** *¿es inteligente tu lavadora?* (automatización vs. inteligencia) + ficha de 1 minuto en pizarra.
-- **15–60 Cosa 1:** definición, reglas vs. datos, 1 ejemplo resuelto + demo guiada (código 1).
-- **60–100 Cosa 2:** KPI, caso 1.000 consultas resuelto en pizarra + cálculo guiado (código 2).
+- **15–60 Tarea 1:** definición, reglas vs. datos, 1 ejemplo resuelto + demo guiada (código 1).
+- **60–100 Tarea 2:** KPI, caso 1.000 consultas resuelto en pizarra + cálculo guiado (código 2).
 - **100–120 Cierre:** el alumnado rellena su ficha + KPI en el notebook; dudas y rúbrica del entregable único.
 
 ## Práctica guiada (con solución) — 2 bloques de 10 líneas

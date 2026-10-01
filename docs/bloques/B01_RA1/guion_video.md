@@ -33,7 +33,7 @@
 | 32–50 | **Tu esquema** IA > ML > DL > GenAI (pizarra) + **Ejercicio 2**: clasifica supervisado / no supervisado |
 | 50–54 | **Vídeo · fragmento 3** (05:37–07:46) a 1,25× → RN/DL, big data, cierre y mapa |
 | 54–60 | **Puesta en común** del mapa conceptual (3 preguntas orales) |
-| 60–95 | **Cosa 2 · KPI**: caso de las 1.000 consultas resuelto + esquema *problema → KPI → técnica → antes/después* → [desarrollo y ejemplos](#kpi) |
+| 60–95 | **Tarea 2 · KPI**: caso de las 1.000 consultas resuelto + esquema *problema → KPI → técnica → antes/después* → [desarrollo y ejemplos](#kpi) |
 | 95–110 | **Ejercicio 3**: calcula antes/después (código del apunte o a mano) |
 | 110–120 | **Cierre:** ficha + 1 riesgo + rúbrica del entregable |
 
@@ -141,7 +141,7 @@ FICHA DE 1 MINUTO  —  <sistema>
 
 ---
 
-## Cosa 2 · KPI (60–95 min) {#kpi}
+## Tarea 2 · KPI (60–95 min) {#kpi}
 
 ### 1. Qué es un KPI (60–68 min) — texto literal
 
