@@ -10,7 +10,7 @@ titulo: "Introducción a la IA y tipos de sistemas"
 
 # Sesión 01 · RA1 en una sesión (UD01 compactada)
 
-> **Filosofía:** mejor 2 cosas bien que 4 mal. Esta sesión compacta toda la UD01 de David (12 h / 4 sesiones de 3 h) en **2 h**: dos ideas concretas, sin profundizar. Todo lo demás queda como mapa de lectura, no como temario.
+> **Filosofía:** esta sesión compacta toda la UD01 de David (12 h / 4 sesiones de 3 h) en **2 h**: dos ideas concretas, sin profundizar. Todo lo demás queda como mapa de lectura, no como temario.
 >
 > **Las 2 cosas:**
 >
