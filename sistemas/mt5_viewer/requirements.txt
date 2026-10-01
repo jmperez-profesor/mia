@@ -1,4 +1,0 @@
-plyer>=2.1.0
-numpy>=2.0.0
-requests>=2.31
-# MetaTrader5 solo existe para Windows (ver backend_windows/)
