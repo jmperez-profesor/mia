@@ -28,7 +28,7 @@
 |---|---|
 | 0–10 | **Apertura:** gancho *¿es inteligente tu lavadora?* + objetivos y la ficha de 1 minuto → [desarrollo literal](#apertura) |
 | 10–14 | **Vídeo · fragmento 1** (00:00–03:26) a 1,25× → presentación, qué es la IA, débil/fuerte, imitación |
-| 14–28 | **Ejercicio 1** (apuntes): rellena la ficha de 1 minuto de un sistema conocido + clasifícalo débil/fuerte |
+| 14–28 | **Ejercicio 1** en el **cuaderno N02 de Colab**: presenta Colab y Jupyter (3 min), rellena la ficha de 1 minuto de un sistema conocido y clasifícalo débil/fuerte |
 | 28–32 | **Vídeo · fragmento 2** (03:26–05:37) a 1,25× → subcampos, ML, ML dentro de la IA, técnicas |
 | 32–50 | **Tu esquema** IA > ML > DL > GenAI (pizarra) + **Ejercicio 2**: clasifica supervisado / no supervisado |
 | 50–54 | **Vídeo · fragmento 3** (05:37–07:46) a 1,25× → RN/DL, big data, cierre y mapa |
@@ -115,9 +115,9 @@ FICHA DE 1 MINUTO  —  <sistema>
 
 **Dices:**
 
-> «Minuto y medio. Coged un papel, el móvil o vuestro Drive, elegid **un sistema que conozcáis de verdad** —el del curro, el del DAW, una tienda de barrio— y rellenad las 4 casillas. Quien acabe, levanta la mano.»
+> «Minuto y medio. Coged un papel o el móvil, elegid **un sistema que conozcáis de verdad** —el de la empresa donde trabajáis o hicisteis las prácticas, una aplicación que uséis a diario como Spotify o el filtro de spam de vuestro correo— y apuntad las 4 casillas. La ficha buena la haréis después en el cuaderno de Colab. Quien acabe, levanta la mano.»
 >
-> «**No valen frases de folleto.** Si ponéis “us IA”, lo tiramos y lo volvemos a hacer.»
+> «**No valen frases de marketing**, como “usa IA” o “es inteligente”: no dicen nada. Quiero saber qué datos entran, cómo decide y qué hace. Si ponéis “usa IA”, lo tiramos y lo volvemos a hacer.»
 
 *Pon el temporizador en pantalla (1:30) y circula mientras responden.*
 

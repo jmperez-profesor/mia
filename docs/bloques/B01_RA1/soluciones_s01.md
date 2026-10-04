@@ -12,7 +12,7 @@ titulo: "S01 · Soluciones de prácticas (RA1)"
 
 ## 1 · Práctica guiada (los 2 bloques de código)
 
-### Bloque 1 · De reglas a modelo (Iris, 2 clases)
+### Bloque 1 · De reglas a modelo (Iris, 3 especies)
 
 ```python
 from sklearn.datasets import load_iris
@@ -40,8 +40,37 @@ Precisión: 1.0
 | ¿Qué *acción* produce? | Devuelve la especie (setosa / versicolor / virginica) |
 | ¿Tarea estrecha cuál? | Clasificar la especie de una flor con 4 medidas. Nada más |
 
+!!! info "¿Qué son esas 4 medidas? Ejemplo para enseñar a los alumnos cómo se clasifican flores"
+    El conjunto de datos **Iris** es el «Hola mundo» del machine learning: **150 flores reales** de **3 especies** de iris (*setosa*, *versicolor* y *virginica*), **50 de cada una**. Lo popularizó el estadístico Ronald Fisher en 1936, con medidas recogidas por Edgar Anderson.
+
+    De cada flor se midieron **4 cosas, en centímetros**: el largo y el ancho del **sépalo** (la hoja verde exterior que protege el capullo) y el largo y el ancho del **pétalo** (la hoja de color). Una persona experta distingue la especie mirando la flor; el modelo lo hace **solo con esos 4 números**.
+
+    | Flor | Largo sépalo | Ancho sépalo | Largo pétalo | Ancho pétalo | Especie (la respuesta correcta) |
+    |---|---|---|---|---|---|
+    | 1 | 5,1 | 3,5 | 1,4 | 0,2 | *setosa* |
+    | 2 | 7,0 | 3,2 | 4,7 | 1,4 | *versicolor* |
+    | 3 | 6,3 | 3,3 | 6,0 | 2,5 | *virginica* |
+
+    **La idea.** El árbol de decisión se entrena con **105 flores cuya especie ya se conoce** y aprende qué medidas suelen ir con cada especie. Después se le da una **flor nueva** solo con sus 4 medidas y dice la especie. En el gráfico, los pétalos separan las 3 especies casi solos; la estrella roja es una flor nueva:
+
+    ![Medidas de las flores Iris por especie y una flor nueva](assets/iris_ejemplo.png)
+
+    **Pruébalo en clase** (ejecuta antes el código del Bloque 1, que crea el modelo `clf`):
+
+    ```python
+    nombres = load_iris().target_names      # los nombres de las 3 especies
+    flor_nueva = [[6.0, 2.9, 4.5, 1.5]]     # largo y ancho del sépalo, largo y ancho del pétalo (cm)
+    print(nombres[clf.predict(flor_nueva)[0]])   # pregunta al modelo qué especie es
+    ```
+
+    ```text
+    versicolor
+    ```
+
+    *Para saber más:* [Conjunto de datos flor iris (Wikipedia)](https://es.wikipedia.org/wiki/Conjunto_de_datos_flor_iris) · [El conjunto de datos Iris en scikit-learn, con gráficos](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html)
+
 !!! warning "Cuidado con «Precisión: 1.0»"
-    **No es un error, pero no es mérito del modelo.** El test tiene solo 15 flores y el problema es fácil: el árbol acierta las 15. Es el caso típico de *overfitting* aparente o de un test demasiado pequeño. **Nunca saques conclusiones con 15 filas.** Regla para el entregable: un número bonito sin contexto no es evidencia.
+    **No es un error, pero no es mérito del modelo.** El test tiene solo 45 flores (el 30 % de las 150) y el problema es fácil: el árbol acierta las 45. Es el caso típico de *overfitting* aparente o de un test demasiado pequeño. **Nunca saques conclusiones con una muestra tan pequeña y un problema tan fácil.** Regla para el entregable: un número bonito sin contexto no es evidencia.
 
 !!! example "Variante A — mismo problema, otro modelo (KNN)"
     Cambia **solo la última línea** y el resultado es el mismo:
@@ -65,7 +94,7 @@ Precisión: 1.0
 !!! example "Variante C — cambiar el tamaño del test (para demostrar el punto)"
     ```python
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=0)
-    # con test mucho más pequeño y otra semilla, la precisión ya NO es 1.0
+    # solo 30 flores para entrenar y 120 para probar: la precisión ya NO es 1.0 (sale 0,92)
     ```
 
     *Qué enseña:* la **semilla y el reparto** condicionan el número. Por eso se fija `random_state=42`: para que la clase obtenga el mismo resultado que tú.

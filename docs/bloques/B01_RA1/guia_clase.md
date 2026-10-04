@@ -115,9 +115,9 @@ La IA débil es **reactiva** (no actúa si no se la activa), **no flexible** (co
 
 Qué mirar: el **mapa conceptual** (IA, ML, RN, big data y DL se solapan) · **IA débil vs. fuerte** · **imitar no es comprender**. [Abrir en YouTube (00:00)](https://www.youtube.com/watch?v=KytW151dpqU&t=0s) · Reproduce a 1,25×.
 
-### La ficha de 1 minuto
+### Ejercicio 1 · La ficha de 1 minuto (14 min)
 
-La ficha destila todo lo anterior en cuatro preguntas:
+La ficha destila todo lo anterior en cuatro preguntas. Es la herramienta de la sesión para **caracterizar cualquier sistema de IA**:
 
 ```text
 FICHA DE 1 MINUTO  —  <sistema>
@@ -137,6 +137,8 @@ FICHA DE 1 MINUTO  —  <sistema>
 | **Acción** | Enruta el caso (devolución / cambio / defecto / consulta) |
 | **Tarea estrecha** | Clasificar esas 4 categorías. **No** conversa de otra cosa |
 
+Cuatro errores que debes evitar al rellenarla:
+
 | Error típico | Por qué falla |
 |---|---|
 | «Usa IA» en la casilla 2 | No dice **cómo** decide: ¿reglas escritas o datos? |
@@ -144,10 +146,15 @@ FICHA DE 1 MINUTO  —  <sistema>
 | Solo 3 casillas | Se olvida la 4, la más importante: **qué NO hace** |
 | «Es inteligente» en la 3 | Describe, no actúa: ¿responde, recomienda, controla? |
 
-!!! example "Ejercicio 1 · Ficha de un sistema conocido (14 min)"
-    Rellena la ficha de 1 minuto de **un sistema que conozcas de verdad** (tu curro, una tienda, un DAW…). Después clasifícalo como **IA débil** (una tarea). *No valen frases de folleto.*
+!!! example "Tu turno: la ficha se rellena en el cuaderno de Google Colab"
+    El cuaderno **N02** te explica primero qué es **Google Colab** y qué es un **cuaderno de Jupyter** (no hace falta que los conozcas), te da la ficha en un formato que se rellena **sin saber programar** y, al ejecutarla, te avisa de los errores típicos de la tabla anterior.
 
-    **Cuaderno N02 · Mapa de sistemas:** es la plantilla de la ficha; elige 1 sistema real y clasifícalo con la evidencia que te hace decidir.
+    1. Abre el cuaderno y guarda una copia en tu Drive (**Archivo → Guardar una copia en Drive**).
+    2. Elige **un sistema que conozcas de verdad**: uno de la empresa donde trabajas o donde hiciste las prácticas, una aplicación que uses a diario (las recomendaciones de Spotify o Netflix, el filtro de spam de tu correo) o un caso de los proyectos del módulo.
+    3. Rellena las cuatro casillas y ejecuta la celda de comprobación hasta que no haya avisos.
+    4. Clasifica tu sistema como **IA débil** (una sola tarea) y explica con qué **evidencia** has decidido entre reglas y datos.
+
+    Evita las **frases de marketing** como «usa IA» o «es inteligente»: no describen nada. La ficha tiene que decir qué datos entran, cómo decide y qué hace.
 
     [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_mapa_sistemas.ipynb){ .md-button }
 
@@ -407,7 +414,7 @@ KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (
 | Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
 | Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
 
-> **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI**: es una métrica de modelo sobre 15 filas de Iris. Para **decidir** hace falta un KPI de negocio con antes y después.
+> **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI**: es una métrica de modelo sobre 45 flores de prueba de Iris. Para **decidir** hace falta un KPI de negocio con antes y después.
 
 #### Ejemplos con números (uno por tipo de mejora)
 

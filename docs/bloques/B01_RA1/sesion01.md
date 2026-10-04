@@ -95,7 +95,7 @@ Para que conste que existe, sin tiempo de aula: historia (Turing 1950 → Dartmo
 Bloque 1 (caracterizar = ejecutar un `fit/predict` mínimo). Bloque 2 (decidir = calcular antes/después).
 
 ```python
-# Bloque 1 · De reglas a modelo en 10 líneas (Iris, 2 clases)
+# Bloque 1 · De reglas a modelo en 10 líneas (Iris, 3 especies)
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier

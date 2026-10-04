@@ -270,7 +270,7 @@ objetivo **≤ 1.400 €**.
 | Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
 
 > **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI** — es una
-> métrica de modelo sobre 15 filas de Iris. Para **decidir** hace falta un KPI de negocio con
+> métrica de modelo sobre 45 flores de prueba de Iris. Para **decidir** hace falta un KPI de negocio con
 > antes y después.
 
 #### Ejemplos con números (uno por tipo de mejora)

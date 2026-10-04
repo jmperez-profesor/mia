@@ -82,10 +82,10 @@ titulo: "S01 · Preguntas frecuentes (RA1)"
 ??? question "El código me da «Precisión: 1.0». ¿Lo he hecho bien o mal?"
     **Has hecho el código bien** — y el número es correcto. Lo que hay que entender es **por qué no sirve como evidencia**:
 
-    1. El test son solo **15 flores**; una muestra así no te dice nada de fiabilidad.
+    1. El test son solo **45 flores**; una muestra así no te dice nada de fiabilidad.
     2. Iris es un dataset **famoso y fácil**: hasta un modelo tonto acierta.
 
-    **Qué decir en clase:** *«Precisión 1,00 con 15 casos; válido como demo, no como validación»*. Si quieres **material a las bases de datos**, pregunta por los **datos que no se han usado para entrenar** — pero eso ya es sesión de otra cosa.
+    **Qué decir en clase:** *«Precisión 1,00 con 45 casos; válido como demo, no como validación»*. Si quieres **material a las bases de datos**, pregunta por los **datos que no se han usado para entrenar** — pero eso ya es sesión de otra cosa.
 
 ??? question "¿Para qué sirve separar train y test? ¿Y para qué es ese random_state=42?"
     - **`train_test_split` (train/test):** si evalúas con los mismos datos con los que entrenaste, el modelo **se ha aprendido las respuestas** y el resultado es un espejismo. **Test = examen con preguntas nuevas.**
