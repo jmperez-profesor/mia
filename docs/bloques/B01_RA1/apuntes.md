@@ -269,9 +269,12 @@ objetivo **≤ 1.400 €**.
 | Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
 | Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
 
-> **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI** — es una
-> métrica de modelo sobre 45 flores de prueba de Iris. Para **decidir** hace falta un KPI de negocio con
-> antes y después.
+> **La regla de la sesión:** en la práctica guiada, un modelo aprende a clasificar flores de iris y
+> acierta las 45 flores de prueba: **precisión = 45/45 = 1,00**. Esa cifra **no es un KPI**: es una
+> métrica de modelo (cuánto acierta en un examen) y no dice cuánto cuesta, cuánto tiempo ahorra ni cuántos
+> errores evita un proceso real. Para **decidir** hace falta un KPI de negocio con antes y después, como el
+> −58 % de coste del caso de las 1.000 consultas. Solución de la práctica:
+> [Soluciones · Bloque 1 (Iris)](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies).
 
 #### Ejemplos con números (uno por tipo de mejora)
 

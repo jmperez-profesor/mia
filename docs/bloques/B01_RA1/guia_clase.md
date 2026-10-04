@@ -414,7 +414,20 @@ KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (
 | Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
 | Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
 
-> **La regla de la sesión:** la *precisión de 1,00* de la práctica **no es un KPI**: es una métrica de modelo sobre 45 flores de prueba de Iris. Para **decidir** hace falta un KPI de negocio con antes y después.
+!!! example "Un ejemplo: la «precisión de 1,00» de la práctica de las flores"
+    En la práctica guiada, un modelo (un árbol de decisión) **aprende a decir de qué especie es una flor de iris** a partir de 4 medidas (largo y ancho del sépalo y del pétalo). Se entrena con 105 flores y se examina con otras **45 que no había visto**. Las acierta todas: 45 de 45 = **1,00** (el 100 %). Esa cifra se llama **precisión** y es una **métrica de modelo**: dice cuánto acierta el modelo en un examen.
+
+    ¿Por qué **no** es un KPI? Porque no responde a la pregunta que importa, **«¿compensa ponerlo en marcha?»**: no dice cuánto cuesta, cuánto tiempo ahorra ni cuántos errores evita en un proceso real. Además, 45 flores de un conjunto muy fácil no demuestran gran cosa. Compara los dos tipos de número:
+
+    | | Métrica de modelo (flores) | KPI de negocio (1.000 consultas) |
+    |---|---|---|
+    | **Qué dice** | El modelo acierta 45 de 45 flores de prueba | El coste de atención baja de 3.000 a 1.260 €/día |
+    | **Valor** | Precisión = 1,00 | **−58 %** |
+    | **¿Decide si compensa?** | No: no tiene unidad de negocio ni antes/después | Sí: tiene unidad (€/día) y compara antes y después |
+
+    Un modelo puede acertar el 100 % en un examen y no ahorrar nada a la empresa; y otro que acierta menos puede ahorrar mucho si sustituye trabajo caro. **Para decidir hace falta un KPI de negocio con antes y después.**
+
+    Solución de la práctica con el ejemplo de las flores: [Soluciones · Bloque 1 (Iris)](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies).
 
 #### Ejemplos con números (uno por tipo de mejora)
 

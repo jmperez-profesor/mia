@@ -169,8 +169,12 @@ Ejemplo:  coste de atención · €/día · sept 2026 · antes 3.000 € · obje
 | **Accionable** | Si falla, ¿**sé qué hacer**? | «el número está mal» no dice nada |
 
 > **Distinción que evita el error 1 de la entrega:** *precisión, recall, F1* son **métricas de
-> modelo**; *coste, tiempo y error de proceso* son **KPI de negocio**. **La precisión de 1,00 de
-> la práctica no decide nada**: decide el −58 %.
+> modelo**; *coste, tiempo y error de proceso* son **KPI de negocio**.
+>
+> Cuéntalo con la práctica de las flores: «El árbol acertó las 45 flores de prueba: 45 de 45, precisión
+> 1,00. Muy bien… pero ¿**compensa** ponerlo en una empresa? Esa cifra no lo dice: no tiene euros, ni
+> minutos, ni un antes y un después. **La precisión de 1,00 no decide nada; decide el −58 %** del coste.»
+> Solución de la práctica: [Soluciones · Bloque 1 (Iris)](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies).
 
 ### 2. El caso resuelto, paso a paso en la pizarra (68–80 min)
 
