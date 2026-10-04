@@ -11,6 +11,7 @@ title: "S01 · Guía de clase"
     - Los bloques desplegables **«Ampliación»** son *lectura de mapa*: existen para que sepas dónde encaja cada cosa, no entran como temario de examen.
     - Los bloques **«Ejercicio»** se hacen en el momento; las soluciones están en [Soluciones de prácticas](soluciones_s01.md).
     - Sección y criterio de evaluación (CE) de cada parte entre paréntesis.
+    - Los bloques **«En el mundo real»** traen casos reales y actuales con su fuente. Las cifras son las que da cada fuente en la fecha indicada y pueden cambiar.
 
 ## El plan de la sesión
 
@@ -46,6 +47,11 @@ Cambia una sola cosa: que un **sensor de carga** ajuste el agua **aprendiendo de
 !!! quote "La frase de la sesión"
     **¿Qué cambió? No la lavadora: el que DECIDE.** Pasa de ser *una regla escrita a mano* a ser *un modelo aprendido de los datos*.
 
+???+ example "En el mundo real · lavadoras «con IA» y termostatos que aprenden"
+    - **Samsung** presenta en su web española lavadoras con funciones llamadas **«AI Wash»** y **«AI Energy Mode»**, que según la marca ayudan a conseguir «un lavado más eficiente» y a optimizar el consumo ([samsung.com/es](https://www.samsung.com/es/washers-and-dryers/washing-machines/)). La página no detalla qué percibe la lavadora ni cómo decide. Esa es la pregunta que debes hacerte ante cualquier etiqueta de «IA»: ¿ajusta el ciclo **aprendiendo de datos** o ejecuta un **programa fijo** con algún sensor? Y aunque aprendiera, seguiría siendo IA **estrecha**: una sola tarea.
+    - **El termostato**, el mismo contraste. El de esta guía (`si T<18 → enciende`) ejecuta una regla. El [Nest Learning Thermostat](https://en.wikipedia.org/wiki/Nest_Thermostat) se presenta como un termostato **de autoaprendizaje** que optimiza la calefacción y la refrigeración del hogar.
+    - Exagerar el uso de la IA en un producto tiene nombre: ***AI washing*** ([Wikipedia](https://en.wikipedia.org/wiki/AI_washing)). Que algo lleve «IA» en la caja no lo hace inteligente.
+
 ### 1.1 ¿Qué es la inteligencia artificial?
 
 La **inteligencia artificial (IA)** es la tecnología que permite a las máquinas **simular el aprendizaje, la comprensión, la resolución de problemas, la toma de decisiones y la creatividad** humanas. Las aplicaciones con IA pueden ver e identificar objetos, entender y responder al lenguaje, aprender de la experiencia, recomendar decisiones y, cada vez más, **actuar de forma autónoma** (un agente que reserva un vuelo, un coche que conduce).
@@ -66,6 +72,11 @@ flowchart LR
 - **Percepción:** captar datos del mundo (texto, imagen, audio, sensores, registros de negocio).
 - **Razonamiento:** procesarlos para obtener conocimiento o decidir (un modelo entrenado, un conjunto de reglas, una búsqueda).
 - **Acción:** actuar sobre el entorno o sobre las personas (responder, recomendar, controlar un proceso).
+
+???+ example "En el mundo real · el ciclo en un coche sin conductor"
+    **Waymo** (Alphabet) ofrece robotaxis sin conductor. Según Wikipedia, en junio de 2026 operaba servicios comerciales públicos en **10 áreas metropolitanas de EE. UU.** y daba unos **500.000 viajes de pago por semana** ([Waymo](https://en.wikipedia.org/wiki/Waymo)). Su ciclo es el de arriba: **percibe** con cámaras y sensores como el lidar, **razona** sobre qué hay alrededor y qué harán los demás, **actúa** (acelera, frena, gira) y vuelve a percibir de forma continua.
+
+    Un asistente de voz y el recomendador de una tienda online siguen el mismo patrón con otros datos: *audio → respuesta* y *historial de compras → lista de productos recomendados*.
 
 ### 1.3 Características de un sistema inteligente
 
@@ -105,6 +116,12 @@ La clasificación más simple de la IA es **según la tarea que resuelve**:
 La IA débil es **reactiva** (no actúa si no se la activa), **no flexible** (colapsa ante lo no previsto) y **no tiene conciencia**: computa, no razona en sentido humano. Aun así **tiene riesgos**: al ejecutar su tarea sin considerar el contexto ético o social, puede causar daño si se usa sin prudencia.
 
 > **«Débil» y «estrecha» son lo mismo** (ANI, *narrow*). El ejemplo que lo deja claro: ChatGPT redacta un correo perfecto, pero si le pides **presupuestar** ese mismo correo se inventa los números. Es brillante en una tarea y nula en la contigua.
+
+???+ example "En el mundo real · brillantes en una tarea, torpes en la de al lado"
+    - **AlphaFold** (Google DeepMind) predice la forma tridimensional de las proteínas. Demis Hassabis y John Jumper recibieron por ello la mitad del **Nobel de Química de 2024** ([AlphaFold](https://en.wikipedia.org/wiki/AlphaFold)). Es un logro enorme y es **IA estrecha**: sirve para esa tarea y no para otra.
+    - **Los modelos de lenguaje** (ChatGPT y similares) resuelven muchas tareas de texto, pero lo que hacen es generar texto plausible, no comprender. En 2023, en el caso [Mata contra Avianca](https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc.), un abogado presentó ante un tribunal de EE. UU. un escrito con **casos judiciales inventados por ChatGPT**; el juez consideró que hubo «mala fe subjetiva» suficiente para imponer sanciones.
+    - **Air Canada (2024).** El chatbot de la aerolínea dio a un cliente información errónea sobre la tarifa por fallecimiento de un familiar, y el tribunal de resolución civil de Columbia Británica consideró **responsable a la aerolínea** de lo que había dicho su chatbot ([Moffatt contra Air Canada](https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada)).
+    - **La AGI sigue sin existir.** Lo que se anuncia son modelos cada vez más capaces, pero cada uno continúa siendo una IA estrecha.
 
 ??? info "Ampliación · Tests de inteligencia (Turing y Lovelace)"
     El **test de Turing** (1950) es conductual: un interrogador conversa por escrito con una persona y una máquina; si no las distingue, la máquina lo supera. El **test de Lovelace** (2001) mide otra cosa: si el sistema **origina** un resultado que su propio programador no puede explicar a partir del código. Superar Turing no implica superar Lovelace: Turing mide si *engañamos*, no si *comprendemos*.
@@ -196,6 +213,11 @@ flowchart LR
 - **Memoria limitada:** usan observaciones recientes. Los **vehículos autónomos** actuales memorizan velocidad y trayectoria de otros coches para decidir un cambio de carril.
 - **Teoría de la mente** y **autoconciencia:** teóricas, sin sistemas reales.
 
+???+ example "En el mundo real · las tres lentes hoy"
+    - **Escuelas.** La IA simbólica no ha desaparecido: los sistemas de reglas conviven con los modelos aprendidos. Muchos productos actuales **combinan ambos**: un modelo de lenguaje genera la respuesta y unas **reglas** (guardarraíles) le impiden salirse de lo permitido. Lo verás en el bloque de sistemas expertos y motores de reglas del módulo.
+    - **Hintze.** **Deep Blue** es el ejemplo reactivo. Un **robotaxi** necesita memoria limitada, porque debe recordar la trayectoria de los demás vehículos. Un **asistente conversacional** solo «recuerda» lo que cabe en la conversación en curso.
+    - **Russell y Norvig.** Los **asistentes de programación** que ejecutan pruebas, leen los errores y corrigen el código por su cuenta se acercan al modelo de **agente racional**: actúan para conseguir un objetivo.
+
 ---
 
 ## 4 · Breve historia de la IA (mapa de lectura)
@@ -222,6 +244,12 @@ flowchart LR
     ![AlphaGo](assets/alphago.png)
 
     La historia de la IA es cíclica: periodos de optimismo seguidos de «inviernos» y renacimientos. El salto actual (2017 en adelante) se apoya en tres palancas: **datos** masivos, **cómputo** en GPU y la arquitectura **Transformer**.
+
+    **Lo más reciente, con fuente:**
+
+    - **30 de noviembre de 2022:** OpenAI lanza ChatGPT ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
+    - **2024:** el Nobel de Física premia a **John Hopfield y Geoffrey Hinton** por descubrimientos que hicieron posible el aprendizaje automático con redes neuronales artificiales ([Nobel](https://www.nobelprize.org/prizes/physics/2024/press-release/)); el de Química premia a **Hassabis y Jumper** por AlphaFold.
+    - **1 de agosto de 2024:** entra en vigor el **Reglamento de IA** de la UE, de aplicación gradual ([AI Act](https://en.wikipedia.org/wiki/Artificial_Intelligence_Act)).
 
 ---
 
@@ -263,6 +291,11 @@ flowchart LR
 !!! example "Ejemplo · Precio de una casa"
     `Precio = A·superficie + B·habitaciones − C·edad + base`. El objetivo del ML es encontrar `A`, `B`, `C` y `base` que minimicen el error con las ventas conocidas.
 
+???+ example "En el mundo real · un modelo de precios que salió caro"
+    **Zillow** ofrece a los usuarios el «Zestimate», una **estimación del valor de una vivienda** ([Zillow](https://en.wikipedia.org/wiki/Zillow)): el ejemplo del precio de una casa llevado a un producto real. En 2018 la empresa empezó además a **comprar y vender casas** (Zillow Offers). En noviembre de 2021 anunció que cerraba esa división, vendía su inventario (unas 7.000 casas) y despedía al 25 % de la plantilla; la división había perdido **420 millones de dólares** en el tercer trimestre de ese año.
+
+    La lección enlaza con la Tarea 2: un modelo que acierta *de media* no basta cuando cada error se paga con dinero real. Por eso se evalúa con un **KPI de negocio** (euros, tiempo o errores en el proceso) y no solo con la métrica del modelo.
+
 ### 5.3 Tipos de aprendizaje
 
 | Tipo | Datos | Objetivo | Ejemplos |
@@ -274,6 +307,12 @@ flowchart LR
 | **Auto-supervisado** | Sin etiquetas humanas | Aprender de la estructura | Entrenamiento de LLM |
 
 > **El criterio que importa: ¿hay etiquetas?** Supervisado = te dieron la respuesta; no supervisado = nadie te la dio; refuerzo = aprende por ensayo y recompensa. Truco: si la respuesta es **«sí/no» o un nombre** → clasificación; si es un **número con decimales** → regresión; si **nadie te dio las respuestas** → clustering.
+
+???+ example "En el mundo real · un ejemplo de cada tipo"
+    - **Supervisado:** el filtro de spam de tu correo y el desbloqueo facial del móvil aprenden de ejemplos etiquetados (*spam / no spam*, *esta cara / otra*).
+    - **No supervisado:** una tienda agrupa a sus clientes por hábitos de compra sin que nadie haya etiquetado antes a cada cliente (es lo que hace la demo no supervisada del cuaderno N01).
+    - **Refuerzo:** AlphaGo, que venció en Go en 2016, mejoró jugando partidas. Y ChatGPT se afinó con **aprendizaje por refuerzo a partir de feedback humano (RLHF)**: personas valoran sus respuestas y el modelo aprende a preferir las mejores ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
+    - **Auto-supervisado:** los grandes modelos de lenguaje aprenden prediciendo la siguiente palabra en enormes cantidades de texto, sin etiquetas humanas.
 
 !!! example "Ejercicio 2 · Clasifica: supervisado o no supervisado (18 min)"
     Clasifica cada ítem (técnica y tipo de aprendizaje):
@@ -300,6 +339,11 @@ La **IA generativa** crea contenido nuevo (texto, imagen, audio) a partir de un 
 
 ![IA generativa](assets/ia_generativa.png)
 
+???+ example "En el mundo real · deep learning e IA generativa"
+    - **Texto:** ChatGPT, Gemini o Claude son grandes modelos de lenguaje basados en la arquitectura Transformer. **Imagen y vídeo:** Midjourney, DALL·E o Sora generan contenido nuevo a partir de un *prompt*.
+    - **Educación:** **Khanmigo**, de Khan Academy, es un chatbot que ayuda con matemáticas, ciencias y humanidades ([Khan Academy](https://en.wikipedia.org/wiki/Khan_Academy)).
+    - **Empresa:** muchos chatbots de atención al cliente combinan un modelo de lenguaje con **los documentos de la propia empresa** (la técnica **RAG** citada arriba) para responder con información actualizada.
+
 ### Vídeo 3 · Redes neuronales y big data (05:37–07:46)
 
 <iframe width="100%" height="380" src="https://www.youtube.com/embed/KytW151dpqU?start=337&end=466" title="DotCSV · fragmento 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -315,15 +359,15 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 
 ## 6 · Campos de aplicación de la IA (CE 4b)
 
-| Campo | Ejemplos | Beneficio típico |
-|---|---|---|
-| Industria y logística | Mantenimiento predictivo, rutas, control de calidad visual | Menos paradas y costes |
-| Salud | Diagnóstico por imagen, triaje, descubrimiento de fármacos | Precisión, menos errores |
-| Finanzas | Detección de fraude, *scoring*, atención al cliente | Menos pérdidas |
-| Comercio y retail | Recomendación, previsión de demanda | Más ventas, menos stock |
-| Marketing | Segmentación, análisis de sentimiento | Campañas más rentables |
-| Educación | Tutoría adaptativa, análisis de abandono | Personalización |
-| Agricultura | Riego y fertilizantes de precisión | Menos coste e impacto |
+| Campo | Ejemplos | Beneficio típico | Caso real y actual |
+|---|---|---|---|
+| Industria y logística | Mantenimiento predictivo, rutas, control de calidad visual | Menos paradas y costes | El proyecto de **hidrógeno verde** del módulo: optimizar el proceso y hacer mantenimiento predictivo |
+| Salud | Diagnóstico por imagen, triaje, descubrimiento de fármacos | Precisión, menos errores | La FDA publica la lista de dispositivos médicos con IA autorizados en EE. UU.: más de **1.600**, aproximadamente **tres de cada cuatro de radiología** (lista consultada en octubre de 2026, [FDA](https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices)) |
+| Finanzas | Detección de fraude, *scoring*, atención al cliente | Menos pérdidas | Cada pago con tarjeta recibe una puntuación de riesgo en fracciones de segundo para frenar los sospechosos |
+| Comercio y retail | Recomendación, previsión de demanda | Más ventas, menos stock | Las recomendaciones de Amazon o Netflix se calculan a partir de tu historial |
+| Marketing | Segmentación, análisis de sentimiento | Campañas más rentables | Una tienda segmenta a sus clientes por hábitos de compra para dirigir cada campaña |
+| Educación | Tutoría adaptativa, análisis de abandono | Personalización | **Khanmigo** (Khan Academy), un tutor en forma de chatbot |
+| Agricultura | Riego y fertilizantes de precisión | Menos coste e impacto | John Deere compró Blue River Technology, cuya visión por computador y aprendizaje automático permite pulverizar herbicida solo donde hay malas hierbas ([John Deere](https://en.wikipedia.org/wiki/John_Deere)) |
 
 ![Diagnóstico médico asistido](assets/diagnostico_medico.jpeg)
 
@@ -358,17 +402,17 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 
 ## 7 · Técnicas básicas de la IA (CE 4c)
 
-| Técnica | Qué hace | Uso típico |
-|---|---|---|
-| **Clasificación** (supervisado) | Asigna una categoría | Spam, priorizar incidencias, cribar CV |
-| **Regresión** (supervisado) | Predice un valor numérico | Prever demanda, precios |
-| **Clustering** (no supervisado) | Agrupa por similitud | Segmentar clientes |
-| **Detección de anomalías** | Detecta lo atípico | Fraude, averías |
-| **PLN** | Entiende y genera lenguaje | Chatbots, sentimiento, resúmenes |
-| **Visión artificial** | Interpreta imágenes y vídeo | Inspección, lectura de documentos |
-| **Robótica** | Percibe y actúa en el mundo físico | Almacén, fabricación |
-| **Sistemas expertos** | Reglas de un experto | Diagnóstico técnico |
-| **IA generativa / agentes** | Crea contenido y actúa | Redacción, tramitación |
+| Técnica | Qué hace | Uso típico | Ejemplo real y actual |
+|---|---|---|---|
+| **Clasificación** (supervisado) | Asigna una categoría | Spam, priorizar incidencias, cribar CV | El filtro de spam de tu correo |
+| **Regresión** (supervisado) | Predice un valor numérico | Prever demanda, precios | El «Zestimate» de Zillow: estima el precio de una vivienda |
+| **Clustering** (no supervisado) | Agrupa por similitud | Segmentar clientes | Agrupar a los clientes de una tienda por hábitos de compra |
+| **Detección de anomalías** | Detecta lo atípico | Fraude, averías | Bloquear un pago con tarjeta que se sale de tu patrón habitual |
+| **PLN** | Entiende y genera lenguaje | Chatbots, sentimiento, resúmenes | ChatGPT y los traductores automáticos |
+| **Visión artificial** | Interpreta imágenes y vídeo | Inspección, lectura de documentos | El desbloqueo facial del móvil; los pulverizadores que detectan malas hierbas |
+| **Robótica** | Percibe y actúa en el mundo físico | Almacén, fabricación | Los robotaxis de Waymo; los robots de un almacén |
+| **Sistemas expertos** | Reglas de un experto | Diagnóstico técnico | Reglas de validación de una solicitud de seguro o de crédito |
+| **IA generativa / agentes** | Crea contenido y actúa | Redacción, tramitación | Un asistente de programación que escribe código, ejecuta pruebas y lo corrige |
 
 ---
 
@@ -387,6 +431,12 @@ La IA aporta **eficiencia** solo si baja **coste, tiempo o error** medido antes/
 | **Agentes autónomos** | Ejecutan tareas con herramientas | Reservar, tramitar una incidencia |
 
 ![Robots de servicio](assets/robots.png)
+
+???+ example "En el mundo real · cada tipo de interacción"
+    - **Asistente virtual:** Siri y Alexa. **Chatbot:** el de atención al cliente de una aerolínea o de una tienda, y el tutor Khanmigo en educación.
+    - **Voz:** las plataformas de videollamada ofrecen transcripción y resumen automáticos de las reuniones.
+    - **Visión:** el desbloqueo facial del móvil o el control de accesos de un edificio.
+    - **Agentes:** los asistentes de programación que leen un proyecto, ejecutan las pruebas y corrigen el código por su cuenta.
 
 ### 8.2 ¿Qué es un KPI?
 
@@ -482,6 +532,10 @@ Un centro recibe **1.000 consultas/día** a **3 €** y **5 min** cada una. Un c
     2. **Si el chatbot solo resuelve el 30 %, ¿gasta más o menos?** — Relativamente más ahorro (77 %), pero **menos en €**: por eso se mira el euro, no el %.
     3. **¿La precisión del modelo es el KPI?** — No: es métrica de modelo. El KPI es de negocio.
 
+???+ example "En el mundo real · el KPI de un chatbot de atención: Klarna y Air Canada"
+    - **Klarna (2024).** La empresa de pagos dijo que su asistente de IA, basado en OpenAI, había gestionado **unos dos tercios de los chats** de atención al cliente en su primer mes, con un trabajo equivalente a **700 agentes a jornada completa** ([Klarna](https://en.wikipedia.org/wiki/Klarna)). Son cifras de la propia empresa. Es el tipo de KPI del caso de clase: *containment rate* (% resuelto por la IA) y coste. Aplícale las 5 comprobaciones: ¿es **honesto**? ¿Cuenta la calidad de las respuestas y los casos que acaban en una persona?
+    - **Air Canada (2024).** Un fallo del chatbot acabó en un tribunal, que hizo responsable a la aerolínea ([Moffatt contra Air Canada](https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada)). Un KPI que solo mide lo que se ahorra y no lo que puede costar un error es poco **honesto**.
+
 ### 8.4 De la técnica al beneficio
 
 | Técnica | Ejemplo de uso | Mejora operativa |
@@ -522,6 +576,12 @@ flowchart LR
 - **Agentes:** programas que **diseñan su flujo de trabajo** y **usan herramientas** para lograr un objetivo. No solo responden: **actúan**.
 - ***Fine-tuning*:** adaptar un modelo base a una tarea concreta con datos específicos. Un agente puede usar un modelo afinado; no son excluyentes.
 
+???+ example "En el mundo real · un caso de cada tipo"
+    - **Predictiva:** el «Zestimate» de Zillow (valor de una vivienda) o la puntuación de riesgo de un pago con tarjeta.
+    - **Generativa:** ChatGPT redactando un correo, Midjourney creando una imagen.
+    - **Agente:** un asistente de programación que lee el proyecto, ejecuta las pruebas y corrige el código: no solo responde, **actúa**.
+    - **Fine-tuning o documentos propios:** una empresa que quiere que su chatbot hable de sus productos puede **ajustar** un modelo con sus datos o **conectarlo a sus documentos** (RAG); también pueden combinarse.
+
 ---
 
 ## 10 · Beneficios, riesgos y marco legal
@@ -530,6 +590,13 @@ flowchart LR
 - **Riesgos:** datos con sesgos o manipulación, modelos robados o alterados, fallos operativos (*model drift*), privacidad y ética. Un modelo entrenado con datos sesgados **amplifica** ese sesgo.
 - **Marco normativo:** el **AI Act** (Reglamento UE 2024/1689) clasifica la IA por riesgo; el **RGPD** limita el uso de datos personales (minimización). El calendario del AI Act se ha ido actualizando: verifícalo en el DOUE antes de evaluarlo.
 - **IA responsable:** explicabilidad, equidad, robustez, rendición de cuentas y privacidad.
+
+???+ example "En el mundo real · cuando la IA sale mal"
+    - **Sesgo.** Según Reuters, recogido por la BBC, Amazon abandonó una herramienta de selección de personal porque el sistema, entrenado con currículos recibidos durante 10 años (en buena parte de hombres), había aprendido a preferir a los candidatos masculinos ([BBC](https://www.bbc.com/news/technology-45809919)). Un modelo entrenado con datos sesgados **amplifica** ese sesgo.
+    - **Fallo operativo.** Zillow cerró en 2021 su división de compra de casas tras perder 420 millones de dólares en un trimestre (ver §5.2).
+    - **Responsabilidad y alucinaciones.** Los casos Mata contra Avianca (casos judiciales inventados) y Air Canada (el chatbot compromete a la empresa) están en la sección 2.
+    - **Privacidad.** En marzo de 2023 la autoridad italiana de protección de datos **prohibió ChatGPT** en Italia y abrió una investigación por posible incumplimiento del RGPD; la prohibición se levantó en abril de 2023 tras cambios de OpenAI ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
+    - **Marco legal.** El **Reglamento de IA** de la UE entró en vigor el **1 de agosto de 2024** y se aplica de forma gradual; prohíbe las aplicaciones de riesgo inaceptable, como la puntuación social de personas ([AI Act](https://en.wikipedia.org/wiki/Artificial_Intelligence_Act)).
 
 ![Inversión en IA](assets/inversion_ia.png)
 
