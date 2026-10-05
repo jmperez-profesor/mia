@@ -95,18 +95,19 @@ nav:
 #      - "Recursos de vídeo (DotCSV)": bloques/B01_RA1/recursos_video.md
 #      - "Guion de sesión con vídeo": bloques/B01_RA1/guion_video.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
-          - Plan de sesión: bloques/B01_RA1/sesion01.md
+          #- Plan de sesión: bloques/B01_RA1/sesion01.md
           - "Guía de clase (apuntes + vídeos + ejercicios)": bloques/B01_RA1/guia_clase.md
 #          - "Presentación de clase": presentaciones/b01_s01.html
           - Práctica:
               - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s01.md
-              - N01 Técnicas de IA: bloques/B01_RA1/sesion01_tecnicas_ia.ipynb
-              - N02 La ficha de 1 minuto (Colab): bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
+              - N01 La ficha de 1 minuto (Colab): bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
+              - N02 Técnicas de IA: bloques/B01_RA1/sesion01_tecnicas_ia.ipynb
+              
 #          - Entregas:
 #             - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
-          - "Consulta (retirable en evaluación)":
-              - "Soluciones de prácticas": bloques/B01_RA1/soluciones_s01.md
-              - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
+          #- "Consulta (retirable en evaluación)":
+          #    - "Soluciones de prácticas": bloques/B01_RA1/soluciones_s01.md
+         #    - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
 #   - "B05 · RA5 — Sistemas expertos y motores de reglas":
 #       - Introducción: bloques/B05_RA5/index.md
 #       - "Apuntes (3 sesiones)": bloques/B05_RA5/apuntes.md
