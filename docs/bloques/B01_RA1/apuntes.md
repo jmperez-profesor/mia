@@ -489,8 +489,8 @@ Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA apo
 - [UD01 · Caracterización de sistemas de IA](https://martinezpenya.es/ModelosIA/UD01/UD01_ES.html)
 - [Ejercicios de autoevaluación UD01](https://martinezpenya.es/ModelosIA/UD01/UD01_Ejercicios.html)
 - Notebooks:
-    - [N01 Técnicas de IA](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html)
-    - [N02 Mapa de sistemas](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html)
+    - [N02 Técnicas de IA](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N01_tecnicas_ia.html)
+    - [N01 Mapa de sistemas](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N02_mapa_sistemas.html)
     - [N05 Línea del tiempo](https://martinezpenya.es/ModelosIA/UD01/notebooks/UD01_N05_linea_tiempo.html)
 
 **Recursos de vídeo (DotCSV):**

@@ -21,8 +21,8 @@
 | Documento | Estado |
 |---|---|
 | [Ejercicios de autoevaluación (10)](ejercicios_s01.md) | Se corrigen en clase · [soluciones](soluciones_s01.md) |
-| [N01 · Técnicas de IA](sesion01_tecnicas_ia.ipynb) | Demo guiada · [soluciones](soluciones_s01.md#3-n01-actividad-las-3-preguntas) |
-| [N02 · Mapa de sistemas](sesion01_mapa_sistemas.ipynb) | Entregable · [ejemplo resuelto](soluciones_s01.md#4-n02-mapa-de-sistemas-ejemplo-resuelto-de-una-organizacion) |
+| [N02 · Técnicas de IA](sesion01_tecnicas_ia.ipynb) | Demo guiada · [soluciones](soluciones_s01.md#3-n02-actividad-las-3-preguntas) |
+| [N01 · Mapa de sistemas](sesion01_mapa_sistemas.ipynb) | Entregable · [ejemplo resuelto](soluciones_s01.md#4-n01-mapa-de-sistemas-ejemplo-resuelto-de-una-organizacion) |
 | [Miniproyecto](sesion01_miniproyecto.ipynb) | **Entregable único** · [solución completa](soluciones_s01.md#5-miniproyecto-solucion-completa) |
 
 > **Evaluación (CE 4a–4d):** ficha mínima correcta + KPI plausible + decisión explícita con riesgo. 40 % actividades / 60 % prueba, ≥5 por RA.

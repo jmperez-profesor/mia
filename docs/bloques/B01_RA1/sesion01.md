@@ -114,9 +114,9 @@ despues = 600 * 0.10 + 400 * 3.0
 print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorro: {(1-despues/antes)*100:.0f}%")
 ```
 
-## Práctica propuesta (miniproyecto único = N02+N04 fusionados)
+## Práctica propuesta (miniproyecto único = N01+N04 fusionados)
 
-**Un solo entregable** (sustituye a N02+N03+N04+N05 para esta sesión única): ficha de **1 sistema real** (el de tu empresa, LARA, hidrógeno o colmena) en `sesion01_miniproyecto.ipynb`:
+**Un solo entregable** (sustituye a N01+N03+N04+N05 para esta sesión única): ficha de **1 sistema real** (el de tu empresa, LARA, hidrógeno o colmena) en `sesion01_miniproyecto.ipynb`:
 
 1. Ficha 1-minuto (percibe / reglas o datos / acción / tarea estrecha).
 2. KPI antes/después con 2 números (coste, tiempo o error).
@@ -129,7 +129,7 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 ## Materiales / recursos
 
 - **Apuntes (1 lectura):** `material_david/docs/UD01/UD01_ES.md` §§3, 6.2–6.5 (el resto es mapa).
-- **Guiados en nav:** N01 Técnicas (demo) + N02 Mapa (plantilla de ficha).
+- **Guiados en nav:** N02 Técnicas (demo) + N01 Mapa (plantilla de ficha).
 - **Complemento:** `artint/docs/ia/introduccion/definicion.md`.
 - **Guion con vídeo:** [plan minuto a minuto con DotCSV](guion_video.md).
 - **Presentación de clase:** [ver en pantalla](../../presentaciones/b01_s01.html) · [descargar en PDF](../../assets/pdf/b01_s01_presentacion.pdf).
@@ -153,4 +153,4 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 ## Observaciones
 
 - Lo que se quita respecto a UD01 completa (31 ejercicios, N03, N05, Turing/Lovelace, Hintze, Transformers, PLN a fondo) queda como **lectura voluntaria**, no evaluable en esta sesión. Si el grupo pide más, ampliar por el KPI, nunca por teoría.
-- N02 original pedía 3 sistemas; aquí se pide **1 bien hecho**. N04 pedía propuesta completa; aquí **3 líneas de decisión**.
+- N01 original pedía 3 sistemas; aquí se pide **1 bien hecho**. N04 pedía propuesta completa; aquí **3 líneas de decisión**.

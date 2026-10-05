@@ -4,15 +4,15 @@
 
 ## Bloque 1 · Caracterizar (idea 1)
 
-**1.** Ficha de 1 minuto para un chatbot de reclamaciones: ¿qué percibe? ¿razona con reglas o datos? ¿qué acción produce? ¿cuál es su tarea estrecha? *(UD01 §3 + N02)*
+**1.** Ficha de 1 minuto para un chatbot de reclamaciones: ¿qué percibe? ¿razona con reglas o datos? ¿qué acción produce? ¿cuál es su tarea estrecha? *(UD01 §3 + N01)*
 
 **2.** Termostato `si T<18 → enciende` vs. filtro spam aprendido: ¿qué tipo es cada uno y cuándo conviene cada enfoque? *(UD01 A4)*
 
 **3.** ¿Por qué toda la IA actual es estrecha (débil)? Pon un ejemplo que lo demuestre y uno de lo que *no* puede hacer. *(UD01 A5)*
 
-**4.** (N01 · práctica) Ejecuta el notebook **N01 Técnicas de IA** en Colab: ¿qué diferencia observas entre la salida supervisada y la no supervisada? Explícalo en 2 líneas.
+**4.** (N02 · práctica) Ejecuta el notebook **N02 Técnicas de IA** en Colab: ¿qué diferencia observas entre la salida supervisada y la no supervisada? Explícalo en 2 líneas.
 
-**5.** (N02 · práctica) Con el **mapa N02**: elige 1 sistema real y clasifícalo (reglas o datos, tarea estrecha). ¿Qué evidencia te hace decidir?
+**5.** (N01 · práctica) Con el **mapa N01**: elige 1 sistema real y clasifícalo (reglas o datos, tarea estrecha). ¿Qué evidencia te hace decidir?
 
 **6.** Clasifica en supervisado / no supervisado / PLN / visión: (a) grietas por foto, (b) agrupar clientes, (c) spam, (d) asistente por voz. *(UD01 D19, reducido)*
 

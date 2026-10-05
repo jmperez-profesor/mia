@@ -4,7 +4,7 @@ titulo: "S01 · Soluciones de prácticas (RA1)"
 
 # S01 · Soluciones de prácticas
 
-> **Uso docente.** Soluciones completas de la práctica guiada, de los 10 ejercicios de autoevaluación, de la actividad del N01, de un ejemplo resuelto del N02 y del miniproyecto. Los enlaces están publicados **a propósito**: el alumnado los guarda en favoritos y yo los oculto cuando haga falta.
+> **Uso docente.** Soluciones completas de la práctica guiada, de los 10 ejercicios de autoevaluación, de la actividad del N02, de un ejemplo resuelto del N01 y del miniproyecto. Los enlaces están publicados **a propósito**: el alumnado los guarda en favoritos y yo los oculto cuando haga falta.
 >
 > **Nota:** las respuestas de los ejercicios son una **posible** respuesta de referencia; si un alumno justifica distinto pero con coherencia, también vale.
 
@@ -175,14 +175,14 @@ Porque cada sistema resuelve **una tarea acotada y concreta**, sin conciencia ni
 - *Ejemplo que lo demuestra:* GPT redacta un correo, pero le pides **presupuestar** el mismo correo y se inventa los números: es brillante en una tarea y nula en la contigua.
 - *Lo que no puede hacer:* **transferir** lo aprendido en un dominio a otro sin reentrenar; razonar con sentido común general como una persona.
 
-**4. (N01) Diferencia entre la salida supervisada y la no supervisada.**
+**4. (N02) Diferencia entre la salida supervisada y la no supervisada.**
 
 - **Supervisada (KNN sobre clientes):** el modelo devuelve **0 o 1**, la etiqueta concreta de un caso («reclamará / no reclamará»). Hay **respuesta correcta** con la que comparar: se puede medir precisión.
 - **No supervisada (k-means sobre compras):** devuelve **0 o 1 por fila** también, pero esos números **no significan «sí/no»**: son **identificadores de grupo** que el algoritmo inventó. No hay respuesta correcta; lo que hay que interpretar es que los 6 clientes se agruparon en **2 grupos**: 3 de importe bajo (~30 €, 2-3 pedidos) y 3 de importe alto (~82 €, 8-10 pedidos).
 
 > **La diferencia en 2 líneas:** la supervisada **predice una respuesta que ya existe**; la no supervisada **busca estructura que nadie había etiquetado**.
 
-**5. (N02) Clasificar 1 sistema real: reglas o datos, tarea estrecha.**
+**5. (N01) Clasificar 1 sistema real: reglas o datos, tarea estrecha.**
 
 *Ejemplo de referencia (recomendador de películas de una plataforma):*
 
@@ -258,7 +258,7 @@ Antes: 600 €/día · Después: 168 €/día · Ahorro: 72.0 %
 
 ---
 
-## 3 · N01 · Actividad (las 3 preguntas)
+## 3 · N02 · Actividad (las 3 preguntas)
 
 **1. Detectar fraudes en tarjetas con datos históricos etiquetados → clasificación supervisado.** Los datos ya dicen `fraude / no fraude`, y el objetivo es que el modelo **asigne una categoría a una nueva operación** (además, se puede usar *detección de anomalías* como refuerzo no supervisado).
 
@@ -273,7 +273,7 @@ Antes: 600 €/día · Después: 168 €/día · Ahorro: 72.0 %
 
 ---
 
-## 4 · N02 · Mapa de sistemas (ejemplo resuelto, de una organización)
+## 4 · N01 · Mapa de sistemas (ejemplo resuelto, de una organización)
 
 *Ejemplo completo con una tienda local, para que el alumnado vea el **nivel de detalle** que se espera.*
 

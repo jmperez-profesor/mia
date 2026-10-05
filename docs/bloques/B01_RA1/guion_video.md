@@ -28,7 +28,7 @@
 |---|---|
 | 0–10 | **Apertura:** gancho *¿es inteligente tu lavadora?* + objetivos y la ficha de 1 minuto → [desarrollo literal](#apertura) |
 | 10–14 | **Vídeo · fragmento 1** (00:00–03:26) a 1,25× → presentación, qué es la IA, débil/fuerte, imitación |
-| 14–28 | **Ejercicio 1** en el **cuaderno N02 de Colab**: presenta Colab y Jupyter (3 min), rellena la ficha de 1 minuto de un sistema conocido y clasifícalo débil/fuerte |
+| 14–28 | **Ejercicio 1** en el **cuaderno N01 de Colab**: presenta Colab y Jupyter (3 min), rellena la ficha de 1 minuto de un sistema conocido y clasifícalo débil/fuerte |
 | 28–32 | **Vídeo · fragmento 2** (03:26–05:37) a 1,25× → subcampos, ML, ML dentro de la IA, técnicas |
 | 32–50 | **Tu esquema** IA > ML > DL > GenAI (pizarra) + **Ejercicio 2**: clasifica supervisado / no supervisado |
 | 50–54 | **Vídeo · fragmento 3** (05:37–07:46) a 1,25× → RN/DL, big data, cierre y mapa |
