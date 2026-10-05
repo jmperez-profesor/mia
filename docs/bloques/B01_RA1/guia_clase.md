@@ -50,7 +50,9 @@ Cambia una sola cosa: que un **sensor de carga** ajuste el agua **aprendiendo de
 ???+ example "En el mundo real · lavadoras «con IA» y termostatos que aprenden"
     - **Samsung** presenta en su web española lavadoras con funciones llamadas **«AI Wash»** y **«AI Energy Mode»**, que según la marca ayudan a conseguir «un lavado más eficiente» y a optimizar el consumo ([samsung.com/es](https://www.samsung.com/es/washers-and-dryers/washing-machines/)). La página no detalla qué percibe la lavadora ni cómo decide. Esa es la pregunta que debes hacerte ante cualquier etiqueta de «IA»: ¿ajusta el ciclo **aprendiendo de datos** o ejecuta un **programa fijo** con algún sensor? Y aunque aprendiera, seguiría siendo IA **estrecha**: una sola tarea.
     - **El termostato**, el mismo contraste. El de esta guía (`si T<18 → enciende`) ejecuta una regla. El [Nest Learning Thermostat](https://en.wikipedia.org/wiki/Nest_Thermostat) se presenta como un termostato **de autoaprendizaje** que optimiza la calefacción y la refrigeración del hogar.
+    - **[Pendiente de verificar por el docente]** **LG y Bosch.** Según la publicidad de los fabricantes, algunas lavadoras de **LG** (gama «AI DD») detectan el tipo de tejido y el peso de la carga para elegir el movimiento del tambor, y algunas de **Bosch** (sistema «i-DOS») dosifican solas el detergente y el suavizante según la carga. Son ejemplos para el mismo ejercicio: ¿ajustan el ciclo **aprendiendo de datos** o aplican **reglas fijas** con sensores? Y en cualquier caso hacen **una sola tarea**: IA estrecha.
     - Exagerar el uso de la IA en un producto tiene nombre: ***AI washing*** ([Wikipedia](https://en.wikipedia.org/wiki/AI_washing)). Que algo lleve «IA» en la caja no lo hace inteligente.
+    - **[Pendiente de verificar por el docente]** **El caso de la SEC.** El regulador bursátil de EE. UU. (SEC) sancionó en 2024 a dos asesoras de inversión, **Delphia** y **Global Predictions**, por afirmar que usaban inteligencia artificial cuando no era cierto. Es *AI washing* con consecuencias legales.
 
 ### 1.1 ¿Qué es la inteligencia artificial?
 
@@ -77,6 +79,8 @@ flowchart LR
     **Waymo** (Alphabet) ofrece robotaxis sin conductor. Según Wikipedia, en junio de 2026 operaba servicios comerciales públicos en **10 áreas metropolitanas de EE. UU.** y daba unos **500.000 viajes de pago por semana** ([Waymo](https://en.wikipedia.org/wiki/Waymo)). Su ciclo es el de arriba: **percibe** con cámaras y sensores como el lidar, **razona** sobre qué hay alrededor y qué harán los demás, **actúa** (acelera, frena, gira) y vuelve a percibir de forma continua.
 
     Un asistente de voz y el recomendador de una tienda online siguen el mismo patrón con otros datos: *audio → respuesta* y *historial de compras → lista de productos recomendados*.
+
+    - **[Pendiente de verificar por el docente]** **Google Maps y DeepMind.** Google Maps calcula la hora estimada de llegada a partir de datos de tráfico, y DeepMind ha colaborado con Google para mejorar esas predicciones con aprendizaje automático. Es un buen ejemplo de **percibe** (posición y velocidad de miles de móviles y vehículos), **razona** (un modelo que predice cuánto tardarás) y **actúa** (te propone la mejor ruta).
 
 ### 1.3 Características de un sistema inteligente
 
@@ -310,6 +314,7 @@ flowchart LR
 
 ???+ example "En el mundo real · un ejemplo de cada tipo"
     - **Supervisado:** el filtro de spam de tu correo y el desbloqueo facial del móvil aprenden de ejemplos etiquetados (*spam / no spam*, *esta cara / otra*).
+    - **[Pendiente de verificar por el docente]** **Visa.** Las redes de pago como **Visa** puntúan cada transacción con modelos de IA en una fracción de segundo para decidir si parece fraudulenta. Aprenden de millones de operaciones ya etiquetadas como *fraude* o *legítima*: aprendizaje supervisado de manual.
     - **No supervisado:** una tienda agrupa a sus clientes por hábitos de compra sin que nadie haya etiquetado antes a cada cliente (es lo que hace la demo no supervisada del cuaderno N01).
     - **Refuerzo:** AlphaGo, que venció en Go en 2016, mejoró jugando partidas. Y ChatGPT se afinó con **aprendizaje por refuerzo a partir de feedback humano (RLHF)**: personas valoran sus respuestas y el modelo aprende a preferir las mejores ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
     - **Auto-supervisado:** los grandes modelos de lenguaje aprenden prediciendo la siguiente palabra en enormes cantidades de texto, sin etiquetas humanas.
@@ -361,7 +366,7 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 
 | Campo | Ejemplos | Beneficio típico | Caso real y actual |
 |---|---|---|---|
-| Industria y logística | Mantenimiento predictivo, rutas, control de calidad visual | Menos paradas y costes | El proyecto de **hidrógeno verde** del módulo: optimizar el proceso y hacer mantenimiento predictivo |
+| Industria y logística | Mantenimiento predictivo, rutas, control de calidad visual | Menos paradas y costes | El proyecto de **hidrógeno verde** del módulo: optimizar el proceso y hacer mantenimiento predictivo. **[Pendiente de verificar por el docente]** **Rolls-Royce** monitoriza sus motores de avión con sensores y analiza esos datos para anticipar el mantenimiento |
 | Salud | Diagnóstico por imagen, triaje, descubrimiento de fármacos | Precisión, menos errores | La FDA publica la lista de dispositivos médicos con IA autorizados en EE. UU.: más de **1.600**, aproximadamente **tres de cada cuatro de radiología** (lista consultada en octubre de 2026, [FDA](https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices)) |
 | Finanzas | Detección de fraude, *scoring*, atención al cliente | Menos pérdidas | Cada pago con tarjeta recibe una puntuación de riesgo en fracciones de segundo para frenar los sospechosos |
 | Comercio y retail | Recomendación, previsión de demanda | Más ventas, menos stock | Las recomendaciones de Amazon o Netflix se calculan a partir de tu historial |
