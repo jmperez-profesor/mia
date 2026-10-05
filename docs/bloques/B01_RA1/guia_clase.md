@@ -4,6 +4,17 @@ title: "S01 · Guía de clase"
 
 # S01 · Guía de clase — Caracterización de sistemas de IA
 
+## Mapa mental del bloque
+
+Antes de empezar a hablar, mira el mapa general del RA1. Pulsa para ampliarlo.
+
+<figure markdown>
+  ![Mapa mental del RA1](../../assets/nbl/b01_mapa_mental.jpg){ width="100%" }
+  <figcaption>Mapa mental del RA1 · elaborado con Gemini Notebook</figcaption>
+</figure>
+
+Más material en [Recursos Gemini Notebook](recursos_nbl.md).
+
 <!-- **Una sola página para la clase y para repasar.** Tiene los [apuntes](apuntes.md) como base y, intercalados en el momento en que se trabajan, los # //**vídeos** de DotCSV, los **ejercicios** y los **cuadernos de Colab**. Es la versión para el alumnado de la [presentación](../../presentaciones/b01_s01.html); //# el plan minuto a minuto del docente está en el [guion de sesión](guion_video.md).
 --> 
 

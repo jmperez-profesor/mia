@@ -14,9 +14,11 @@ flujo de trabajo por sesiones, no reutilices su prosa.
 
 ## Diferencia clave respecto al proyecto de referencia
 El compañero organiza el curso por "Unidades Didácticas" (UD00-UD07) con una duración variable
-en horas. YO organizo mi docencia en SESIONES DE TRABAJO DE 2 HORAS (mi unidad mínima real de
-programación de aula), agrupadas después en bloques temáticos/RA. Por tanto:
-- La unidad de planificación temporal del proyecto debe ser la SESIÓN DE 2 HORAS, no la UD.
+en horas. Yo organizo mi docencia en SESIONES DE TRABAJO DE 2 HORAS (mi unidad mínima real de
+programación de aula) y el alumno le tiene que dedicar 2 horas más en casa, agrupadas después en bloques temáticos/RA. 
+Por tanto,:
+- La unidad de planificación temporal del proyecto debe ser la SESIÓN DE 2 HORAS presenciales con 
+trabajo para cosas, no la UD.
 - Cada sesión de 2h debe tener: objetivos, contenidos, actividades, duración desglosada en
   minutos (apertura, desarrollo, cierre/evaluación), materiales/recursos, y enlace a la
   práctica/notebook si aplica.

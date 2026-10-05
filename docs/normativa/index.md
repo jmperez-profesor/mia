@@ -16,4 +16,3 @@ Resumen de la normativa vigente para el módulo 5071 (CV, 2026-2027). Fichas com
 - **ORDEN 30/2022, de 12 mayo**: organización/autorización en régimen semipresencial.
 - **Resolución SAE 15/07/2026** (DOGV 2026/24495): instrucciones de ordenación académica 26-27 (docencia 01/10/2026 → 18/06/2027 máx.).
 
-> Los PDFs oficiales se irán incorporando a `fuentes/` en el repositorio.

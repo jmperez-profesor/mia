@@ -1,9 +1,9 @@
-# B01 · RA1 — Recursos NotebookLM
+# B01 · RA1 — Recursos Gemini Notebook
 
-Materiales complementarios generados con **NotebookLM** a partir de las fuentes del bloque (mapa mental, presentación, resúmenes y audio). Son material de **apoyo y repaso**, no sustituyen a los [apuntes](apuntes.md).
+Materiales complementarios generados con **Gemini Notebook** a partir de las fuentes del bloque (mapa mental, presentación, resúmenes y audio). Son material de **apoyo y repaso**, no sustituyen a los [apuntes](apuntes.md).
 
 !!! info "Cómo se ha generado"
-    Estos artefactos se han elaborado con NotebookLM a partir de las fuentes del RA1 (RD 279/2021, apuntes de la UD01 y artículos de referencia). Se citan las fuentes originales; el material se comparte bajo **CC BY-NC-SA 4.0**.
+    Estos artefactos se han elaborado con Gemini Notebook a partir de las fuentes del RA1 (RD 279/2021, apuntes de la UD01 y artículos de referencia). Se citan las fuentes originales; el material se comparte bajo **CC BY-NC-SA 4.0**.
 
 ## Mapa mental
 
@@ -11,7 +11,7 @@ Visión general del bloque en un solo vistazo. Pulsa para ampliarlo.
 
 <figure markdown>
   ![Mapa mental del RA1](../../assets/nbl/b01_mapa_mental.jpg){ width="100%" }
-  <figcaption>Mapa mental del RA1 · elaborado con NotebookLM</figcaption>
+  <figcaption>Mapa mental del RA1 · elaborado con Gemini Notebook</figcaption>
 </figure>
 
 ## Presentación: «El Atlas de la Inteligencia Artificial»
@@ -41,16 +41,18 @@ Guía visual de 15 diapositivas (IA, Machine Learning, Deep Learning y Big Data)
 
 *(pendiente de añadir)*
 
+<!--
 ## Cuaderno público
 
-*(pendiente de añadir enlace al cuaderno compartido de NotebookLM)*
+*(pendiente de añadir enlace al cuaderno compartido de Gemini Notebook)*
 
 ## Cómo añadir más material (guía rápida)
 
-1. Descarga el artefacto de NotebookLM (PDF/PNG para infografías y presentaciones; `.wav`/`.mp3` para el audio).
+1. Descarga el artefacto de Gemini Notebook (PDF/PNG para infografías y presentaciones; `.wav`/`.mp3` para el audio).
 2. Convierte y optimiza con el script del repositorio:
    ```bash
    ./scripts/nbl2assets.sh B01 <fichero>
    ```
 3. Copia el bloque que imprime el script en esta página.
 4. Cita siempre la **fuente original** y mantén la licencia CC BY-NC-SA 4.0.
+-->

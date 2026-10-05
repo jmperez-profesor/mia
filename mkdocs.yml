@@ -91,19 +91,19 @@ nav:
   - "B01 · RA1 — Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
       - "Apuntes (RA1)": bloques/B01_RA1/apuntes.md
-      - "Recursos NotebookLM": bloques/B01_RA1/recursos_nbl.md
-      - "Recursos de vídeo (DotCSV)": bloques/B01_RA1/recursos_video.md
-      - "Guion de sesión con vídeo": bloques/B01_RA1/guion_video.md
+      - "Recursos Gemini Notebook": bloques/B01_RA1/recursos_nbl.md
+#      - "Recursos de vídeo (DotCSV)": bloques/B01_RA1/recursos_video.md
+#      - "Guion de sesión con vídeo": bloques/B01_RA1/guion_video.md
       - "S01 · Introducción a la IA y tipos de sistemas (05/10/2026)":
           - Plan de sesión: bloques/B01_RA1/sesion01.md
           - "Guía de clase (apuntes + vídeos + ejercicios)": bloques/B01_RA1/guia_clase.md
-          - "Presentación de clase": presentaciones/b01_s01.html
+#          - "Presentación de clase": presentaciones/b01_s01.html
           - Práctica:
               - Ejercicios de autoevaluación: bloques/B01_RA1/ejercicios_s01.md
               - N01 Técnicas de IA: bloques/B01_RA1/sesion01_tecnicas_ia.ipynb
               - N02 La ficha de 1 minuto (Colab): bloques/B01_RA1/sesion01_mapa_sistemas.ipynb
-          - Entregas:
-              - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
+#          - Entregas:
+#             - Miniproyecto: bloques/B01_RA1/sesion01_miniproyecto.ipynb
           - "Consulta (retirable en evaluación)":
               - "Soluciones de prácticas": bloques/B01_RA1/soluciones_s01.md
               - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
