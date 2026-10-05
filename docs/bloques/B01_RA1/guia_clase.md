@@ -675,11 +675,6 @@ flowchart LR
 |---|---|
 | **Ficha** | De **1 sistema real**: percibe / reglas o datos / acción / tarea estrecha |
 | **KPI** | 2 números con unidad, **antes** y **después**, + el % |
-| **Decisión** | 3 líneas + **1 riesgo** con 1 mitigación (sesgo, privacidad o drift) |
-
-[Abrir miniproyecto en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_miniproyecto.ipynb){ .md-button }
-
-> **Rúbrica (RA1):** caracterizas con vocabulario propio · el KPI es plausible · la decisión es explícita.
 
 ---
 
