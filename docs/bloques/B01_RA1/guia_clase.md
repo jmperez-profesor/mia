@@ -40,6 +40,7 @@ Los criterios de evaluación del RA1 y dónde se trabaja cada uno en esta guía:
 | **4c** | Se han identificado las técnicas básicas a utilizar en el entorno de la IA. | §5 y §7 |
 | **4d** | Se han identificado nuevas formas de interacciones en los negocios que mejoran la eficiencia operativa. | §8 – §9 |
 
+<!--
 | Min | Momento | Sección |
 |---|---|---|
 | 0–10 | Apertura: gancho y ficha | §1 |
@@ -48,7 +49,7 @@ Los criterios de evaluación del RA1 y dónde se trabaja cada uno en esta guía:
 | 50–60 | Vídeo 3 → puesta en común | §5 |
 | 60–95 | **Tarea 2** · KPI y caso de las 1.000 consultas | §8 |
 | 95–120 | Ejercicio 3, cierre y entregable | §8.4 y §11 |
-
+-->
 ---
 
 ## 1 · Apertura — ¿es inteligente tu lavadora? (CE 4a)
@@ -415,6 +416,40 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
     1. **¿Todo ML es IA? ¿Y toda IA es ML?** — Todo ML es IA; no toda IA es ML (hay IA de reglas y de búsqueda).
     2. **Un ejemplo de IA sin ML.** — Un sistema experto con reglas `si… entonces…`: es IA y no aprende de datos.
     3. **¿Dónde encaja la generativa?** — Dentro del deep learning: IA > ML > DL > GenAI.
+
+??? info "Ampliación · Una red neuronal sencilla, paso a paso (con las flores de Iris)"
+    Para ver con un ejemplo pequeño y concreto qué es una red neuronal, tienes esta página en español: [1. Introducción a las redes neuronales](https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01) (material de *logongas*, con licencia CC BY-SA 4.0). **No hace falta que entiendas el código de Python**: lo que interesa es ver qué entra en la red, qué sale y cómo se organiza. Las secciones útiles para esta sesión son tres:
+
+    | Sección de la página | Qué mirar | Con qué se conecta en esta guía |
+    |---|---|---|
+    | [Definición del problema](https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01#definicion_del_problema) | Las flores de iris, con dos medidas del pétalo (largo y ancho). Primero se resuelve con unas reglas escritas **a mano** (`si longitud_petalo < 2.5 → Setosa…`) y después se ve el mismo problema resuelto por una red. La página lo resume así: las IA son algoritmos, **solo que el algoritmo se crea casi automáticamente a partir de los datos** | La casilla 2 de la ficha: **reglas o datos**. Y el ejemplo de las flores de las [soluciones](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies), resuelto allí con un árbol de decisión: mismo conjunto de datos, dos modelos distintos |
+    | [La red neuronal](https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01#la_red_neuronal) | El dibujo de las **capas**: una capa de **entrada** (una neurona por cada dato que entra), varias capas **ocultas** y una capa de **salida** (el resultado). La red «aprende» una función matemática que, dadas las medidas del pétalo, calcula el tipo de flor | El esquema del vídeo 3: **deep learning = muchas capas** |
+    | [Las dificultades de la IA](https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01#las_dificultades_de_la_ia) | La foto de un chihuahua y un muffin: si la IA se entrena para reconocer chihuahuas y le enseñas un muffin, lo normal es que lo confunda con uno | **IA débil**: hace una sola tarea y colapsa ante lo que no había previsto |
+
+    **Vocabulario que aparece en la página:**
+
+    | Término | Qué significa |
+    |---|---|
+    | **Neurona** | Cada círculo del dibujo: una pequeña unidad que recibe valores de otras y pasa un valor a las siguientes |
+    | **Capas** | Grupos de neuronas: entrada, ocultas y salida |
+    | **Entrenar** | Que la red ajuste su función con ejemplos cuyo resultado ya se conoce |
+    | **Época** | Cada pasada completa de la red por los datos de entrenamiento. Se repite muchas veces |
+    | ***loss*** | Una cifra que dice lo mal que lo hace la red: cuanto más pequeña, mejor |
+    | **Score y predicción** | La red no da exactamente 0 o 1, sino un número cercano (por ejemplo 0,99). Si es mayor que 0,5 se predice la clase 1 |
+
+    !!! note "Qué no explica esa página"
+        Trata la red como una **caja negra**: no cuenta todavía qué hace una neurona por dentro ni qué son la función de activación o el *loss*; su propio autor dice que eso se verá más adelante. Para ver una neurona por dentro, mira en [Recursos de vídeo (DotCSV)](recursos_video.md) los vídeos «¿Qué es una Red Neuronal? P1: La Neurona» y «P2.5: TensorFlow Playground», que es interactivo.
+
+    **Para pensar:**
+
+    1. En el ejemplo de las flores, ¿qué solución razona con **reglas** y cuál con **datos**?
+    2. ¿Esa red es IA **débil** o **fuerte**? ¿Qué es lo único que sabe hacer?
+    3. Si una red solo ha visto en el entrenamiento dos especies de flor, ¿qué crees que hará cuando le enseñes una tercera?
+
+    ??? tip "Respuestas"
+        1. Las **reglas escritas a mano** (`si … entonces …`) razonan con **reglas**; la **red neuronal** razona con **datos**: su función sale de ejemplos y nadie escribió el criterio.
+        2. **Débil (estrecha).** Solo sabe clasificar flores a partir de esas medidas; no entiende nada más.
+        3. **No sabe que existe**: solo conoce lo que ha visto al entrenar, así que clasificará la flor nueva como una de las dos especies que conoce. Es la misma idea del chihuahua y el muffin.
 
 ---
 
