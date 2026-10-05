@@ -4,7 +4,8 @@ title: "S01 · Guía de clase"
 
 # S01 · Guía de clase — Caracterización de sistemas de IA
 
-> **Una sola página para la clase y para repasar.** Tiene los [apuntes](apuntes.md) como base y, intercalados en el momento en que se trabajan, los **vídeos** de DotCSV, los **ejercicios** y los **cuadernos de Colab**. Es la versión para el alumnado de la [presentación](../../presentaciones/b01_s01.html); el plan minuto a minuto del docente está en el [guion de sesión](guion_video.md).
+<!-- **Una sola página para la clase y para repasar.** Tiene los [apuntes](apuntes.md) como base y, intercalados en el momento en que se trabajan, los # //**vídeos** de DotCSV, los **ejercicios** y los **cuadernos de Colab**. Es la versión para el alumnado de la [presentación](../../presentaciones/b01_s01.html); //# el plan minuto a minuto del docente está en el [guion de sesión](guion_video.md).
+--> 
 
 !!! abstract "Cómo leer esta guía"
     - Los bloques **«Lo esencial»** son lo que se trabaja en clase y se evalúa.
@@ -18,7 +19,19 @@ title: "S01 · Guía de clase"
 | # | Tarea | Cómo la compruebo |
 |---|---|---|
 | **1** | **Caracterizar** cualquier sistema de IA con la ficha de 1 minuto | Rellenas una ficha completa en el entregable |
-| **2** | **Decidir con 1 KPI** si compensa | Calculas antes/después y dices **sí/no + 1 riesgo** |
+| **2** | **Decidir con 1 KPI (Key Performance Indicator → indicador clave de rendimiento)** si compensa | Calculas antes/después y dices **sí/no + 1 riesgo** |
+
+!!! info "¿En qué punto estamos? Estamos en el RA1"
+    Esta sesión es el **RA1** del módulo 5071 *Modelos de Inteligencia Artificial*.
+
+    - **RA significa «resultado de aprendizaje»**: lo que debes ser capaz de **hacer** cuando termines. No es un tema que se estudia de memoria, sino una capacidad que se demuestra.
+    - **El enunciado oficial del RA1** es: *«Caracteriza sistemas de Inteligencia Artificial relacionándolos con la mejora de la eficiencia operativa de las organizaciones y empresas.»*
+    - **¿Qué significa en la práctica?**
+        1. **Caracterizar** un sistema de IA es **describirlo**: qué percibe, cómo decide y qué acción produce. Es lo que harás con la **ficha de 1 minuto**.
+        2. **Relacionarlo con la eficiencia operativa** es decir si, gracias a ese sistema, una empresa **gasta menos, tarda menos o se equivoca menos**. Es lo que harás con un **KPI (Key Performance Indicator → indicador clave de rendimiento)**, comparando el antes y el después.
+    - **CE significa «criterio de evaluación»**: lo que se comprueba para saber si has conseguido el RA. El RA1 tiene cuatro, que son los de la tabla siguiente.
+
+Los criterios de evaluación del RA1 y dónde se trabaja cada uno en esta guía:
 
 | CE | Criterio oficial | Dónde se trabaja aquí |
 |----|------------------|-----------------------|
@@ -34,7 +47,7 @@ title: "S01 · Guía de clase"
 | 28–32 | Vídeo 2 → jerarquía IA > ML > DL > GenAI → tipos de aprendizaje → Ejercicio 2 (+ N01) | §5 |
 | 50–60 | Vídeo 3 → puesta en común | §5 |
 | 60–95 | **Tarea 2** · KPI y caso de las 1.000 consultas | §8 |
-| 95–120 | Ejercicio 3, cierre y entregable | §12 |
+| 95–120 | Ejercicio 3, cierre y entregable | §8.4 y §11 |
 
 ---
 
@@ -298,7 +311,7 @@ flowchart LR
 ???+ example "En el mundo real · un modelo de precios que salió caro"
     **Zillow** ofrece a los usuarios el «Zestimate», una **estimación del valor de una vivienda** ([Zillow](https://en.wikipedia.org/wiki/Zillow)): el ejemplo del precio de una casa llevado a un producto real. En 2018 la empresa empezó además a **comprar y vender casas** (Zillow Offers). En noviembre de 2021 anunció que cerraba esa división, vendía su inventario (unas 7.000 casas) y despedía al 25 % de la plantilla; la división había perdido **420 millones de dólares** en el tercer trimestre de ese año.
 
-    La lección enlaza con la Tarea 2: un modelo que acierta *de media* no basta cuando cada error se paga con dinero real. Por eso se evalúa con un **KPI de negocio** (euros, tiempo o errores en el proceso) y no solo con la métrica del modelo.
+    La lección enlaza con la Tarea 2: un modelo que acierta *de media* no basta cuando cada error se paga con dinero real. Por eso se evalúa con un **KPI (Key Performance Indicator → indicador clave de rendimiento) de negocio** (euros, tiempo o errores en el proceso) y no solo con la métrica del modelo.
 
 ### 5.3 Tipos de aprendizaje
 
@@ -431,7 +444,7 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 ![Watson en Jeopardy](assets/watson.jpeg)
 
 !!! example "Casos del entorno (proyectos del módulo)"
-    **Proyecto LARA** (asistente/analítica de dominio), **hidrógeno verde** (optimización de proceso y mantenimiento predictivo) y **colmena inteligente** (IoT + visión/sonido para monitorizar y decidir). Cada uno se caracteriza con la ficha de 1 minuto y se mide con un KPI.
+    **Proyecto LARA** (asistente/analítica de dominio), **hidrógeno verde** (optimización de proceso y mantenimiento predictivo) y **colmena inteligente** (IoT + visión/sonido para monitorizar y decidir). Cada uno se caracteriza con la ficha de 1 minuto y se mide con un KPI (Key Performance Indicator → indicador clave de rendimiento).
 
 ### 6.1 La IA en la vida cotidiana
 
@@ -506,7 +519,7 @@ KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (
 
 #### KPI de negocio ≠ métrica de modelo
 
-| **KPI de negocio** (decide la empresa) | **Métrica de modelo** (decide el ML) |
+| **KPI de negocio** (KPI = indicador clave de rendimiento; decide la empresa) | **Métrica de modelo** (decide el ML) |
 |---|---|
 | Coste por consulta, AHT, FCR, *containment rate* | Precisión, *recall*, F1, AUC |
 | Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
@@ -529,7 +542,7 @@ KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (
 
 #### Ejemplos con números (uno por tipo de mejora)
 
-| Quiero bajar… | KPI y unidad | Antes → Después (caso de clase) | Técnica |
+| Quiero bajar… | KPI (indicador clave de rendimiento) y unidad | Antes → Después (caso de clase) | Técnica |
 |---|---|---|---|
 | **Coste** | €/día | 3.000 € → 1.260 € (**−58 %**) | PLN / chatbot |
 | **Tiempo** | min/caso | 8 min → 5,8 min (**−27 %**) | Clasificación supervisada |
@@ -563,7 +576,7 @@ Un centro recibe **1.000 consultas/día** a **3 €** y **5 min** cada una. Un c
 
 | Paso | Qué calculo | Resultado |
 |---|---|---|
-| 1 · KPI base | coste de atención · €/día | **3.000 €** (1.000 × 3) |
+| 1 · KPI base (indicador clave de rendimiento) | coste de atención · €/día | **3.000 €** (1.000 × 3) |
 | 2 · Después | 600 automatizadas + 400 manuales | 600×0,10 + 400×3 = **1.260 €** |
 | 3 · Δ | 1 − 1.260/3.000 | **−58 %** |
 | 4 · Segundo KPI | tiempo: 5 min → 2 min de media | **−60 %** |
@@ -613,7 +626,7 @@ flowchart LR
     ```
 
     ??? tip "Solución"
-        Antes: `300 × 2 = 600 €/día`. Después: `240 × 0,20 + 60 × 2 = 48 + 120 = 168 €/día`. Ahorro **72 %** (de 2 € a 0,56 € por reclamación). Mayor que el −58 % del caso de clase porque lo automatizado es más (80 %) y más barato: **los KPI no se comparan entre casos sin contexto**.
+        Antes: `300 × 2 = 600 €/día`. Después: `240 × 0,20 + 60 × 2 = 48 + 120 = 168 €/día`. Ahorro **72 %** (de 2 € a 0,56 € por reclamación). Mayor que el −58 % del caso de clase porque lo automatizado es más (80 %) y más barato: **los KPI (Key Performance Indicator → indicador clave de rendimiento) no se comparan entre casos sin contexto**.
 
 ---
 
@@ -650,24 +663,7 @@ flowchart LR
 
 ---
 
-## 11 · Ejemplo guiado: de un problema de negocio a una solución de IA
-
-Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no depender de datos externos.
-
-**Problema.** Una tienda online recibe **200 reclamaciones de devolución al día** por email. Hoy, dos personas leen cada correo, lo clasifican a mano y lo enrutan. Tardan unos **8 minutos** por correo y el error de clasificación ronda el **15 %**.
-
-| Paso | Qué haces | Resultado |
-|---|---|---|
-| **1 · Elegir el KPI** | Tiempo de ciclo, tasa de error y coste | 8 min/reclamación · 15 % · 2 personas a jornada completa |
-| **2 · Identificar la técnica** | Clasificar texto en categorías (devolución, cambio, defecto, consulta) | **PLN + clasificación supervisada** (p. ej. naive Bayes sobre texto vectorizado) |
-| **3 · Estimar antes/después** | Un clasificador resuelve el **70 %** en 30 s y el resto lo revisa una persona | `0,30 × 0,5 + 0,70 × 8 ≈ 5,8 min` (frente a 8) · error **< 5 %** (frente al 15 %) |
-| **4 · Decidir y comunicar** | KPI antes/después + riesgos | Correos ambiguos y privacidad de los datos (RGPD) |
-
-> Este esquema —*problema → KPI → técnica → antes/después → decisión*— es exactamente lo que significa **caracterizar un sistema de IA** (RA1): no hace falta entrenar todavía el modelo, solo identificar qué técnica encaja y qué mejora operativa aporta.
-
----
-
-## 12 · Cierre — lo que entregas
+## 11 · Cierre — lo que entregas
 
 !!! abstract "Puntos clave"
     - Un sistema inteligente **percibe, razona y actúa**; sus rasgos son autonomía, adaptación y decisión.
@@ -675,7 +671,7 @@ Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no dep
     - **IA > ML > DL > IA generativa**: todo ML es IA, pero no toda IA es ML.
     - Aprendizaje **supervisado**, **no supervisado**, **por refuerzo**, **semi** y **auto-supervisado**.
     - La IA ya está en la vida cotidiana y en la empresa; las **nuevas interacciones** mejoran la eficiencia reduciendo coste, tiempo o error.
-    - Sin **KPI comparado** (antes/después), no hay mejora demostrable.
+    - Sin **KPI comparado** (indicador clave de rendimiento medido antes y después), no hay mejora demostrable.
     - Un **KPI** es un número con **unidad, periodo y referencia**. **KPI de negocio ≠ métrica de modelo**: la precisión no decide, el coste o el tiempo sí.
 
 **Un solo entregable** (ficha + KPI + decisión):
@@ -692,7 +688,7 @@ Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no dep
 
 ---
 
-## 13 · Autoevaluación
+## 12 · Autoevaluación
 
 ### Los 10 ejercicios
 
@@ -705,7 +701,7 @@ Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no dep
 5. **(N02)** Elige 1 sistema real y clasifícalo (reglas o datos, tarea estrecha).
 6. Clasifica: grietas por foto / agrupar clientes / spam / asistente por voz.
 
-**Bloque 2 · Decidir con KPI**
+**Bloque 2 · Decidir con KPI (Key Performance Indicator → indicador clave de rendimiento)**
 
 7. Reproduce el caso 1.000 consultas: coste antes, después y % de ahorro.
 8. Variante: 300 reclamaciones a 2 €, 80 % a 0,20 €. Calcula antes, después y %.
@@ -744,11 +740,11 @@ Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no dep
     La **clasificación** predice una categoría (spam/no spam); la **regresión**, un valor numérico continuo (precio).
 
 ??? question "10. ¿Qué es un KPI y por qué decide si la IA aporta eficiencia?"
-    Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA aporta eficiencia **solo si mejora un KPI** comparado antes/después; sin número, es una opinión.
+    Un indicador medible (tiempo de ciclo, coste unitario, tasa de error). La IA aporta eficiencia **solo si mejora un KPI (Key Performance Indicator → indicador clave de rendimiento)** comparado antes/después; sin número, es una opinión.
 
 ---
 
-## 14 · Glosario
+## 13 · Glosario
 
 | Término | Definición |
 |---|---|
@@ -778,7 +774,7 @@ Es el esquema que repetirás en el miniproyecto. El caso es ficticio para no dep
 
 ---
 
-## 15 · Vídeos y recursos
+## 14 · Vídeos y recursos
 
 **Vídeos de DotCSV para repasar:**
 
