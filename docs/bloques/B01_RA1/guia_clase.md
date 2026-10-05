@@ -319,6 +319,25 @@ flowchart LR
     - **Refuerzo:** AlphaGo, que venció en Go en 2016, mejoró jugando partidas. Y ChatGPT se afinó con **aprendizaje por refuerzo a partir de feedback humano (RLHF)**: personas valoran sus respuestas y el modelo aprende a preferir las mejores ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
     - **Auto-supervisado:** los grandes modelos de lenguaje aprenden prediciendo la siguiente palabra en enormes cantidades de texto, sin etiquetas humanas.
 
+!!! example "Vídeo · Una IA aprende a jugar al Breakout (1 min 43 s)"
+    <iframe width="100%" height="380" src="https://www.youtube.com/embed/V1eYniJ0Rnk" title="Google DeepMind's Deep Q-learning playing Atari Breakout!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    [Abrir en YouTube](https://www.youtube.com/watch?v=V1eYniJ0Rnk) · canal *Two Minute Papers* (2015). Está en **inglés** y sin subtítulos propios: activa la traducción automática de YouTube.
+
+    **Qué es.** Según la descripción del vídeo, un programa de Google DeepMind que usa **aprendizaje por refuerzo profundo** (redes neuronales profundas más aprendizaje por refuerzo) aprende a jugar a videojuegos de Atari y se **mejora a sí mismo** hasta un nivel superior al humano. Según Wikipedia, el sistema no recibió ningún conocimiento programado sobre cómo jugar: tras un periodo de prueba y error, acabó siendo experto ([Google DeepMind](https://en.wikipedia.org/wiki/Google_DeepMind)). El método se conoce como *deep Q-learning* ([Q-learning](https://en.wikipedia.org/wiki/Q-learning)).
+
+    **Por qué es el ejemplo más sencillo de aprendizaje por refuerzo.** Se ven sus piezas:
+
+    | Pieza | En el Breakout |
+    |---|---|
+    | **Agente** | El programa que juega |
+    | **Entorno** | El juego: la pantalla, la pelota y los ladrillos |
+    | **Acciones** | Mover la barra a la izquierda, a la derecha o quedarse quieta |
+    | **Recompensa** | Los puntos que da cada ladrillo roto |
+    | **Aprendizaje** | Prueba y error: repite partidas y se queda con lo que da más puntos |
+
+    **Para comentar en clase:** ¿hay alguien que le diga si cada movimiento es correcto, como en el aprendizaje supervisado? (No: solo recibe puntos.) ¿Qué tiene que hacer al principio, cuando todavía no sabe nada? (Probar.) Fíjate en **cómo cambia su forma de jugar** a medida que avanza el entrenamiento.
+
 !!! example "Vídeo · Cómo AlphaGo ganó al mejor jugador de Go (42 s)"
     <div style="text-align:center">
     <iframe width="315" height="560" src="https://www.youtube.com/embed/z_35Y99Nlzc" title="How AlphaGo Beat the World's Best Go Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -328,7 +347,7 @@ flowchart LR
 
     **Qué mirar:** el vídeo explica que el Go tiene más jugadas posibles que átomos en el universo, por lo que no se puede ganar «a fuerza bruta». AlphaGo combina **dos redes neuronales** (una *política*, que señala las jugadas prometedoras, y una *de valor*, que estima la probabilidad de ganar desde cada posición) con una **búsqueda que simula miles de partidas**. Y equilibra **explorar jugadas nuevas** con **aprovechar las que ya sabe que son buenas**.
 
-    **Cómo se conecta con el aprendizaje por refuerzo.** El vídeo **no pronuncia** esa expresión, así que la conexión la haces tú: el sistema aprende **jugando** y su «recompensa» es **ganar la partida**. Ese equilibrio entre **explorar y aprovechar** es uno de los problemas centrales del aprendizaje por refuerzo. Según Wikipedia, las redes de AlphaGo se entrenaron con aprendizaje por refuerzo, partiendo de partidas humanas, y en marzo de 2016 venció a Lee Sedol por 4 partidas a 1 ([AlphaGo](https://en.wikipedia.org/wiki/AlphaGo)). Los subtítulos automáticos escriben «Lee Seidel»: es Lee Sedol.
+    **Cómo se conecta con el aprendizaje por refuerzo.** El vídeo **no pronuncia** esa expresión, así que la conexión la haces tú, igual que con el Breakout: el sistema aprende **jugando** y su «recompensa» es **ganar la partida**. La diferencia es la escala: aquí hay muchísimas más jugadas posibles y la recompensa llega al final de la partida. Ese equilibrio entre **explorar y aprovechar** es uno de los problemas centrales del aprendizaje por refuerzo. Según Wikipedia, las redes de AlphaGo se entrenaron con aprendizaje por refuerzo, partiendo de partidas humanas, y en marzo de 2016 venció a Lee Sedol por 4 partidas a 1 ([AlphaGo](https://en.wikipedia.org/wiki/AlphaGo)). Los subtítulos automáticos escriben «Lee Seidel»: es Lee Sedol.
 
     **Para comentar en clase:** ¿hay etiquetas con la respuesta correcta de cada jugada? ¿Cuál es la recompensa? ¿Es IA débil o fuerte? (Es estrecha: solo juega al Go.)
 
