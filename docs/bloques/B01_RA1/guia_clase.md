@@ -529,21 +529,15 @@ La IA aporta **eficiencia** solo si baja **coste, tiempo o error** medido antes/
 
 ### 8.1 Nuevas formas de interacción
 
-| Interacción | Qué es | Ejemplo |
+| Interacción | Qué es | Ejemplo real |
 |---|---|---|
 | **Asistente virtual** | Responde por voz o texto | Siri, Alexa |
-| **Chatbot** | Conversación automatizada | Soporte de tienda online |
-| **Interacción por voz** | Transcribe y analiza audio | Actas de reunión |
-| **Interacción por visión** | Lee imágenes y vídeo | Control de accesos, inspección |
-| **Agentes autónomos** | Ejecutan tareas con herramientas | Reservar, tramitar una incidencia |
+| **Chatbot** | Conversación automatizada | Atención al cliente de una tienda o aerolínea; el tutor Khanmigo |
+| **Interacción por voz** | Transcribe y analiza audio | Transcripción y resumen automáticos en las videollamadas |
+| **Interacción por visión** | Lee imágenes y vídeo | Desbloqueo facial, control de accesos |
+| **Agentes autónomos** | Ejecutan tareas con herramientas | Asistentes de programación que leen el código, ejecutan las pruebas y lo corrigen |
 
 ![Robots de servicio](assets/robots.png)
-
-???+ example "En el mundo real · cada tipo de interacción"
-    - **Asistente virtual:** Siri y Alexa. **Chatbot:** el de atención al cliente de una aerolínea o de una tienda, y el tutor Khanmigo en educación.
-    - **Voz:** las plataformas de videollamada ofrecen transcripción y resumen automáticos de las reuniones.
-    - **Visión:** el desbloqueo facial del móvil o el control de accesos de un edificio.
-    - **Agentes:** los asistentes de programación que leen un proyecto, ejecutan las pruebas y corrigen el código por su cuenta.
 
 ### 8.2 ¿Qué es un KPI?
 
@@ -553,9 +547,9 @@ Un **KPI** (*Key Performance Indicator* → **indicador clave de rendimiento**) 
 KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (después)>
 ```
 
-*Ejemplo completo:* **coste de atención** (€/día, media de septiembre de 2026) — antes **3.000 €**, objetivo **≤ 1.400 €**.
+**Las 5 comprobaciones:**
 
-| Criterio | La pregunta que te haces | No sirve | Sí sirve |
+| Criterio | La pregunta | No sirve | Sí sirve |
 |---|---|---|---|
 | **Medible** | ¿Tiene número y unidad? | «mejoramos la atención» | 3,00 € → 1,26 €/consulta |
 | **Comparado** | ¿Tiene antes/después? | «cuesta 1,26 €» suelto | 3,00 → 1,26 € (**−58 %**) |
@@ -563,51 +557,16 @@ KPI = <métrica> · <unidad> · <periodo> · <referencia (antes)> · <objetivo (
 | **Honesto** | ¿Cuenta todo lo que cuesta? | solo los 0,10 € del bot | + licencia, mantenimiento y revisión humana |
 | **Accionable** | Si falla, ¿sé qué hacer? | «el número está mal» | si la automatización cae del 60 % al 40 %, reentreno |
 
-#### KPI de negocio ≠ métrica de modelo
+**KPI de negocio ≠ métrica de modelo.** La **precisión**, el *recall* y el F1 son **métricas de modelo** (cuánto acierta el modelo en un examen); el **coste, el tiempo y el error** de un proceso son **KPI de negocio** (lo que decide la empresa).
 
-| **KPI de negocio** (KPI = indicador clave de rendimiento; decide la empresa) | **Métrica de modelo** (decide el ML) |
+| **KPI de negocio** (decide la empresa) | **Métrica de modelo** (decide el ML) |
 |---|---|
-| Coste por consulta, AHT, FCR, *containment rate* | Precisión, *recall*, F1, AUC |
-| Tiempo de ciclo, MTBF, OEE, coste por documento | MAE / RMSE, latencia de respuesta |
-| Tasa de fraude detectado, merma, stock roto | Cobertura y deriva (*drift*) del modelo |
+| Coste por consulta, tiempo de gestión, tiempo de ciclo | Precisión, *recall*, F1, AUC |
+| Tasa de fraude detectado, merma, stock roto | MAE / RMSE, latencia de respuesta |
 
-!!! example "Un ejemplo: la «precisión de 1,00» de la práctica de las flores"
-    En la práctica guiada, un modelo (un árbol de decisión) **aprende a decir de qué especie es una flor de iris** a partir de 4 medidas (largo y ancho del sépalo y del pétalo). Se entrena con 105 flores y se examina con otras **45 que no había visto**. Las acierta todas: 45 de 45 = **1,00** (el 100 %). Esa cifra se llama **precisión** y es una **métrica de modelo**: dice cuánto acierta el modelo en un examen.
+> La «precisión de 1,00» de la práctica de las flores es una **métrica de modelo**: no dice si compensa usarla. Para decidir hace falta un **KPI de negocio** con antes y después, como el −58 % del caso siguiente. [Solución de la práctica (Iris)](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies).
 
-    ¿Por qué **no** es un KPI? Porque no responde a la pregunta que importa, **«¿compensa ponerlo en marcha?»**: no dice cuánto cuesta, cuánto tiempo ahorra ni cuántos errores evita en un proceso real. Además, 45 flores de un conjunto muy fácil no demuestran gran cosa. Compara los dos tipos de número:
-
-    | | Métrica de modelo (flores) | KPI de negocio (1.000 consultas) |
-    |---|---|---|
-    | **Qué dice** | El modelo acierta 45 de 45 flores de prueba | El coste de atención baja de 3.000 a 1.260 €/día |
-    | **Valor** | Precisión = 1,00 | **−58 %** |
-    | **¿Decide si compensa?** | No: no tiene unidad de negocio ni antes/después | Sí: tiene unidad (€/día) y compara antes y después |
-
-    Un modelo puede acertar el 100 % en un examen y no ahorrar nada a la empresa; y otro que acierta menos puede ahorrar mucho si sustituye trabajo caro. **Para decidir hace falta un KPI de negocio con antes y después.**
-
-    Solución de la práctica con el ejemplo de las flores: [Soluciones · Bloque 1 (Iris)](soluciones_s01.md#bloque-1-de-reglas-a-modelo-iris-3-especies).
-
-#### Ejemplos con números (uno por tipo de mejora)
-
-| Quiero bajar… | KPI (indicador clave de rendimiento) y unidad | Antes → Después (caso de clase) | Técnica |
-|---|---|---|---|
-| **Coste** | €/día | 3.000 € → 1.260 € (**−58 %**) | PLN / chatbot |
-| **Tiempo** | min/caso | 8 min → 5,8 min (**−27 %**) | Clasificación supervisada |
-| **Error** | % de clasificación errónea | 15 % → <5 % (**−10 p.p.**) | PLN supervisado |
-| **Cobertura** | *containment rate* (%) | 0 % → 60 % | Chatbot 24/7 |
-| **Disponibilidad** | MTBF (días) | 40 → 70 (**+75 %**) | Mantenimiento predictivo |
-
-> **Fíjate en la unidad:** €/día, min/caso, %, días. **Si no cabe una unidad, no es un KPI.**
-
-**KPIs con nombre propio:** **FCR** (resolución al primer contacto), **AHT** (tiempo medio de gestión), ***Containment rate*** (% cerradas por la IA), **OEE** (efectividad de equipo), **MTBF** (tiempo medio entre averías), ***Cycle time*** y **coste por documento**.
-
-**KPIs que se suelen mejorar:**
-
-| Caso | Antes (sin IA) | Después (con IA) |
-|---|---|---|
-| Atención al cliente | Colas, horario limitado | Chatbot 24/7 |
-| Inspección de calidad | Revisión manual, errores | Visión artificial |
-| Previsión de demanda | Roturas o excedentes | Predicción con ML |
-| Detección de fraude | Revisión posterior | Tiempo real |
+**KPIs con nombre propio:** **FCR** (resolución al primer contacto) · **AHT** (tiempo medio de gestión) · ***Containment rate*** (% cerradas por la IA) · **OEE** (efectividad de equipo) · **MTBF** (tiempo medio entre averías) · ***Cycle time*** (tiempo de ciclo) · **coste por documento**.
 
 ??? info "Ampliación · Para profundizar en los KPI"
     - [Indicador clave de desempeño (Wikipedia, es)](https://es.wikipedia.org/wiki/Indicador_clave_de_desempe%C3%B1o) · [Key performance indicator (Wikipedia, en)](https://en.wikipedia.org/wiki/Key_performance_indicator)
@@ -643,17 +602,7 @@ Un centro recibe **1.000 consultas/día** a **3 €** y **5 min** cada una. Un c
     - **Klarna (2024).** La empresa de pagos dijo que su asistente de IA, basado en OpenAI, había gestionado **unos dos tercios de los chats** de atención al cliente en su primer mes, con un trabajo equivalente a **700 agentes a jornada completa** ([Klarna](https://en.wikipedia.org/wiki/Klarna)). Son cifras de la propia empresa. Es el tipo de KPI del caso de clase: *containment rate* (% resuelto por la IA) y coste. Aplícale las 5 comprobaciones: ¿es **honesto**? ¿Cuenta la calidad de las respuestas y los casos que acaban en una persona?
     - **Air Canada (2024).** Un fallo del chatbot acabó en un tribunal, que hizo responsable a la aerolínea ([Moffatt contra Air Canada](https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada)). Un KPI que solo mide lo que se ahorra y no lo que puede costar un error es poco **honesto**.
 
-### 8.4 De la técnica al beneficio
-
-| Técnica | Ejemplo de uso | Mejora operativa |
-|---|---|---|
-| Clasificación | Priorizar incidencias, cribar CV | Menos tiempo y error |
-| Regresión | Prever demanda, precios | Menos stock roto |
-| Clustering | Segmentar clientes | Campañas más rentables |
-| Anomalías | Fraude, averías | Menos pérdidas |
-| PLN | Chatbots, sentimiento | Atención 24/7 |
-| Visión | Inspección, OCR | Menos errores |
-| Agentes / GenAI | Redacción, tramitación | Tareas repetitivas ↓ |
+### 8.4 El esquema que se repite + Ejercicio 3
 
 **El esquema que se repite siempre:**
 
@@ -754,7 +703,7 @@ flowchart LR
 9. Tu proceso (LARA, hidrógeno, colmena o el tuyo): propón técnica y KPI antes/después en 2 números.
 10. Nombra 1 riesgo (sesgo, privacidad, drift) y su mitigación en 1 línea.
 
-> Corrección guiada en [Soluciones de prácticas](soluciones_s01.md) · [Preguntas frecuentes](faq_s01.md).
+<!-- >> Corrección guiada en [Soluciones de prácticas](soluciones_s01.md) · [Preguntas frecuentes](faq_s01.md). -->
 
 ### Preguntas de repaso
 
@@ -838,8 +787,3 @@ Más en [Recursos de vídeo (DotCSV)](recursos_video.md) y en el [catálogo comp
 > Créditos de imágenes: ilustraciones adaptadas de los materiales de la UD01 de David Martínez Peña (CC BY-NC-SA 4.0).
 
 ---
-
-## Ver también
-
-- [Apuntes completos (RA1)](apuntes.md) · [Plan de la sesión](sesion01.md) · [Presentación de clase](../../presentaciones/b01_s01.html)
-- [Guion de sesión con vídeo](guion_video.md) · [Soluciones de prácticas](soluciones_s01.md) · [Preguntas frecuentes](faq_s01.md)
