@@ -16,7 +16,7 @@ Antes de empezar a hablar, mira el mapa general del RA1. Pulsa para ampliarlo.
 Más material en [Recursos Gemini Notebook](recursos_nbl.md).
 
 <!-- **Una sola página para la clase y para repasar.** Tiene los [apuntes](apuntes.md) como base y, intercalados en el momento en que se trabajan, los # //**vídeos** de DotCSV, los **ejercicios** y los **cuadernos de Colab**. Es la versión para el alumnado de la [presentación](../../presentaciones/b01_s01.html); //# el plan minuto a minuto del docente está en el [guion de sesión](guion_video.md).
---> 
+
 
 !!! abstract "Cómo leer esta guía"
     - Los bloques **«Lo esencial»** son lo que se trabaja en clase y se evalúa.
@@ -24,7 +24,7 @@ Más material en [Recursos Gemini Notebook](recursos_nbl.md).
     - Los bloques **«Ejercicio»** se hacen en el momento; las soluciones están en [Soluciones de prácticas](soluciones_s01.md).
     - Sección y criterio de evaluación (CE) de cada parte entre paréntesis.
     - Los bloques **«En el mundo real»** traen casos reales y actuales con su fuente. Las cifras son las que da cada fuente en la fecha indicada y pueden cambiar.
-
+--> 
 ## El plan de la sesión
 
 | # | Tarea | Cómo la compruebo |
@@ -55,8 +55,8 @@ Los criterios de evaluación del RA1 y dónde se trabaja cada uno en esta guía:
 | Min | Momento | Sección |
 |---|---|---|
 | 0–10 | Apertura: gancho y ficha | §1 |
-| 10–14 | Vídeo 1 → conceptos → Ejercicio 1 (+ N02) | §2 |
-| 28–32 | Vídeo 2 → jerarquía IA > ML > DL > GenAI → tipos de aprendizaje → Ejercicio 2 (+ N01) | §5 |
+| 10–14 | Vídeo 1 → conceptos → Ejercicio 1 (+ N01) | §2 |
+| 28–32 | Vídeo 2 → jerarquía IA > ML > DL > GenAI → tipos de aprendizaje → Ejercicio 2 (+ N02) | §5 |
 | 50–60 | Vídeo 3 → puesta en común | §5 |
 | 60–95 | **Tarea 2** · KPI y caso de las 1.000 consultas | §8 |
 | 95–120 | Ejercicio 3, cierre y entregable | §8.4 y §11 |
@@ -193,7 +193,7 @@ Cuatro errores que debes evitar al rellenarla:
 | «Es inteligente» en la 3 | Describe, no actúa: ¿responde, recomienda, controla? |
 
 !!! example "Tu turno: la ficha se rellena en el cuaderno de Google Colab"
-    El cuaderno **N02** te explica primero qué es **Google Colab** y qué es un **cuaderno de Jupyter** (no hace falta que los conozcas), te da la ficha en un formato que se rellena **sin saber programar** y, al ejecutarla, te avisa de los errores típicos de la tabla anterior.
+    El cuaderno **N01** te explica primero qué es **Google Colab** y qué es un **cuaderno de Jupyter** (no hace falta que los conozcas), te da la ficha en un formato que se rellena **sin saber programar** y, al ejecutarla, te avisa de los errores típicos de la tabla anterior.
 
     1. Abre el cuaderno y guarda una copia en tu Drive (**Archivo → Guardar una copia en Drive**).
     2. Elige **un sistema que conozcas de verdad**: uno de la empresa donde trabajas o donde hiciste las prácticas, una aplicación que uses a diario (las recomendaciones de Spotify o Netflix, el filtro de spam de tu correo) o un caso de los proyectos del módulo.
@@ -202,7 +202,7 @@ Cuatro errores que debes evitar al rellenarla:
 
     Evita las **frases de marketing** como «usa IA» o «es inteligente»: no describen nada. La ficha tiene que decir qué datos entran, cómo decide y qué hace.
 
-    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_mapa_sistemas.ipynb){ .md-button }
+    [Abrir N01 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_mapa_sistemas.ipynb){ .md-button }
 
 ---
 
@@ -340,7 +340,7 @@ flowchart LR
 ???+ example "En el mundo real · un ejemplo de cada tipo"
     - **Supervisado:** el filtro de spam de tu correo y el desbloqueo facial del móvil aprenden de ejemplos etiquetados (*spam / no spam*, *esta cara / otra*).
     - **Visa.** Las redes de pago como **Visa** puntúan cada transacción con modelos de IA en una fracción de segundo para decidir si parece fraudulenta. Aprenden de millones de operaciones ya etiquetadas como *fraude* o *legítima*: aprendizaje supervisado de manual.
-    - **No supervisado:** una tienda agrupa a sus clientes por hábitos de compra sin que nadie haya etiquetado antes a cada cliente (es lo que hace la demo no supervisada del cuaderno N01).
+    - **No supervisado:** una tienda agrupa a sus clientes por hábitos de compra sin que nadie haya etiquetado antes a cada cliente (es lo que hace la demo no supervisada del cuaderno N02).
     - **Refuerzo:** AlphaGo, que venció en Go en 2016, mejoró jugando partidas. Y ChatGPT se afinó con **aprendizaje por refuerzo a partir de feedback humano (RLHF)**: personas valoran sus respuestas y el modelo aprende a preferir las mejores ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
     - **Auto-supervisado:** los grandes modelos de lenguaje aprenden prediciendo la siguiente palabra en enormes cantidades de texto, sin etiquetas humanas.
 
@@ -400,9 +400,9 @@ flowchart LR
     ??? tip "Solución"
         (a) Visión artificial · supervisado. (b) **Clustering · no supervisado** (es el único sin etiquetas previas). (c) Clasificación de texto · supervisado. (d) PLN · supervisado / secuencial.
 
-    **Cuaderno N01 · Técnicas de IA (demo).** La demo **supervisada** (KNN sobre clientes) devuelve la etiqueta `0/1` («reclamará / no reclamará»); la **no supervisada** (k-means sobre compras) devuelve `0/1` por fila, pero son **identificadores de grupo** inventados, no «sí/no».
+    **Cuaderno N02 · Técnicas de IA (demo).** La demo **supervisada** (KNN sobre clientes) devuelve la etiqueta `0/1` («reclamará / no reclamará»); la **no supervisada** (k-means sobre compras) devuelve `0/1` por fila, pero son **identificadores de grupo** inventados, no «sí/no».
 
-    [Abrir N01 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
+    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
 
 ### 5.4 Deep learning e IA generativa
 
@@ -743,8 +743,8 @@ flowchart LR
 1. Ficha de 1 minuto para un chatbot de reclamaciones.
 2. Termostato `si T<18 → enciende` vs. filtro de spam aprendido: ¿qué tipo es cada uno y cuándo conviene cada enfoque?
 3. ¿Por qué toda la IA actual es estrecha (débil)? Pon un ejemplo de lo que *no* puede hacer.
-4. **(N01)** Ejecuta el notebook y explica la diferencia entre la salida supervisada y la no supervisada.
-5. **(N02)** Elige 1 sistema real y clasifícalo (reglas o datos, tarea estrecha).
+4. **(N02)** Ejecuta el notebook y explica la diferencia entre la salida supervisada y la no supervisada.
+5. **(N01)** Elige 1 sistema real y clasifícalo (reglas o datos, tarea estrecha).
 6. Clasifica: grietas por foto / agrupar clientes / spam / asistente por voz.
 
 **Bloque 2 · Decidir con KPI (Key Performance Indicator → indicador clave de rendimiento)**
