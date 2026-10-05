@@ -336,7 +336,18 @@ flowchart LR
     | **Recompensa** | Los puntos que da cada ladrillo roto |
     | **Aprendizaje** | Prueba y error: repite partidas y se queda con lo que da más puntos |
 
-    **Para comentar en clase:** ¿hay alguien que le diga si cada movimiento es correcto, como en el aprendizaje supervisado? (No: solo recibe puntos.) ¿Qué tiene que hacer al principio, cuando todavía no sabe nada? (Probar.) Fíjate en **cómo cambia su forma de jugar** a medida que avanza el entrenamiento.
+    **La estrategia que acaba descubriendo.** En el artículo científico de DeepMind (*Nature*, 2015), al enseñar el progreso del entrenamiento tras 100, 200, 400 y 600 partidas, los autores explican que después de 600 partidas el programa **encuentra y aprovecha la estrategia óptima del juego: abrir un túnel por un lateral del muro de ladrillos y dejar que la pelota rebote por detrás**, rompiendo ladrillos sin apenas moverse ([artículo en *Nature*](https://www.nature.com/articles/nature14236)). Nadie le enseñó esa táctica: la descubre porque **da más puntos**. El artículo también precisa que el programa recibe **solo los píxeles de la pantalla y la puntuación** del juego, y que logró un nivel comparable al de un probador profesional en **49 juegos**, con el mismo algoritmo.
+
+    **Para comentar en clase:**
+
+    1. ¿Hay alguien que le diga si cada movimiento es correcto, como en el aprendizaje supervisado?
+    2. ¿Qué tiene que hacer al principio, cuando todavía no sabe nada?
+    3. Fíjate en **cómo cambia su forma de jugar** a medida que avanza el entrenamiento.
+
+    ??? tip "Respuestas"
+        1. **No.** En el aprendizaje supervisado cada ejemplo trae su respuesta correcta; aquí el programa solo recibe **la pantalla y los puntos**. No sabe si un movimiento concreto fue bueno: lo deduce de la recompensa que consigue después. Es la diferencia clave entre supervisado y refuerzo.
+        2. **Probar.** No tiene ningún conocimiento programado sobre cómo se juega, así que solo puede **ensayar movimientos, ver cuántos puntos obtiene y quedarse con lo que funciona**: es la prueba y error del aprendizaje por refuerzo. Por eso al principio juega peor y mejora con las partidas.
+        3. **Pasa de jugar sin criterio a una táctica concreta:** abrir un túnel lateral y hacer que la pelota rebote por detrás del muro. Es un comportamiento que **nadie programó** y que aparece porque maximiza la recompensa.
 
 !!! example "Vídeo · Cómo AlphaGo ganó al mejor jugador de Go (42 s)"
     <div style="text-align:center">
