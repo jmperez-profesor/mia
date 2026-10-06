@@ -492,6 +492,7 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 !!! example "Casos del entorno (proyectos del módulo)"
     **Proyecto LARA** (asistente/analítica de dominio), **hidrógeno verde** (optimización de proceso y mantenimiento predictivo) y **colmena inteligente** (IoT + visión/sonido para monitorizar y decidir). Cada uno se caracteriza con la ficha de 1 minuto y se mide con un KPI (Key Performance Indicator → indicador clave de rendimiento).
 
+<!-- 
 ### 6.1 La IA en la vida cotidiana
 
 | Uso cotidiano | Cómo interviene la IA |
@@ -504,7 +505,7 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 | **Ciberseguridad** | Detección de ciberataques por patrones |
 | **Desinformación** | Detección de noticias falsas |
 | **Administración pública** | Alertas tempranas de catástrofes; trámites automatizados |
-
+-->
 ---
 
 ## 7 · Técnicas básicas de la IA (CE 4c)
@@ -527,15 +528,17 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
 
 La IA aporta **eficiencia** solo si baja **coste, tiempo o error** medido antes/después. **Sin número, es opinión.**
 
+> **Qué pide este criterio (CE 4d).** Identificar una **forma nueva de interactuar** con un negocio (chat, voz, imagen, recomendación, agente) y demostrar, con un **KPI**, que **mejora la eficiencia**: que la empresa gasta menos, tarda menos o se equivoca menos. Es el puente *técnica → interacción → beneficio*.
+
 ### 8.1 Nuevas formas de interacción
 
-| Interacción | Qué es | Ejemplo real |
-|---|---|---|
-| **Asistente virtual** | Responde por voz o texto | Siri, Alexa |
-| **Chatbot** | Conversación automatizada | Atención al cliente de una tienda o aerolínea; el tutor Khanmigo |
-| **Interacción por voz** | Transcribe y analiza audio | Transcripción y resumen automáticos en las videollamadas |
-| **Interacción por visión** | Lee imágenes y vídeo | Desbloqueo facial, control de accesos |
-| **Agentes autónomos** | Ejecutan tareas con herramientas | Asistentes de programación que leen el código, ejecutan las pruebas y lo corrigen |
+| Interacción | Qué es | Ejemplo real | Mejora (KPI) |
+|---|---|---|---|
+| **Asistente virtual** | Responde por voz o texto | Siri, Alexa | Resuelve dudas al instante, sin intervención humana |
+| **Chatbot** | Conversación automatizada | Atención al cliente de una tienda o aerolínea; el tutor Khanmigo | Coste por consulta: 3 € → 0,10 € (resuelve el 60 % solo) |
+| **Interacción por voz** | Transcribe y analiza audio | Transcripción y resumen automáticos en las videollamadas | Minutos de acta ahorrados por reunión |
+| **Interacción por visión** | Lee imágenes y vídeo | Desbloqueo facial, control de accesos, inspección de piezas | Menos tiempo y menos errores |
+| **Agentes autónomos** | Ejecutan tareas con herramientas | Asistentes de programación que leen el código, ejecutan las pruebas y lo corrigen | Horas de trabajo repetitivo menos |
 
 ![Robots de servicio](assets/robots.png)
 
