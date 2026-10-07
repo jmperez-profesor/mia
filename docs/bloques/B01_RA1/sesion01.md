@@ -88,7 +88,7 @@ Para que conste que existe, sin tiempo de aula: historia (Turing 1950 → Dartmo
 - **0–15 Apertura:** *¿es inteligente tu lavadora?* (automatización vs. inteligencia) + ficha de 1 minuto en pizarra.
 - **15–60 Tarea 1:** definición, reglas vs. datos, 1 ejemplo resuelto + demo guiada (código 1).
 - **60–100 Tarea 2:** KPI, caso 1.000 consultas resuelto en pizarra + cálculo guiado (código 2).
-- **100–120 Cierre:** el alumnado rellena su ficha + KPI en el notebook; dudas y rúbrica del entregable único.
+- **100–120 Cierre:** el alumnado repasa su ficha (cuaderno N01) y calcula el KPI (cuaderno N02); dudas.
 
 ## Práctica guiada (con solución) — 2 bloques de 10 líneas
 
@@ -114,17 +114,10 @@ despues = 600 * 0.10 + 400 * 3.0
 print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorro: {(1-despues/antes)*100:.0f}%")
 ```
 
-## Práctica propuesta (miniproyecto único = N01+N04 fusionados)
+## Práctica propuesta (en los cuadernos)
 
-**Un solo entregable** (sustituye a N01+N03+N04+N05 para esta sesión única): ficha de **1 sistema real** (el de tu empresa, LARA, hidrógeno o colmena) en `sesion01_miniproyecto.ipynb`:
-
-1. Ficha 1-minuto (percibe / reglas o datos / acción / tarea estrecha).
-2. KPI antes/después con 2 números (coste, tiempo o error).
-3. Decisión en 3 líneas + 1 riesgo (sesgo, privacidad o drift).
-
-**Criterios (RA1):** caracteriza con vocabulario propio; el KPI es plausible; la decisión es explícita.
-
-**Notebook:** [Abrir/Descargar miniproyecto](sesion01_miniproyecto.ipynb) — botones *Abrir en Colab* / *Descargar .ipynb* arriba (vía `hooks.py` + `mkdocs.yml:extra.colab/raw_base`).
+- **Ficha de 1 minuto:** cuaderno **N01** — elige un sistema real y rellena la ficha.
+- **Decidir con KPI:** cuaderno **N02**, sección *Decidir con KPI* — caso de las 1.000 consultas, variante, tu proceso y un riesgo.
 
 ## Materiales / recursos
 
@@ -136,14 +129,14 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 
 **Para consulta durante el curso (se retiran del menú en evaluación):**
 
-- [Soluciones de prácticas](soluciones_s01.md) — práctica guiada, los 10 ejercicios, N01, N02 y miniproyecto.
+- [Soluciones de prácticas](soluciones_s01.md) — práctica guiada, los 10 ejercicios, N01 y N02.
 - [Preguntas frecuentes con respuesta](faq_s01.md) — dudas habituales de esta sesión.
 
 ## Evaluación (CE RA1)
 
 - **RA1-a/c:** ficha mínima correcta (ciclo + reglas/datos + tarea estrecha).
 - **RA1-b/d:** KPI antes/después plausible y técnica que encaja.
-- Ponderación del bloque: 40 % actividades / 60 % prueba, ≥5 por RA (Orden 8/2025). Esta sesión alimenta actividades con el entregable único.
+- Ponderación del bloque: 40 % actividades / 60 % prueba, ≥5 por RA (Orden 8/2025). Esta sesión alimenta actividades.
 
 ## Atención a la diversidad
 
@@ -153,4 +146,4 @@ print(f"Antes: {antes:.0f} €/día · Después: {despues:.0f} €/día · Ahorr
 ## Observaciones
 
 - Lo que se quita respecto a UD01 completa (31 ejercicios, N03, N05, Turing/Lovelace, Hintze, Transformers, PLN a fondo) queda como **lectura voluntaria**, no evaluable en esta sesión. Si el grupo pide más, ampliar por el KPI, nunca por teoría.
-- N01 original pedía 3 sistemas; aquí se pide **1 bien hecho**. N04 pedía propuesta completa; aquí **3 líneas de decisión**.
+- N01 original pedía 3 sistemas; aquí se pide **1 bien hecho**.

@@ -428,6 +428,9 @@ Qué mirar: el **aprendizaje jerárquico** (capas concretas → abstractas) · *
     2. **Un ejemplo de IA sin ML.** — Un sistema experto con reglas `si… entonces…`: es IA y no aprende de datos.
     3. **¿Dónde encaja la generativa?** — Dentro del deep learning: IA > ML > DL > GenAI.
 
+Visión global de la IA
+![Visión global de la IA](../../assets/images/vision_global_ia.png)
+
 ??? info "Ampliación · Una red neuronal sencilla, paso a paso (con las flores de Iris)"
     Para ver con un ejemplo pequeño y concreto qué es una red neuronal, tienes esta página en español: [1. Introducción a las redes neuronales](https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01) (material de *logongas*, con licencia CC BY-SA 4.0). **No hace falta que entiendas el código de Python**: lo que interesa es ver qué entra en la red, qué sale y cómo se organiza. Las secciones útiles para esta sesión son tres:
 
