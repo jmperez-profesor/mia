@@ -29,7 +29,7 @@ Más material en [Recursos Gemini Notebook](recursos_nbl.md).
 
 | # | Tarea | Cómo la compruebo |
 |---|---|---|
-| **1** | **Caracterizar** cualquier sistema de IA con la ficha de 1 minuto | Rellenas una ficha completa en el entregable |
+| **1** | **Caracterizar** cualquier sistema de IA con la ficha de 1 minuto | Rellenas una ficha completa en el cuaderno N01 |
 | **2** | **Decidir con 1 KPI (Key Performance Indicator → indicador clave de rendimiento)** si compensa | Calculas antes/después y dices **sí/no + 1 riesgo** |
 
 !!! info "¿En qué punto estamos? Estamos en el RA1"
@@ -614,17 +614,10 @@ flowchart LR
     A[problema] --> B[KPI base] --> C[técnica que encaja] --> D[antes/después] --> E[SÍ/NO + 1 riesgo]
 ```
 
-!!! example "Ejercicio 3 · Calcula antes/después (15 min)"
-    Un proceso recibe **300 reclamaciones/día** a **2 €** cada una. Un clasificador resuelve el **80 %** a **0,20 €**. Calcula coste antes, coste después y % de ahorro.
+!!! example "Ejercicio 3 · Calcula antes/después (en el cuaderno N02)"
+    Reproduce el caso de las **1.000 consultas** y la variante de las **300 reclamaciones**, propón una técnica con su KPI para tu proceso y nombra un riesgo. Está todo en el cuaderno **N02 · Técnicas de IA**, sección **6 · Decidir con KPI**: cambia los números y ejecuta las celdas.
 
-    ```python
-    antes   = 300 * 2.0
-    despues = 240 * 0.20 + 60 * 2.0
-    print((1 - despues/antes) * 100)
-    ```
-
-    ??? tip "Solución"
-        Antes: `300 × 2 = 600 €/día`. Después: `240 × 0,20 + 60 × 2 = 48 + 120 = 168 €/día`. Ahorro **72 %** (de 2 € a 0,56 € por reclamación). Mayor que el −58 % del caso de clase porque lo automatizado es más (80 %) y más barato: **los KPI (Key Performance Indicator → indicador clave de rendimiento) no se comparan entre casos sin contexto**.
+    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
 
 ---
 
@@ -657,11 +650,12 @@ flowchart LR
     - **Privacidad.** En marzo de 2023 la autoridad italiana de protección de datos **prohibió ChatGPT** en Italia y abrió una investigación por posible incumplimiento del RGPD; la prohibición se levantó en abril de 2023 tras cambios de OpenAI ([ChatGPT](https://en.wikipedia.org/wiki/ChatGPT)).
     - **Marco legal.** El **Reglamento de IA** de la UE entró en vigor el **1 de agosto de 2024** y se aplica de forma gradual; prohíbe las aplicaciones de riesgo inaceptable, como la puntuación social de personas ([AI Act](https://en.wikipedia.org/wiki/Artificial_Intelligence_Act)).
 
+#### Inversión en IA 
 ![Inversión en IA](assets/inversion_ia.png)
 
 ---
 
-## 11 · Cierre — lo que entregas
+## 11 · Cierre — lo que te llevas
 
 !!! abstract "Puntos clave"
     - Un sistema inteligente **percibe, razona y actúa**; sus rasgos son autonomía, adaptación y decisión.
@@ -672,12 +666,6 @@ flowchart LR
     - Sin **KPI comparado** (indicador clave de rendimiento medido antes y después), no hay mejora demostrable.
     - Un **KPI** es un número con **unidad, periodo y referencia**. **KPI de negocio ≠ métrica de modelo**: la precisión no decide, el coste o el tiempo sí.
 
-**Un solo entregable** (ficha + KPI + decisión):
-
-| Entregable | Qué es |
-|---|---|
-| **Ficha** | De **1 sistema real**: percibe / reglas o datos / acción / tarea estrecha |
-| **KPI** | 2 números con unidad, **antes** y **después**, + el % |
 
 ---
 
