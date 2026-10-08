@@ -63,7 +63,7 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - https://sever8a.github.io/artint/ia/introduccion/introduccion.html
     - https://sever8a.github.io/artint/ia/introduccion/definicion.html
   - Observaciones: Objetivo didáctico- Al finalizar esta sesión, deberías ser capaz de:
-- **Sesión 2 · 2026-10-19 · RA5-1 · Sistemas expertos**
+- **Sesión 9 · 2026-10-19 · RA5-1 · Sistemas expertos**
   - RA: RA5
   - Hilo conductor: **Pagarium** (pasarela de pagos que decide sobre transacciones).
   - Contenidos detallados:
@@ -72,15 +72,15 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - Encadenamiento forward/backward; sensibilidad y umbrales; factores de certeza.
     - `experta` (con parche, docencia); **RETE/PHREAK**; **`clipspy`** (CLIPS 6.4) para producción.
   - Ejercicios y práctica en clase:
-    - Apuntes S2 y ejercicios bloque A: `docs/bloques/B05_RA5/apuntes.md`, `docs/bloques/B05_RA5/ejercicios.md`.
-    - Notebook: `docs/bloques/B05_RA5/sesion02_sistemas_expertos.ipynb`.
+    - Apuntes S9: `docs/bloques/B05_RA5/sesion09_sistemas_expertos.md` + ejercicios bloque A en `docs/bloques/B05_RA5/ejercicios.md`.
+    - Notebook: `docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb`.
     - Actividad A1 (1,5 h).
   - Materiales / Recursos:
     - `material_david/docs/UD05/UD05_ES.md` (solo la parte de sistemas expertos) y `sistemas_expertos.md`.
     - https://martinezpenya.es/ModelosIA/UD05/UD05_ES.html
   - Observaciones:
     - La lógica difusa y los controladores inteligentes de la UD05 se ven en otro bloque.
-- **Sesión 3 · 2026-10-21 · RA5-2 · Motores de reglas**
+- **Sesión 11 · 2026-10-21 · RA5-2 · Motores de reglas**
   - RA: RA5
   - Contenidos detallados:
     - **Decision management** y BRMS (Drools/KIE, ODM, Blaze).
@@ -89,15 +89,15 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - **GoRules ZEN** (fintech, formato JDM) y **`rule-engine`** en Python.
     - **Verificador de cobertura** (huecos/solapes) y **benchmark** (µs/pago: if/else vs ZEN vs CLIPS vs experta).
   - Ejercicios y práctica en clase:
-    - Apuntes S3 y ejercicios bloque B.
-    - Notebook: `docs/bloques/B05_RA5/sesion03_motores_reglas.ipynb`.
+    - Apuntes S11: `docs/bloques/B05_RA5/sesion11_motores_reglas.md` + ejercicios bloque B.
+    - Notebook: `docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb`.
     - Actividad A2 (2 h).
   - Materiales / Recursos:
     - https://martinezpenya.es/ModelosIA/UD05/
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
     - El benchmark sirve para decidir **cuándo NO usar** un motor de reglas.
-- **Sesión 4 · 2026-10-26 · RA5-3 · Motores de reglas 2 (híbridos y guardarraíles)**
+- **Sesión 14 · 2026-10-26 · RA5-3 · Híbridos y guardarraíles**
   - RA: RA5
   - Contenidos detallados:
     - Reglas **extraídas de datos** con **FIGS** (política latente de Pagarium).
@@ -105,8 +105,8 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - **AI Act** y decisiones automatizadas (calendario actualizado; verificar).
     - **Proyecto integrador Pagarium** (capa de negocio + capa guardarraíl).
   - Ejercicios y práctica en clase:
-    - Apuntes S4 y ejercicios bloque C.
-    - Notebook: `docs/bloques/B05_RA5/sesion04_hibridos_guardarrailes.ipynb`.
+    - Apuntes S14: `docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.md` + ejercicios bloque C.
+    - Notebook: `docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb`.
     - Actividad A3 (3 h) + proyecto (3,5 h).
   - Materiales / Recursos:
     - https://martinezpenya.es/ModelosIA/UD05/
