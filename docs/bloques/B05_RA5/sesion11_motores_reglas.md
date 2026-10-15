@@ -19,6 +19,8 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
 [Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
 
+[Soluciones del cuaderno](sesion11_motores_reglas_soluciones.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -86,11 +88,11 @@ graph = {
         {"id": "table", "type": "decisionTableNode", "name": "Politica",
          "content": {
              "hitPolicy": "first",
-             "inputs": [{"id": "i1", "field": "importe", "name": "Importe"}],
-             "outputs": [{"id": "o1", "field": "decision", "name": "Decision"}],
+             "inputs": [{"id": "i1", "field": "importe", "name": "Importe", "ref": ""}],
+             "outputs": [{"id": "o1", "field": "decision", "name": "Decision", "ref": ""}],
              "rules": [
-                 {"i1": "< 500", "_id": "r1", "o1": "aprobar"},
-                 {"i1": ">= 500", "_id": "r2", "o1": "revisar"},
+                 {"i1": "< 500", "_id": "r1", "o1": "\"aprobar\""},
+                 {"i1": ">= 500", "_id": "r2", "o1": "\"revisar\""},
              ],
          },
          "position": {"x": 200, "y": 0}},
@@ -110,7 +112,7 @@ print(decision.evaluate(json.dumps({"importe": 200})))
 ```
 
 !!! note "Versiones de ZEN"
-    La API de `zen-engine` cambia entre versiones (nombres de módulo y de campos del grafo). Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules** y usa esa estructura: es la fuente fiable.
+    La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string (nombres de módulo y de campos del grafo). Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules** y usa esa estructura: es la fuente fiable.
 
 ## 5 · `rule-engine` en Python puro
 
