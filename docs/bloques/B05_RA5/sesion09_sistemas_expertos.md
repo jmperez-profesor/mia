@@ -19,6 +19,8 @@ El código se trabaja en el cuaderno **`sesion09_sistemas_expertos.ipynb`**:
 
 [Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb){ .md-button } · [ver en el sitio](sesion09_sistemas_expertos.ipynb)
 
+[Soluciones del cuaderno](sesion09_sistemas_expertos_soluciones.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -227,18 +229,8 @@ El ciclo *match* ingenuo compara todas las reglas con todos los hechos (lento). 
 import clips
 
 env = clips.Environment()
-env.build("""
-(defrule aprobar
-  (importe ?i&:(< ?i 500))
-  (n_intentos ?n&:(< ?n 4))
-  =>
-  (assert (decision aprobar)))
-(defrule rechazar
-  (declare (salience 30))
-  (n_intentos ?n&:(>= ?n 4))
-  =>
-  (assert (decision rechazar)))
-""")
+env.build("(defrule aprobar (importe ?i&:(< ?i 500)) (n_intentos ?n&:(< ?n 4)) => (assert (decision aprobar)))")
+env.build("(defrule rechazar (declare (salience 30)) (n_intentos ?n&:(>= ?n 4)) => (assert (decision rechazar)))")
 env.assert_string("(importe 200)")
 env.assert_string("(n_intentos 5)")
 env.run()
