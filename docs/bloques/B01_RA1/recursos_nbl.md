@@ -1,4 +1,4 @@
-# B01 · RA1 — Recursos Gemini Notebook
+# RA1 - Recursos Gemini Notebook
 
 Materiales complementarios generados con **Gemini Notebook** a partir de las fuentes del bloque (mapa mental, presentación, resúmenes y audio). Son material de **apoyo y repaso**, no sustituyen a los [apuntes](apuntes.md).
 

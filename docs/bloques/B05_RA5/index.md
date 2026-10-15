@@ -1,4 +1,4 @@
-# B05 · RA5 — Sistemas expertos y motores de reglas
+# RA5 - Sistemas expertos y motores de reglas
 
 > **3 sesiones de 2 h** (19/10, 21/10 y 26/10/2026) sobre sistemas expertos y motores de reglas, con foco en el mercado actual. Reescrito a partir de la UD05 de David Martínez Peña (CC BY-NC-SA 4.0).
 >

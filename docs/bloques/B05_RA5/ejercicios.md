@@ -1,4 +1,4 @@
-# B05 · RA5 — Ejercicios de autoevaluación
+# RA5 - Ejercicios de autoevaluación
 
 > Resuélvelos en tu cuaderno o en un documento. **No se publican las soluciones**: se corrigen y comentan en clase. Están organizados por sesión (S9, S11, S14) y adaptados de la UD05 de David Martínez Peña (CC BY-NC-SA 4.0).
 

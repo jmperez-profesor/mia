@@ -5,7 +5,7 @@ duracion: 6 h presenciales + 6 h autonomo
 titulo: "Análisis de sistemas robotizados (DOBOT Magician)"
 ---
 
-# B04 · RA4 — Análisis de sistemas robotizados
+# RA4 - Análisis de sistemas robotizados
 
 > **UD04 · 12 h** = 3 sesiones presenciales de 2 h (S1, S2, S3) + 3 sesiones autónomas de 2 h (TA1, TA2, TA3).
 > **Resultado de aprendizaje RA4:** *Analiza sistemas robotizados, evaluando opciones de diseño e implementación.*

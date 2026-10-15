@@ -5,7 +5,7 @@ duracion: 1 sesion presencial (2 h)
 titulo: "Caracterización de sistemas de Inteligencia Artificial"
 ---
 
-# B01 · RA1 — Caracterización de sistemas de Inteligencia Artificial
+# RA1 - Caracterización de sistemas de Inteligencia Artificial
 
 > **Apuntes de referencia del RA1.** La **sesión presencial** se centra en **2 cosas** (caracterizar + decidir con KPI); este documento es el material de **lectura y consulta** completo, con la teoría, los casos, las imágenes y las fuentes.
 >

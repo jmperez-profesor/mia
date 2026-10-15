@@ -1,4 +1,4 @@
-# B01 · RA1 — Recursos de vídeo (DotCSV)
+# RA1 - Recursos de vídeo (DotCSV)
 
 Selección de vídeos del canal [DotCSV](https://www.youtube.com/c/dotcsv) (Carlos Santana Vega) útiles para el RA1, con enlace directo y uso didáctico. El **catálogo completo** está en [Recursos · Canal DotCSV](../../recursos/dotcsv.md).
 

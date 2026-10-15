@@ -1,4 +1,4 @@
-# B01 · RA1 — Guion de sesión con vídeo (DotCSV)
+# RA1 - Guion de sesión con vídeo (DotCSV)
 
 > **Vídeo:** [¿Qué es el Machine Learning? ¿Y Deep Learning? Un mapa conceptual](https://www.youtube.com/watch?v=KytW151dpqU) · DotCSV · **duración real 7:46**.
 > **Uso en clase:** troceado en 3 fragmentos e intercalado con ejercicios de los [apuntes](apuntes.md). A **1,25×** son ~6 min en total; a **1,15×**, ~6:45.

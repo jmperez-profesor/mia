@@ -1,4 +1,4 @@
-# B01 · RA1 — Caracterización de sistemas de IA
+# RA1 - Caracterización de sistemas de IA
 
 **Una sesión de 2 h** (05/10/2026) para el **RA1**: *caracteriza sistemas de IA relacionándolos con la mejora de la eficiencia operativa*. Enfoque: (1) caracterizar un sistema con la ficha de 1 minuto, (2) decidir con 1 KPI si compensa.
 

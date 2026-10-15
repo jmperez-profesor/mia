@@ -9,7 +9,7 @@ titulo: "Motores de reglas"
 
 # Sesión 11 · Motores de reglas (21/10/2026)
 
-> **Bloque B05 · RA5.** Segunda sesión. Del sistema experto «clásico» al **motor de reglas de negocio**: cómo se gestionan, versionan y despliegan las reglas como un activo de empresa.
+> **RA5.** Segunda sesión. Del sistema experto «clásico» al **motor de reglas de negocio**: cómo se gestionan, versionan y despliegan las reglas como un activo de empresa.
 >
 > **CE de esta sesión:** RA5-b (representar y simular comportamientos básicos de ámbitos diversos).
 

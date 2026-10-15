@@ -1,4 +1,4 @@
-# B04 · RA4 — Análisis de sistemas robotizados
+# RA4 - Análisis de sistemas robotizados
 
 Unidad **UD04** de **12 h**: **3 sesiones presenciales de 2 h + 3 sesiones autónomas de 2 h**. Hardware del aula: **un brazo DOBOT Magician** (4 ejes) con cinta transportadora (fotocélula y sensor de color). El grupo (~16-20 alumnos) se organiza en **4 equipos** que trabajan por turnos en el brazo.
 

@@ -9,7 +9,7 @@ titulo: "Híbridos, guardarraíles y neuro-simbólico"
 
 # Sesión 14 · Híbridos, guardarraíles y neuro-simbólico (26/10/2026)
 
-> **Bloque B05 · RA5.** Tercera y última sesión del bloque. Cerramos con la evolución moderna de los sistemas expertos: reglas extraídas de datos, guardarraíles para LLM, sistemas neuro-simbólicos y el marco legal (AI Act), culminando en el proyecto integrador.
+> **RA5.** Tercera y última sesión del RA5. Cerramos con la evolución moderna de los sistemas expertos: reglas extraídas de datos, guardarraíles para LLM, sistemas neuro-simbólicos y el marco legal (AI Act), culminando en el proyecto integrador.
 >
 > **CE de esta sesión:** RA5-b (simular comportamientos), RA5-d (estrategias de control) y RA5-e (controladores inteligentes y su influencia en el sistema).
 

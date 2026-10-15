@@ -8,13 +8,13 @@ Profesor: **José Manuel Pérez Torres** · Centro: **I.E.S. Severo Ochoa (Elche
 
 El módulo se planifica por **sesiones de 2 horas** (lunes y miércoles). Este docente imparte **tres resultados de aprendizaje**, cada uno en su bloque:
 
-| Bloque | RA | Temática | Sesiones |
+| RA | Temática | Sesiones |
 |--------|----|----------|----------|
-| [B01](bloques/B01_RA1/index.md) | **RA1** | Caracterización de sistemas de IA | 1 presencial |
-| [B05](bloques/B05_RA5/index.md) | **RA5** | Sistemas expertos y motores de reglas | 3 presenciales |
-| [B04](bloques/B04_RA4/index.md) | **RA4** | Análisis de sistemas robotizados | 3 presenciales + 3 autónomas |
+| [RA1](bloques/B01_RA1/index.md) | Caracterización de sistemas de IA | 1 presencial |
+| [RA5](bloques/B05_RA5/index.md) | Sistemas expertos y motores de reglas | 3 presenciales |
+| [RA4](bloques/B04_RA4/index.md) | Análisis de sistemas robotizados | 3 presenciales + 3 autónomas |
 
-## Qué encontrarás en cada bloque
+## Qué encontrarás
 
 - **Apuntes** con la teoría y el estado del arte actual, con **diagramas** y **código Python**.
 - **Ejercicios guiados** (se resuelven en clase) y **ejercicios propuestos** (entregables).

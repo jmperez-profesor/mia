@@ -88,7 +88,7 @@ hooks:
 nav:
   - Inicio: index.md
   - Normativa: normativa/index.md
-  - "B01 · RA1 — Caracterización de sistemas IA":
+  - "RA1 - Caracterización de sistemas IA":
       - Introducción: bloques/B01_RA1/index.md
       - "Apuntes (RA1)": bloques/B01_RA1/apuntes.md
       - "Recursos Gemini Notebook": bloques/B01_RA1/recursos_nbl.md
@@ -108,7 +108,7 @@ nav:
           #- "Consulta (retirable en evaluación)":
           #    - "Soluciones de prácticas": bloques/B01_RA1/soluciones_s01.md
          #    - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
-  - "B05 · RA5 — Sistemas expertos y motores de reglas":
+  - "RA5 - Sistemas expertos y motores de reglas":
       - Introducción: bloques/B05_RA5/index.md
       - "S9 · Sistemas expertos (19/10/2026)":
           - Apuntes: bloques/B05_RA5/sesion09_sistemas_expertos.md
@@ -120,7 +120,7 @@ nav:
           - Apuntes: bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
           - Notebook: bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb
       - Ejercicios de autoevaluación: bloques/B05_RA5/ejercicios.md
-#   - "B04 · RA4 — Análisis de sistemas robotizados":
+#   - "RA4 - Análisis de sistemas robotizados":
 #       - Introducción: bloques/B04_RA4/index.md
 #       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
 #       - "Guía docente": bloques/B04_RA4/guia_docente.md
