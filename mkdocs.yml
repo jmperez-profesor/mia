@@ -110,15 +110,9 @@ nav:
          #    - "Preguntas frecuentes": bloques/B01_RA1/faq_s01.md
   - "RA5 - Sistemas expertos y motores de reglas":
       - Introducción: bloques/B05_RA5/index.md
-      - "S9 · Sistemas expertos (19/10/2026)":
-          - Apuntes: bloques/B05_RA5/sesion09_sistemas_expertos.md
-          - Notebook: bloques/B05_RA5/sesion09_sistemas_expertos.ipynb
-      - "S11 · Motores de reglas (21/10/2026)":
-          - Apuntes: bloques/B05_RA5/sesion11_motores_reglas.md
-          - Notebook: bloques/B05_RA5/sesion11_motores_reglas.ipynb
-      - "S14 · Híbridos y guardarraíles (26/10/2026)":
-          - Apuntes: bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
-          - Notebook: bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb
+      - "S9 · Sistemas expertos (19/10/2026)": bloques/B05_RA5/sesion09_sistemas_expertos.md
+      - "S11 · Motores de reglas (21/10/2026)": bloques/B05_RA5/sesion11_motores_reglas.md
+      - "S14 · Híbridos y guardarraíles (26/10/2026)": bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
 #   - "RA4 - Análisis de sistemas robotizados":
 #       - Introducción: bloques/B04_RA4/index.md
 #       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
