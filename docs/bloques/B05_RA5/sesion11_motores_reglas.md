@@ -13,6 +13,12 @@ titulo: "Motores de reglas"
 >
 > **CE de esta sesión:** RA5-b (representar y simular comportamientos básicos de ámbitos diversos).
 
+## Cuaderno de la sesión
+
+El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
+
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -147,6 +153,53 @@ Un conjunto de reglas puede tener **huecos** (casos sin cubrir) y **solapes** (v
 ## Actividad A2 (2 h)
 
 Modela la política de Pagarium como **tabla DMN** con hit policy `unique`, comprueba la cobertura (que no haya huecos ni solapes) e impleméntala con `rule-engine` y con GoRules ZEN. Compara el código y el rendimiento. El cuaderno es `sesion11_motores_reglas.ipynb`.
+
+## Ejercicios de autoevaluación
+
+**1.** ¿Qué es el **decision management** y qué permite un **BRMS** que no permite el código disperso?
+
+??? tip "Solución 1"
+    Tratar las reglas como un **activo de negocio**: el área que las posee las versiona, prueba y despliega **sin tocar la aplicación**. El BRMS separa el *qué* (reglas) del *cómo* (código).
+
+**2.** Nombra tres herramientas BRMS y en qué sector se usan.
+
+??? tip "Solución 2"
+    **Drools/Apache KIE**, **IBM ODM**, **FICO Blaze**, **SAP BRF+** — banca, seguros, telecom, etc.
+
+**3.** Explica las *hit policies* **First**, **Unique**, **Priority** y **Collect**.
+
+??? tip "Solución 3"
+    **First**: gana la primera fila que encaja. **Unique**: solo una puede encajar (si no, error). **Priority**: gana la de mayor prioridad. **Collect**: devuelve todas (suma, mínimo, lista…).
+
+**4.** ¿Qué es **DMN** y por qué es el «lenguaje de negocio» de las decisiones?
+
+??? tip "Solución 4"
+    Estándar OMG que expresa decisiones como **tablas** legibles por negocio, desplegables en distintos motores sin reescribir la lógica.
+
+**5.** Dada la tabla de Pagarium (importe, antigüedad, intentos → decisión), escribe la decisión de cada caso y detecta huecos o solapes.
+
+??? tip "Solución 5"
+    Aplica la tabla del apartado **3 · DMN** fila a fila. Un **hueco** es una combinación sin fila que la cubra (p. ej. importe ≥ 500 sin fila que lo cubra); un **solape** es que dos filas encajen a la vez (contradice `unique`).
+
+**6.** ¿Qué es el formato **JDM** y qué motor lo usa?
+
+??? tip "Solución 6"
+    **JSON Decision Model**: el grafo de decisión (nodos y aristas) que usa **GoRules ZEN**.
+
+**7.** ¿Qué diferencia hay entre **GoRules ZEN** y **`rule-engine`**?
+
+??? tip "Solución 7"
+    **ZEN**: motor embebible, rápido, para fintech (grafo JDM, desde varios lenguajes). **`rule-engine`**: reglas ligeras en texto legible evaluadas contra un contexto, dentro de un servicio Python.
+
+**8.** ¿Qué es el **verificador de cobertura** y qué dos defectos detecta?
+
+??? tip "Solución 8"
+    Comprueba que toda combinación posible tiene **exactamente una** decisión: detecta **huecos** (sin cubrir) y **solapes** (varias reglas).
+
+**9.** Con el benchmark (if/else ~0,1 µs, ZEN ~54 µs, CLIPS ~96 µs, `experta` ~190 µs), ¿cuándo merece la pena un motor?
+
+??? tip "Solución 9"
+    Un motor compensa con **muchas reglas**, que **cambian a menudo** y las **gestiona negocio**; no cuando son 3 condiciones fijas (el `if/else` es 500–2000× más rápido).
 
 ## Puntos clave de la sesión
 

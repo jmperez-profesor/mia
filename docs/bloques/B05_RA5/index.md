@@ -20,7 +20,7 @@ Cada sesión tiene su notebook (con botones *Abrir en Colab* / *Descargar*):
 
 ## Evaluación (RA5)
 
-- [Ejercicios de autoevaluación](ejercicios.md) — se corrigen en clase.
+- Ejercicios de autoevaluación al final de cada sesión, **con solución**.
 - Proyecto integrador **Pagarium** (S14) y prueba escrita del RA5.
 
 > La **lógica difusa** y el **control PID/inteligente** de la UD05 de David se ven en otro bloque; aquí solo se mencionan como tendencia.

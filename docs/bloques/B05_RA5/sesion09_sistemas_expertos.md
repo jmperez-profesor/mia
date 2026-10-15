@@ -13,6 +13,12 @@ titulo: "Sistemas expertos"
 >
 > **Criterios de evaluación (CE):** RA5-a (dinámica y estructuras elementales de los sistemas expertos) y RA5-c (cómo influye la variación de las características en su dinámica).
 
+## Cuaderno de la sesión
+
+El código se trabaja en el cuaderno **`sesion09_sistemas_expertos.ipynb`**:
+
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb){ .md-button } · [ver en el sitio](sesion09_sistemas_expertos.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -261,6 +267,99 @@ print([str(f) for f in env.facts()])
 ## Actividad A1 (1,5 h)
 
 Extiende el micro-motor de Pagarium con `salience` para que gane la regla más prioritaria y comprueba que desaparece la contradicción. Después reescribe las mismas dos reglas en `experta` y en CLIPS (`clipspy`) y compara la traza. El cuaderno de la sesión es `sesion09_sistemas_expertos.ipynb`.
+
+## Ejercicios de autoevaluación
+
+**1.** Sitúa en la jerarquía **DIKW** estos cuatro enunciados: «37 ºC», «la temperatura corporal es 37 ºC», «si supera 37 ºC hay fiebre» y «si hay fiebre, toma paracetamol».
+
+??? tip "Solución 1"
+    **Dato** = «37 ºC» · **información** = «la temperatura corporal es 37 ºC» · **conocimiento** = «si supera 37 ºC hay fiebre» · **sabiduría** = «si hay fiebre, toma paracetamol».
+
+**2.** Define qué es un **sistema experto** y en qué se diferencia de un programa tradicional.
+
+??? tip "Solución 2"
+    Programa que emula el razonamiento de un experto en un dominio, con una **base de conocimiento** (reglas) y un **motor de inferencia**. Un programa tradicional tiene la lógica *enterrada* en el código; el sistema experto la hace **explícita, legible y explicable**.
+
+**3.** Enumera los **componentes** de un sistema experto y la función de cada uno.
+
+??? tip "Solución 3"
+    **Base de conocimiento** (reglas/hechos) · **memoria de trabajo** (hechos actuales y deducidos) · **motor de inferencia** (ciclo reconocer-resolver-actuar) · **subsistema de explicación** (por qué/cómo) · **interfaz** · **adquisición de conocimiento** (capturar el saber del experto).
+
+**4.** Explica el **ciclo reconocer-resolver-actuar** con tus palabras.
+
+??? tip "Solución 4"
+    **Reconocer** (match): se comparan los hechos con las condiciones de las reglas; las que se cumplen van a la agenda. **Resolver** (resolve): si hay varias, se elige una (salience, recency…). **Actuar** (act): se ejecuta el consecuente, que añade/modifica/retira hechos, y se repite.
+
+**5.** Diferencia **encadenamiento hacia delante** y **hacia atrás**, con un ejemplo de cada uno.
+
+??? tip "Solución 5"
+    **Hacia delante**: de los hechos a las conclusiones → monitorización y control. **Hacia atrás**: de una meta a los hechos que la sustentan → diagnóstico (MYCIN).
+
+**6.** Enuncia **Modus Ponens** y **Modus Tollens** y relaciónalos con el encadenamiento.
+
+??? tip "Solución 6"
+    **Ponens**: si *P→Q* y *P*, entonces *Q*. **Tollens**: si *P→Q* y *¬Q*, entonces *¬P*. Hacia delante aplica Ponens repetidamente; hacia atrás busca qué *P* sustentaría un *Q*.
+
+**7.** ¿Qué son los **factores de certeza** y por qué los introdujo MYCIN?
+
+??? tip "Solución 7"
+    Un valor (0–1) que acompaña a cada regla para razonar con conocimiento parcial; se **combinan** al encadenar (acumulación de evidencia). MYCIN los introdujo porque en medicina las reglas no son siempre ciertas.
+
+**8.** ¿Por qué la **explicación** es una ventaja clave frente al ML?
+
+??? tip "Solución 8"
+    El sistema experto puede justificar el «por qué» y el «cómo» mostrando las reglas usadas; el ML es una caja negra. Esa explicación es **obligatoria** en dominios regulados (medicina, finanzas).
+
+**9.** Completa la tabla de **representación del conocimiento** (estructura, inferencia, ventaja y límite) para: pares atributo-valor, reglas de producción, jerarquías, marcos, lógica formal, redes semánticas y ontologías.
+
+??? tip "Solución 9"
+    Ver la tabla del apartado **4 · Representar el conocimiento**: cada fila tiene su estructura, inferencia, ventaja y límite (p. ej. reglas → `SI…ENTONCES…`, encadenamiento, modular y explicable, pero difícil modelar jerarquías).
+
+**10.** Escribe el mismo hecho («si llueve, coge el paraguas») en tres representaciones distintas.
+
+??? tip "Solución 10"
+    **Regla**: `SI llueve ENTONCES coger_paraguas`. **Lógica**: *llueve → coger_paraguas*. **Par atributo-valor**: `clima.llueve = true` → `accion = coger_paraguas`.
+
+**11.** ¿Qué es el *bottleneck* de la adquisición de conocimiento?
+
+??? tip "Solución 11"
+    La parte más lenta y difícil: conseguir que el **experto vuelque** su conocimiento de forma formalizable. Es un cuello de botella humano, no técnico.
+
+**12.** ¿Por qué el micro-motor (sin resolución de conflictos) produce dos decisiones contradictorias y cómo se resuelve?
+
+??? tip "Solución 12"
+    Porque dispara **todas** las reglas que encajan, sin elegir: primero deduce «aprobar» y luego «rechazar» sobre el mismo pago (razonamiento no monótono). Se resuelve con **`salience`** (prioridad) o estratos.
+
+**13.** ¿Por qué `experta` falla en Python 3.10+ y cuál es la solución?
+
+??? tip "Solución 13"
+    Porque usa `collections.Mapping`, eliminado en 3.10. Se parchea asignando `collections.Mapping = collections.abc.Mapping` (y `Iterable`/`MutableMapping`).
+
+**14.** Escribe un sistema `experta` que clasifique una incidencia como crítica si `impacto=alto` o `usuarios>50`.
+
+??? tip "Solución 14"
+    ```python
+    class Incidencias(KnowledgeEngine):
+        @Rule(Fact(impacto="alto"))
+        def critica(self): self.declare(Fact(nivel="critica"))
+        @Rule(Fact(usuarios=P(lambda u: u > 50)))
+        def critica2(self): self.declare(Fact(nivel="critica"))
+    ```
+
+**15.** ¿Qué es **RETE** y qué mejora introduce **PHREAK**?
+
+??? tip "Solución 15"
+    **RETE**: red de nodos que reutiliza las coincidencias entre reglas y hechos, evitando recomparar todo. **PHREAK** (Drools) lo evoluciona para escalar con miles de reglas.
+
+**16.** ¿Cuándo usarías `clipspy` (CLIPS) en vez de `experta`?
+
+??? tip "Solución 16"
+    `experta` (2019, sin mantenimiento) solo para **docencia**; `clipspy` (CLIPS 6.4, mantenido) para **producción**.
+
+**17.** Diferencia **sensibilidad** y **robustez**. ¿Qué causa un sensor con ruido y umbral justo, y cómo se corrige?
+
+??? tip "Solución 17"
+    **Sensibilidad** = cuánto cambian las conclusiones ante perturbaciones pequeñas; **robustez** = estabilidad ante ruido. Ruido + umbral justo → conmutación constante; se corrige con **histéresis** (retardo) o suavizado.
 
 ## Puntos clave de la sesión
 

@@ -13,6 +13,12 @@ titulo: "Híbridos, guardarraíles y neuro-simbólico"
 >
 > **CE de esta sesión:** RA5-b (simular comportamientos), RA5-d (estrategias de control) y RA5-e (controladores inteligentes y su influencia en el sistema).
 
+## Cuaderno de la sesión
+
+El código se trabaja en el cuaderno **`sesion14_hibridos_guardarrailes.ipynb`**:
+
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb){ .md-button } · [ver en el sitio](sesion14_hibridos_guardarrailes.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -137,6 +143,48 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 | IA generativa | Guardarraíles, enrutado y validación de salidas de LLM/agentes |
 
 **Tendencias:** BRMS con DMN, *policy-as-code*, **neuro-simbólico**, **XAI** (derecho a explicación del RGPD) y reglas como **guardarraíl** del ML generativo.
+
+## Ejercicios de autoevaluación
+
+**1.** Diferencia los dos enfoques híbridos: **deducir reglas de los datos** frente a **integrar reglas propias con ML**.
+
+??? tip "Solución 1"
+    **Deducir**: un algoritmo genera reglas legibles a partir de los datos (FIGS, skope-rules). **Integrar**: el experto pone reglas de partida y el ML las mejora (Human-Learn).
+
+**2.** ¿Qué hace **FIGS** que no hace un árbol grande, en interpretabilidad?
+
+??? tip "Solución 2"
+    Genera **sumas de árboles pequeños**, con reglas cortas y legibles; un único árbol grande es difícil de leer.
+
+**3.** En el ejemplo de FIGS sobre Pagarium, ¿quién escribe las reglas: el experto o el algoritmo?
+
+??? tip "Solución 3"
+    El **algoritmo**: FIGS deduce las reglas (`importe > 997.45`…) de los datos con ruido; nadie las escribió a mano.
+
+**4.** ¿Qué es un **guardarraíl** para un agente LLM? Pon un ejemplo con `validar_accion_llm`.
+
+??? tip "Solución 4"
+    Reglas que **validan y acotan** la acción propuesta por el LLM antes de ejecutarla. `validar_accion_llm` rechaza, por ejemplo, un importe > 1000 o un destino no permitido.
+
+**5.** ¿Qué aportan los **sistemas neuro-simbólicos**? Relaciónalo con los híbridos.
+
+??? tip "Solución 5"
+    Menos **alucinaciones**, **explicabilidad** y **trazabilidad**: las reglas acotan y justifican lo que genera el modelo. Es la generalización de los híbridos reglas/datos.
+
+**6.** ¿Qué es la **IA explicable (XAI)** y qué relación tiene con MYCIN y el RGPD?
+
+??? tip "Solución 6"
+    IA que justifica sus decisiones. **MYCIN** fue el pionero de la explicación; el **RGPD** recoge el **derecho a explicación** de las decisiones automatizadas.
+
+**7.** Sitúa el calendario del **AI Act** (prohibidas, transparencia, alto riesgo) y por qué hay que verificarlo.
+
+??? tip "Solución 7"
+    Prohibidas desde **2/2/2025**; transparencia desde **agosto 2026**; alto riesgo (Anexo III) **aplazado a diciembre 2027** (Ómnibus Digital). Hay que verificarlo porque ha cambiado varias veces.
+
+**8.** En el **proyecto Pagarium**, describe las dos capas y los tres entregables.
+
+??? tip "Solución 8"
+    **Capas**: reglas de negocio (DMN/ZEN) + guardarraíl que valida un agente LLM. **Entregables**: tabla DMN con hit policy y cobertura verificada, implementación ejecutable y un informe (huecos/solapes, decisión sobre el motor con benchmark, 1 riesgo AI Act/RGPD).
 
 ## Puntos clave de la sesión
 

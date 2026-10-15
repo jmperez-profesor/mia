@@ -119,7 +119,6 @@ nav:
       - "S14 · Híbridos y guardarraíles (26/10/2026)":
           - Apuntes: bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
           - Notebook: bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb
-      - Ejercicios de autoevaluación: bloques/B05_RA5/ejercicios.md
 #   - "RA4 - Análisis de sistemas robotizados":
 #       - Introducción: bloques/B04_RA4/index.md
 #       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
