@@ -221,33 +221,86 @@ print(motor.traza)     # -> ['aprobar_pequena', 'rechazar_reintentos']
 
 ## 8 · `experta` con parche (docencia, no producción)
 
-`experta` (2019, sin mantenimiento) es ideal para **entender** el ciclo de inferencia. En Python 3.10+ necesita el parche de `collections.Mapping`:
+`experta` (2019, sin mantenimiento) es ideal para **entender** el ciclo de inferencia. En Python 3.10+ necesita el parche de `collections.Mapping`. Antes de escribir reglas, un minuto para los **decoradores**, porque `@DefFacts` y `@Rule` lo son.
+
+### Los decoradores (`@`) en 2 minutos
+
+Un **decorador** es una función que *envuelve* a otra para modificar su comportamiento, y se aplica con `@nombre`. Ejemplo sencillo (adaptado de [El Libro de Python](https://ellibrodepython.com/decoradores-python)):
+
+```python
+def mi_decorador(funcion):        # recibe la función a decorar
+    def nueva_funcion(a, b):      # la "envuelve"
+        print("Antes de llamar")
+        c = funcion(a, b)         # llama a la función original
+        print("Después de llamar")
+        return c
+    return nueva_funcion          # devuelve la función envuelta
+
+@mi_decorador                     # aplica el decorador a suma
+def suma(a, b):
+    return a + b
+
+print(suma(5, 8))
+# Antes de llamar
+# 13
+# Después de llamar
+```
+
+Con **parámetros** (por eso `@Rule(...)` y `@DefFacts()` llevan paréntesis): el decorador se llama con argumentos y devuelve el decorador de verdad. En `experta`, `@Rule(...)` marca un método como **regla** del motor y `@DefFacts()` marca el método que devuelve los **hechos iniciales**.
+
+### Lo construimos paso a paso
+
+Los trozos de los pasos 2 y 3 van **dentro de la clase** `Pagarium` (por eso van indentados 4 espacios).
+
+#### Paso 1 · El parche y la plantilla
 
 ```python
 %pip install experta
 
 import collections, collections.abc
-if not hasattr(collections, "Mapping"):
+if not hasattr(collections, "Mapping"):   # parche para Python 3.10+
     collections.Mapping = collections.abc.Mapping
     collections.Iterable = collections.abc.Iterable
     collections.MutableMapping = collections.abc.MutableMapping
 
-from experta import *                  # importa Fact, Rule, KnowledgeEngine, etc.
+from experta import *                     # importa Fact, Rule, KnowledgeEngine...
 
-class Pagarium(KnowledgeEngine):       # una clase que hereda del motor de experta
-    @DefFacts()                        # decorador: hechos que se cargan al empezar
+class Pagarium(KnowledgeEngine):          # hereda el motor de reglas
+    pass                                  # borra esto al completar los pasos
+```
+
+#### Paso 2 · Los hechos iniciales (`@DefFacts`)
+
+`@DefFacts()` decora un método que devuelve (`yield`) los hechos con los que arranca el motor.
+
+```python
+    @DefFacts()
     def inicio(self):
-        yield Fact(accion="evaluar")   # hecho inicial
+        # TODO: devuelve el hecho inicial accion="evaluar"
+        #       (pista: usa yield Fact(accion="evaluar"))
+        pass
+```
 
+#### Paso 3 · Las reglas (`@Rule`)
+
+Cada regla es un método decorado con `@Rule(...)`. Las condiciones van en `P(...)` (predicado) y la prioridad en `salience`.
+
+```python
     @Rule(Fact(accion="evaluar"), Fact(importe=P(lambda i: i < 500)),
           Fact(n_intentos=P(lambda n: n < 4)), salience=20)   # salience = prioridad
-    def aprobar(self):                 # solo se dispara si importe<500 Y n_intentos<4
-        self.declare(Fact(decision="aprobar"))    # .declare añade un hecho nuevo
+    def aprobar(self):
+        # TODO: declara el hecho decision="aprobar" con self.declare(Fact(...))
+        pass
 
-    @Rule(Fact(n_intentos=P(lambda n: n >= 4)), salience=30)  # más prioridad
+    @Rule(Fact(n_intentos=P(lambda n: n >= 4)), salience=30)   # más prioridad
     def rechazar(self):
-        self.declare(Fact(decision="rechazar"))
+        # TODO: declara el hecho decision="rechazar"
+        pass
+```
 
+#### Paso 4 · Ejecutar el motor
+
+```python
 motor = Pagarium(); motor.reset()      # crea el motor y lo deja listo
 motor.declare(Fact(importe=200, n_intentos=5))   # hechos del pago
 motor.run()                            # ejecuta el ciclo de inferencia
@@ -256,6 +309,9 @@ print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hecho
 
 !!! warning "Trampa con `experta`"
     Compara por **igualdad**: `Fact(error=lambda e: e > 3)` nunca coincide. Las condiciones van dentro de `P(...)`. Y no uses `self` dentro de `P(...)`: el decorador se evalúa al definir la clase.
+
+!!! tip "Solución completa"
+    El sistema `experta` ya montado está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
 
 ## 9 · RETE y PHREAK
 
