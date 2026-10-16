@@ -30,6 +30,7 @@ theme:
     - content.code.copy
     - search.suggest
     - search.highlight
+    - header.autohide
 
 extra:
   colab:
