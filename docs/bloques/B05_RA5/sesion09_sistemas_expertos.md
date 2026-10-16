@@ -139,55 +139,85 @@ MYCIN introdujo los **factores de certeza (CF)** para razonar con conocimiento p
 !!! example "Combinar factores de certeza"
     «SI fiebre alta ENTONCES sospecha de meningitis **CF 0,6**» y «SI rigidez de nuca ENTONCES sospecha de meningitis **CF 0,4**». MYCIN combina ambos apoyos en una confianza conjunta mayor que cada uno por separado (acumulación de evidencia). Si hay evidencia en contra, se descuenta.
 
-## 7 · Un micro-motor propio (y su fallo didáctico)
+## 7 · Un micro-motor propio (lo construimos paso a paso)
 
-Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Este motor de Pagarium **no resuelve conflictos a propósito**: dispara **todas** las reglas que encajan, produciendo **dos decisiones contradictorias** sobre el mismo pago. Es el mejor momento didáctico de la unidad.
+Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Lo construimos **juntos**, pieza a pieza. Al final verás **por qué falla**: dispara todas las reglas que encajan sin elegir, y produce dos decisiones contradictorias.
+
+### Paso 1 · La plantilla (clase) y sus tres almacenes
+
+Una **clase** (`class`) es una plantilla que crea objetos. El método `__init__` se ejecuta al crear el objeto y prepara los datos. El motor necesita guardar tres cosas: los **hechos**, las **reglas** y la **traza** (el orden de disparo, para depurar).
 
 ```python
-# Una CLASE es una plantilla que crea objetos. Aquí define nuestro mini-motor de reglas.
 class MicroMotor:
-    def __init__(self):                 # __init__ se ejecuta al crear el objeto: prepara los datos
-        self.hechos = {}                # dict vacío: guardará los hechos (ej. importe=200)
-        self.reglas = []                # list vacía: guardará las reglas
-        self.traza  = []                # list vacía: apuntará qué reglas se disparan (para depurar)
+    def __init__(self):
+        # TODO: crea tres almacenes con self (el punto se lee "de este objeto"):
+        #   self.hechos = {}   # diccionario para los hechos
+        #   self.reglas = []   # lista para las reglas
+        #   self.traza  = []   # lista para el orden de disparo
+        pass   # borra esta línea cuando completes el TODO
+```
 
-    def hecho(self, **h):               # añade uno o varios hechos (parejas nombre=valor)
-        self.hechos.update(h)           # .update() mete las parejas en el diccionario
+### Paso 2 · Añadir hechos (método `hecho`)
 
-    def regla(self, nombre, prioridad, condicion, accion):   # añade una regla
-        self.reglas.append((nombre, prioridad, condicion, accion))   # .append() añade al final
+Un **hecho** es una pareja nombre=valor (p. ej. `importe=200`). El método `hecho(**h)` recibe varias parejas y las guarda en el diccionario con `.update()`.
 
-    def run(self):                      # ejecuta el ciclo del motor
+```python
+    def hecho(self, **h):        # **h recoge las parejas nombre=valor
+        # TODO: añade esas parejas al diccionario self.hechos
+        #       (pista: el método se llama .update(h))
+        pass
+```
+
+### Paso 3 · Añadir reglas (método `regla`)
+
+Una **regla** guarda cuatro cosas: nombre, prioridad, condición y acción. La metemos en la lista `self.reglas` con `.append()`, como una tupla `(nombre, prioridad, condicion, accion)`.
+
+```python
+    def regla(self, nombre, prioridad, condicion, accion):
+        # TODO: añade (nombre, prioridad, condicion, accion) a self.reglas
+        #       (pista: usa self.reglas.append(...))
+        pass
+```
+
+### Paso 4 · El ciclo reconocer-actuar (método `run`)
+
+El corazón del motor. Repetimos mientras quede algo por disparar: recorremos las reglas y, si su **condición** se cumple con los hechos, ejecutamos su **acción**. De momento **no resolvemos conflictos** (ese será el fallo).
+
+```python
+    def run(self):
         pendientes = True
-        while pendientes:               # repite mientras quede algo por disparar
-            pendientes = False
-            for nombre, prioridad, condicion, accion in self.reglas:   # recorre cada regla
-                if nombre in self.traza:         # si ya se disparó, la salta
-                    continue
-                if condicion(self.hechos):       # 1) RECONOCER: ¿la condición se cumple?
-                    self.traza.append(nombre)    #    (¡no RESUELVE: dispara todas!)
-                    accion(self.hechos)          # 2) ACTUAR: ejecuta la acción
-                    pendientes = True
-        return self.hechos
+        # TODO: mientras pendientes sea True:
+        #   pon pendientes = False
+        #   recorre con for cada (nombre, prioridad, condicion, accion) de self.reglas:
+        #     si nombre ya está en self.traza -> continue
+        #     si condicion(self.hechos) se cumple:
+        #        apunta nombre en self.traza, ejecuta accion(self.hechos), pon pendientes = True
+        #   al salir, devuelve self.hechos
+        pass
+```
 
-# Creamos el motor y le damos hechos y reglas sobre Pagarium.
+### Paso 5 · Crear el motor y probarlo
+
+Juntamos las piezas: creamos el motor, le damos hechos y reglas de Pagarium y lo ejecutamos. Las **lambdas** son funciones de una línea: reciben los hechos y devuelven `True`/`False`.
+
+```python
 motor = MicroMotor()
 motor.hecho(importe=200, antiguedad_meses=10, n_intentos=5)   # hechos del pago
 
-# lambda h: ... es una función de una línea: recibe los hechos y devuelve True/False.
-motor.regla("aprobar_pequena", 10, lambda h: h["importe"] < 500,        # condición: importe < 500
-            lambda h: h.update(decision="aprobar"))                    # acción: decide "aprobar"
+motor.regla("aprobar_pequena", 10, lambda h: h["importe"] < 500,      # condición: importe < 500
+            lambda h: h.update(decision="aprobar"))                  # acción: decide "aprobar"
 motor.regla("rechazar_reintentos", 10, lambda h: h["n_intentos"] >= 4,  # condición: reintentos >= 4
-            lambda h: h.update(decision="rechazar"))                   # acción: decide "rechazar"
+            lambda h: h.update(decision="rechazar"))                 # acción: decide "rechazar"
 
-print(motor.run())     # muestra los hechos finales (mira 'decision')
-# -> {'importe': 200, ..., 'decision': 'rechazar'}  ¡y antes pasó por 'aprobar'!
-print(motor.traza)     # muestra el orden en que se dispararon las reglas
-# -> ['aprobar_pequena', 'rechazar_reintentos']
+print(motor.run())     # -> {'importe': 200, ..., 'decision': 'rechazar'}  ¡y antes pasó por 'aprobar'!
+print(motor.traza)     # -> ['aprobar_pequena', 'rechazar_reintentos']
 ```
 
 !!! warning "El bug que enseña"
-    El motor dedujo **aprobar** y luego **rechazar** para el mismo pago. Es la puerta al **razonamiento no monótono** (una conclusión invalida otra) y a la **estratificación por `salience`**: sin resolución de conflictos, el resultado depende del orden de las reglas.
+    Al juntar los pasos, el motor dedujo **aprobar** y luego **rechazar** para el mismo pago. Es la puerta al **razonamiento no monótono** (una conclusión invalida otra) y a la **estratificación por `salience`**: sin resolución de conflictos, el resultado depende del orden de las reglas.
+
+!!! tip "Solución completa"
+    El micro-motor ya montado está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
 
 ## 8 · `experta` con parche (docencia, no producción)
 
