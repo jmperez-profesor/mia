@@ -41,22 +41,23 @@ import numpy as np
 from imodels import FIGSClassifier
 from sklearn.model_selection import train_test_split
 
-rng = np.random.default_rng(0)
-n = 4000
-importe = rng.uniform(0, 2000, n)
-antiguedad = rng.uniform(0, 24, n)
-n_intentos = rng.integers(0, 6, n)
+rng = np.random.default_rng(0)            # semilla fija: siempre los mismos datos
+n = 4000                                  # número de pagos simulados
+importe = rng.uniform(0, 2000, n)         # importes entre 0 y 2000
+antiguedad = rng.uniform(0, 24, n)        # meses de antigüedad
+n_intentos = rng.integers(0, 6, n)        # intentos: 0..5
 
+# La política LATENTE (oculta): rechazar si (importe>1000 y antigüedad<6) o n_intentos>=4
 y = ((importe > 1000) & (antiguedad < 6)) | (n_intentos >= 4)
-flip = rng.random(n) < 0.03            # ruido del 3 %
-y = np.where(flip, ~y, y).astype(int)
+flip = rng.random(n) < 0.03            # 3 % de ruido: volcamos algunas etiquetas
+y = np.where(flip, ~y, y).astype(int)  # 0/1 en vez de True/False
 
-X = np.column_stack([importe, antiguedad, n_intentos])
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, random_state=0)
+X = np.column_stack([importe, antiguedad, n_intentos])   # junta las 3 columnas
+X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, random_state=0)  # 70% entrenar / 30% probar
 
-clf = FIGSClassifier(max_rules=6)
-clf.fit(X_tr, y_tr)
-print("Accuracy:", round(clf.score(X_te, y_te), 3))
+clf = FIGSClassifier(max_rules=6)       # como mucho 6 reglas
+clf.fit(X_tr, y_tr)                     # APRENDE las reglas a partir de los datos
+print("Accuracy:", round(clf.score(X_te, y_te), 3))   # acierto sobre los datos de prueba
 print(clf)
 # Reglas recuperadas (aprox.): importe > 997.45, antiguedad <= 5.5, n_intentos > 3.5
 ```
@@ -77,20 +78,20 @@ Un agente LLM propone; las reglas **validan y acotan** antes de ejecutar. Patró
 ```python
 import re
 
-def validar_accion_llm(texto):
-    """Reglas de negocio sobre la propuesta de un agente. Devuelve (ok, motivo)."""
+def validar_accion_llm(texto):            # recibe la propuesta del agente y devuelve (ok, motivo)
+    # findall(r"(\d+(?:\.\d+)?)\s*EUR", ...)  busca números seguidos de EUR
     importes = [float(x) for x in re.findall(r"(\d+(?:\.\d+)?)\s*EUR", texto)]
-    if any(i > 1000 for i in importes):
+    if any(i > 1000 for i in importes):   # any(...) = "¿alguno cumple?"
         return False, "importe fuera de rango"
-    if "cuenta no verificada" in texto.lower():
+    if "cuenta no verificada" in texto.lower():   # .lower() pasa a minúsculas
         return False, "destino no permitido"
-    if re.search(r"transferir.*sin confirmar", texto, re.IGNORECASE):
+    if re.search(r"transferir.*sin confirmar", texto, re.IGNORECASE):  # patrón de texto
         return False, "requiere confirmación humana"
     return True, "ok"
 
-for t in ["Transferir 500 EUR a la cuenta A",
-          "Transferir 5000 EUR",
-          "Pagar a cuenta no verificada"]:
+for t in ["Transferir 500 EUR a la cuenta A",   # ok
+          "Transferir 5000 EUR",                 # fuera de rango
+          "Pagar a cuenta no verificada"]:       # destino no permitido
     print(t, "->", validar_accion_llm(t))
 ```
 

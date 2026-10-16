@@ -144,39 +144,45 @@ MYCIN introdujo los **factores de certeza (CF)** para razonar con conocimiento p
 Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Este motor de Pagarium **no resuelve conflictos a propósito**: dispara **todas** las reglas que encajan, produciendo **dos decisiones contradictorias** sobre el mismo pago. Es el mejor momento didáctico de la unidad.
 
 ```python
+# Una CLASE es una plantilla que crea objetos. Aquí define nuestro mini-motor de reglas.
 class MicroMotor:
-    def __init__(self):
-        self.hechos, self.reglas, self.traza = {}, [], []
+    def __init__(self):                 # __init__ se ejecuta al crear el objeto: prepara los datos
+        self.hechos = {}                # dict vacío: guardará los hechos (ej. importe=200)
+        self.reglas = []                # list vacía: guardará las reglas
+        self.traza  = []                # list vacía: apuntará qué reglas se disparan (para depurar)
 
-    def hecho(self, **h):
-        self.hechos.update(h)
+    def hecho(self, **h):               # añade uno o varios hechos (parejas nombre=valor)
+        self.hechos.update(h)           # .update() mete las parejas en el diccionario
 
-    def regla(self, nombre, prioridad, condicion, accion):
-        self.reglas.append((nombre, prioridad, condicion, accion))
+    def regla(self, nombre, prioridad, condicion, accion):   # añade una regla
+        self.reglas.append((nombre, prioridad, condicion, accion))   # .append() añade al final
 
-    def run(self):
+    def run(self):                      # ejecuta el ciclo del motor
         pendientes = True
-        while pendientes:
+        while pendientes:               # repite mientras quede algo por disparar
             pendientes = False
-            for nombre, prioridad, condicion, accion in self.reglas:
-                if nombre in self.traza:
+            for nombre, prioridad, condicion, accion in self.reglas:   # recorre cada regla
+                if nombre in self.traza:         # si ya se disparó, la salta
                     continue
-                if condicion(self.hechos):          # match
-                    self.traza.append(nombre)        # (sin resolve)
-                    accion(self.hechos)              # act
+                if condicion(self.hechos):       # 1) RECONOCER: ¿la condición se cumple?
+                    self.traza.append(nombre)    #    (¡no RESUELVE: dispara todas!)
+                    accion(self.hechos)          # 2) ACTUAR: ejecuta la acción
                     pendientes = True
         return self.hechos
 
+# Creamos el motor y le damos hechos y reglas sobre Pagarium.
 motor = MicroMotor()
-motor.hecho(importe=200, antiguedad_meses=10, n_intentos=5)
-motor.regla("aprobar_pequena", 10, lambda h: h["importe"] < 500,
-            lambda h: h.update(decision="aprobar"))
-motor.regla("rechazar_reintentos", 10, lambda h: h["n_intentos"] >= 4,
-            lambda h: h.update(decision="rechazar"))
+motor.hecho(importe=200, antiguedad_meses=10, n_intentos=5)   # hechos del pago
 
-print(motor.run())
+# lambda h: ... es una función de una línea: recibe los hechos y devuelve True/False.
+motor.regla("aprobar_pequena", 10, lambda h: h["importe"] < 500,        # condición: importe < 500
+            lambda h: h.update(decision="aprobar"))                    # acción: decide "aprobar"
+motor.regla("rechazar_reintentos", 10, lambda h: h["n_intentos"] >= 4,  # condición: reintentos >= 4
+            lambda h: h.update(decision="rechazar"))                   # acción: decide "rechazar"
+
+print(motor.run())     # muestra los hechos finales (mira 'decision')
 # -> {'importe': 200, ..., 'decision': 'rechazar'}  ¡y antes pasó por 'aprobar'!
-print(motor.traza)
+print(motor.traza)     # muestra el orden en que se dispararon las reglas
 # -> ['aprobar_pequena', 'rechazar_reintentos']
 ```
 
@@ -196,26 +202,26 @@ if not hasattr(collections, "Mapping"):
     collections.Iterable = collections.abc.Iterable
     collections.MutableMapping = collections.abc.MutableMapping
 
-from experta import *
+from experta import *                  # importa Fact, Rule, KnowledgeEngine, etc.
 
-class Pagarium(KnowledgeEngine):
-    @DefFacts()
+class Pagarium(KnowledgeEngine):       # una clase que hereda del motor de experta
+    @DefFacts()                        # decorador: hechos que se cargan al empezar
     def inicio(self):
-        yield Fact(accion="evaluar")
+        yield Fact(accion="evaluar")   # hecho inicial
 
     @Rule(Fact(accion="evaluar"), Fact(importe=P(lambda i: i < 500)),
-          Fact(n_intentos=P(lambda n: n < 4)), salience=20)
-    def aprobar(self):
-        self.declare(Fact(decision="aprobar"))
+          Fact(n_intentos=P(lambda n: n < 4)), salience=20)   # salience = prioridad
+    def aprobar(self):                 # solo se dispara si importe<500 Y n_intentos<4
+        self.declare(Fact(decision="aprobar"))    # .declare añade un hecho nuevo
 
-    @Rule(Fact(n_intentos=P(lambda n: n >= 4)), salience=30)
+    @Rule(Fact(n_intentos=P(lambda n: n >= 4)), salience=30)  # más prioridad
     def rechazar(self):
         self.declare(Fact(decision="rechazar"))
 
-motor = Pagarium(); motor.reset()
-motor.declare(Fact(importe=200, n_intentos=5))
-motor.run()
-print([dict(f) for f in motor.facts.values() if "decision" in f])
+motor = Pagarium(); motor.reset()      # crea el motor y lo deja listo
+motor.declare(Fact(importe=200, n_intentos=5))   # hechos del pago
+motor.run()                            # ejecuta el ciclo de inferencia
+print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hechos con 'decision'
 ```
 
 !!! warning "Trampa con `experta`"
@@ -233,13 +239,16 @@ El ciclo *match* ingenuo compara todas las reglas con todos los hechos (lento). 
 %pip install clipspy
 import clips
 
-env = clips.Environment()
+env = clips.Environment()              # crea el entorno de CLIPS
+# build(...) define UNA regla cada vez. Cada llamada añade una regla.
 env.build("(defrule aprobar (importe ?i&:(< ?i 500)) (n_intentos ?n&:(< ?n 4)) => (assert (decision aprobar)))")
 env.build("(defrule rechazar (declare (salience 30)) (n_intentos ?n&:(>= ?n 4)) => (assert (decision rechazar)))")
-env.assert_string("(importe 200)")
-env.assert_string("(n_intentos 5)")
-env.run()
-print([str(f) for f in env.facts()])
+#   (defrule nombre   condiciones-con-patrones       =>   acciones(assert añade hechos))
+
+env.assert_string("(importe 200)")     # añade un hecho: importe 200
+env.assert_string("(n_intentos 5)")    # añade otro hecho
+env.run()                              # ejecuta
+print([str(f) for f in env.facts()])   # lista todos los hechos finales
 # -> ['(importe 200)', '(n_intentos 5)', '(decision rechazar)']
 ```
 

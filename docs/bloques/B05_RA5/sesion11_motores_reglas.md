@@ -78,8 +78,7 @@ La misma tabla se despliega en Drools (KIE) o en GoRules ZEN sin reescribir la l
 import json
 from zen import ZenEngine
 
-# El grafo JDM suele exportarse del editor de GoRules. Estructura mínima:
-# input -> decisionTableNode -> output
+# Un grafo de decisión: nodo de entrada -> tabla -> nodo de salida (formato JDM, JSON).
 graph = {
     "contentType": "application/vnd.gorules.decision",
     "nodes": [
@@ -87,11 +86,11 @@ graph = {
          "position": {"x": 0, "y": 0}},
         {"id": "table", "type": "decisionTableNode", "name": "Politica",
          "content": {
-             "hitPolicy": "first",
+             "hitPolicy": "first",     # gana la primera fila que encaja
              "inputs": [{"id": "i1", "field": "importe", "name": "Importe", "ref": ""}],
              "outputs": [{"id": "o1", "field": "decision", "name": "Decision", "ref": ""}],
              "rules": [
-                 {"i1": "< 500", "_id": "r1", "o1": "\"aprobar\""},
+                 {"i1": "< 500", "_id": "r1", "o1": "\"aprobar\""},   # el valor es un texto JSON
                  {"i1": ">= 500", "_id": "r2", "o1": "\"revisar\""},
              ],
          },
@@ -107,8 +106,8 @@ graph = {
 }
 
 engine = ZenEngine()
-decision = engine.create_decision(json.dumps(graph))
-print(decision.evaluate(json.dumps({"importe": 200})))
+decision = engine.create_decision(json.dumps(graph))   # json.dumps convierte el dict a texto JSON
+print(decision.evaluate(json.dumps({"importe": 200})))  # evalúa con importe 200
 ```
 
 !!! note "Versiones de ZEN"
@@ -122,12 +121,16 @@ Para reglas ligeras en un servicio Python, `rule-engine` permite escribir condic
 %pip install rule-engine
 import rule_engine
 
+# Un diccionario con los hechos del pago (parejas nombre -> valor).
 ctx = {"importe": 200, "n_intentos": 5, "antiguedad_meses": 10}
+
+# Rule(...) guarda una condición escrita en texto legible.
 aprueba = rule_engine.Rule("importe < 500 and antiguedad_meses >= 6 and n_intentos < 4")
 rechaza = rule_engine.Rule("n_intentos >= 4 or antiguedad_meses < 6")
 
-print("aprueba:", aprueba.matches(ctx))   # False (n_intentos=5)
-print("rechaza:", rechaza.matches(ctx))   # True
+# .matches(ctx) devuelve True si la condición se cumple con esos hechos.
+print("aprueba:", aprueba.matches(ctx))   # False (n_intentos=5 no es < 4)
+print("rechaza:", rechaza.matches(ctx))   # True (n_intentos=5 >= 4)
 ```
 
 ## 6 · Verificador de cobertura
