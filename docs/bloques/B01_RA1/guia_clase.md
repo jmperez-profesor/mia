@@ -202,7 +202,7 @@ Cuatro errores que debes evitar al rellenarla:
 
     Evita las **frases de marketing** como «usa IA» o «es inteligente»: no describen nada. La ficha tiene que decir qué datos entran, cómo decide y qué hace.
 
-    [Abrir N01 en Colab](https://colab.research.google.com/github/jmperez/mia/blob/main/docs/bloques/B01_RA1/sesion01_mapa_sistemas.ipynb){ .md-button }
+    [Abrir N01 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_mapa_sistemas.ipynb){ .md-button }
 
 ---
 
@@ -402,7 +402,7 @@ flowchart LR
 
     **Cuaderno N02 · Técnicas de IA (demo).** La demo **supervisada** (KNN sobre clientes) devuelve la etiqueta `0/1` («reclamará / no reclamará»); la **no supervisada** (k-means sobre compras) devuelve `0/1` por fila, pero son **identificadores de grupo** inventados, no «sí/no».
 
-    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
+    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
 
 ### 5.4 Deep learning e IA generativa
 
@@ -620,7 +620,7 @@ flowchart LR
 !!! example "Ejercicio 3 · Calcula antes/después (en el cuaderno N02)"
     Reproduce el caso de las **1.000 consultas** y la variante de las **300 reclamaciones**, propón una técnica con su KPI para tu proceso y nombra un riesgo. Está todo en el cuaderno **N02 · Técnicas de IA**, sección **6 · Decidir con KPI**: cambia los números y ejecuta las celdas.
 
-    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
+    [Abrir N02 en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B01_RA1/sesion01_tecnicas_ia.ipynb){ .md-button }
 
 ---
 

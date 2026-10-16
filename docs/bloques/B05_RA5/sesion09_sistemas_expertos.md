@@ -17,7 +17,7 @@ titulo: "Sistemas expertos"
 
 El código se trabaja en el cuaderno **`sesion09_sistemas_expertos.ipynb`**:
 
-[Abrir en Colab](https://colab.research.google.com/github/jmperez/mia/blob/main/docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb){ .md-button } · [ver en el sitio](sesion09_sistemas_expertos.ipynb)
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb){ .md-button } · [ver en el sitio](sesion09_sistemas_expertos.ipynb)
 
 [Soluciones del cuaderno](sesion09_sistemas_expertos_soluciones.ipynb)
 

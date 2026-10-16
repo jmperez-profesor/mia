@@ -15,7 +15,7 @@ Sitio de documentación (MkDocs Material) con los materiales del módulo 5071, o
 - **RA5 · Sistemas expertos y motores de reglas** — micro-motor, `experta`, CLIPS, DMN, GoRules ZEN, `rule-engine`, FIGS y guardarraíles de LLM.
 - **RA4 · Análisis de sistemas robotizados** — brazo robótico DOBOT Magician (cinemática, dibujo y pick & place).
 
-**[Ver el sitio →](https://jmperez.github.io/mia/)** · **[Ver el repositorio →](https://github.com/jmperez/mia)**
+**[Ver el sitio →](https://jmperez-profesor.github.io/mia/)** · **[Ver el repositorio →](https://github.com/jmperez-profesor/mia)**
 
 ## Stack
 
@@ -35,5 +35,5 @@ Sitio de documentación (MkDocs Material) con los materiales del módulo 5071, o
 
 <!--
   Este README va en el repositorio de perfil: crea un repo llamado igual que tu usuario
-  (jmperez/jmperez) y sube este fichero como README.md.
+  (jmperez-profesor/jmperez-profesor) y sube este fichero como README.md.
 -->

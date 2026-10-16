@@ -1,8 +1,8 @@
 site_name: Modelos de IA (5071) — Apuntes CE IA&BD
 site_description: Materiales docentes del módulo 5071 "Modelos de Inteligencia Artificial" (Comunitat Valenciana, 2026-2027)
 site_author: José Manuel Pérez Torres
-repo_url: https://github.com/jmperez/mia
-site_url: https://jmperez.github.io/mia/
+repo_url: https://github.com/jmperez-profesor/mia
+site_url: https://jmperez-profesor.github.io/mia/
 
 edit_uri: edit/main/docs
 use_directory_urls: false
@@ -34,10 +34,10 @@ theme:
 
 extra:
   colab:
-    user: jmperez
+    user: jmperez-profesor
     repo: mia
     branch: main
-  raw_base: https://raw.githubusercontent.com/jmperez/mia/main
+  raw_base: https://raw.githubusercontent.com/jmperez-profesor/mia/main
 
 plugins:
   - search
