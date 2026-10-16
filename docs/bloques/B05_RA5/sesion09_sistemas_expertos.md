@@ -248,6 +248,49 @@ print(suma(5, 8))
 
 Con **parámetros** (por eso `@Rule(...)` y `@DefFacts()` llevan paréntesis): el decorador se llama con argumentos y devuelve el decorador de verdad. En `experta`, `@Rule(...)` marca un método como **regla** del motor y `@DefFacts()` marca el método que devuelve los **hechos iniciales**.
 
+**Dos casos reales:**
+
+- **Registrar en un fichero (`@log`).** Un decorador con parámetros que escribe el resultado de cada función en un fichero. Fíjate en las **tres funciones anidadas**: el decorador recibe `fichero_log`, devuelve otro decorador, que a su vez envuelve la función.
+
+```python
+def log(fichero_log):                     # decorador "de fábrica": recibe el nombre del fichero
+    def decorador_log(func):              # el decorador de verdad: recibe la función
+        def decorador_funcion(*args, **kwargs):       # *args/**kwargs = "cualquier argumento"
+            with open(fichero_log, 'a') as f:         # abre el fichero en modo añadir
+                output = func(*args, **kwargs)        # llama a la función original
+                f.write(f"{output}\n")               # escribe el resultado en el fichero
+        return decorador_funcion
+    return decorador_log
+
+@log('resultados.log')
+def suma(a, b):
+    return a + b
+
+suma(10, 30)      # crea (o añade a) resultados.log la línea "40"
+```
+
+- **Permitir solo a usuarios autenticados.** Un decorador que ejecuta la función solo si la variable `autenticado` es `True`.
+
+```python
+autenticado = True
+
+def requiere_autenticacion(f):
+    def funcion_decorada(*args, **kwargs):
+        if not autenticado:                          # si no está autenticado
+            print("Error. El usuario no se ha autenticado")
+        else:
+            return f(*args, **kwargs)                # si sí, ejecuta la función
+    return funcion_decorada
+
+@requiere_autenticacion
+def di_hola():
+    print("Hola")
+
+di_hola()          # -> Hola (si autenticado=True) / Error... (si False)
+```
+
+> En `experta`, `@Rule(...)` y `@DefFacts()` son decoradores con parámetros como `@log`: el motor los usa para registrar cada método como **regla** o como fuente de **hechos iniciales**.
+
 ### Lo construimos paso a paso
 
 Los trozos de los pasos 2 y 3 van **dentro de la clase** `Pagarium` (por eso van indentados 4 espacios).
