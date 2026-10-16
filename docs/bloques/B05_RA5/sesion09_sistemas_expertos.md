@@ -127,6 +127,11 @@ El motor de inferencia opera en un **bucle reconocer-actuar**:
 !!! tip "Las dos reglas de inferencia clásicas"
     El encadenamiento se apoya en **Modus Ponens** («si *P* implica *Q*, y *P* es verdad, entonces *Q* es verdad») y **Modus Tollens** («si *P* implica *Q*, y *Q* no es cierto, entonces *P* no es cierto»). Hacia delante aplica Modus Ponens repetidamente; hacia atrás busca qué *P* sustentaría un *Q* dado.
 
+    **Ejemplo con Pagarium.** Tomamos *P* = «el pago lleva 4 o más reintentos» y *Q* = «rechazar el pago»:
+
+    - **Modus Ponens.** Si *P* implica *Q* y sabemos que *P* es cierto (el pago lleva 5 reintentos), concluimos *Q* (rechazar). Es lo que hace el **encadenamiento hacia delante**: parte de los hechos y deduce la conclusión.
+    - **Modus Tollens.** Si *P* implica *Q* y sabemos que *Q* **no** es cierto (el pago **no** se rechazó), concluimos que *P* tampoco lo es (no había 4 reintentos). Es lo que hace el **encadenamiento hacia atrás**: parte de la meta («¿debo rechazar?») y comprueba qué hechos la sustentarían.
+
 ## 6 · Incertidumbre: factores de certeza (MYCIN)
 
 MYCIN introdujo los **factores de certeza (CF)** para razonar con conocimiento parcial: cada regla lleva un CF y la evidencia se **acumula** al encadenar.
