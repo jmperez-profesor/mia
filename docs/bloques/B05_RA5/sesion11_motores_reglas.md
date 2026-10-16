@@ -17,7 +17,7 @@ titulo: "Motores de reglas"
 
 El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
-[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
+[Abrir en Colab](https://colab.research.google.com/github/jmperez/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
 
 [Soluciones del cuaderno](sesion11_motores_reglas_soluciones.ipynb)
 
