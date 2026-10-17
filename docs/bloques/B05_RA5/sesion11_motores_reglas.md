@@ -58,40 +58,61 @@ La *hit policy* es la respuesta formal al **fallo didáctico** del micro-motor d
 
 ## 3 · DMN (Decision Model and Notation)
 
-**DMN** (OMG) es el estándar para expresar decisiones como tablas legibles por negocio. Ejemplo para Pagarium:
+**DMN** (OMG) es el estándar para expresar decisiones como tablas legibles por negocio. Una **tabla de decisión** cruza las condiciones (las columnas) con una **acción** (la última columna); el guion `—` significa «no importa».
+
+### Ejercicio · Completa la política de Pagarium
+
+La primera fila está resuelta como ejemplo. Completa la columna **Decisión** de las otras tres:
 
 | Importe | Antigüedad (meses) | Intentos | Decisión |
 |---|---|---|---|
-| `< 500` | `>= 6` | `< 4` | Aprobar |
-| `< 500` | `>= 6` | `>= 4` | Revisar |
-| `>= 500` | — | — | Revisar |
-| — | `< 6` | — | Rechazar |
+| `< 500` | `>= 6` | `< 4` | **Aprobar** |
+| `< 500` | `>= 6` | `>= 4` | … |
+| `>= 500` | — | — | … |
+| — | `< 6` | — | … |
+
+??? tip "Solución"
+    | Importe | Antigüedad | Intentos | Decisión |
+    |---|---|---|---|
+    | `< 500` | `>= 6` | `< 4` | Aprobar |
+    | `< 500` | `>= 6` | `>= 4` | Revisar |
+    | `>= 500` | — | — | Revisar |
+    | — | `< 6` | — | Rechazar |
+
+    Ojo: la fila 3 (`importe >= 500`) y la fila 4 (`antigüedad < 6`) se **solapan** cuando se cumplen las dos a la vez — por eso la hit policy `unique` fallaría ahí.
 
 La misma tabla se despliega en Drools (KIE) o en GoRules ZEN sin reescribir la lógica.
 
 ## 4 · GoRules ZEN: el motor que se usa hoy
 
-**GoRules ZEN** es un motor de decisiones open-source, rápido y embebible, muy usado en **fintech** (pagos, KYC, *scoring*). Define el grafo de decisión en formato **JDM** (JSON Decision Model), normalmente dibujado en su editor web, y se ejecuta desde Python, Node, Rust o Go.
+**GoRules ZEN** es un motor de decisiones open-source, rápido y embebible, muy usado en **fintech** (pagos, KYC, *scoring*). Define el grafo de decisión en formato **JDM** (JSON Decision Model) y se ejecuta desde Python, Node, Rust o Go. Lo montamos paso a paso.
+
+### Paso 1 · El motor
 
 ```python
 %pip install zen-engine
 import json
 from zen import ZenEngine
 
-# Un grafo de decisión: nodo de entrada -> tabla -> nodo de salida (formato JDM, JSON).
+engine = ZenEngine()   # el motor que evalúa grafos JDM
+```
+
+### Paso 2 · Los nodos del grafo (con las reglas por rellenar)
+
+Un grafo tiene **nodos** (entrada → tabla → salida). La tabla lleva `hitPolicy`, `inputs`, `outputs` y `rules`:
+
+```python
 graph = {
     "contentType": "application/vnd.gorules.decision",
     "nodes": [
-        {"id": "input", "type": "inputNode", "name": "Request",
-         "position": {"x": 0, "y": 0}},
+        {"id": "input", "type": "inputNode", "name": "Request", "position": {"x": 0, "y": 0}},
         {"id": "table", "type": "decisionTableNode", "name": "Politica",
          "content": {
-             "hitPolicy": "first",     # gana la primera fila que encaja
-             "inputs": [{"id": "i1", "field": "importe", "name": "Importe", "ref": ""}],
+             "hitPolicy": "first",   # gana la primera fila que encaja
+             "inputs":  [{"id": "i1", "field": "importe", "name": "Importe", "ref": ""}],
              "outputs": [{"id": "o1", "field": "decision", "name": "Decision", "ref": ""}],
              "rules": [
-                 {"i1": "< 500", "_id": "r1", "o1": "\"aprobar\""},   # el valor es un texto JSON
-                 {"i1": ">= 500", "_id": "r2", "o1": "\"revisar\""},
+                 # TODO: escribe las reglas (condición -> decisión, como texto JSON)
              ],
          },
          "position": {"x": 200, "y": 0}},
@@ -100,18 +121,33 @@ graph = {
          "position": {"x": 400, "y": 0}},
     ],
     "edges": [
-        {"id": "e1", "sourceId": "input", "targetId": "table"},
-        {"id": "e2", "sourceId": "table", "targetId": "out"},
+        # TODO: conecta input -> table -> out
     ],
 }
+```
 
-engine = ZenEngine()
-decision = engine.create_decision(json.dumps(graph))   # json.dumps convierte el dict a texto JSON
+### Paso 3 · Rellenar las reglas y las aristas (TODO)
+
+Las **reglas** son dicts con la condición (`i1`) y la decisión (`o1`, como texto JSON entre comillas); las **aristas** unen los nodos por su `id`:
+
+```python
+# rules:
+#   {"i1": "< 500",  "_id": "r1", "o1": "\"aprobar\""}
+#   {"i1": ">= 500", "_id": "r2", "o1": "\"revisar\""}
+# edges:
+#   {"id": "e1", "sourceId": "input", "targetId": "table"}
+#   {"id": "e2", "sourceId": "table", "targetId": "out"}
+```
+
+### Paso 4 · Ejecutar
+
+```python
+decision = engine.create_decision(json.dumps(graph))   # json.dumps pasa el dict a texto JSON
 print(decision.evaluate(json.dumps({"importe": 200})))  # evalúa con importe 200
 ```
 
 !!! note "Versiones de ZEN"
-    La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string (nombres de módulo y de campos del grafo). Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules** y usa esa estructura: es la fuente fiable.
+    La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string. Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules**. Solución completa en el [cuaderno de soluciones](sesion11_motores_reglas_soluciones.ipynb).
 
 ## 5 · `rule-engine`: la política de Pagarium paso a paso
 
