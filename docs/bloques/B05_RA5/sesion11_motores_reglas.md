@@ -113,25 +113,63 @@ print(decision.evaluate(json.dumps({"importe": 200})))  # evalúa con importe 20
 !!! note "Versiones de ZEN"
     La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string (nombres de módulo y de campos del grafo). Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules** y usa esa estructura: es la fuente fiable.
 
-## 5 · `rule-engine` en Python puro
+## 5 · `rule-engine`: la política de Pagarium paso a paso
 
-Para reglas ligeras en un servicio Python, `rule-engine` permite escribir condiciones en texto legible y evaluarlas contra un contexto:
+`rule-engine` permite escribir reglas como texto y evaluarlas contra un diccionario. Vamos a **traducir la tabla DMN a código**, pieza a pieza, como hicimos con el micro-motor de la S9.
+
+### Paso 1 · El contexto (los hechos)
 
 ```python
 %pip install rule-engine
 import rule_engine
 
-# Un diccionario con los hechos del pago (parejas nombre -> valor).
+# El contexto: un diccionario con los hechos del pago (parejas nombre -> valor).
 ctx = {"importe": 200, "n_intentos": 5, "antiguedad_meses": 10}
-
-# Rule(...) guarda una condición escrita en texto legible.
-aprueba = rule_engine.Rule("importe < 500 and antiguedad_meses >= 6 and n_intentos < 4")
-rechaza = rule_engine.Rule("n_intentos >= 4 or antiguedad_meses < 6")
-
-# .matches(ctx) devuelve True si la condición se cumple con esos hechos.
-print("aprueba:", aprueba.matches(ctx))   # False (n_intentos=5 no es < 4)
-print("rechaza:", rechaza.matches(ctx))   # True (n_intentos=5 >= 4)
 ```
+
+### Paso 2 · La regla de aprobar
+
+`Rule(...)` guarda una condición escrita en texto; `.matches(ctx)` devuelve `True` si se cumple con esos hechos.
+
+```python
+aprueba = rule_engine.Rule("importe < 500 and antiguedad_meses >= 6 and n_intentos < 4")
+print("aprueba:", aprueba.matches(ctx))   # False: n_intentos=5 no es < 4
+```
+
+### Paso 3 · Las otras tres reglas (TODO)
+
+Escribe las tres reglas que faltan de la tabla DMN (usa `and`/`or`, `<`/`>=`):
+
+| Fila | Condición | Decisión |
+|---|---|---|
+| 2 | importe < 500 **y** antigüedad ≥ 6 **y** n_intentos ≥ 4 | Revisar |
+| 3 | importe ≥ 500 | Revisar |
+| 4 | antigüedad < 6 | Rechazar |
+
+```python
+# TODO: escribe las tres reglas que faltan
+revisar_intentos = rule_engine.Rule(...)   # fila 2
+revisar_importe  = rule_engine.Rule(...)   # fila 3
+rechazar         = rule_engine.Rule(...)   # fila 4
+```
+
+### Paso 4 · Probar los casos y ver el solape (TODO)
+
+```python
+reglas = {"aprobar": aprueba, "revisar_intentos": revisar_intentos,
+          "revisar_importe": revisar_importe, "rechazar": rechazar}
+
+def decidir(c):
+    # TODO: devuelve los nombres de las reglas que encajan en c
+    #       (pista: [nombre for nombre, r in reglas.items() if r.matches(c)])
+    pass
+
+# TODO: prueba los 4 casos (uno por fila) y este caso de SOLAPE:
+#   {"importe": 600, "antiguedad_meses": 3, "n_intentos": 2}
+```
+
+!!! warning "El solape"
+    El caso `importe >= 500` **y** `antigüedad < 6` engancha **dos reglas** (`revisar_importe` y `rechazar`). Eso viola la hit policy `unique`: es un **solape** que el verificador de cobertura debe detectar. Solución completa en el [cuaderno de soluciones](sesion11_motores_reglas_soluciones.ipynb).
 
 ## 6 · Verificador de cobertura
 
@@ -157,7 +195,7 @@ Un conjunto de reglas puede tener **huecos** (casos sin cubrir) y **solapes** (v
 
 ## Actividad A2 (2 h)
 
-Modela la política de Pagarium como **tabla DMN** con hit policy `unique`, comprueba la cobertura (que no haya huecos ni solapes) e impleméntala con `rule-engine` y con GoRules ZEN. Compara el código y el rendimiento. El cuaderno es `sesion11_motores_reglas.ipynb`.
+Completa los **`# TODO`** del paso a paso anterior (las tres reglas y la función `decidir`), detecta el **solape** y, después, despliega la misma política con **GoRules ZEN** (§4). Compara el código y el rendimiento con el benchmark (§7). El cuaderno es `sesion11_motores_reglas.ipynb`.
 
 ## Ejercicios de autoevaluación
 
