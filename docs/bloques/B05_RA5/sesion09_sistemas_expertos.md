@@ -31,6 +31,23 @@ El código se trabaja en el cuaderno **`sesion09_sistemas_expertos.ipynb`**:
 | 4 | Construir y ejecutar un sistema experto con `experta` y con `clipspy` (CLIPS) |
 | 5 | Explicar por qué un motor industrial usa **RETE/PHREAK** y no un simple `for` |
 
+## El caso: Pagarium
+
+Toda la sesión gira en torno a **Pagarium**, una **pasarela de pagos** (como Stripe o Redsys) que procesa transacciones de tiendas online. Cada pago que llega trae unos **hechos**:
+
+| Hecho | Qué es | Ejemplo |
+|---|---|---|
+| `importe` | Cantidad de la operación, en euros | 200 |
+| `antiguedad_meses` | Meses que el comercio lleva con Pagarium | 10 |
+| `n_intentos` | Reintentos de pago que lleva el cliente | 5 |
+
+El trabajo de Pagarium es **decidir, con reglas, si aprueba, revisa o rechaza** cada pago. Por ejemplo:
+
+- importe pequeño y pocos reintentos → **aprobar**;
+- demasiados reintentos → **rechazar** (puede ser un fraude).
+
+A lo largo de la sesión iremos construyendo ese sistema de reglas: primero un **micro-motor propio** (apartado 7), luego con `experta` (apartado 8) y con CLIPS (apartado 10). En las sesiones siguientes lo llevaremos a motores de negocio (DMN y GoRules ZEN).
+
 ## Vídeo · ¿Qué es un sistema experto?
 
 <iframe width="100%" height="380" src="https://www.youtube.com/embed/tCnJtIyWQ6w" title="Sistemas expertos · Inteligencia artificial · Componentes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
