@@ -105,6 +105,10 @@ flowchart LR
 !!! important "La explicación marca la diferencia"
     La capacidad de **explicar** su razonamiento es lo que distingue a un sistema experto de un modelo de ML: en dominios regulados (medicina, finanzas) la justificación es obligatoria. **MYCIN** fue el pionero, mostrando las reglas que usó.
 
+<iframe width="100%" height="380" src="https://www.youtube.com/embed/nbDnejsIUso" title="Sistema experto MYCIN - Precursores Inteligencia Artificial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Ver en YouTube](https://www.youtube.com/watch?v=nbDnejsIUso) · *Omar Steeven Calderon*. MYCIN, el sistema experto pionero de la explicabilidad (en español, 5:43).
+
 ## 4 · Representar el conocimiento
 
 Representar el conocimiento es hacerlo **entendible** para la máquina, **útil** para resolver problemas y **eficiente** de procesar. Las representaciones forman un **continuo**: en un extremo las simples (algoritmos) y en el otro las flexibles (texto natural), que una máquina no puede usar directamente.
