@@ -232,6 +232,10 @@ print(motor.traza)     # -> ['aprobar_pequena', 'rechazar_reintentos']
 
 ## 8 · `experta` con parche (docencia, no producción)
 
+Experta es una librería de Python diseñada para la creación de **sistemas expertos** e inspirada en el lenguaje de programación **CLIPS**.
+
+**🧠 ¿Qué es Experta?** Es una bifurcación (*fork*) de la antigua librería **Pyknow**. Su motor de inferencia funciona bajo el algoritmo **RETE** y permite definir una base de conocimiento mediante reglas y hechos (*Facts*) en Python estructurado.
+
 `experta` (2019, sin mantenimiento) es ideal para **entender** el ciclo de inferencia. En Python 3.10+ necesita el parche de `collections.Mapping`. Antes de escribir reglas, un minuto para los **decoradores**, porque `@DefFacts` y `@Rule` lo son.
 
 ### Los decoradores (`@`) en 2 minutos
