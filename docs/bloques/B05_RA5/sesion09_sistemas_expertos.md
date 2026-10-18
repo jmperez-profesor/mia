@@ -143,7 +143,9 @@ El motor de inferencia opera en un **bucle reconocer-actuar**:
 - **Hacia delante (forward, data-driven):** de los hechos a las conclusiones → control, monitorización.
 - **Hacia atrás (backward, goal-driven):** de una meta a los hechos que la sustentan → diagnóstico (MYCIN, Prolog).
 
-![Encadenamiento hacia delante y hacia atrás](assets/Encadenamiento.png)
+[![Encadenamiento hacia delante y hacia atrás](assets/Encadenamiento.png)](https://prezi.com/fvw2aokvct7r/encadenamiento-hacia-adelante-y-hacia-atras/)
+
+> Presentación del concepto (Prezi): [Encadenamiento hacia delante y hacia atrás](https://prezi.com/fvw2aokvct7r/encadenamiento-hacia-adelante-y-hacia-atras/).
 
 !!! tip "Las dos reglas de inferencia clásicas"
     El encadenamiento se apoya en **Modus Ponens** («si *P* implica *Q*, y *P* es verdad, entonces *Q* es verdad») y **Modus Tollens** («si *P* implica *Q*, y *Q* no es cierto, entonces *P* no es cierto»). Hacia delante aplica Modus Ponens repetidamente; hacia atrás busca qué *P* sustentaría un *Q* dado.
