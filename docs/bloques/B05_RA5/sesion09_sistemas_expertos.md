@@ -166,47 +166,34 @@ MYCIN introdujo los **factores de certeza (CF)** para razonar con conocimiento p
 
 Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Lo construimos **juntos**, pieza a pieza. Al final verás **por qué falla**: dispara todas las reglas que encajan sin elegir, y produce dos decisiones contradictorias.
 
-### Paso 1 · La plantilla (clase) y sus tres almacenes
+### Los 4 pasos (en una sola celda)
 
-Una **clase** (`class`) es una plantilla que crea objetos. El método `__init__` se ejecuta al crear el objeto y prepara los datos. El motor necesita guardar tres cosas: los **hechos**, las **reglas** y la **traza** (el orden de disparo, para depurar).
+!!! warning "En Python, una clase se escribe en una sola celda"
+    No se puede repartir una clase entre celdas: los métodos van **indentados dentro de ella**. Por eso los 4 pasos van en el **mismo bloque** de código.
 
 ```python
 class MicroMotor:
+    # ---------- PASO 1 · los tres almacenes ----------
     def __init__(self):
-        # TODO: crea tres almacenes con self (el punto se lee "de este objeto"):
+        # TODO: crea con self (el punto se lee "de este objeto"):
         #   self.hechos = {}   # diccionario para los hechos
         #   self.reglas = []   # lista para las reglas
         #   self.traza  = []   # lista para el orden de disparo
         pass   # borra esta línea cuando completes el TODO
-```
 
-### Paso 2 · Añadir hechos (método `hecho`)
-
-Un **hecho** es una pareja nombre=valor (p. ej. `importe=200`). El método `hecho(**h)` recibe varias parejas y las guarda en el diccionario con `.update()`.
-
-```python
+    # ---------- PASO 2 · añadir hechos ----------
     def hecho(self, **h):        # **h recoge las parejas nombre=valor
         # TODO: añade esas parejas al diccionario self.hechos
-        #       (pista: el método se llama .update(h))
+        #       (pista: self.hechos.update(h))
         pass
-```
 
-### Paso 3 · Añadir reglas (método `regla`)
-
-Una **regla** guarda cuatro cosas: nombre, prioridad, condición y acción. La metemos en la lista `self.reglas` con `.append()`, como una tupla `(nombre, prioridad, condicion, accion)`.
-
-```python
+    # ---------- PASO 3 · añadir reglas ----------
     def regla(self, nombre, prioridad, condicion, accion):
         # TODO: añade (nombre, prioridad, condicion, accion) a self.reglas
-        #       (pista: usa self.reglas.append(...))
+        #       (pista: self.reglas.append((nombre, prioridad, condicion, accion)))
         pass
-```
 
-### Paso 4 · El ciclo reconocer-actuar (método `run`)
-
-El corazón del motor. Repetimos mientras quede algo por disparar: recorremos las reglas y, si su **condición** se cumple con los hechos, ejecutamos su **acción**. De momento **no resolvemos conflictos** (ese será el fallo).
-
-```python
+    # ---------- PASO 4 · el ciclo reconocer-actuar ----------
     def run(self):
         pendientes = True
         # TODO: mientras pendientes sea True:
@@ -220,8 +207,6 @@ El corazón del motor. Repetimos mientras quede algo por disparar: recorremos la
 ```
 
 ### Paso 5 · Crear el motor y probarlo
-
-Juntamos las piezas: creamos el motor, le damos hechos y reglas de Pagarium y lo ejecutamos. Las **lambdas** son funciones de una línea: reciben los hechos y devuelven `True`/`False`.
 
 ```python
 motor = MicroMotor()
@@ -314,11 +299,9 @@ di_hola()          # -> Hola (si autenticado=True) / Error... (si False)
 
 > En `experta`, `@Rule(...)` y `@DefFacts()` son decoradores con parámetros como `@log`: el motor los usa para registrar cada método como **regla** o como fuente de **hechos iniciales**.
 
-### Lo construimos paso a paso
+### Lo construimos paso a paso (en una sola celda)
 
-Los trozos de los pasos 2 y 3 van **dentro de la clase** `Pagarium` (por eso van indentados 4 espacios).
-
-#### Paso 1 · El parche y la plantilla
+Igual que el micro-motor: la clase va **en una sola celda**. El parche y los `import` van al principio; completa cada `# TODO`.
 
 ```python
 %pip install experta
@@ -332,39 +315,27 @@ if not hasattr(collections, "Mapping"):   # parche para Python 3.10+
 from experta import *                     # importa Fact, Rule, KnowledgeEngine...
 
 class Pagarium(KnowledgeEngine):          # hereda el motor de reglas
-    pass                                  # borra esto al completar los pasos
-```
-
-#### Paso 2 · Los hechos iniciales (`@DefFacts`)
-
-`@DefFacts()` decora un método que devuelve (`yield`) los hechos con los que arranca el motor.
-
-```python
+    # ---------- PASO 2 · los hechos iniciales (@DefFacts) ----------
     @DefFacts()
     def inicio(self):
         # TODO: devuelve el hecho inicial accion="evaluar"
-        #       (pista: usa yield Fact(accion="evaluar"))
+        #       (pista: yield Fact(accion="evaluar"))
         pass
-```
 
-#### Paso 3 · Las reglas (`@Rule`)
-
-Cada regla es un método decorado con `@Rule(...)`. Las condiciones van en `P(...)` (predicado) y la prioridad en `salience`.
-
-```python
+    # ---------- PASO 3 · las reglas (@Rule) ----------
     @Rule(Fact(accion="evaluar"), Fact(importe=P(lambda i: i < 500)),
           Fact(n_intentos=P(lambda n: n < 4)), salience=20)   # salience = prioridad
     def aprobar(self):
-        # TODO: declara el hecho decision="aprobar" con self.declare(Fact(...))
+        # TODO: declara decision="aprobar" con self.declare(Fact(...))
         pass
 
     @Rule(Fact(n_intentos=P(lambda n: n >= 4)), salience=30)   # más prioridad
     def rechazar(self):
-        # TODO: declara el hecho decision="rechazar"
+        # TODO: declara decision="rechazar"
         pass
 ```
 
-#### Paso 4 · Ejecutar el motor
+### Ejecutar el motor
 
 ```python
 motor = Pagarium(); motor.reset()      # crea el motor y lo deja listo
