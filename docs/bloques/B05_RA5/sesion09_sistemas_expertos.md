@@ -171,6 +171,9 @@ Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Lo construimos 
 !!! warning "En Python, una clase se escribe en una sola celda"
     No se puede repartir una clase entre celdas: los métodos van **indentados dentro de ella**. Por eso los 4 pasos van en el **mismo bloque** de código.
 
+!!! tip "Si ejecutas sin completar los TODO"
+    Los `# TODO` son el ejercicio: hasta que no los rellenes (y borres el `pass`), el código **dará error** al usarlo (p. ej. `AttributeError: 'MicroMotor' object has no attribute 'traza'`). Es lo esperado. La solución completa está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
+
 ```python
 class MicroMotor:
     # ---------- PASO 1 · los tres almacenes ----------
