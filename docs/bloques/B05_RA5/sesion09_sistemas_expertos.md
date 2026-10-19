@@ -143,7 +143,22 @@ flowchart LR
 
 Representar el conocimiento es hacerlo **entendible** para la máquina, **útil** para resolver problemas y **eficiente** de procesar. Las representaciones forman un **continuo**: en un extremo las simples (algoritmos) y en el otro las flexibles (texto natural), que una máquina no puede usar directamente.
 
-![Espectro de representación del conocimiento](assets/knowledge-spectrum.png)
+**Espectro del poder expresivo en los modelos de representación del conocimiento:**
+![Espectro de representación del conocimiento](assets/knowledge-spectrum-es.jpg)
+
+Haciendo puente con la respuesta anterior sobre **"distinguir el conocimiento de sus vecinos"**, este gráfico ilustra las herramientas que usamos para representar ese conocimiento informáticamente:
+
+1. A la izquierda de la línea (Menor poder expresivo):
+Aquí se sitúan los formatos más básicos (como las bases de datos relacionales tradicionales o la *Lógica Proposicional*). Son excelentes para almacenar datos e información simples (ej. *"El monto es 5000"*), pero son incapaces de generalizar o expresar relaciones complejas entre objetos de forma natural.
+2. La barrera roja ("Lógica de predicados"):
+La Lógica de Predicados marca un salto cuántico. Al introducir variables, constantes y cuantificadores (como "Para todo X..." o "Existe un Y..."), permite a un sistema experto modelar el conocimiento real del mundo. Es la herramienta matemática que permite escribir reglas abstractas como la que vimos para Pagarium: "Si un cliente X realiza un pago Y, y el país de X es diferente al país de la IP de Y...".
+3. A la derecha de la línea (Mayor poder expresivo):
+Hacia el extremo derecho se ubican lenguajes lógicos aún más avanzados (como la Lógica de Segundo Orden o las Lógicas de Descripción), capaces de modelar conceptos sobre conceptos, incertidumbre o propiedades matemáticas complejas, aunque a costa de requerir un poder de cómputo inmenso.
+
+💡 En resumen
+
+La imagen ilustra que la Lógica de Predicados es la línea divisoria que nos permite pasar de computar simples "datos estructurados aislados" a construir un verdadero motor de inferencia capaz de razonar y conectar conceptos de forma inteligente.
+
 
 | Representación | Estructura | Inferencia | Ventaja | Límite |
 |---|---|---|---|---|
@@ -155,6 +170,7 @@ Representar el conocimiento es hacerlo **entendible** para la máquina, **útil*
 | **Redes semánticas** | Grafo de conceptos y relaciones | Búsqueda en grafos | Intuitiva para relaciones | Semántica ambigua |
 | **Ontologías** | Clases, propiedades, axiomas (OWL) | Razonadores (Pellet, HermiT) | Interoperabilidad | Curva de aprendizaje alta |
 
+**Ejemplo de un red semántica:**
 ![Redes semánticas](assets/RedesSemanticas.png)
 
 !!! tip "Regla práctica de esta sesión"
@@ -834,6 +850,12 @@ Extiende el micro-motor de Pagarium con `salience` para que gane la regla más p
 
 ??? tip "Solución 11"
     La parte más lenta y difícil: conseguir que el **experto vuelque** su conocimiento de forma formalizable. Es un cuello de botella humano, no técnico.
+
+    Este es el obstáculo clásico en la inteligencia artificial basada en reglas. Se produce durante la fase de transferir el conocimiento desde la mente del experto humano hacia la base de conocimientos del sistema.
+
+    * **La dificultad de articulación**: Los expertos humanos a menudo operan de forma intuitiva o por automatismo inconsciente. Les resulta muy difícil explicar paso a paso por qué toman una decisión concreta.
+    * **El "idioma" diferente**: El ingeniero de conocimiento (la persona que programa el sistema) y el experto de dominio (médico, ingeniero, geólogo) hablan lenguajes totalmente distintos. Traducir la experiencia humana a reglas lógicas precisas (SI... ENTONCES...) requiere muchísimo tiempo y genera malentendidos.
+    * **Inconsistencia y contradicciones**: Cuando se consulta a múltiples expertos para construir el sistema, estos suelen contradecirse entre sí, lo que bloquea la lógica del motor de inferencia.
 
 **12.** ¿Por qué el micro-motor (sin resolución de conflictos) produce dos decisiones contradictorias y cómo se resuelve?
 
