@@ -148,16 +148,16 @@ Representar el conocimiento es hacerlo **entendible** para la máquina, **útil*
 
 Haciendo puente con la respuesta anterior sobre **"distinguir el conocimiento de sus vecinos"**, este gráfico ilustra las herramientas que usamos para representar ese conocimiento informáticamente:
 
-1. A la izquierda de la línea (Menor poder expresivo):
+1. **A la izquierda de la línea (Menor poder expresivo):**
 Aquí se sitúan los formatos más básicos (como las bases de datos relacionales tradicionales o la *Lógica Proposicional*). Son excelentes para almacenar datos e información simples (ej. *"El monto es 5000"*), pero son incapaces de generalizar o expresar relaciones complejas entre objetos de forma natural.
-2. La barrera roja ("Lógica de predicados"):
-La Lógica de Predicados marca un salto cuántico. Al introducir variables, constantes y cuantificadores (como "Para todo X..." o "Existe un Y..."), permite a un sistema experto modelar el conocimiento real del mundo. Es la herramienta matemática que permite escribir reglas abstractas como la que vimos para Pagarium: "Si un cliente X realiza un pago Y, y el país de X es diferente al país de la IP de Y...".
-3. A la derecha de la línea (Mayor poder expresivo):
+2. **La barrera roja ("Lógica de predicados")**:
+La **Lógica de Predicados** marca un salto cuántico. Al introducir variables, constantes y cuantificadores (como *"Para todo X..."* o *"Existe un Y..."*), permite a un **sistema experto** modelar el **conocimiento real del mundo**. Es la herramienta matemática que permite escribir reglas abstractas como la que vimos para Pagarium: *"Si un cliente X realiza un pago Y, y el país de X es diferente al país de la IP de Y..."*.
+3. **A la derecha de la línea (Mayor poder expresivo)**:
 Hacia el extremo derecho se ubican lenguajes lógicos aún más avanzados (como la Lógica de Segundo Orden o las Lógicas de Descripción), capaces de modelar conceptos sobre conceptos, incertidumbre o propiedades matemáticas complejas, aunque a costa de requerir un poder de cómputo inmenso.
 
 💡 En resumen
 
-La imagen ilustra que la Lógica de Predicados es la línea divisoria que nos permite pasar de computar simples "datos estructurados aislados" a construir un verdadero motor de inferencia capaz de razonar y conectar conceptos de forma inteligente.
+La imagen ilustra que la **Lógica de Predicados** es la línea divisoria que nos permite pasar de computar simples *"datos estructurados aislados"* a construir un verdadero **motor de inferencia capaz de razonar** y conectar conceptos de forma inteligente.
 
 
 | Representación | Estructura | Inferencia | Ventaja | Límite |
@@ -488,6 +488,7 @@ En lugar de revisar cada regla desde el principio para cada transacción, RETE c
 #### Ejemplo 1: Red de Detección de Fraude en Tiempo Real
 
 Pagarium necesita evaluar si una transacción es sospechosa mediante dos reglas de negocio:
+
 * **Regla Alerta Alfa:** Si el monto es mayor a \$5,000 y el país de origen no coincide con el de la tarjeta, se requiere verificación manual.
 * **Regla Alerta Beta:** Si el monto es mayor a \$5,000 y la cuenta del comercio tiene menos de 30 días de antigüedad, se bloquea el pago temporalmente.
 
@@ -579,6 +580,7 @@ if __name__ == "__main__":
 #### Ejemplo 2: Red de Enrutamiento Inteligente y Comisiones
 
 Pagarium cobra comisiones distintas y elige diferentes proveedores bancarios según el tipo de cliente y el método de pago:
+
 * **Regla Premium-Visa:** Si el cliente es "Premium" y paga con Visa, la comisión es del 1% y se procesa por Redsys.
 * **Regla Premium-Crypto:** Si el cliente es "Premium" y paga con Cripto, la comisión es del 0.5% y se procesa por una red Blockchain interna.
 * **Regla Estándar-Visa:** Si el cliente es "Estándar" y paga con Visa, la comisión es del 2.5% y se procesa por Redsys.
