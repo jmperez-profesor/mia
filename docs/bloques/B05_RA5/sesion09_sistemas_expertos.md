@@ -412,14 +412,14 @@ Pagarium necesita evaluar si una transacción es sospechosa mediante dos reglas 
 Este código define las estructuras de los datos `(Facts)` y las reglas de negocio `(Rules)` para que el algoritmo **RETE** las procese de forma eficiente.
 
 ```python
-from experta import KnowledgeEngine, Fact, Rule, MATCH, AS
+from experta import KnowledgeEngine, Fact, Rule, MATCH, TEST
 
-## 1. Definimos la estructura de una Transacción
+# 1. Definimos la estructura de una Transacción
 class Transaccion(Fact):
     """Información que viaja a través de la pasarela Pagarium"""
     pass
 
-## 2. Definimos el Motor de Inferencia (La Red RETE)
+# 2. Definimos el Motor de Inferencia (La Red RETE)
 class PagariumFraudEngine(KnowledgeEngine):
 
     # Regla Alerta Alfa: Monto > 5000 y los países no coinciden
@@ -450,7 +450,7 @@ class PagariumFraudEngine(KnowledgeEngine):
         print("⛔ [ALERTA BETA] -> Bloqueo Temporal: Monto alto en un comercio con menos de 30 días.")
 
 
-## 3. Pruebas del sistema en tiempo real
+# 3. Pruebas del sistema en tiempo real
 if __name__ == "__main__":
     # Inicializamos el motor de Pagarium
     engine = PagariumFraudEngine()
@@ -503,12 +503,12 @@ En este caso, veremos cómo el algoritmo RETE indexa las propiedades para crear 
 ```python
 from experta import KnowledgeEngine, Fact, Rule, MATCH
 
-## 1. Definimos la estructura de la transacción
+# 1. Definimos la estructura de la transacción
 class Pago(Fact):
     """Información del pago a procesar en Pagarium"""
     pass
 
-## 2. Motor de Inferencia para Enrutamiento y Comisiones
+# 2. Motor de Inferencia para Enrutamiento y Comisiones
 class PagariumRoutingEngine(KnowledgeEngine):
 
     # Regla 1: Cliente Premium - Método Visa
@@ -530,7 +530,7 @@ class PagariumRoutingEngine(KnowledgeEngine):
         print(f"💳 [ESTANDAR-VISA] -> Procesando por Redsys. Comisión (2.5%): ${comision:.2f}")
 
 
-## 3. Simulación de la Pasarela de Pagos
+# 3. Simulación de la Pasarela de Pagos
 if __name__ == "__main__":
     engine = PagariumRoutingEngine()
 
@@ -573,12 +573,12 @@ Para lograr esto en experta sin mezclar de manera caótica la red RETE, utilizam
 ```python
 from experta import KnowledgeEngine, Fact, Rule, MATCH, TEST, AS
 
-## 1. Estructura de la transacción con estado de validación
+# 1. Estructura de la transacción con estado de validación
 class TransaccionCompleta(Fact):
     """Información total de la transacción que procesa Pagarium"""
     pass
 
-## 2. Motor de Inferencia Unificado
+# 2. Motor de Inferencia Unificado
 class PagariumUnifiedEngine(KnowledgeEngine):
 
     # ==========================================
@@ -643,7 +643,7 @@ class PagariumUnifiedEngine(KnowledgeEngine):
         print(f"💳 [PROCESADO] -> Estándar + Visa. Ruta: Redsys. Comisión: ${monto * 0.025:.2f}")
 
 
-## 3. Pruebas del Ciclo de Vida de Pagarium
+# 3. Pruebas del Ciclo de Vida de Pagarium
 if __name__ == "__main__":
     engine = PagariumUnifiedEngine()
 
