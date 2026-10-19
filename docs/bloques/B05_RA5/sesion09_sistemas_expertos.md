@@ -19,8 +19,6 @@ El código se trabaja en el cuaderno **`sesion09_sistemas_expertos.ipynb`**:
 
 [Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion09_sistemas_expertos.ipynb){ .md-button } · [ver en el sitio](sesion09_sistemas_expertos.ipynb)
 
-[Soluciones del cuaderno](sesion09_sistemas_expertos_soluciones.ipynb)
-
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -265,7 +263,7 @@ Un motor de reglas es, en esencia, un bucle *match-resolve-act*. Lo construimos 
     No se puede repartir una clase entre celdas: los métodos van **indentados dentro de ella**. Por eso los 4 pasos van en el **mismo bloque** de código.
 
 !!! tip "Si ejecutas sin completar los TODO"
-    Los `# TODO` son el ejercicio: hasta que no los rellenes (y borres el `pass`), el código **dará error** al usarlo (p. ej. `AttributeError: 'MicroMotor' object has no attribute 'traza'`). Es lo esperado. La solución completa está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
+    Los `# TODO` son el ejercicio: hasta que no los rellenes (y borres el `pass`), el código **dará error** al usarlo (p. ej. `AttributeError: 'MicroMotor' object has no attribute 'traza'`). Es lo esperado.
 
 ```python
 class MicroMotor:
@@ -319,9 +317,6 @@ print(motor.traza)     # -> ['aprobar_pequena', 'rechazar_reintentos']
 
 !!! warning "El bug que enseña"
     Al juntar los pasos, el motor dedujo **aprobar** y luego **rechazar** para el mismo pago. Es la puerta al **razonamiento no monótono** (una conclusión invalida otra) y a la **estratificación por `salience`**: sin resolución de conflictos, el resultado depende del orden de las reglas.
-
-!!! tip "Solución completa"
-    El micro-motor ya montado está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
 
 ## 8 · `experta` con parche (docencia, no producción)
 
@@ -447,9 +442,6 @@ print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hecho
 
 !!! warning "Trampa con `experta`"
     Compara por **igualdad**: `Fact(error=lambda e: e > 3)` nunca coincide. Las condiciones van dentro de `P(...)`. Y no uses `self` dentro de `P(...)`: el decorador se evalúa al definir la clase.
-
-!!! tip "Solución completa"
-    El sistema `experta` ya montado está en el [cuaderno de soluciones](sesion09_sistemas_expertos_soluciones.ipynb).
 
 ## 9 · RETE y PHREAK
 

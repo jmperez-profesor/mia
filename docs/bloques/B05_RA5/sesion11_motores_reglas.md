@@ -19,8 +19,6 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
 [Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
 
-[Soluciones del cuaderno](sesion11_motores_reglas_soluciones.ipynb)
-
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -147,7 +145,7 @@ print(decision.evaluate(json.dumps({"importe": 200})))  # evalúa con importe 20
 ```
 
 !!! note "Versiones de ZEN"
-    La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string. Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules**. Solución completa en el [cuaderno de soluciones](sesion11_motores_reglas_soluciones.ipynb).
+    La API de `zen-engine` cambió entre versiones: los inputs/outputs llevan `ref` y los valores de salida van como JSON string. Si el grafo no devuelve salida, exporta uno desde el **editor de GoRules**.
 
 ## 5 · `rule-engine`: la política de Pagarium paso a paso
 
@@ -205,7 +203,7 @@ def decidir(c):
 ```
 
 !!! warning "El solape"
-    El caso `importe >= 500` **y** `antigüedad < 6` engancha **dos reglas** (`revisar_importe` y `rechazar`). Eso viola la hit policy `unique`: es un **solape** que el verificador de cobertura debe detectar. Solución completa en el [cuaderno de soluciones](sesion11_motores_reglas_soluciones.ipynb).
+    El caso `importe >= 500` **y** `antigüedad < 6` engancha **dos reglas** (`revisar_importe` y `rechazar`). Eso viola la hit policy `unique`: es un **solape** que el verificador de cobertura debe detectar.
 
 ## 6 · Verificador de cobertura
 

@@ -19,8 +19,6 @@ El código se trabaja en el cuaderno **`sesion14_hibridos_guardarrailes.ipynb`**
 
 [Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb){ .md-button } · [ver en el sitio](sesion14_hibridos_guardarrailes.ipynb)
 
-[Soluciones del cuaderno](sesion14_hibridos_guardarrailes_soluciones.ipynb)
-
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
