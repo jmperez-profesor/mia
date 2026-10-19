@@ -130,7 +130,7 @@ flowchart LR
 | **Memoria de trabajo** | Hechos actuales: los que aporta el usuario o los sensores, más los deducidos |
 | **Motor de inferencia** | Evalúa qué reglas se cumplen, resuelve conflictos y ejecuta (ciclo reconocer-resolver-actuar) |
 | **Explicación** | Justifica el «por qué» y el «cómo» de una conclusión (su gran ventaja frente al ML) |
-| **Adquisición** | Capturar el conocimiento del experto: el famoso *bottleneck*, la parte más lenta |
+| **Adquisición** | Capturar el conocimiento del experto: el famoso *bottleneck* (cuellos de botella), la parte más lenta |
 
 !!! important "La explicación marca la diferencia"
     La capacidad de **explicar** su razonamiento es lo que distingue a un sistema experto de un modelo de ML: en dominios regulados (medicina, finanzas) la justificación es obligatoria. **MYCIN** fue el pionero, mostrando las reglas que usó.
@@ -375,7 +375,8 @@ class Pagarium(KnowledgeEngine):          # hereda el motor de reglas
 ### Ejecutar el motor
 
 ```python
-motor = Pagarium(); motor.reset()      # crea el motor y lo deja listo
+motor = Pagarium()
+motor.reset()      # crea el motor y lo deja listo
 motor.declare(Fact(importe=200, n_intentos=5))   # hechos del pago
 motor.run()                            # ejecuta el ciclo de inferencia
 print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hechos con 'decision'
