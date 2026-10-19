@@ -193,13 +193,60 @@ El motor de inferencia opera en un **bucle reconocer-actuar**:
 
 > Presentación del concepto (Prezi): [Encadenamiento hacia delante y hacia atrás](https://prezi.com/fvw2aokvct7r/encadenamiento-hacia-adelante-y-hacia-atras/).
 
-!!! tip "Las dos reglas de inferencia clásicas"
-    El encadenamiento se apoya en **Modus Ponens** («si *P* implica *Q*, y *P* es verdad, entonces *Q* es verdad») y **Modus Tollens** («si *P* implica *Q*, y *Q* no es cierto, entonces *P* no es cierto»). Hacia delante aplica Modus Ponens repetidamente; hacia atrás busca qué *P* sustentaría un *Q* dado.
+### Modus Ponens y Modus Tollens
 
-    **Ejemplo con Pagarium.** Tomamos *P* = «el pago lleva 4 o más reintentos» y *Q* = «rechazar el pago»:
+El encadenamiento se apoya en **dos reglas de inferencia** de la lógica proposicional. En ambas, partimos de una implicación *P* → *Q* («si *P*, entonces *Q*»):
 
-    - **Modus Ponens.** Si *P* implica *Q* y sabemos que *P* es cierto (el pago lleva 5 reintentos), concluimos *Q* (rechazar). Es lo que hace el **encadenamiento hacia delante**: parte de los hechos y deduce la conclusión.
-    - **Modus Tollens.** Si *P* implica *Q* y sabemos que *Q* **no** es cierto (el pago **no** se rechazó), concluimos que *P* tampoco lo es (no había 4 reintentos). Es lo que hace el **encadenamiento hacia atrás**: parte de la meta («¿debo rechazar?») y comprueba qué hechos la sustentarían.
+**Modus Ponens** (en latín, «el modo que afirma»): *si P implica Q, y P es verdad, entonces Q es verdad*. Afirmamos el antecedente (*P*) y concluimos el consecuente (*Q*).
+
+```mermaid
+flowchart TB
+    MP1["P → Q<br/>si llueve, las calles se mojan"]
+    MP2["P<br/>llueve"]
+    MPC["∴ Q<br/>las calles se mojan"]
+    MP1 --> MPC
+    MP2 --> MPC
+```
+
+**Modus Tollens** (en latín, «el modo que niega»): *si P implica Q, y Q no es cierto, entonces P no es cierto*. Negamos el consecuente (*¬Q*) y concluimos la negación del antecedente (*¬P*).
+
+```mermaid
+flowchart TB
+    MT1["P → Q<br/>si llueve, las calles se mojan"]
+    MT2["¬Q<br/>las calles NO se mojan"]
+    MTC["∴ ¬P<br/>no llueve"]
+    MT1 --> MTC
+    MT2 --> MTC
+```
+
+#### El ejemplo típico: la lluvia
+
+Tomamos *P* = «llueve» y *Q* = «las calles se mojan»:
+
+- **Modus Ponens.** «Si llueve, las calles se mojan. Ha llovido, por tanto las calles se mojan.» Válido: de *P* deducimos *Q*.
+- **Modus Tollens.** «Si llueve, las calles se mojan. Las calles **no** están mojadas, por tanto **no** ha llovido.» Válido: de *¬Q* deducimos *¬P*.
+
+!!! warning "Cuidado: la falacia de afirmar el consecuente"
+    «Las calles están mojadas, por tanto ha llovido» es **incorrecto**. Ahí afirmas *Q* y concluyes *P*, y eso no se sigue lógicamente: las calles pueden estar mojadas por un camión de riego o por una avería. Las dos únicas formas válidas son el **Modus Ponens** (*P* → *Q*) y el **Modus Tollens** (*¬Q* → *¬P*).
+
+#### Ejemplo de mecánica
+
+Tomamos *P* = «la batería está descargada» y *Q* = «el coche no arranca»:
+
+- **Modus Ponens.** «Si la batería está descargada, el coche no arranca. La batería está descargada, por tanto el coche no arranca.»
+- **Modus Tollens.** «Si la batería está descargada, el coche no arranca. El coche **sí** arranca, por tanto la batería **no** está descargada.» (Es el razonamiento de un mecánico: descarta la batería cuando el coche arranca.)
+
+#### Ejemplo médico (al estilo MYCIN)
+
+Tomamos *P* = «el paciente tiene meningitis bacteriana» y *Q* = «presenta rigidez de nuca»:
+
+- **Modus Ponens.** «Si hay meningitis bacteriana, hay rigidez de nuca. El paciente tiene meningitis, por tanto presenta rigidez de nuca.»
+- **Modus Tollens.** «Si hay meningitis bacteriana, hay rigidez de nuca. El paciente **no** presenta rigidez de nuca, por tanto **no** tiene meningitis bacteriana.» (El médico la descarta como diagnóstico.)
+
+#### Relación con el encadenamiento
+
+- **Hacia delante** aplica **Modus Ponens** repetidamente: parte de los hechos (*P*) y encadena hasta la conclusión. Con Pagarium: *P* = «el pago lleva 4 o más reintentos», *Q* = «rechazar el pago»; si sabemos *P* (5 reintentos), deducimos *Q* (rechazar).
+- **Hacia atrás** aplica **Modus Tollens** (o busca qué *P* sustentaría un *Q*): parte de la meta y comprueba qué hechos la sustentan o la descartan. Con Pagarium: si *Q* **no** es cierto (el pago **no** se rechazó), concluimos que *P* tampoco (no había 4 reintentos).
 
 ## 6 · Incertidumbre: factores de certeza (MYCIN)
 
