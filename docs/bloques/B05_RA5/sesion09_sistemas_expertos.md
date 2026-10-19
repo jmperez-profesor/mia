@@ -359,7 +359,350 @@ print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hecho
 
 ## 9 · RETE y PHREAK
 
-El ciclo *match* ingenuo compara todas las reglas con todos los hechos (lento). Los motores de producción usan el algoritmo **RETE** (una red de nodos que reutiliza coincidencias) y su evolución **PHREAK** (Drools), que escala mejor con miles de reglas. Por eso un motor industrial rinde donde un `for` no.
+El ciclo *match* ingenuo compara todas las reglas con todos los hechos (lento). El **algoritmo RETE** es un método de emparejamiento de patrones extremadamente eficiente, diseñado por **Charles Forgy en 1974**, que usan los motores de inferencia de los sistemas expertos. En lugar de evaluar cada regla una por una cada vez que la información cambia (lo que sería lentísimo), RETE optimiza el proceso.
+
+El **algoritmo RETE** es un método de emparejamiento de patrones extremadamente eficiente, diseñado por Charles Forgy en 1974, que se utiliza en los motores de inferencia de los **sistemas expertos** para evaluar reglas lógicas frente a una base de hechos. 
+
+En lugar de evaluar cada regla una por una cada vez que la información cambia (lo cual sería increíblemente lento), el algoritmo RETE optimiza el proceso de una forma inteligente.
+
+---
+
+### ⚙️ ¿Cómo funciona?
+
+El secreto de RETE es que **intercambia memoria por velocidad** a través de dos principios clave:
+
+1. **Red de nodos (Grafo dirigido):** Compila el conjunto de reglas en una red de nodos interconectados. Cuando un hecho entra al sistema, viaja a través de esta red. Cada nodo actúa como un filtro que evalúa una condición específica (por ejemplo, *¿el color es rojo?* o *¿la edad es mayor a 18?*).
+2. **Memoria de estado (Evita la redundancia):** El algoritmo recuerda qué reglas se cumplieron parcialmente en ciclos anteriores. Si un hecho nuevo entra al sistema, RETE no vuelve a evaluar todo desde cero; solo calcula el impacto del nuevo hecho en la red.
+
+---
+
+### 📊 Sus principales ventajas
+
+* **Estructura en árbol:** Si varias reglas comparten la misma condición inicial, esa condición se evalúa **una sola vez** para todas ellas, ahorrando tiempo de procesamiento.
+* **Procesamiento instantáneo:** Está pensado para sistemas donde los hechos cambian constantemente pero las reglas se mantienen estables, permitiendo reaccionar en milisegundos.
+
+Es el motor detrás de herramientas tan famosas en la informática como **CLIPS**, **Drools** y la librería **Experta** de Python.
+
+---
+
+### 🏢 Ejemplos Visuales (Adaptados a la vida real: Pasarela de pagos "Pagarium")
+
+Para entender cómo el algoritmo RETE optimiza la evaluación, imagina que **Pagarium** (nuestra pasarela de pagos) tiene que evaluar miles de transacciones por segundo aplicando reglas de fraude y comisiones. 
+
+En lugar de revisar cada regla desde el principio para cada transacción, RETE compila las reglas en una estructura de árbol por donde "caen" los datos.
+
+#### Ejemplo 1: Red de Detección de Fraude en Tiempo Real
+
+Pagarium necesita evaluar si una transacción es sospechosa mediante dos reglas de negocio:
+* **Regla Alerta Alfa:** Si el monto es mayor a \$5,000 y el país de origen no coincide con el de la tarjeta, se requiere verificación manual.
+* **Regla Alerta Beta:** Si el monto es mayor a \$5,000 y la cuenta del comercio tiene menos de 30 días de antigüedad, se bloquea el pago temporalmente.
+
+**El beneficio de RETE:** Como ambas reglas comparten la condición del monto (`Monto > 5000`), el algoritmo **evalúa esa condición una sola vez**. Si el monto es menor, el camino se corta de inmediato para ambas reglas.
+
+<figure markdown>
+  ![Red de Detección de Fraude en Tiempo Real](assets/rete_deteccion_fraude.png){ width="100%" }
+  <figcaption>Red de Detección de Fraude en Tiempo Real - Elaborado por Gemini</figcaption>
+</figure>
+
+* **Nodos Raíz / Alfa:** Evalúan condiciones simples de un solo campo (ej. el monto).
+* **Nodos de Combinación / Beta:** Evalúan cuando se cumplen múltiples criterios a la vez.
+
+#### Código en Python para el ejemplo 1 (Red de Detección de Fraude) de la pasarela de pagos Pagarium.
+
+Este código define las estructuras de los datos `(Facts)` y las reglas de negocio `(Rules)` para que el algoritmo **RETE** las procese de forma eficiente.
+
+```python
+from experta import KnowledgeEngine, Fact, Rule, MATCH, AS
+
+## 1. Definimos la estructura de una Transacción
+class Transaccion(Fact):
+    """Información que viaja a través de la pasarela Pagarium"""
+    pass
+
+## 2. Definimos el Motor de Inferencia (La Red RETE)
+class PagariumFraudEngine(KnowledgeEngine):
+
+    # Regla Alerta Alfa: Monto > 5000 y los países no coinciden
+    @Rule(
+        Transaccion(
+            monto=MATCH.monto,
+            pais_tarjeta=MATCH.p_tarjeta,
+            pais_ip=MATCH.p_ip
+        ),
+        # RETE evalúa el monto primero y comparte este filtro con otras reglas
+        TEST(lambda monto: monto > 5000),
+        TEST(lambda p_tarjeta, p_ip: p_tarjeta != p_ip)
+    )
+    def alerta_alfa(self):
+        print("🚨 [ALERTA ALFA] -> Requiere Verificación Manual: Monto alto y discrepancia de países.")
+
+    # Regla Alerta Beta: Monto > 5000 y comercio nuevo
+    @Rule(
+        Transaccion(
+            monto=MATCH.monto,
+            antiguedad_comercio_dias=MATCH.antiguedad
+        ),
+        # RETE reutiliza la lógica si el monto ya fue evaluado
+        TEST(lambda monto: monto > 5000),
+        TEST(lambda antiguedad: antiguedad < 30)
+    )
+    def alerta_beta(self):
+        print("⛔ [ALERTA BETA] -> Bloqueo Temporal: Monto alto en un comercio con menos de 30 días.")
+
+
+## 3. Pruebas del sistema en tiempo real
+if __name__ == "__main__":
+    # Inicializamos el motor de Pagarium
+    engine = PagariumFraudEngine()
+    engine.reset()
+
+    print("--- Procesando Transacción 1 (Normal) ---")
+    # Esta transacción se descarta de inmediato por el primer nodo RETE (monto bajo)
+    engine.declare(Transaccion(monto=100, pais_tarjeta="ES", pais_ip="ES", antiguedad_comercio_dias=120))
+    engine.run()
+
+    print("\n--- Procesando Transacción 2 (Sospechosa Alfa) ---")
+    # Monto alto y países distintos
+    engine.reset()
+    engine.declare(Transaccion(monto=6500, pais_tarjeta="US", pais_ip="ES", antiguedad_comercio_dias=90))
+    engine.run()
+
+    print("\n--- Procesando Transacción 3 (Sospechosa Beta) ---")
+    # Monto alto y comercio muy nuevo
+    engine.reset()
+    engine.declare(Transaccion(monto=7000, pais_tarjeta="MX", pais_ip="MX", antiguedad_comercio_dias=15))
+    engine.run()
+```
+
+##### 🔍 Puntos clave de la implementación:
+
+* `Fact` (Hecho): La clase Transaccion actúa como el contenedor de datos que alimenta la red.
+* `MATCH` y `TEST`: Se utilizan para enlazar las propiedades de la transacción y aplicar las condiciones lógicas.
+* `engine.run()`: Activa el motor de inferencia. Gracias a **RETE**, las reglas no se evalúan de forma secuencial en cada llamada, sino que la transacción se "filtra" instantáneamente por los nodos que corresponden.
+
+---
+
+#### Ejemplo 2: Red de Enrutamiento Inteligente y Comisiones
+
+Pagarium cobra comisiones distintas y elige diferentes proveedores bancarios según el tipo de cliente y el método de pago:
+* **Regla Premium-Visa:** Si el cliente es "Premium" y paga con Visa, la comisión es del 1% y se procesa por Redsys.
+* **Regla Premium-Crypto:** Si el cliente es "Premium" y paga con Cripto, la comisión es del 0.5% y se procesa por una red Blockchain interna.
+* **Regla Estándar-Visa:** Si el cliente es "Estándar" y paga con Visa, la comisión es del 2.5% y se procesa por Redsys.
+
+**El beneficio de RETE:** Aquí la red indexa los caminos. Si llega una transacción de un cliente Premium, el sistema ignora por completo toda la rama de clientes Estándar.
+
+<figure markdown>
+  ![Red de Enrutamiento Inteligente y Comisiones](assets/rete_enrutamiento_comisiones.png){ width="100%" }
+  <figcaption>Red de Enrutamiento Inteligente y Comisiones - Elaborado por Gemini</figcaption>
+</figure>
+
+#### Código en Python para el ejemplo 2 (Red de Enrutamiento Inteligente y Comisiones) de la pasarela Pagarium.
+
+En este caso, veremos cómo el algoritmo RETE indexa las propiedades para crear ramas separadas. Si el motor detecta que un cliente es `Premium`, la red descarta automáticamente evaluar cualquier condición relacionada con un cliente `Estandar`.
+
+```python
+from experta import KnowledgeEngine, Fact, Rule, MATCH
+
+## 1. Definimos la estructura de la transacción
+class Pago(Fact):
+    """Información del pago a procesar en Pagarium"""
+    pass
+
+## 2. Motor de Inferencia para Enrutamiento y Comisiones
+class PagariumRoutingEngine(KnowledgeEngine):
+
+    # Regla 1: Cliente Premium - Método Visa
+    @Rule(Pago(tipo_cliente="Premium", metodo_pago="Visa", monto=MATCH.monto))
+    def premium_visa(self, monto):
+        comision = monto * 0.01  # 1%
+        print(f"💳 [PREMIUM-VISA] -> Procesando por Redsys. Comisión (1%): ${comision:.2f}")
+
+    # Regla 2: Cliente Premium - Método Cripto
+    @Rule(Pago(tipo_cliente="Premium", metodo_pago="Cripto", monto=MATCH.monto))
+    def premium_crypto(self, monto):
+        comision = monto * 0.005  # 0.5%
+        print(f"🪙 [PREMIUM-CRYPTO] -> Procesando por Blockchain. Comisión (0.5%): ${comision:.2f}")
+
+    # Regla 3: Cliente Estándar - Método Visa
+    @Rule(Pago(tipo_cliente="Estandar", metodo_pago="Visa", monto=MATCH.monto))
+    def estandar_visa(self, monto):
+        comision = monto * 0.025  # 2.5%
+        print(f"💳 [ESTANDAR-VISA] -> Procesando por Redsys. Comisión (2.5%): ${comision:.2f}")
+
+
+## 3. Simulación de la Pasarela de Pagos
+if __name__ == "__main__":
+    engine = PagariumRoutingEngine()
+
+    print("--- Transacción A: Cliente VIP usando Tarjeta ---")
+    engine.reset()
+    engine.declare(Pago(tipo_cliente="Premium", metodo_pago="Visa", monto=1000))
+    engine.run()
+    # RETE entra por la rama Premium -> Visa y ejecuta la Regla 1.
+
+    print("\n--- Transacción B: Cliente VIP usando Bitcoin ---")
+    engine.reset()
+    engine.declare(Pago(tipo_cliente="Premium", metodo_pago="Cripto", monto=2000))
+    engine.run()
+    # RETE entra por la rama Premium -> Cripto y ejecuta la Regla 2.
+
+    print("\n--- Transacción C: Comercio común usando Tarjeta ---")
+    engine.reset()
+    engine.declare(Pago(tipo_cliente="Estandar", metodo_pago="Visa", monto=500))
+    engine.run()
+    # RETE ignora toda la rama Premium desde el primer nodo y se va directo a Estándar -> Visa (Regla 3).
+```
+#### 🧠 ¿Cómo optimiza RETE este segundo ejemplo?
+
+Cuando declaramos el hecho `Pago(tipo_cliente="Premium", ...)`, la red **RETE** funciona como un árbol de decisiones indexado:
+1. Evalúa el primer nodo de propiedad: `tipo_cliente`.
+2. Al coincidir con `"Premium"`, el motor desactiva por completo el nodo que evalúa si es `"Estandar"`.
+3. La evaluación se reduce instantáneamente a la mitad, revisando únicamente si el `metodo_pago` es `Visa` o `Cripto`.
+
+Esto es lo que permite que un sistema experto mantenga un rendimiento óptimo aunque agregues cientos de tipos de clientes o métodos de pago diferentes.
+
+#### 💡 Conclusión de los ejemplos
+Si una transacción de \$100 llega a la pasarela, el **Ejemplo 1** se detiene en el mismísimo primer nodo (`Monto > 5000` devuelve falso) y el sistema no gasta memoria ni ciclos de CPU en revisar los países o la antigüedad del comercio. Esa es la magia de RETE en entornos de alta carga como las finanzas.
+
+#### 3: Combinación de ambos motores (Fraude y Comisiones)
+
+Vamos a ver un ejemplo que combine ambos motores (Fraude y Comisiones) en una sola estructura para ver cómo manejar prioridades de ejecución. Para unificar ambos sistemas en una sola pasarela, necesitamos que **Pagarium** ejecute las *reglas en un orden lógico estricto*: **primero evaluar el fraude** y, si la *transacción es segura*, **luego calcular la comisión y el enrutamiento**.
+
+Para lograr esto en experta sin mezclar de manera caótica la red RETE, utilizamos la propiedad **`salience` (prioridad)**. Las reglas con mayor `salience` se ejecutan primero. Si una regla de fraude se dispara, añadiremos un mecanismo para "marcar" la transacción como bloqueada y detener el proceso.
+
+```python
+from experta import KnowledgeEngine, Fact, Rule, MATCH, TEST, AS
+
+## 1. Estructura de la transacción con estado de validación
+class TransaccionCompleta(Fact):
+    """Información total de la transacción que procesa Pagarium"""
+    pass
+
+## 2. Motor de Inferencia Unificado
+class PagariumUnifiedEngine(KnowledgeEngine):
+
+    # ==========================================
+    # BLOQUE 1: REGLAS DE FRAUDE (Prioridad Alta: salience=10)
+    # ==========================================
+
+    @Rule( # t de transaccion
+        AS.t << TransaccionCompleta( # <--- Recibe la variable 't' aquí
+            monto=MATCH.monto,
+            pais_tarjeta=MATCH.p_tarjeta,
+            pais_ip=MATCH.p_ip,
+            status="pendiente" # Solo evaluar si está pendiente
+        ),
+        TEST(lambda monto: monto > 5000),
+        TEST(lambda p_tarjeta, p_ip: p_tarjeta != p_ip),
+        salience=10
+    )
+    def detectar_fraude_alfa(self, t): 
+        print("🚨 [FRAUDE - ALFA] -> Discrepancia de países en monto alto.")
+        # Modificamos el hecho en la red RETE para bloquearlo
+        self.modify(t, status="bloqueado_manual") # <--- Modifica el hecho original usando 't'
+
+    @Rule(
+        AS.t << TransaccionCompleta(
+            monto=MATCH.monto,
+            antiguedad_comercio_dias=MATCH.antiguedad,
+            status="pendiente"
+        ),
+        TEST(lambda monto: monto > 5000),
+        TEST(lambda antiguedad: antiguedad < 30),
+        salience=10
+    )
+    def detectar_fraude_beta(self, t):
+        print("⛔ [FRAUDE - BETA] -> Comercio demasiado nuevo para este monto.")
+        self.modify(t, status="bloqueado_temporal")
+
+
+    # ==========================================
+    # BLOQUE 2: REGLAS DE ENRUTAMIENTO (Prioridad Baja: salience=1)
+    # Solo se ejecutan si status sigue siendo "pendiente"
+    # ==========================================
+
+    @Rule(
+        TransaccionCompleta(tipo_cliente="Premium", metodo_pago="Visa", monto=MATCH.monto, status="pendiente"),
+        salience=1
+    )
+    def enrutar_premium_visa(self, monto):
+        print(f"💳 [PROCESADO] -> Premium + Visa. Ruta: Redsys. Comisión: ${monto * 0.01:.2f}")
+
+    @Rule(
+        TransaccionCompleta(tipo_cliente="Premium", metodo_pago="Cripto", monto=MATCH.monto, status="pendiente"),
+        salience=1
+    )
+    def enrutar_premium_crypto(self, monto):
+        print(f"🪙 [PROCESADO] -> Premium + Cripto. Ruta: Blockchain. Comisión: ${monto * 0.005:.2f}")
+
+    @Rule(
+        TransaccionCompleta(tipo_cliente="Estandar", metodo_pago="Visa", monto=MATCH.monto, status="pendiente"),
+        salience=1
+    )
+    def enrutar_estandar_visa(self, monto):
+        print(f"💳 [PROCESADO] -> Estándar + Visa. Ruta: Redsys. Comisión: ${monto * 0.025:.2f}")
+
+
+## 3. Pruebas del Ciclo de Vida de Pagarium
+if __name__ == "__main__":
+    engine = PagariumUnifiedEngine()
+
+    print("--- CASO 1: Transacción Limpia (Premium usando Visa) ---")
+    engine.reset()
+    engine.declare(TransaccionCompleta(
+        monto=1200, pais_tarjeta="ES", pais_ip="ES", 
+        antiguedad_comercio_dias=150, tipo_cliente="Premium", 
+        metodo_pago="Visa", status="pendiente"
+    ))
+    engine.run()
+    # RETE ve que no aplica fraude, pasa al bloque de enrutamiento.
+
+    print("\n--- CASO 2: Transacción Fraudulenta (Intento de Fraude Beta) ---")
+    engine.reset()
+    engine.declare(TransaccionCompleta(
+        monto=7500, pais_tarjeta="MX", pais_ip="MX", 
+        antiguedad_comercio_dias=10, tipo_cliente="Estandar", 
+        metodo_pago="Visa", status="pendiente"
+    ))
+    engine.run()
+    # RETE ejecuta primero la regla de fraude por su salience. Al modificar el status 
+    # a "bloqueado_temporal", las reglas de enrutamiento ya no se activan.
+```
+
+!!! tip "Aclaración sobre el código `AS.t << TransaccionCompleta`"
+    **1. ¿Qué es `<<`?**
+    Es el operador de **vinculación de hechos** *(fact binding)*. Le dice al motor de inferencia: *"Si encuentras una transacción en la memoria que cumpla con todos estos requisitos, toma ese objeto `Fact` completo y asígnalo a la variable que está a la izquierda (AS.t)"*.
+
+    **2. ¿Para qué sirve `AS.t`?**
+    Sirve para poder **manipular o modificar el hecho original** dentro de la función que se ejecuta cuando la regla se cumple.
+
+    ```Python
+    def detectar_fraude_alfa(self, t): # <--- Recibe la variable 't' aquí
+        print("🚨 [FRAUDE - ALFA]...")
+        self.modify(t, status="bloqueado_manual") # <--- Modifica el hecho original usando 't'
+    ```
+    Gracias a `AS.t <<`, el motor le pasa el hecho exacto a la función como un argumento `(t)`. Sin esto, sabrías que hay una transacción fraudulenta, pero no tendrías forma de modificarla para cambiar su estado a `"bloqueado_manual"`.
+
+    **3. Diferencia entre `MATCH` y `AS.t <<`**
+
+    Es muy común confundirlos al principio, pero tienen objetivos totalmente distintos en la red RETE:
+    * `MATCH.propiedad` extrae un **valor individual** de dentro del hecho (por ejemplo, extrae solo el número `6500` del monto o el texto `"ES"` del país) para guardarlo en una variable o compararlo en un `TEST`.
+    * `AS.variable <<` guarda el **objeto entero** (toda la transacción con todos sus campos juntos) para poder alterarlo más adelante con funciones del motor como `self.modify(variable)` o `self.retract(variable)`.
+
+
+##### 🧠 ¿Qué ventajas aporta esta arquitectura unificada?
+
+1. **Cortocircuito de ejecución `(self.modify)`**: Si una transacción es fraudulenta, el método `self.modify(t, status="bloqueado...")` actualiza el hecho directamente dentro de la memoria de RETE. Al cambiar el `status`, las condiciones del bloque de comisiones (que exigen `status="pendiente"`) dejan de cumplirse instantáneamente.
+2. **Control de Flujo con `salience`**: Garantizamos que todo el análisis de seguridad ocurra antes de interactuar con los proveedores bancarios o calcular costes.
+3. **Escalabilidad**: Puedes añadir 50 reglas de fraude más y 100 reglas de enrutamiento geográfico. La red RETE estructurará los filtros de tal forma que el rendimiento apenas se verá afectado.
+
+Los siguientes pasos serían gestionar la persistencia (por ejemplo, cómo guardar estos resultados en una base de datos tras la ejecución) y/o escribir **tests unitarios** para certificar que las reglas de la pasarela no fallen, tanto para casos positiviso como negativos (como los expuestos en los ejemplos).
+
+### PHREAK
+
+**PHREAK** (Drools) es la evolución de RETE que escala mejor con miles de reglas: en lugar de una red de nodos, usa un enfoque *lazy* que solo evalúa las reglas cuando hace falta. Por eso un motor industrial rinde donde un `for` no.
+
+
 
 ## 10 · `clipspy`: CLIPS 6.4 para producción
 
