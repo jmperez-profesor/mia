@@ -66,19 +66,49 @@ Sectores donde las reglas siguen en producción: **banca y seguros** (*scoring*,
 
 ## 2 · Del dato al conocimiento: la jerarquía DIKW
 
-Antes de representar el conocimiento hay que distinguirlo de sus vecinos. La **jerarquía DIKW** (*Data, Information, Knowledge, Wisdom*) los ordena:
+Antes de representar el conocimiento hay que distinguirlo de sus vecinos. **¿Qué significa esa frase?**
+
+Significa que, antes de programar el conocimiento dentro de un sistema experto (como `experta`), primero debes entender qué tipo de información tienes entre manos. No toda la información es igual, y confundirlas al diseñar el software provoca que el sistema sea rígido, ineficiente o imposible de mantener.
+
+Para «distinguir el conocimiento de sus vecinos», la informática usa una jerarquía clásica: la **pirámide DIKW** (*Data, Information, Knowledge, Wisdom*).
 
 ![Pirámide DIKW](assets/DIKW_Pyramid.png)
 
-| Nivel | Qué es | Ejemplo |
-|---|---|---|
-| **Dato** | Hecho o valor registrado, independiente de quien lo lee | «37 ºC» |
-| **Información** | El dato interpretado por un agente | «La temperatura corporal es 37 ºC» |
-| **Conocimiento** | Información integrada en un modelo del mundo | «Si supera 37 ºC, hay fiebre» |
-| **Sabiduría** | Meta-conocimiento: cuándo y cómo aplicar el conocimiento | «Si hay fiebre, toma paracetamol» |
+### Los cuatro vecinos, aplicados a Pagarium
 
-!!! important "Por qué importa esta distinción"
-    Un sistema experto no almacena datos ni información: almacena **conocimiento** (reglas) y, en los más avanzados, un poco de **sabiduría** (metarreglas que deciden cuándo aplicar otras reglas). Confundir los niveles es el error más común al empezar: se acumulan datos en vez de codificar reglas.
+#### 1. El dato (el vecino más básico)
+
+- **Qué es:** una medición o un registro en bruto, sin contexto ni significado por sí solo.
+- **En Pagarium:** el número `5000` o las letras `"ES"`. Por sí mismos no dicen nada: ¿`5000` es un ID de usuario o dinero? ¿`"ES"` es España o un error?
+- **Ejemplo de temperatura:** «37 ºC».
+
+#### 2. La información (el vecino ordenado)
+
+- **Qué es:** los datos procesados, estructurados y con contexto. Responde al *¿qué?*, *¿quién?* o *¿dónde?*.
+- **En Pagarium:** «El monto de la transacción actual es de 5 000 USD y la IP proviene de España (ES)». Ahora el dato tiene campo, nombre y sentido. **Esto es lo que viaja dentro de un `Fact`.**
+- **Ejemplo de temperatura:** «La temperatura corporal es 37 ºC».
+
+#### 3. El conocimiento (el protagonista)
+
+- **Qué es:** la mezcla de información con experiencia, reglas de negocio y lógica. Responde al *¿cómo?* y permite tomar decisiones combinando informaciones.
+- **En Pagarium:** «Si un usuario Premium realiza una transacción de más de 5 000 USD desde un país diferente al de su tarjeta, la probabilidad de fraude aumenta un 80 % y debe congelarse». No es solo un dato estructurado: es saber qué hacer con esa información basándose en la experiencia. **Esto es lo que se programa en las `Rule`.**
+- **Ejemplo de temperatura:** «Si supera 37 ºC, hay fiebre».
+
+#### 4. La sabiduría (el vecino superior)
+
+- **Qué es:** la comprensión profunda, la intuición y el juicio humano sobre cuándo y cómo aplicar el conocimiento. Responde al *¿por qué?*.
+- **En Pagarium:** decidir si las reglas de fraude actuales son éticas, si perjudican al usuario legítimo o si hay que cambiar el modelo de negocio por nuevas leyes internacionales.
+- **Ejemplo de temperatura:** «Si hay fiebre, toma paracetamol».
+
+### ¿Por qué es vital distinguirlo antes de representarlo?
+
+Si no haces esta distinción antes de escribir código:
+
+1. **Tratarás el conocimiento como si fuera simple información:** programarás reglas complejas con miles de `if/else` planos en una base de datos, creando código espagueti imposible de actualizar.
+2. **Tratarás la información como si fuera conocimiento:** sobrecargarás el motor de inferencia (la red RETE) con reglas innecesarias para cosas que se resolverían con una simple consulta de base de datos relacional (como buscar el nombre de un cliente).
+
+!!! important "La distinción clave"
+    Un sistema experto no almacena datos ni información: almacena **conocimiento** (reglas) y, en los más avanzados, un poco de **sabiduría** (metarreglas que deciden cuándo aplicar otras reglas). Aísla la lógica pura de decisión (conocimiento) de los meros datos estructurados (información) antes de modelar tus reglas y hechos.
 
 ## 3 · Anatomía de un sistema experto
 
