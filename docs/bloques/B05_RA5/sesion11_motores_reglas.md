@@ -35,6 +35,9 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
 [Ver en YouTube](https://www.youtube.com/watch?v=Ichayb2cmQw) · *Trisotech*. Qué es DMN y sus tablas de decisión (en inglés).
 
+??? note "Qué explica el vídeo"
+    Introduce **DMN** y sus **tablas de decisión** con un ejemplo práctico. Fíjate en: la **tabla** (condiciones → acción), el guion `—` («no importa») y cómo la misma tabla se despliega en un motor. Es la base visual del apartado §3.
+
 ## 1 · Decision management
 
 **Decision management** es tratar las reglas como un **activo de negocio** gestionable por el área que las posee, no como código disperso. Un **BRMS** (*Business Rule Management System*) permite versionar, probar y desplegar reglas sin tocar la aplicación. Herramientas: **Drools/Apache KIE**, **IBM ODM**, **FICO Blaze**, **SAP BRF+**.
@@ -226,6 +229,9 @@ Un conjunto de reglas puede tener **huecos** (casos sin cubrir) y **solapes** (v
 <iframe width="100%" height="380" src="https://www.youtube.com/embed/1kbmkiMmvAA" title="Business Rule Management Systems: JBoss Drools" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 [Ver en YouTube](https://www.youtube.com/watch?v=1kbmkiMmvAA) · *Ilko Kovacic*. BRMS y Drools, el motor de reglas empresarial más conocido (en inglés).
+
+??? note "Qué explica el vídeo"
+    Qué es un **BRMS** y por qué **Drools/JBoss** es el motor empresarial de referencia: las reglas se gestionan, versionan y despliegan fuera del código. Conecta con el **decision management** del apartado §1.
 
 ## Actividad A2 (2 h)
 

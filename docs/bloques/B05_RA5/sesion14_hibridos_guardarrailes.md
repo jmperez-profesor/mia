@@ -107,6 +107,9 @@ Es la evolución natural de los híbridos reglas/datos, y la tendencia dominante
 
 [Ver en YouTube](https://www.youtube.com/watch?v=ZfWDVO3rzeA) · *IBM Technology*. Qué es la IA neuro-simbólica y cómo une razonamiento y redes neuronales (en inglés).
 
+??? note "Qué explica el vídeo"
+    Qué es la **IA neuro-simbólica**: unir el **razonamiento simbólico** (reglas) con las **redes neuronales** (aprendizaje). Fíjate en por qué aporta **explicabilidad** y menos alucinaciones, la idea central del apartado §3.
+
 ## 4 · AI Act y decisiones automatizadas
 
 El **AI Act** (Reglamento UE 2024/1689) regula la IA por riesgo. Calendario **actualizado** (verificar antes de usarlo en clase):
