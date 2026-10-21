@@ -36,7 +36,178 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 [Ver en YouTube](https://www.youtube.com/watch?v=Ichayb2cmQw) · *Trisotech*. Qué es DMN y sus tablas de decisión (en inglés).
 
 ??? note "Qué explica el vídeo"
-    Introduce **DMN** y sus **tablas de decisión** con un ejemplo práctico. Fíjate en: la **tabla** (condiciones → acción), el guion `—` («no importa») y cómo la misma tabla se despliega en un motor. Es la base visual del apartado §3.
+    ### 1. Resumen
+
+    Tom DeBevoise construye **un modelo de decisión completo en DMN 1.3** con la herramienta
+    Trisotech Decision Modeler. El caso práctico: calcular los **puntos de lealtad** de un cliente a partir
+    del carrito de la compra en una aplicación de punto de venta (POS), pasando por la creación de tipos de
+    datos, expresiones en contexto, una **tabla de decisión**, pruebas de validación y la publicación del
+    modelo como **API REST** consumible desde [Postman](https://www.postman.com/).
+
+
+    ### 2. ¿Qué es DMN?
+
+    **DMN (Decision Model and Notation)** es un estándar del *Object Management Group* (OMG), el mismo
+    consorcio que mantiene BPMN, para **especificar de forma precisa decisiones y reglas de negocio** con
+    una notación legible tanto para analistas de negocio como para desarrolladores.
+
+    DMN aporta dos herramientas complementarias:
+
+    - **Notación gráfica**: el *Decision Requirements Diagram* (DRD), que muestra las dependencias entre
+      decisiones, datos de entrada (*input data*) y conocimiento de negocio (*business knowledge models*).
+
+    - **Lenguaje de expresión FEEL** (*Friendly Enough Expression Language*): suficientemente preciso para
+      que los modelos sean **ejecutables directamente**, sin traducirlos a código.
+
+
+
+    El elemento más popular de DMN es la **tabla de decisión**:
+
+    - Cada **fila** es una regla de negocio.
+    - Las columnas de **entrada** son las condiciones (evaluadas con expresiones FEEL).
+    - La columna de **salida** es el resultado cuando la regla se cumple.
+    - En la **esquina superior izquierda** figura la *hit policy* (política de aciertos), que define qué
+      ocurre cuando varias reglas coinciden a la vez: una sola regla (U/F) o varias agregadas (C+, C<, C>...).
+
+    > **Idea clave:** las reglas de negocio (tramos, umbrales, tarifas) viven en una tabla editable,
+    > auditable y ejecutable — **no en el código** de la aplicación.
+
+
+    ### 3. Paso a paso de lo que hace el vídeo
+
+    #### 3.1 Definición de datos de entrada
+
+    DeBevoise construye el modelo de abajo hacia arriba:
+
+    - Un **tipo de dato** `t_shopping_cart`: una estructura con el número de teléfono y una
+      **colección de items**; cada item es a su vez una estructura con los atributos
+      `sku` (Stock Keeping Unit - Unidad de gestión de existencias), `quantity` (cantidad) y `unit cost` (coste unitario).
+    - Un **input data** llamado *shopping cart*, tipado como `t_shopping_cart`.
+    - Una **decisión** llamada *loyalty points computation* (cálculo de puntos de lealtad).
+
+    Este es el patrón mínimo de un DRD: **dato de entrada → decisión → resultado**.
+
+    ![Ejemplo de notación gráfica: datao en modelado del carrito de la compra en Trisotech Decision Modeler](assets/DMN_drd.png)
+
+    *Paso 1: fase de modelado de datos y decisión.*
+
+    #### 3.2 La lógica de decisión como contexto por pasos
+
+    En lugar de una única expresión gigante, la decisión se define como una **serie de pasos de contexto**
+    (context steps), donde cada paso se construye sobre el anterior:
+
+    1. **Lista de costes por item** (`item cost list`): expresión *iteradora* — para cada item del carrito,
+       devolver `quantity × unit cost`.
+    2. **Coste total** (`total cost`): la suma de esa lista.
+    3. **Tabla de decisión para la tasa**: decide cuántos puntos se ganan por dólar en función del coste total.
+
+    #### 3.3 La tabla de decisión (el corazón del vídeo)
+
+    La tabla toma como entrada el `total cost` recién calculado y produce como salida la `rate`
+    (tasa de puntos por dólar gastado):
+
+    | Regla | Entrada: total cost | Salida: rate |
+    |-------|--------------------|--------------|
+    | 1     | < 30 $             | 0 puntos |
+    | 2     | 30 $ – < 100 $     | 5 puntos por dólar |
+    | 3     | ≥ 100 $            | 7 puntos por dólar |
+
+    Es decir: por debajo de 30 $ no se ganan puntos; entre 30 y 100 $ se ganan 5 puntos por cada dólar
+    completo; y a partir de 100 $, 7 puntos por cada dólar. Es un ejemplo perfecto de reglas de negocio
+    que un analista funcional puede leer, validar y modificar **sin tocar código**.
+
+    ![Paso 2: definición de la tabla de decisión con sus reglas](assets/DMN_tabla_decision.png)
+
+    *Paso 2: definición de la tabla de decisión con sus reglas*
+
+    #### 3.4 Cálculo final de los puntos
+
+    4. **Paso condicional**: si `rate > 0`, un **paso iterador** calcula para cada item
+       `floor(unit cost × quantity × rate)` (puntos por item, redondeando hacia abajo al dólar completo);
+       en la rama `else` se devuelve una lista nula.
+    5. **Suma final**: los puntos de lealtad se calculan con una función `not null sum`, porque la lista
+       podría ser nula cuando la tasa es cero. Ese valor es el **resultado de la decisión**.
+
+    ![Paso 3: cálculo final de los puntos](assets/DMN_dato_salida.png)
+
+
+    ### 4. Validación, prueba y publicación como servicio
+
+    El tramo final del vídeo muestra el **ciclo de vida completo** de un modelo de decisión:
+
+    #### 4.1 Validación estática
+
+    - El botón de validación comprueba el modelo DMN **sin errores**.
+    - Se ejecuta el **análisis de tablas de decisión de Bruce Silver**, que detecta solapamientos, huecos
+      o reglas redundantes en la tabla (tampoco con incidencias).
+
+    #### 4.2 Prueba en modo test
+
+    Se introducen dos items en el carrito: uno de 10 $ con cantidad 1, y otro de 20 $ con cantidad 2
+    (total: 50 $). Comprobación numérica paso a paso:
+
+    ```text
+    total cost = 10 × 1 + 20 × 2 = 50 $
+    regla 2 (30 ≤ 50 < 100)  →  rate = 5
+    item 1:  floor(10 × 1 × 5) = 50 puntos
+    item 2:  floor(20 × 2 × 5) = 200 puntos
+    -------------------------------
+    resultado: 250 puntos de lealtad
+    ```
+
+    El propio entorno **resalta en naranja la regla 2** que se ha disparado, lo que permite trazar qué regla
+    de negocio produjo cada resultado (*explainability* de las decisiones).
+
+    ![Paso 4: prueba del modelo y publicación como servicio REST](assets/DMN_testeo.png)
+
+    *Paso 4: prueba del modelo y publicación como servicio REST.*
+
+    #### 4.3 Publicación en la nube como API REST
+
+    1. El modelo se publica en la **biblioteca de servicios** de Trisotech (*cloud publish*).
+
+    ![El modelo se publica en la biblioteca de servicios de Trisotech (cloud publish).](assets/DMN_publicacion_API_REST.png)
+
+    2. Se descarga la definición de la API en **JSON (Swagger / OpenAPI)**, que describe el endpoint REST.
+
+    ![Se descarga la definición de la API en JSON (Swagger/OpenAPI), que describe el endpoint REST](assets/DMN_APIREST_Swagger.png)
+
+    3. La especificación se **importa en Postman** como colección.
+    4. Se configura la **autorización OAuth 2**.
+    5. Se lanza una petición `POST` con el mismo cuerpo de prueba (10 $ × 1 y 20 $ × 2) y se obtiene de
+       nuevo **250 puntos**, esta vez **fuera del entorno de modelado**: la decisión ya es un servicio
+       consumible desde cualquier aplicación.
+
+    ![Se lanza una petición `POST` con el mismo cuerpo de prueba ](assets/DMN_publicacion_API_REST.png)
+
+
+
+    ### 5. Por qué es relevante para el curso de IA y Big Data
+
+    - **Separación de reglas y código**: la lógica de negocio vive en una tabla editable y auditable.
+      Cambiar una regla no exige reprogramar ni redesplegar la aplicación.
+    - **Decision-as-a-Service**: el vídeo muestra el patrón de exponer la lógica de decisión como API REST
+      versionada, consumible desde cualquier aplicación. Es exactamente la arquitectura con la que se
+      combinan **reglas de negocio y modelos de ML** en sistemas reales: las reglas deterministas se
+      resuelven con DMN; lo probabilístico, con modelos. El estándar DMN declara compatibilidad con Java,
+      **PMML y ONNX** para integrar modelos predictivos.
+    - **Trazabilidad y validación**: el resaltado de la regla disparada y el análisis de tablas son
+      argumentos de *explainability* frente a las "cajas negras" de **ML**.
+    - **Hit policies**: aunque el vídeo no las profundiza, la esquina superior izquierda de toda tabla DMN
+      indica si puede dispararse una sola regla (U/F) o varias y cómo se agregan (C+, C<, C>...), porque es
+      lo que define la semántica de la tabla ante solapamientos.
+
+
+    ### Referencias
+
+    - Vídeo original: [5 Min DMN — Trisotech](https://www.youtube.com/watch?v=Ichayb2cmQw)
+    - [OMG — Decision Model and Notation (DMN)](https://www.omg.org/dmn/)
+    - [Especificación DMN v1.4 (PDF)](https://www.omg.org/spec/DMN/1.4/PDF)
+    - [Camunda — DMN Tutorial](https://camunda.com/dmn/)
+    - [Drools — DMN Documentation](https://docs.drools.org/latest/drools-docs/drools/DMN/index.html)
+
+    *Nota: las imágenes incrustadas son fotogramas capturados del vídeo original de YouTube. El vídeo y su contenido
+    pertenecen a Trisotech.*
 
 ## 1 · Decision management
 
