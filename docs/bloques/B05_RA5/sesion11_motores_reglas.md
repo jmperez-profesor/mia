@@ -210,13 +210,13 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     pertenecen a Trisotech.*
 
 
-### DMN en el mundo real: quién usa Trisotech y para qué
+??? note "DMN en el mundo real: quién usa Trisotech y para qué"
 
     > **Nota crítica:** la mayoría de esta información procede de los materiales propios de
     > Trisotech o de sus partners. Son datos de marketing corporativo con métricas
     > autoinformadas: muy útiles como ejemplo didáctico, pero deben leerse con espíritu crítico.
 
-    #### 1. Recordatorio: qué es Trisotech
+    ### 1. Recordatorio: qué es Trisotech
 
     Trisotech es una compañía canadiense cuyo producto principal es el **Digital Enterprise
     Suite**, una plataforma de modelado de bajo código basada en los estándares abiertos del
@@ -228,7 +228,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     complejas combinando lógica de decisión explícita (DMN), flujos de trabajo deterministas y
     **IA gobernada**, todo sobre estándares abiertos.
 
-    #### 2. Empresas y casos de uso documentados
+    ### 2. Empresas y casos de uso documentados
 
     | Empresa | Sector | Caso de uso con Trisotech |
     |---------|--------|---------------------------|
@@ -242,7 +242,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     | **Victor Textiles** | Industria textil | Modelado de procesos de negocio con el Digital Enterprise Suite |
 
 
-    #### 3. Patrones de uso por sector
+    ### 3. Patrones de uso por sector
 
     - **Banca, seguros y finanzas (BFSI):** automatizar decisiones de suscripción
       (*underwriting*), detección y enrutado de fraude, adjudicación de siniestros y flujos
@@ -260,7 +260,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
       manufactura, energía y distribución.
 
 
-    #### 4. El ecosistema alrededor de Trisotech
+    ### 4. El ecosistema alrededor de Trisotech
 
     - La ejecución de los modelos DMN creados con Trisotech puede delegarse en el **motor DMN
       de Red Hat (Drools)** — de hecho, anunciaron una alianza formal para llevar DMN a
@@ -272,7 +272,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
       comunidad BPM+ Health.
 
 
-    #### 5. ¿Por qué se elige DMN en estos casos y no ML?
+    ### 5. ¿Por qué se elige DMN en estos casos y no ML?
 
     El caso sanitario es el más claro para clase. Las guías clínicas son **reglas basadas en
     evidencia** que deben ser:
@@ -289,7 +289,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     arquitectura *decision-as-a-service* que vimos en el vídeo es el pegamento.
 
 
-    #### Referencias
+    ### Referencias
 
     - Vídeo analizado: [5 Min DMN — Trisotech](https://www.youtube.com/watch?v=Ichayb2cmQw)
     - [Trisotech — sitio corporativo](https://www.trisotech.com/)
