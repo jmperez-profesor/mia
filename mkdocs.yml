@@ -119,9 +119,6 @@ nav:
       - "S9 · Sistemas expertos (19/10/2026)": bloques/B05_RA5/sesion09_sistemas_expertos.md
       - "S11 · Motores de reglas (21/10/2026)": bloques/B05_RA5/sesion11_motores_reglas.md
       - "S14 · Híbridos y guardarraíles (26/10/2026)": bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
-      - "--- Borradores (versión reducida) ---":
-          - "S11 reducida (borrador)": bloques/B05_RA5/sesion11_motores_reglas_reducida.md
-          - "S14 reducida (borrador)": bloques/B05_RA5/sesion14_hibridos_guardarrailes_reducida.md
 #   - "RA4 - Análisis de sistemas robotizados":
 #       - Introducción: bloques/B04_RA4/index.md
 #       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
