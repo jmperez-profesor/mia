@@ -456,6 +456,10 @@ El secreto de RETE es que **intercambia memoria por velocidad** a través de dos
 1. **Red de nodos (Grafo dirigido):** Compila el conjunto de reglas en una red de nodos interconectados. Cuando un hecho entra al sistema, viaja a través de esta red. Cada nodo actúa como un filtro que evalúa una condición específica (por ejemplo, *¿el color es rojo?* o *¿la edad es mayor a 18?*).
 2. **Memoria de estado (Evita la redundancia):** El algoritmo recuerda qué reglas se cumplieron parcialmente en ciclos anteriores. Si un hecho nuevo entra al sistema, RETE no vuelve a evaluar todo desde cero; solo calcula el impacto del nuevo hecho en la red.
 
+![Red RETE: nodos alfa (filtros) y beta (uniones); los nodos verdes son los nodos de unión (*join*)](assets/Rete.svg)
+
+*Red RETE con sus nodos alfa y beta. Fuente: [Razorbliss / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rete.svg), CC0.*
+
 ---
 
 ### 📊 Sus principales ventajas
