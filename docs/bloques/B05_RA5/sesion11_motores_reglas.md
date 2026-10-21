@@ -209,6 +209,96 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     *Nota: las imágenes incrustadas son fotogramas capturados del vídeo original de YouTube. El vídeo y su contenido
     pertenecen a Trisotech.*
 
+
+### DMN en el mundo real: quién usa Trisotech y para qué
+
+    > **Nota crítica:** la mayoría de esta información procede de los materiales propios de
+    > Trisotech o de sus partners. Son datos de marketing corporativo con métricas
+    > autoinformadas: muy útiles como ejemplo didáctico, pero deben leerse con espíritu crítico.
+
+    #### 1. Recordatorio: qué es Trisotech
+
+    Trisotech es una compañía canadiense cuyo producto principal es el **Digital Enterprise
+    Suite**, una plataforma de modelado de bajo código basada en los estándares abiertos del
+    OMG: **BPMN** (procesos), **CMMN** (gestión de casos), **DMN** (decisiones) y **SDMN**.
+    Su *Decision Modeler* —el que se usa en el vídeo analizado— está reconocido como una de las
+    **implementaciones de referencia del estándar DMN**.
+
+    Su posicionamiento actual: ayudar a organizaciones **reguladas** a automatizar operaciones
+    complejas combinando lógica de decisión explícita (DMN), flujos de trabajo deterministas y
+    **IA gobernada**, todo sobre estándares abiertos.
+
+    #### 2. Empresas y casos de uso documentados
+
+    | Empresa | Sector | Caso de uso con Trisotech |
+    |---------|--------|---------------------------|
+    | **Mayo Clinic** | Salud | *Mayo Expert Decision Advisor*: soporte a decisiones clínicas dirigido por modelos, integrado con datos del EHR; actualiza el conocimiento clínico en días en lugar de meses |
+    | **Intermountain Health** | Salud | Plataforma de interoperabilidad clínica sobre BPM+/DMN en 33 hospitales y 385 clínicas de 8 estados; reporta salvar más de 100 vidas al año, reducir costes en más de 3 M$/año y pasar de despliegues de meses a días |
+    | **Dana-Farber Cancer Institute** | Salud | Gestión proactiva de los efectos secundarios del tratamiento oncológico: soporte de decisión clínica modelado en DMN/BPM+ integrado en los flujos de trabajo de Epic EHR |
+    | **IKEA, IBM, Capgemini** | Retail / IT / Consultoría | Citados como clientes principales del Digital Enterprise Suite |
+    | **Agropur, Ardent Mills** | Alimentación y agronegocio | Modelado de procesos y decisiones (Agropur es cooperativa láctea; Ardent Mills, harinera); Trisotech además tiene un caso de *Smart Farming* con ISO |
+    | **SSQ Insurance, Perr&Knight y sus aseguradoras** | Seguros | SSQ Insurance aparece como cliente principal; la consultora Perr&Knight usa la suite para diseñar procesos y decisiones de sus clientes aseguradores (tarificación, gestión de siniestros) |
+    | **Gobierno suizo** | Sector público | Caso de gestión de expedientes parlamentarios con Case Management (CMMN) |
+    | **Victor Textiles** | Industria textil | Modelado de procesos de negocio con el Digital Enterprise Suite |
+
+
+    #### 3. Patrones de uso por sector
+
+    - **Banca, seguros y finanzas (BFSI):** automatizar decisiones de suscripción
+      (*underwriting*), detección y enrutado de fraude, adjudicación de siniestros y flujos
+      KYC/AML. Sus clientes financieros incluyen gobiernos, aseguradoras, entidades
+      hipotecarias, bancos minoristas y comerciales, bolsas de valores y emisoras de tarjetas.
+      Ofrecen extensiones específicas para la industria hipotecaria y *accelerators* con los
+      estándares de datos **MISMO** y **FIBO**.
+    - **Sanidad:** rutas clínicas estandarizadas, reducción de denegaciones de autorización
+      previa y soporte de decisión clínico explicable y auditable. Trisotech es miembro fundador
+      de **BPM+ Health** y ofrece casi 1.000 modelos de decisión y flujo preconstruidos (guías
+      clínicas, rutas de cuidado, calculadoras sanitarias) en DMN/BPMN/CMMN.
+    - **Administración pública:** determinación automatizada de elegibilidad para prestaciones,
+      permisos y licencias.
+    - **Sector primario e industria:** agricultura de precisión (caso ISO Smart Farming),
+      manufactura, energía y distribución.
+
+
+    #### 4. El ecosistema alrededor de Trisotech
+
+    - La ejecución de los modelos DMN creados con Trisotech puede delegarse en el **motor DMN
+      de Red Hat (Drools)** — de hecho, anunciaron una alianza formal para llevar DMN a
+      producción.
+    - El CEO de Trisotech, **Denis Gagné**, ha hecho demos públicas de servicios de decisión
+      (por ejemplo, tarifas de alquiler de vehículos) con control de estilo DMN, versionado y
+      gobernanza de modelos.
+    - Trisotech participa activamente en la evolución de los estándares del OMG y en la
+      comunidad BPM+ Health.
+
+
+    #### 5. ¿Por qué se elige DMN en estos casos y no ML?
+
+    El caso sanitario es el más claro para clase. Las guías clínicas son **reglas basadas en
+    evidencia** que deben ser:
+
+    1. **Explicables**: cada resultado debe poder trazarse hasta la regla concreta que lo
+       disparó (recuerda el resaltado de la regla 2 en el vídeo de puntos de lealtad).
+    2. **Auditables**: un comité de expertos o un regulador debe poder revisar la lógica.
+    3. **Actualizables por expertos**: los comités clínicos modifican las recomendaciones, no
+       los programadores; con DMN el conocimiento clínico se actualiza en días, no en meses.
+
+    Cuando la decisión es **determinista y normativa** (reglamentos, guías, políticas),
+    DMN es la herramienta adecuada. Cuando es **estadística o predictiva** (riesgo,
+    probabilidad, clasificación), toca ML. En sistemas reales ambos mundos se combinan: la
+    arquitectura *decision-as-a-service* que vimos en el vídeo es el pegamento.
+
+
+    #### Referencias
+
+    - Vídeo analizado: [5 Min DMN — Trisotech](https://www.youtube.com/watch?v=Ichayb2cmQw)
+    - [Trisotech — sitio corporativo](https://www.trisotech.com/)
+    - [Trisotech — caso Mayo Clinic](https://www.trisotech.com/mayo-clinic-case-study/)
+    - [Trisotech — caso Intermountain Health](https://www.trisotech.com/intermountain-health-case-study/)
+    - [Trisotech — caso Dana-Farber (efectos secundarios del tratamiento oncológico)](https://www.trisotech.com/preemptively-managing-the-side-effects-of-cancer-treatment/)
+    - [Trisotech — Banking, Financial Services and Insurance](https://www.trisotech.com/banking-financial-services-and-insurance/)
+    - [The Silicon Review — perfil de Trisotech (2025)](https://thesiliconreview.com/magazine/profile/innovators-of-a-highly-visual-interactive-cloud-software-suite-trisotech)
+    - [Perr&Knight — alianza con Trisotech](https://www.perrknight.com/pk-news/trisotech-perrknight-empower-consultants-customers-bpm-space/)
 ## 1 · Decision management
 
 **Decision management** es tratar las reglas como un **activo de negocio** gestionable por el área que las posee, no como código disperso. Un **BRMS** (*Business Rule Management System*) permite versionar, probar y desplegar reglas sin tocar la aplicación. Herramientas: **Drools/Apache KIE**, **IBM ODM**, **FICO Blaze**, **SAP BRF+**.
