@@ -447,10 +447,6 @@ print([dict(f) for f in motor.facts.values() if "decision" in f])   # solo hecho
 
 El ciclo *match* ingenuo compara todas las reglas con todos los hechos (lento). El **algoritmo RETE** es un método de emparejamiento de patrones extremadamente eficiente, diseñado por **Charles Forgy en 1974**, que usan los motores de inferencia de los sistemas expertos. En lugar de evaluar cada regla una por una cada vez que la información cambia (lo que sería lentísimo), RETE optimiza el proceso.
 
-El **algoritmo RETE** es un método de emparejamiento de patrones extremadamente eficiente, diseñado por Charles Forgy en 1974, que se utiliza en los motores de inferencia de los **sistemas expertos** para evaluar reglas lógicas frente a una base de hechos. 
-
-En lugar de evaluar cada regla una por una cada vez que la información cambia (lo cual sería increíblemente lento), el algoritmo RETE optimiza el proceso de una forma inteligente.
-
 ---
 
 ### ⚙️ ¿Cómo funciona?
