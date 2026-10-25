@@ -45,6 +45,8 @@ titulo: "Brazo robótico 2"
 
 Diseña una célula de pick & place: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. Cuaderno [UD04_pick_place_plantilla.ipynb](colab/UD04_pick_place_plantilla.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
 
+> **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) para inspeccionar el brazo y sus ejes antes de montar la célula.
+
 ## Puntos clave
 
 - La **célula** completa (robot + cinta + sensor + seguridad) es lo que se diseña, no solo el brazo.

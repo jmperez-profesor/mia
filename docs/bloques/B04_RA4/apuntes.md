@@ -386,6 +386,7 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 - [ISO 10218:2025 · Seguridad de robots industriales](https://www.iso.org/standard/51330.html).
 - [NVIDIA Isaac Sim/Lab](https://developer.nvidia.com/isaac)
 - [MuJoCo](https://mujoco.org/)
+- [RoboDK for Web · visor 3D del DOBOT Magician](https://robodk.com/3D/es/robot/Dobot-Magician)
 - [ROS 2](https://docs.ros.org/).
 - [DOBOT · documentación oficial](https://www.dobot.cc/)
 - [pydobot](https://github.com/luismesas/pydobot).
