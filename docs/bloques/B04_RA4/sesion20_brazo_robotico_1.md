@@ -34,10 +34,18 @@ titulo: "Brazo robótico 1"
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) muestra el modelo 3D del DOBOT en el navegador para inspeccionar sus 4 ejes antes de programarlo.
 
+![Material necesario para montar el DOBOT](assets/dobot_basic_setup.jpg)
+
+*Montaje básico del DOBOT Magician. Fuente: UAL Creative Computing Institute.*
+
 **Dos formas de programarlo:**
 
 1. **DobotStudio / DobotLab** (interfaz gráfica): teach, Blockly y editor de script.
 2. **Python** con la API oficial (`dType`) o las librerías **`pydobot`** (Luis Mesas) y **`dobot-python`** (Alex Gustafsson, protocolo v1.1.5).
+
+![Panel de control de DobotLab](assets/dobotlab_control_panel.jpg)
+
+*Panel de control de **DobotLab** (interfaz web). Fuente: UAL Creative Computing Institute.*
 
 > **Definición · Comandos inmediatos vs. encolados.** La API permite ejecutar una orden **ya** (inmediata) o **encolarla** en una cola FIFO (`isQueued=1`). Encolar es lo que permite **construir una secuencia de movimiento** sin esperar: el robot la ejecuta en orden. Es la diferencia entre **teleoperar** (orden a orden) y **programar** (una secuencia completa). Para sincronizar, se puede consultar la pose con `GetPose` hasta que el robot llegue al punto.
 
@@ -74,6 +82,10 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 - **Protocolo de entrega:** asunto normalizado (`UD04-S2-EQUIPO3-reto_dibujo`), `.ipynb` con celdas ejecutadas.
 
 > **Puesta en marcha (LED del DOBOT).** Al encender, el **LED** pasa a **amarillo** y, tras un pitido (~7 s), a **verde** (listo). Si se queda **rojo/ámbar**, el brazo ha tocado un **límite de eje**: mantén pulsado el botón de **desbloqueo** (candado abierto, en el antebrazo) y llévalo a una posición segura.
+
+![Conexión del DOBOT: USB y alimentación](assets/connecting_dobot_magician.jpg)
+
+*Conexión del DOBOT Magician: cable **USB** al ordenador y **adaptador de alimentación**. Fuente: UAL Creative Computing Institute.*
 
 > **Más información.** Este protocolo conecta con la idea de **sistema robotizado** del §6: la seguridad no es una propiedad del brazo, sino del **conjunto** robot + herramienta + entorno + tarea. Es el mismo principio que recoge la ISO 10218:2025 para las aplicaciones colaborativas.
 
