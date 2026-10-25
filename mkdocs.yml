@@ -119,19 +119,11 @@ nav:
       - "S9 · Sistemas expertos (19/10/2026)": bloques/B05_RA5/sesion09_sistemas_expertos.md
       - "S11 · Motores de reglas (21/10/2026)": bloques/B05_RA5/sesion11_motores_reglas.md
       - "S14 · Híbridos y guardarraíles (26/10/2026)": bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
-#   - "RA4 - Análisis de sistemas robotizados":
-#       - Introducción: bloques/B04_RA4/index.md
-#       - "Apuntes (DOBOT Magician)": bloques/B04_RA4/apuntes.md
-#       - "Guía docente": bloques/B04_RA4/guia_docente.md
-#       - Actividades:
-#           - "Act1 · Cinemática": bloques/B04_RA4/actividades/act1_cinematica.md
-#           - "Act2 · Reto de dibujo": bloques/B04_RA4/actividades/act2_reto_dibujo.md
-#           - "Act3 · Pick & place": bloques/B04_RA4/actividades/act3_pick_place.md
-#       - "Cuadernos Colab":
-#           - "Cinemática": bloques/B04_RA4/colab/UD04_cinematica.ipynb
-#           - "Reto de dibujo (plantilla)": bloques/B04_RA4/colab/UD04_reto_dibujo_plantilla.ipynb
-#           - "Pick & place (plantilla)": bloques/B04_RA4/colab/UD04_pick_place_plantilla.ipynb
-#       - "Rúbrica RA4": bloques/B04_RA4/rubrica.md
+  - "RA4 - Análisis de sistemas robotizados":
+      - Introducción: bloques/B04_RA4/index.md
+      - "S16 · Sistemas robotizados (28/10/2026)": bloques/B04_RA4/sesion16_sistemas_robotizados.md
+      - "S20 · Brazo robótico 1 (04/11/2026)": bloques/B04_RA4/sesion20_brazo_robotico_1.md
+      - "S21 · Brazo robótico 2 (04/11/2026)": bloques/B04_RA4/sesion21_brazo_robotico_2.md
 #   - Recursos:
 #       - "Canal DotCSV": recursos/dotcsv.md
 #   - Evaluación:

@@ -98,12 +98,12 @@ unidades:
     fecha_inicio: 2026-10-28
     fecha_fin: 2026-11-09
     sesiones:
-      - {id: S5, fecha: 2026-10-28, tipo: presencial, contenido: "Teoría: tipos, anatomía, cinemática FK/IK, efectores, célula y programación"}
-      - {id: A1, fecha: 2026-11-02, tipo: autonoma, contenido: "Ficha de cinemática + Colab FK/IK 2R (entregable)"}
-      - {id: S6, fecha: 2026-11-04, tipo: presencial, contenido: "Brazo I: teach, espacio de trabajo y reto de dibujo con portaminas"}
-      - {id: A2, fecha: 2026-11-06, tipo: autonoma, contenido: "Script del reto de dibujo con BrazoSimulado (entregable)"}
-      - {id: S7, fecha: 2026-11-09, tipo: presencial, contenido: "Brazo II: pinza/ventosa y pick & place con cinta"}
-      - {id: A3, fecha: 2026-11-11, tipo: autonoma, contenido: "Script pick & place + memoria del equipo (entregable)"}
+      - {id: S16, fecha: 2026-10-28, tipo: presencial, contenido: "Teoría: tipos, anatomía, cinemática FK/IK, efectores, célula y programación"}
+      - {id: A1, fecha: 2026-11-03, tipo: autonoma, contenido: "Ficha de cinemática + Colab FK/IK 2R (entregable)"}
+      - {id: S20, fecha: 2026-11-04, tipo: presencial, contenido: "Brazo I: teach, espacio de trabajo y reto de dibujo con portaminas"}
+      - {id: A2, fecha: 2026-11-04, tipo: autonoma, contenido: "Script del reto de dibujo con BrazoSimulado (entregable)"}
+      - {id: S21, fecha: 2026-11-04, tipo: presencial, contenido: "Brazo II: pinza/ventosa y pick & place con cinta"}
+      - {id: A3, fecha: 2026-11-04, tipo: autonoma, contenido: "Script pick & place + memoria del equipo (entregable)"}
 
 # Calendario real del curso 2026-2027 (referencia; verificado en DOGV 2026/24495,
 # Resolución SAE 15/07/2026: docencia 01/10/2026 → 18/06/2027 máx.).
