@@ -284,7 +284,7 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
     Sí. Es la base de nuestro flujo: se escribe el script, se **valida con `BrazoSimulado`** (rangos, parámetros, trayectoria) y después el docente lo ejecuta en el brazo. Es programación **offline**.
 
 ??? question "¿Por qué no usamos un simulador 3D como Webots o CoppeliaSim?"
-    Porque instalarlo y configurarlo genera demasiada fricción para el tiempo disponible. `BrazoSimulado` cubre lo esencial —validar límites y ver la trayectoria XY— dentro del propio cuaderno, sin instalar nada.
+    Porque instalarlo y configurarlo genera demasiada fricción para el tiempo disponible. `BrazoSimulado` cubre lo esencial —validar límites y ver la trayectoria XY— dentro del propio cuaderno, sin instalar nada. Si solo se quiere **ver el robot en 3D**, el visor web de [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) sirve en el navegador, sin instalar software.
 
 ??? question "¿Qué pasa si mi script pide un punto fuera del alcance?"
     `BrazoSimulado` lanza un `ValueError` **antes** de ejecutar (p. ej. radio > 320 mm o X fuera de [150, 320]). En el robot real, el movimiento no se ejecutaría o daría error: mejor detectarlo en el cuaderno.

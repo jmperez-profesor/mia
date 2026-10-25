@@ -32,6 +32,8 @@ titulo: "Brazo robótico 1"
 | Alimentación | 12 V CC |
 | Accesorio | Cinta transportadora con fotocélula y sensor de color |
 
+> **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) muestra el modelo 3D del DOBOT en el navegador para inspeccionar sus 4 ejes antes de programarlo.
+
 **Dos formas de programarlo:**
 
 1. **DobotStudio / DobotLab** (interfaz gráfica): teach, Blockly y editor de script.
