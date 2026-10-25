@@ -390,6 +390,7 @@ El **número y tipo de parámetros**, los **rangos** (X entre 150 y 320 mm, radi
 - [ROS 2](https://docs.ros.org/).
 - [DOBOT · documentación oficial](https://www.dobot.cc/)
 - [pydobot](https://github.com/luismesas/pydobot).
+- [UAL Creative Computing Institute · Using Dobot Magician V2](https://wiki.cci.arts.ac.uk/books/robotics-lab/page/using-dobot-magician-v2) (guía práctica de puesta en marcha y control).
 
 > Créditos de imágenes: foto del DOBOT del kit del aula (INDALevante); ilustraciones de robótica adaptadas de los materiales de la UD04 de David Martínez Peña (CC BY-NC-SA 4.0).
 

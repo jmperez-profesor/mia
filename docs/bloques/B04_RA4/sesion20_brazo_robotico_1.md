@@ -37,7 +37,7 @@ titulo: "Brazo robótico 1"
 **Dos formas de programarlo:**
 
 1. **DobotStudio / DobotLab** (interfaz gráfica): teach, Blockly y editor de script.
-2. **Python** con la API oficial (`dType`) o la librería **`pydobot`** (más cómoda).
+2. **Python** con la API oficial (`dType`) o las librerías **`pydobot`** (Luis Mesas) y **`dobot-python`** (Alex Gustafsson, protocolo v1.1.5).
 
 > **Definición · Comandos inmediatos vs. encolados.** La API permite ejecutar una orden **ya** (inmediata) o **encolarla** en una cola FIFO (`isQueued=1`). Encolar es lo que permite **construir una secuencia de movimiento** sin esperar: el robot la ejecuta en orden. Es la diferencia entre **teleoperar** (orden a orden) y **programar** (una secuencia completa). Para sincronizar, se puede consultar la pose con `GetPose` hasta que el robot llegue al punto.
 
@@ -72,6 +72,8 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 - **Validar siempre en Colab** con `BrazoSimulado` antes de cargar el script: el 90 % de los errores (parámetros, rangos, fuera de alcance) se detectan sin tocar el robot.
 - **Un solo equipo frente al brazo**; el resto trabaja a distancia. Turnos de 10-15 minutos.
 - **Protocolo de entrega:** asunto normalizado (`UD04-S2-EQUIPO3-reto_dibujo`), `.ipynb` con celdas ejecutadas.
+
+> **Puesta en marcha (LED del DOBOT).** Al encender, el **LED** pasa a **amarillo** y, tras un pitido (~7 s), a **verde** (listo). Si se queda **rojo/ámbar**, el brazo ha tocado un **límite de eje**: mantén pulsado el botón de **desbloqueo** (candado abierto, en el antebrazo) y llévalo a una posición segura.
 
 > **Más información.** Este protocolo conecta con la idea de **sistema robotizado** del §6: la seguridad no es una propiedad del brazo, sino del **conjunto** robot + herramienta + entorno + tarea. Es el mismo principio que recoge la ISO 10218:2025 para las aplicaciones colaborativas.
 
