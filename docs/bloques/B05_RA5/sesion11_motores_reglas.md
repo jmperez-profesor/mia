@@ -39,7 +39,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     ### 1. Resumen
 
     Tom DeBevoise construye **un modelo de decisión completo en DMN 1.3** con la herramienta
-    Trisotech Decision Modeler. El caso práctico: calcular los **puntos de lealtad** de un cliente a partir
+    Trisotech Decision Modeler. El caso práctico: calcular los **puntos de fidelidad** de un cliente a partir
     del carrito de la compra en una aplicación de punto de venta (POS), pasando por la creación de tipos de
     datos, expresiones en contexto, una **tabla de decisión**, pruebas de validación y la publicación del
     modelo como **API REST** consumible desde [Postman](https://www.postman.com/).
@@ -83,7 +83,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
       **colección de items**; cada item es a su vez una estructura con los atributos
       `SKU` (Stock Keeping Unit - Unidad de gestión de existencias), `Quantity` (cantidad) y `Unit Cost` (coste unitario).
     - Un **input data** llamado *shopping cart*, tipado como `tShoppingCart`.
-    - Una **decisión** llamada *loyalty points computation* (cálculo de puntos de lealtad).
+    - Una **decisión** llamada *loyalty points computation* (cálculo de puntos de fidelidad).
 
     Este es el patrón mínimo de un DRD: **dato de entrada → decisión → resultado**.
 
@@ -124,7 +124,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     4. **Paso condicional**: si `Rate > 0`, un **paso iterador** calcula para cada item
        `floor(Item.Unit Cost × Item.Quantity × Rate)` (puntos por item, redondeando hacia abajo al dólar completo);
        en la rama `else` se devuelve una lista nula.
-    5. **Suma final**: los puntos de lealtad se calculan con una función `nn sum(Loyalty Points List)`, porque la lista
+    5. **Suma final**: los puntos de fidelidad se calculan con una función `nn sum(Loyalty Points List)`, porque la lista
        podría ser nula cuando la tasa es cero. Ese valor es el **resultado de la decisión**.
 
     ![Paso 3: cálculo final de los puntos](assets/DMN_dato_salida.png)
@@ -151,7 +151,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     item 1:  floor(10 × 1 × 5) = 50 puntos
     item 2:  floor(20 × 2 × 5) = 200 puntos
     -------------------------------
-    resultado: 250 puntos de lealtad
+    resultado: 250 puntos de fidelidad
     ```
 
     El propio entorno **resalta en naranja la regla 2** que se ha disparado, lo que permite trazar qué regla
@@ -277,7 +277,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     evidencia** que deben ser:
 
     1. **Explicables**: cada resultado debe poder trazarse hasta la regla concreta que lo
-       disparó (recuerda el resaltado de la regla 2 en el vídeo de puntos de lealtad).
+       disparó (recuerda el resaltado de la regla 2 en el vídeo de puntos de fidelidad).
     2. **Auditables**: un comité de expertos o un regulador debe poder revisar la lógica.
     3. **Actualizables por expertos**: los comités clínicos modifican las recomendaciones, no
        los programadores; con DMN el conocimiento clínico se actualiza en días, no en meses.
