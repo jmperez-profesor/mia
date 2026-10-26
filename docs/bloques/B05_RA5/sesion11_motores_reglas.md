@@ -79,10 +79,10 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
     DeBevoise construye el modelo de abajo hacia arriba:
 
-    - Un **tipo de dato** `t_shopping_cart`: una estructura con el número de teléfono y una
+    - Un **tipo de dato** `tShoppingCart`: una estructura con el número de teléfono y una
       **colección de items**; cada item es a su vez una estructura con los atributos
-      `sku` (Stock Keeping Unit - Unidad de gestión de existencias), `quantity` (cantidad) y `unit cost` (coste unitario).
-    - Un **input data** llamado *shopping cart*, tipado como `t_shopping_cart`.
+      `SKU` (Stock Keeping Unit - Unidad de gestión de existencias), `Quantity` (cantidad) y `Unit Cost` (coste unitario).
+    - Un **input data** llamado *shopping cart*, tipado como `tShoppingCart`.
     - Una **decisión** llamada *loyalty points computation* (cálculo de puntos de lealtad).
 
     Este es el patrón mínimo de un DRD: **dato de entrada → decisión → resultado**.
@@ -96,17 +96,16 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     En lugar de una única expresión gigante, la decisión se define como una **serie de pasos de contexto**
     (context steps), donde cada paso se construye sobre el anterior:
 
-    1. **Lista de costes por item** (`item cost list`): expresión *iteradora* — para cada item del carrito,
-       devolver `quantity × unit cost`.
-    2. **Coste total** (`total cost`): la suma de esa lista.
+    1. **Lista de costes por item** (`Item Cost List`): expresión *iteradora* — `for item in Shopping Cart.items return item.Quantity*item.Unit Cost`.
+    2. **Coste total** (`Total Cost`): la suma de esa lista, `sum(Item Cost List)`.
     3. **Tabla de decisión para la tasa**: decide cuántos puntos se ganan por dólar en función del coste total.
 
     #### 3.3 La tabla de decisión (el corazón del vídeo)
 
-    La tabla toma como entrada el `total cost` recién calculado y produce como salida la `rate`
+    La tabla toma como entrada el `Total Cost` recién calculado y produce como salida la `Rate`
     (tasa de puntos por dólar gastado):
 
-    | Regla | Entrada: total cost | Salida: rate |
+    | Regla | Entrada: Total Cost | Salida: Rate |
     |-------|--------------------|--------------|
     | 1     | < 30 $             | 0 puntos |
     | 2     | 30 $ – < 100 $     | 5 puntos por dólar |
@@ -122,10 +121,10 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
 
     #### 3.4 Cálculo final de los puntos
 
-    4. **Paso condicional**: si `rate > 0`, un **paso iterador** calcula para cada item
-       `floor(unit cost × quantity × rate)` (puntos por item, redondeando hacia abajo al dólar completo);
+    4. **Paso condicional**: si `Rate > 0`, un **paso iterador** calcula para cada item
+       `floor(Item.Unit Cost × Item.Quantity × Rate)` (puntos por item, redondeando hacia abajo al dólar completo);
        en la rama `else` se devuelve una lista nula.
-    5. **Suma final**: los puntos de lealtad se calculan con una función `not null sum`, porque la lista
+    5. **Suma final**: los puntos de lealtad se calculan con una función `nn sum(Loyalty Points List)`, porque la lista
        podría ser nula cuando la tasa es cero. Ese valor es el **resultado de la decisión**.
 
     ![Paso 3: cálculo final de los puntos](assets/DMN_dato_salida.png)
@@ -147,8 +146,8 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     (total: 50 $). Comprobación numérica paso a paso:
 
     ```text
-    total cost = 10 × 1 + 20 × 2 = 50 $
-    regla 2 (30 ≤ 50 < 100)  →  rate = 5
+    Total Cost = 10 × 1 + 20 × 2 = 50 $
+    regla 2 (30 ≤ 50 < 100)  →  Rate = 5
     item 1:  floor(10 × 1 × 5) = 50 puntos
     item 2:  floor(20 × 2 × 5) = 200 puntos
     -------------------------------
