@@ -132,6 +132,24 @@ for t in ["Transferir 500 EUR a la cuenta A",   # ok
     print(t, "->", validar_accion_llm(t))
 ```
 
+??? note "Explicación línea a línea del guardarraíl"
+
+    **Qué hace:** un agente LLM **propone** una acción en texto libre y las reglas **la validan antes de ejecutarla** (límites, destinos prohibidos, acciones que exigen confirmación humana).
+
+    | Línea | Qué hace |
+    |---|---|
+    | `import re` | Importa el módulo de **expresiones regulares** (patrones de texto). |
+    | `def validar_accion_llm(texto):` | La función guardarraíl: recibe la propuesta del agente y devuelve `(ok, motivo)`. |
+    | `importes = [float(x) for x in re.findall(...)]` | Busca todos los importes del texto: números (`\d+`) con decimales opcionales (`(?:\.\d+)?`) seguidos de `EUR`, y los convierte a `float`. |
+    | `if any(i > 1000 for i in importes):` | Si **algún** importe supera 1000, rechaza con «importe fuera de rango». `any(...)` = «¿alguno cumple?». |
+    | `if "cuenta no verificada" in texto.lower():` | Comprueba si el texto menciona un **destino prohibido**; `.lower()` pasa todo a minúsculas para que no importe cómo esté escrito. |
+    | `if re.search(r"transferir.*sin confirmar", texto, re.IGNORECASE):` | Detecta el patrón «transferir…sin confirmar» (`.*` = cualquier cosa en medio), sin distinguir mayúsculas. Es una acción que **necesita humano**. |
+    | `return True, "ok"` | Si no salta ninguna regla, la acción es válida. |
+
+    **Prueba:** el bucle `for` evalúa tres casos — `Transferir 500 EUR` → ok, `Transferir 5000 EUR` → importe fuera de rango, `Pagar a cuenta no verificada` → destino no permitido.
+
+    **Idea clave:** el LLM genera el texto; el guardarraíl **no se fía** de él y aplica reglas deterministas que rechazan lo que no se debe ejecutar.
+
 ## 3 · Sistemas neuro-simbólicos
 
 Los **sistemas neuro-simbólicos** combinan redes neuronales (aprendizaje) con razonamiento simbólico (reglas). Aportan:
