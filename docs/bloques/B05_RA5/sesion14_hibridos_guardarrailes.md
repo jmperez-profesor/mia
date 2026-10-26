@@ -33,6 +33,8 @@ El código se trabaja en el cuaderno **`sesion14_hibridos_guardarrailes.ipynb`**
 
 Cuando nadie escribió las reglas pero existen en los datos, un algoritmo puede **recuperarlas** de forma legible. Generamos 4.000 pagos de Pagarium con una política **latente** (`importe > 1000 y antigüedad < 6`, **o** `n_intentos >= 4`) más un 3 % de ruido, y **FIGS** la redescubre casi literal:
 
+**FIGS** (*Fast Interpretable Greedy-Tree Sums*, «sumas de árboles golosas, rápidas e interpretables») es un modelo de 2022 que crece **varios árboles pequeños a la vez** y **suma** sus predicciones, limitando el número total de reglas para que el resultado siga siendo legible.
+
 ```python
 %pip install imodels scikit-learn
 import numpy as np
@@ -68,6 +70,12 @@ Dos enfoques híbridos:
 
 - **Deducir reglas de los datos** (FIGS, [skope-rules](https://github.com/scikit-learn-contrib/skope-rules)): el resultado sigue siendo `SI…ENTONCES…` legible, pero nadie lo escribió a mano.
 - **Integrar reglas propias con ML** ([Human-Learn](https://koaning.github.io/human-learn/index.html)): el experto pone las reglas de partida y el aprendizaje las mejora.
+
+![FIGS frente al árbol de decisión clásico](assets/figs_comparativa.png)
+
+*FIGS suma varios árboles pequeños en lugar de un único árbol grande. Fuente: [Yu Tang, Medium](https://medium.com/@yu.tang/figs-fast-interpretable-greedy-tree-sums-a-more-competitive-tree-model-11697002ff90).*
+
+> **Más información.** En su caso de estudio sobre el *German Credit Dataset*, Yu Tang compara FIGS con el árbol de decisión clásico: FIGS iguala o supera ligeramente al árbol (F2 ≈ 0,86 frente a 0,85) y, al **sumar varios árboles pequeños**, combina relaciones lineales y no lineales con mejor interpretabilidad.
 
 ??? note "Explicación línea a línea del código FIGS"
 
