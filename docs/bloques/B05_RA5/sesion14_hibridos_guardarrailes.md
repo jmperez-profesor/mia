@@ -156,12 +156,12 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 
 ## 5 · Proyecto integrador Pagarium
 
-**Reto (individual o parejas):** construir la política de decisión completa de Pagarium con **dos capas**:
+**Reto (individual):** construir la política de decisión de Pagarium con **dos capas**:
 
 1. **Reglas de negocio** (elegibilidad) en DMN/ZEN o `rule-engine`.
 2. **Guardarraíl** que valida las acciones de un agente LLM.
 
-**Entregables:** tabla DMN con hit policy y cobertura verificada, implementación ejecutable, y un breve informe (300 palabras) con: huecos/solapes detectados, decisión sobre usar o no un motor (con el benchmark) y 1 riesgo de cumplimiento (AI Act/RGPD).
+**Entregables:** tabla DMN con hit policy, implementación ejecutable y un breve informe (~150 palabras) con los huecos/solapes detectados y 1 riesgo de cumplimiento (AI Act/RGPD).
 
 **Actividad A3 (3 h).** FIGS sobre un dataset propio: extrae reglas, valídalas con «negocio» y compáralas con las escritas a mano. El cuaderno es `sesion14_hibridos_guardarrailes.ipynb`.
 
@@ -219,7 +219,7 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 **8.** En el **proyecto Pagarium**, describe las dos capas y los tres entregables.
 
 ??? tip "Solución 8"
-    **Capas**: reglas de negocio (DMN/ZEN) + guardarraíl que valida un agente LLM. **Entregables**: tabla DMN con hit policy y cobertura verificada, implementación ejecutable y un informe (huecos/solapes, decisión sobre el motor con benchmark, 1 riesgo AI Act/RGPD).
+    **Capas**: reglas de negocio (DMN/ZEN) + guardarraíl que valida un agente LLM. **Entregables**: tabla DMN con hit policy, implementación ejecutable y un informe (~150 palabras con huecos/solapes y 1 riesgo AI Act/RGPD).
 
 ## Puntos clave de la sesión
 
