@@ -306,7 +306,7 @@ Un BRMS separa el **qué** (las reglas) del **cómo** (la aplicación). La perso
 
 ## 2 · Tablas de decisión y *hit policy*
 
-Una **tabla de decisión** cruza condiciones con acciones. La **hit policy** define qué hacer cuando varias filas encajan:
+Una **tabla de decisión** cruza condiciones con acciones. La **hit policy** (*política de aciertos*) define qué hacer cuando varias filas encajan:
 
 | Hit policy | Significado |
 |---|---|
