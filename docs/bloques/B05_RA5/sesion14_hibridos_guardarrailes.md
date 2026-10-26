@@ -33,7 +33,7 @@ El código se trabaja en el cuaderno **`sesion14_hibridos_guardarrailes.ipynb`**
 
 Cuando nadie escribió las reglas pero existen en los datos, un algoritmo puede **recuperarlas** de forma legible. Generamos 4.000 pagos de Pagarium con una política **latente** (`importe > 1000 y antigüedad < 6`, **o** `n_intentos >= 4`) más un 3 % de ruido, y **FIGS** la redescubre casi literal:
 
-**FIGS** (*Fast Interpretable Greedy-Tree Sums*, «sumas de árboles golosas, rápidas e interpretables») es un modelo de 2022 que crece **varios árboles pequeños a la vez** y **suma** sus predicciones, limitando el número total de reglas para que el resultado siga siendo legible.
+**FIGS** (*Fast Interpretable Greedy-Tree Sums*, «sumas de árboles de Greedy, rápidas e interpretables») es un modelo de 2022 que crece **varios árboles pequeños a la vez** y **suma** sus predicciones, limitando el número total de reglas para que el resultado siga siendo legible.
 
 ```python
 %pip install imodels scikit-learn
