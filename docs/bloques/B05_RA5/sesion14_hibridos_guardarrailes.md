@@ -167,6 +167,24 @@ Es la evolución natural de los híbridos reglas/datos, y la tendencia dominante
 ??? note "Qué explica el vídeo"
     Qué es la **IA neuro-simbólica**: unir el **razonamiento simbólico** (reglas) con las **redes neuronales** (aprendizaje). Fíjate en por qué aporta **explicabilidad** y menos alucinaciones, la idea central del apartado §3.
 
+??? note "Neuro-simbólico en detalle (con ejemplos)"
+
+    **¿Qué significa «neuro-simbólico»?** Unir dos mundos:
+
+    - **Neuro** (redes neuronales): aprende patrones de los datos (imagen, voz, lenguaje).
+    - **Simbólico** (reglas y lógica): razona con reglas explícitas (`SI…ENTONCES…`).
+
+    Por separado, cada uno tiene un límite: la red neuronal es una **caja negra** (acierta pero no explica), y las reglas puras son **rígidas** (no aprenden de datos no estructurados). Juntos se complementan.
+
+    **Ejemplo — pago de Pagarium:**
+
+    - La **red neuronal** estima la probabilidad de fraude a partir del historial.
+    - Las **reglas** imponen límites duros («si `importe > 5000` → revisión manual») y **explican** la decisión («rechazado porque supera el límite»).
+
+    **Ejemplo — medicina:** el modelo lee una radiografía (neuro); si detecta algo sospechoso, las **reglas clínicas** (simbólico) dictan el siguiente paso y dejan **trazada** la regla aplicada.
+
+    Es la evolución natural de los híbridos de §1 (FIGS, reglas de datos) y §2 (guardarraíles).
+
 ## 4 · AI Act y decisiones automatizadas
 
 El **AI Act** (Reglamento UE 2024/1689) regula la IA por riesgo. Calendario **actualizado** (verificar antes de usarlo en clase):
@@ -179,6 +197,19 @@ El **AI Act** (Reglamento UE 2024/1689) regula la IA por riesgo. Calendario **ac
     El calendario del AI Act ha cambiado varias veces. Antes de evaluar, contrasta la fecha vigente en el DOUE/BOE y en las guías de la AESIA.
 
 La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios contextos: el **RGPD** recoge el **derecho a explicación** de las decisiones automatizadas.
+
+??? note "AI Act: niveles de riesgo con ejemplos"
+
+    El **AI Act** (Reglamento UE 2024/1689) regula la IA **por riesgo**: cuanto más riesgo, más obligaciones.
+
+    | Nivel | Qué es | Ejemplo | Qué implica |
+    |---|---|---|---|
+    | **Prohibido** | Manipulación o puntuación social | *Scoring* social tipo «crédito social» | No se puede usar |
+    | **Alto riesgo** | Afecta a derechos fundamentales (Anexo III) | *Scoring* crediticio, selección de personal, componentes de seguridad de maquinaria | Evaluación de conformidad, vigilancia humana, registro |
+    | **Transparencia** | Interacción con personas | Chatbots, *deepfakes* | Avisar de que es una IA |
+    | **Riesgo mínimo** | El resto | Filtro de spam | Sin obligaciones específicas |
+
+    **Por qué importa aquí:** el *scoring* crediticio (que vimos con FIGS) y los **componentes de seguridad de robots** (UD04) entran en **alto riesgo**: exigen **explicabilidad** y **vigilancia humana**. La explicación que MYCIN hacía pionera es hoy un requisito legal.
 
 ## 5 · Proyecto integrador Pagarium
 
