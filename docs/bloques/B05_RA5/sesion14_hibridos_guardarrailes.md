@@ -156,7 +156,7 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 
 ## 5 · Proyecto integrador Pagarium
 
-**Reto (individual o parejas):** construir la política de decisión completa de Pagarium con **dos capas**:
+**Reto (individual):** construir la política de decisión completa de Pagarium con **dos capas**:
 
 1. **Reglas de negocio** (elegibilidad) en DMN/ZEN o `rule-engine`.
 2. **Guardarraíl** que valida las acciones de un agente LLM.
