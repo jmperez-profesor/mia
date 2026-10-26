@@ -42,7 +42,7 @@ El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
     Trisotech Decision Modeler. El caso práctico: calcular los **puntos de fidelidad** de un cliente a partir
     del carrito de la compra en una aplicación de punto de venta (POS), pasando por la creación de tipos de
     datos, expresiones en contexto, una **tabla de decisión**, pruebas de validación y la publicación del
-    modelo como **API REST** consumible desde [Postman](https://www.postman.com/).
+    modelo como **API REST** consumible desde [Postman](https://www.postman.com/) (herramienta para probar y consumir APIs).
 
 
     ### 2. ¿Qué es DMN?
