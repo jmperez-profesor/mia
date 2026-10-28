@@ -1,13 +1,13 @@
 ---
-sesion: "21"
+sesion: "26"
 bloque: B04
 ra: RA4
-fecha: 2026-11-04
+fecha: 2026-11-11
 duracion: 2 h
 titulo: "Brazo robótico 2"
 ---
 
-# Sesión 21 · Brazo robótico 2 (04/11/2026)
+# Sesión 26 · Brazo robótico 2 (11/11/2026)
 
 > **RA4.** Segunda sesión práctica: cambio a pinza/ventosa y misión de pick & place con la cinta, cerrando con aplicaciones y tendencias.
 

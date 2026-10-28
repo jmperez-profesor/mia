@@ -118,12 +118,12 @@ nav:
       - Introducción: bloques/B05_RA5/index.md
       - "S9 · Sistemas expertos (19/10/2026)": bloques/B05_RA5/sesion09_sistemas_expertos.md
       - "S11 · Motores de reglas (21/10/2026)": bloques/B05_RA5/sesion11_motores_reglas.md
-      - "S14 · Híbridos y guardarraíles (26/10/2026)": bloques/B05_RA5/sesion14_hibridos_guardarrailes.md
+      - "S20 · Motores de reglas híbridos y guardarraíles (04/11/2026)": bloques/B05_RA5/sesion20_motores_reglas_hibridos_guardarrailes.md
   - "RA4 - Análisis de sistemas robotizados":
       - Introducción: bloques/B04_RA4/index.md
-      - "S16 · Sistemas robotizados (28/10/2026)": bloques/B04_RA4/sesion16_sistemas_robotizados.md
-      - "S20 · Brazo robótico 1 (04/11/2026)": bloques/B04_RA4/sesion20_brazo_robotico_1.md
-      - "S21 · Brazo robótico 2 (04/11/2026)": bloques/B04_RA4/sesion21_brazo_robotico_2.md
+      - "S21 · Sistemas robotizados. Actuadores (04/11/2026)": bloques/B04_RA4/sesion21_sistemas_robotizados.md
+      - "S25 · Brazo robótico 1 (11/11/2026)": bloques/B04_RA4/sesion25_brazo_robotico_1.md
+      - "S26 · Brazo robótico 2 (11/11/2026)": bloques/B04_RA4/sesion26_brazo_robotico_2.md
 #   - Recursos:
 #       - "Canal DotCSV": recursos/dotcsv.md
 #   - Evaluación:

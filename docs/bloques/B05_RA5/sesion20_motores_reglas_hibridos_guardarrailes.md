@@ -1,13 +1,13 @@
 ---
-sesion: "14"
+sesion: "20"
 bloque: B05
 ra: RA5
-fecha: 2026-10-26
+fecha: 2026-11-04
 duracion: 2 h
-titulo: "Híbridos, guardarraíles y neuro-simbólico"
+titulo: "Motores de reglas híbridos y guardarraíles"
 ---
 
-# Sesión 14 · Híbridos, guardarraíles y neuro-simbólico (26/10/2026)
+# Sesión 20 · Motores de reglas híbridos y guardarraíles (04/11/2026)
 
 > **RA5.** Tercera y última sesión del RA5. Cerramos con la evolución moderna de los sistemas expertos: reglas extraídas de datos, guardarraíles para LLM, sistemas neuro-simbólicos y el marco legal (AI Act), culminando en el proyecto integrador.
 >
@@ -15,9 +15,9 @@ titulo: "Híbridos, guardarraíles y neuro-simbólico"
 
 ## Cuaderno de la sesión
 
-El código se trabaja en el cuaderno **`sesion14_hibridos_guardarrailes.ipynb`**:
+El código se trabaja en el cuaderno **`sesion20_motores_reglas_hibridos_guardarrailes.ipynb`**:
 
-[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb){ .md-button } · [ver en el sitio](sesion14_hibridos_guardarrailes.ipynb)
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion20_motores_reglas_hibridos_guardarrailes.ipynb){ .md-button } · [ver en el sitio](sesion20_motores_reglas_hibridos_guardarrailes.ipynb)
 
 ## Qué vas a aprender
 
@@ -220,7 +220,7 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 
 **Entregables:** tabla DMN con hit policy y cobertura verificada, implementación ejecutable, y un breve informe (150 palabras o más) con: huecos/solapes detectados, decisión sobre usar o no un motor (con el benchmark) y 1 riesgo de cumplimiento (AI Act/RGPD).
 
-**Actividad A3 (3 h).** FIGS sobre un dataset propio: extrae reglas, valídalas con «negocio» y compáralas con las escritas a mano. El cuaderno es `sesion14_hibridos_guardarrailes.ipynb`.
+**Actividad A3 (3 h).** FIGS sobre un dataset propio: extrae reglas, valídalas con «negocio» y compáralas con las escritas a mano. El cuaderno es `sesion20_motores_reglas_hibridos_guardarrailes.ipynb`.
 
 ## Aplicaciones y tendencias (mercado 2026)
 

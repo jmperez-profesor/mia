@@ -1,13 +1,13 @@
 ---
-sesion: "20"
+sesion: "25"
 bloque: B04
 ra: RA4
-fecha: 2026-11-04
+fecha: 2026-11-11
 duracion: 2 h
 titulo: "Brazo robótico 1"
 ---
 
-# Sesión 20 · Brazo robótico 1 (04/11/2026)
+# Sesión 25 · Brazo robótico 1 (11/11/2026)
 
 > **RA4.** Primera sesión práctica con el DOBOT Magician: del guiado (teach) al código, midiendo el espacio de trabajo y resolviendo el reto de dibujo.
 

@@ -97,7 +97,7 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - https://logongas.es/doku.php?id=clase:iabd:pia:1eval:tema01
   - Observaciones:
     - El benchmark sirve para decidir **cuándo NO usar** un motor de reglas.
-- **Sesión 14 · 2026-10-26 · RA5-3 · Híbridos y guardarraíles**
+- **Sesión 20 · 2026-11-04 · RA5-3 · Motores de reglas híbridos y guardarraíles**
   - RA: RA5
   - Contenidos detallados:
     - Reglas **extraídas de datos** con **FIGS** (política latente de Pagarium).
@@ -105,8 +105,8 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
     - **AI Act** y decisiones automatizadas (calendario actualizado; verificar).
     - **Proyecto integrador Pagarium** (capa de negocio + capa guardarraíl).
   - Ejercicios y práctica en clase:
-    - Apuntes S14: `docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.md` + ejercicios bloque C.
-    - Notebook: `docs/bloques/B05_RA5/sesion14_hibridos_guardarrailes.ipynb`.
+    - Apuntes S20: `docs/bloques/B05_RA5/sesion20_motores_reglas_hibridos_guardarrailes.md` + ejercicios bloque C.
+    - Notebook: `docs/bloques/B05_RA5/sesion20_motores_reglas_hibridos_guardarrailes.ipynb`.
     - Actividad A3 (3 h) + proyecto (3,5 h).
   - Materiales / Recursos:
     - https://martinezpenya.es/ModelosIA/UD05/
