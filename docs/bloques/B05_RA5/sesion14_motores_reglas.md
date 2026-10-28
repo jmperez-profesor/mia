@@ -1,13 +1,13 @@
 ---
-sesion: "11"
+sesion: "14"
 bloque: B05
 ra: RA5
-fecha: 2026-10-21
+fecha: 2026-10-26
 duracion: 2 h
 titulo: "Motores de reglas"
 ---
 
-# Sesión 11 · Motores de reglas (21/10/2026)
+# Sesión 14 · Motores de reglas (26/10/2026)
 
 > **RA5.** Segunda sesión. Del sistema experto «clásico» al **motor de reglas de negocio**: cómo se gestionan, versionan y despliegan las reglas como un activo de empresa.
 >
@@ -15,9 +15,9 @@ titulo: "Motores de reglas"
 
 ## Cuaderno de la sesión
 
-El código se trabaja en el cuaderno **`sesion11_motores_reglas.ipynb`**:
+El código se trabaja en el cuaderno **`sesion14_motores_reglas.ipynb`**:
 
-[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion11_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion11_motores_reglas.ipynb)
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B05_RA5/sesion14_motores_reglas.ipynb){ .md-button } · [ver en el sitio](sesion14_motores_reglas.ipynb)
 
 ## Qué vas a aprender
 
@@ -495,7 +495,7 @@ Un conjunto de reglas puede tener **huecos** (casos sin cubrir) y **solapes** (v
 
 ## Actividad A2 (2 h)
 
-Completa los **`# TODO`** del paso a paso anterior (las tres reglas y la función `decidir`), detecta el **solape** y, después, despliega la misma política con **GoRules ZEN** (§4). Compara el código y el rendimiento con el benchmark (§7). El cuaderno es `sesion11_motores_reglas.ipynb`.
+Completa los **`# TODO`** del paso a paso anterior (las tres reglas y la función `decidir`), detecta el **solape** y, después, despliega la misma política con **GoRules ZEN** (§4). Compara el código y el rendimiento con el benchmark (§7). El cuaderno es `sesion14_motores_reglas.ipynb`.
 
 ## Ejercicios de autoevaluación
 
