@@ -34,7 +34,7 @@ titulo: "Brazo robótico 2"
 **Tendencias 2026:**
 
 - **Cobots** en crecimiento: el criterio de compra ya no es solo «cuántos kilos», sino **facilidad para integrar visión y ROS 2**.
-- **Humanoides** en pilotos de logística (Figure, Agility, Unitree); aún caros frente a un AMR.
+- **Humanoides** en pilotos de logística (Figure, Agility, Unitree); aún caros frente a un AMR. En 2025 solo se vendieron **~7.000** para uso industrial/profesional (IFR): la «fiebre» inicial se está enfriando.
 - ***Foundation models* para robótica (VLA):** modelos como RT-2, OpenVLA, π0 o GR00T prometen «aprende la tarea viéndome hacerla», pero están en fase de investigación.
 - **Sim-to-real:** entrenar en simulación (Isaac Lab, MuJoCo) y transferir al robot real, con datos sintéticos y *domain randomization*.
 - **Seguridad y normativa:** la **ISO 10218:2025** absorbe los límites biomecánicos de la ISO/TS 15066 y añade ciberseguridad industrial; el **AI Act** clasifica como **alto riesgo** los componentes de seguridad y la maquinaria con IA.

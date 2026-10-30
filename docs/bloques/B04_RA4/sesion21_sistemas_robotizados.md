@@ -15,6 +15,15 @@ titulo: "Sistemas robotizados. Actuadores"
 
 ![DOBOT Magician](assets/dobot_magician.jpg)
 
+## Vídeo · El DOBOT Magician
+
+<iframe width="100%" height="380" src="https://www.youtube.com/embed/QvRqFUxi0tY" title="Robot Dobot Magician - el robot perfecto para educación" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Ver en YouTube](https://www.youtube.com/watch?v=QvRqFUxi0tY) · Presenta el **DOBOT Magician** y por qué es el robot idóneo para educación.
+
+??? note "Qué explica el vídeo"
+    Presenta el **DOBOT Magician** y por qué es el robot perfecto para **educación**: 4 ejes, efectores intercambiables (pinza, ventosa, portaminas), programación por bloques (Blockly) o con Python, y sus aplicaciones típicas (*pick & place*, dibujo, escritura). Es el brazo que usaremos en el aula, así que sirve de presentación para las sesiones prácticas.
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
@@ -28,16 +37,16 @@ titulo: "Sistemas robotizados. Actuadores"
 
 La robótica es el campo de la IA que **cambia el estado del mundo físico**. Un clasificador que se equivoca produce una etiqueta errónea; un robot que se equivoca rompe una pieza, daña una máquina o lesiona a una persona. Esa responsabilidad física lo hace distinto de todo lo demás que hemos visto en el módulo.
 
-Los números del sector lo confirman. Según la **IFR (*International Federation of Robotics*), *World Robotics* 2025** (datos de 2024):
+Los números del sector lo confirman. Según la **IFR (*International Federation of Robotics*), *World Robotics* 2026** (datos de 2025):
 
 | Dato | Valor |
 |---|---|
-| Robots industriales instalados en 2024 | **542.000** (4.º año por encima de 500.000) |
-| Stock operativo mundial | **4,66 millones** (+9 %) |
+| Robots industriales instalados en 2025 | **603.307** (+11 %, primera vez por encima de 600.000) |
+| Stock operativo mundial | **5,08 millones** (+9 %, supera por primera vez los 5 millones) |
 | País líder en densidad | **Corea del Sur** (>1.000 robots por 10.000 empleados) |
-| Mayor instalador | **China** (54 % de las instalaciones del mundo) |
-| **España** | **3.er mercado europeo** (~5.100 unidades, tirón de la automoción) |
-| Robótica médica | **+91 %**, con el sistema **da Vinci** como referencia |
+| Mayor instalador | **China** (354.000 unidades, 59 % del mundo) |
+| **España** | **~4.300 unidades** en 2025 (impulso de la automoción) |
+| **Unión Europea** | **712.000** robots operativos (84 % de Europa) |
 
 > **Definición (ISO 8373).** Un **robot industrial** es un manipulador multifuncional, reprogramable y controlado automáticamente, programable en tres o más ejes, que puede estar fijo o móvil, y que se usa en aplicaciones de automatización industrial. Un **robot de servicio** es el que realiza tareas útiles para humanos fuera de la fabricación (logística, salud, agricultura, limpieza).
 
@@ -76,6 +85,7 @@ flowchart LR
 > - **2008 — Cobots.** Universal Robots populariza el robot colaborativo sin vallado.
 > - **2012 — Amazon Robotics (Kiva).** Más de un millón de robots de almacén mueven los pedidos del comercio electrónico.
 > - **2020s — Humanoides y *foundation models*.** Figure, Tesla Optimus, Unitree y los modelos **VLA** (*vision-language-action*) abren la nueva ola.
+> - **2026 — Reajuste humanoide.** Según la IFR, en 2025 solo se vendieron **~7.000 humanoides** para uso industrial/profesional (muchos para generar datos de entrenamiento de IA). La «fiebre» inicial se está enfriando: los fabricantes que los prueban suelen operar con menos de 10 máquinas.
 
 ![Cirugía robótica da Vinci](assets/cirugia_davinci.jpeg)
 

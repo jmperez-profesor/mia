@@ -1,0 +1,37 @@
+{
+  "name": "Rúbrica de Evaluación: Notebook N01 - La ficha de 1 minuto",
+  "maxValue": 4,
+  "levels": 4,
+  "dimensions": [
+    {
+      "name": "Actividad 2 - Identificación y descripción del sistema",
+      "weight": 50,
+      "descriptions": [
+        "El alumno identifica un sistema real pertinente, completando todas las casillas con alta precisión y evitando frases de marketing.",
+        "El alumno identifica un sistema real, completando las casillas, aunque presenta ligeras ambigüedades en la descripción.",
+        "El alumno presenta una ficha incompleta o con definiciones genéricas que no describen un sistema concreto de IA.",
+        "El alumno no completa la ficha o no identifica un sistema real, fallando en los elementos básicos de la actividad."
+      ]
+    },
+    {
+      "name": "Actividad 2 - Rigor técnico en la ficha",
+      "weight": 25,
+      "descriptions": [
+        "El alumno clasifica correctamente la razonabilidad (reglas/datos) y define la tarea estrecha con la exclusión explícita de funciones no realizadas.",
+        "El alumno clasifica la razonabilidad correctamente, pero la tarea estrecha es algo difusa o falta la exclusión clara de funciones.",
+        "El alumno presenta errores en la lógica de razonamiento o la tarea estrecha no está delimitada, siendo demasiado ambiciosa.",
+        "El alumno no justifica la razonabilidad y la tarea descrita carece de cualquier limitación, confundiendo software genérico con IA."
+      ]
+    },
+    {
+      "name": "Actividad 3 - Capacidad de análisis y clasificación",
+      "weight": 25,
+      "descriptions": [
+        "El alumno justifica con gran solvencia la naturaleza del sistema (IA débil vs fuerte) y fundamenta con pruebas sólidas la elección entre reglas o datos.",
+        "El alumno justifica correctamente la naturaleza del sistema, aunque la argumentación sobre la elección entre reglas o datos es superficial.",
+        "El alumno presenta una justificación básica o inconsistente con lo reflejado en su ficha técnica previa.",
+        "El alumno no realiza la reflexión solicitada o sus respuestas no tienen relación con los conceptos técnicos explicados en la unidad."
+      ]
+    }
+  ]
+}
