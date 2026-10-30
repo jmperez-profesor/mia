@@ -47,6 +47,8 @@ titulo: "Brazo robótico 1"
 
 *Panel de control de **DobotLab** (interfaz web). Fuente: UAL Creative Computing Institute.*
 
+> **Simulador DobotLab.** [DobotLab](https://dobotlab.dobot.cc/#/) incluye un **simulador integrado**: entra en **«Basic scene»** para probar movimientos y programas **sin conectar el robot real**. Sirve para practicar los comandos (MoveJ, MoveL, Jump) y las escenas de pick & place antes de usar el brazo del aula.
+
 > **Definición · Comandos inmediatos vs. encolados.** La API permite ejecutar una orden **ya** (inmediata) o **encolarla** en una cola FIFO (`isQueued=1`). Encolar es lo que permite **construir una secuencia de movimiento** sin esperar: el robot la ejecuta en orden. Es la diferencia entre **teleoperar** (orden a orden) y **programar** (una secuencia completa). Para sincronizar, se puede consultar la pose con `GetPose` hasta que el robot llegue al punto.
 
 ```python

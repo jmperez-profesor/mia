@@ -15,7 +15,7 @@ titulo: "Brazo robótico 2"
 
 | # | Al terminar la sesión serás capaz de… |
 |---|---|
-| 1 | Implementar una **célula de pick & place** con la cinta (fotocélula y sensor de color) |
+| 1 | Implementar una **célula de pick & place** con la cinta y **paletizar** piezas en cuadrícula |
 | 2 | Elegir el **efector** adecuado (pinza vs. ventosa) y justificar el diseño |
 | 3 | Situar las **aplicaciones y tendencias** de la robótica (cobots, humanoides, VLA, ISO 10218) |
 
@@ -43,7 +43,7 @@ titulo: "Brazo robótico 2"
 
 ## Actividad 3 · Pick & place con pinza y cinta (presencial + autónomo)
 
-Diseña una célula de pick & place: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. Cuaderno [UD04_pick_place_plantilla.ipynb](colab/UD04_pick_place_plantilla.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
+Diseña una célula de pick & place: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. **Extensión: paletización**, colocando varias piezas en una **cuadrícula** (filas × columnas). Cuaderno [UD04_pick_place_plantilla.ipynb](colab/UD04_pick_place_plantilla.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) para inspeccionar el brazo y sus ejes antes de montar la célula.
 
@@ -51,4 +51,5 @@ Diseña una célula de pick & place: coge un objeto de la cinta y déjalo en la 
 
 - La **célula** completa (robot + cinta + sensor + seguridad) es lo que se diseña, no solo el brazo.
 - La **pinza** agarra objetos rígidos; la **ventosa** aspira superficies lisas y no porosas.
+- El **paletizado** repite el pick & place en una **cuadrícula**, parametrizando las posiciones con bucles.
 - Tendencias: **cobots**, **humanoides**, *foundation models* (VLA), **sim-to-real** y la **ISO 10218:2025**.

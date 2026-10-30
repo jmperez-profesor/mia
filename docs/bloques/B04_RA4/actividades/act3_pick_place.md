@@ -22,6 +22,17 @@ En `UD04_pick_place_plantilla.ipynb`:
 3. Usa **Jump** (o puntos seguros) para no chocar con la cinta.
 4. Redacta la **memoria del equipo** (media página): decisiones de diseño, errores encontrados y soluciones, y **qué cambiaríais**.
 
+## Fase 3 · Paletización (extensión)
+
+Ampliación natural del pick & place: en vez de dejar **una** pieza, coloca **varias** en una **cuadrícula** (filas × columnas), como en un palé real.
+
+1. Define la **cuadrícula** (p. ej. 3×2 celdas) y calcula las coordenadas `(X, Y)` de cada celda.
+2. Repite la secuencia **pre-pick → pick → pre-place → place** para cada pieza, recorriendo filas y columnas.
+3. **Parametriza** las posiciones con un **bucle** (`for` sobre filas y columnas) en vez de repetir código a mano.
+4. (Opcional) Añade una **segunda capa** encima de la primera, para un paletizado en 3D.
+
+> **Pista:** define las esquinas del palé y calcula el resto de celdas con un paso fijo (`paso_x`, `paso_y`). La pinza o la ventosa repiten el mismo recorrido para todas las piezas.
+
 ## Entregables
 
 - `UD04_pick_place_plantilla.ipynb` **ejecutado**.
