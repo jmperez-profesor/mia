@@ -108,6 +108,61 @@ Dos enfoques híbridos:
     2. Se añade 3 % de ruido para que no sea trivial.
     3. FIGS debe **descubrir** esa política a partir de los datos, usando como máximo 6 reglas, y se mide su precisión en datos no vistos.
 
+??? note "Qué significa la salida de FIGS"
+
+    ### Qué significa la salida
+
+    **`Accuracy: 0.971`** — el modelo acierta el **97,1 %** de los pagos de prueba. No llega al 100 % por el **3 % de ruido** que añadimos a propósito; aun así, FIGs recupera la política casi perfecta.
+
+    **La cabecera del árbol:**
+
+    | Campo | Significado |
+    |---|---|
+    | `a sum of small trees` | «Una suma de árboles pequeños» (el significado de FIGS) |
+    | `depth 3` | 3 niveles de preguntas |
+    | `7 leaves` | 7 hojas (los 7 resultados posibles) |
+    | `2,800 training samples` | Se entrenó con 2.800 pagos (el 70 % de los 4.000) |
+    | `classes: 0, 1` | **0 = aprobar**, **1 = rechazar** |
+
+    **`P(1) = sigmoid(sum)`** — cada hoja tiene un **valor** (positivo o negativo); se **suman** y se convierten en probabilidad:
+
+    - Valor **negativo** (p. ej. `-0.9137`) → predice **0 = APROBAR**.
+    - Valor **positivo** (p. ej. `+0.9336`) → predice **1 = RECHAZAR**.
+
+    **Las variables:** **X0 = `importe`**, **X1 = `antiguedad`**, **X2 = `n_intentos`** (el orden en que las apilamos).
+
+    **El árbol (recorrido):**
+
+    ```text
+    X2 ≤ 3.5 ?   (n_intentos ≤ 3,5 ≈ «pocos reintentos»)
+    ├─ SÍ (n_intentos < 4):
+    │  X1 ≤ 6.003 ?  (antiguedad ≤ 6 ≈ «cuenta nueva»)
+    │  ├─ SÍ:
+    │  │  X0 ≤ 1002 ?  (importe ≤ 1.002 €)
+    │  │  ├─ SÍ → −0.9137   (255)  →  APROBAR
+    │  │  └─ NO → +0.9336   (241)  →  RECHAZAR
+    │  └─ NO (cuenta antigua) → APROBAR  (sea cual sea el importe)
+    └─ NO (n_intentos ≥ 4):
+       X0 ≤ 1991 ?  →  RECHAZAR (+0.9278)
+       └─ NO (importe > 1991 €, casos raros) → según antiguedad
+    ```
+
+    **Las dos reglas que FIGs descubrió:**
+
+    1. **Si `importe > 1002` Y `antiguedad < 6` → RECHAZAR** *(cuenta nueva + importe alto)*.
+    2. **Si `n_intentos >= 4` → RECHAZAR** *(demasiados reintentos)*.
+
+    Y aprueba todo lo demás.
+
+    **Comparación con la política oculta:**
+
+    | Regla | Política real (oculta) | Umbral que FIGs encontró |
+    |---|---|---|
+    | Importe alto + cuenta nueva | `importe > 1000` y `antiguedad < 6` | `importe > 1002` y `antiguedad < 6` |
+    | Demasiados reintentos | `n_intentos >= 4` | `n_intentos > 3.5` (≈ `>= 4`) |
+
+    Los umbrales **no son exactos** (1002 en vez de 1000, 6.003 en vez de 6) por el **3 % de ruido**, pero la lógica es **idéntica**: FIGs **recuperó la política latente** a partir solo de los datos, sin que nadie se la escribiera.
+
 ## 2 · Reglas como guardarraíl de agentes LLM
 
 Un agente LLM propone; las reglas **validan y acotan** antes de ejecutar. Patrón actual en pagos, salud y cloud:
