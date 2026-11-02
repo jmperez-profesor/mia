@@ -11,7 +11,7 @@ titulo: "Análisis de sistemas robotizados (DOBOT Magician)"
 > **Resultado de aprendizaje RA4:** *Analiza sistemas robotizados, evaluando opciones de diseño e implementación.*
 > **Hardware del aula:** un brazo **DOBOT Magician** (4 ejes) + cinta transportadora con fotocélula y sensor de color. Trabajo en 3-4 equipos por turnos.
 
-![DOBOT Magician](assets/dobot_magician.jpg)
+![DOBOT Magician](assets/dobot_magician.png)
 
 **Criterios de evaluación y dónde se trabajan:**
 

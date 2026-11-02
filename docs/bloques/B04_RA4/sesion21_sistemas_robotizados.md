@@ -13,7 +13,7 @@ titulo: "Sistemas robotizados. Actuadores"
 
 > **Hardware del aula:** un brazo **DOBOT Magician** (4 ejes) + cinta transportadora con fotocélula y sensor de color.
 
-![DOBOT Magician](assets/dobot_magician.jpg)
+![DOBOT Magician](assets/dobot_magician.png)
 
 ## Vídeo · El DOBOT Magician
 
