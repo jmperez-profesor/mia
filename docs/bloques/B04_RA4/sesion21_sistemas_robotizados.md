@@ -122,35 +122,63 @@ flowchart TD
 
 ## 4. Cinemática: el problema de los manipuladores (CE 4a)
 
-### 4.1 Cinemática directa (FK)
+**Cinemática** = el estudio del **movimiento**, sin pensar en las fuerzas. Para un brazo robótico, la pregunta de fondo es muy simple: **¿dónde está la punta?** Y se puede plantear en dos direcciones:
 
-La **cinemática directa** calcula la **pose del efector** a partir de los valores de las articulaciones: `pose = f(q)`. Siempre tiene **una única solución** y es pura geometría.
+- **Cinemática directa (FK):** *sé los ángulos → ¿dónde acaba la punta?*
+- **Cinemática inversa (IK):** *quiero la punta en un punto → ¿qué ángulos pongo?*
 
-> **Ejemplo · Brazo plano 2R resoluble a mano.** Dos eslabones de longitud `l₁ = 150 mm` y `l₂ = 120 mm`, con ángulos `θ₁` y `θ₂`. La punta está en:
-> $$x = l_1\cos\theta_1 + l_2\cos(\theta_1+\theta_2)$$
-> $$y = l_1\sin\theta_1 + l_2\sin(\theta_1+\theta_2)$$
-> Con `θ₁ = 0°`, `θ₂ = 0°`: `x = 270 mm`, `y = 0 mm`. Con `θ₁ = 90°`, `θ₂ = 0°`: `x = 0`, `y = 270 mm`. Ese punto (270 mm) está **dentro** del alcance de 320 mm del DOBOT.
+### 4.1 Cinemática directa (FK): de los ángulos a la posición
 
-En un robot real, la FK se resuelve encadenando **matrices de transformación homogénea** descritas con los **parámetros de Denavit-Hartenberg (DH)** (θ, d, a, α por articulación). Es el método estándar de la industria.
+Piensa en un **brazo plano** (como un brazo humano visto de lado, que solo se mueve en un plano) con **dos eslabones y dos articulaciones**:
 
-### 4.2 Cinemática inversa (IK)
+- `l₁ = 150 mm` (del hombro al codo) y `l₂ = 120 mm` (del codo a la muñeca).
+- Dos ángulos: `θ₁` (gira el primer eslabón) y `θ₂` (gira el segundo **respecto al primero**).
 
-La **cinemática inversa** va al revés: dada la pose deseada, calcula los ángulos `q = f⁻¹(pose)`. Es **el problema difícil** y la raíz de casi todos los fallos de un manipulador:
+```mermaid
+flowchart LR
+    B["Base"] -->|"l₁ = 150 mm<br/>ángulo θ₁"| C["Codo"]
+    C -->|"l₂ = 120 mm<br/>ángulo θ₂"| P["Punta (x, y)"]
+```
+
+**Paso a paso, ¿dónde queda la punta?**
+
+1. El **primer eslabón** apunta en la dirección `θ₁`; su extremo (el codo) queda en:
+   $$x_1 = l_1\cos\theta_1 \qquad y_1 = l_1\sin\theta_1$$
+2. El **segundo eslabón** sale del codo en la dirección total `θ₁ + θ₂` y añade otro tramo:
+   $$x_2 = l_2\cos(\theta_1+\theta_2) \qquad y_2 = l_2\sin(\theta_1+\theta_2)$$
+3. La **punta** es la suma de los dos tramos:
+   $$x = l_1\cos\theta_1 + l_2\cos(\theta_1+\theta_2)$$
+   $$y = l_1\sin\theta_1 + l_2\sin(\theta_1+\theta_2)$$
+
+**Ejemplo con números (con ángulos «fáciles», sin calculadora):**
+
+| Ángulos | Posición de la punta | Qué significa |
+|---|---|---|
+| `θ₁ = 0°`, `θ₂ = 0°` | `(150 + 120, 0) = (270, 0) mm` | Brazo **estirado** hacia delante: alcance máximo |
+| `θ₁ = 90°`, `θ₂ = 0°` | `(0, 150 + 120) = (0, 270) mm` | Brazo **estirado** hacia arriba |
+
+**Idea clave:** con el brazo **estirado** (`θ₂ = 0°`), la punta está siempre a `l₁ + l₂ = 270 mm` de la base, sea cual sea `θ₁`. Por eso **270 mm es el alcance máximo** de este brazo. El DOBOT llega a 320 mm, así que 270 mm **cabe** dentro de su zona de trabajo.
+
+> **En un robot real.** La FK se resuelve encadenando **matrices de transformación homogénea** con los **parámetros de Denavit-Hartenberg (DH)** (4 números por articulación). Es el método estándar de la industria, pero la idea es la misma: **sumar tramos** hasta llegar a la punta.
+
+### 4.2 Cinemática inversa (IK): de la posición a los ángulos
+
+La **cinemática inversa** hace el camino al revés: **«quiero la punta en (200, 100), ¿qué ángulos pongo?»**. Es el problema **difícil**, porque no siempre tiene una respuesta única (ni siquiera una respuesta). Cuatro problemas típicos:
 
 | Problema | En qué consiste | Consecuencia práctica |
 |---|---|---|
-| **Múltiples soluciones** | Un mismo punto se alcanza con «codo arriba» o «codo abajo» | Dos scripts distintos dibujan el mismo punto |
-| **Singularidad** | El jacobiano pierde rango: la velocidad articular tiende a infinito | Vibración, sobrecorriente o parada de seguridad |
-| **Fuera de alcance** | El objetivo está más allá de 320 mm | El robot no llega: hay que rediseñar la célula |
-| **Límites articulares** | Cada eje tiene un rango válido | Movimiento imposible aunque el punto sea alcanzable |
+| **Varias soluciones** | El mismo punto se alcanza con «codo arriba» o «codo abajo» | Dos programas distintos dibujan el mismo punto |
+| **Singularidad** | El brazo queda en una postura que «pierde» un grado de libertad (p. ej. totalmente estirado) | Vibración o parada de seguridad al acercarse |
+| **Fuera de alcance** | El punto pedido está a más de 270 mm (320 en el DOBOT) | El robot no llega: acercar el objeto o rediseñar la célula |
+| **Límites articulares** | Algún eje no puede girar tanto | Movimiento imposible aunque el punto parezca alcanzable |
 
-> **Más información.** En un brazo de 6 ejes la IK puede tener **hasta 16 soluciones**; el DOBOT, con 4 ejes, tiene menos margen y por eso su **espacio de trabajo** es un casquete cilíndrico en torno a su base. Programar «a ciegas» sin comprobar el alcance es la primera causa de error en el aula. Lo practicas en el cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb).
+> **Más información.** Un brazo de 6 ejes puede tener **hasta 16 soluciones** para la IK; el DOBOT, con 4 ejes, tiene menos margen y su **espacio de trabajo** es un casquete alrededor de su base. Programar «a ciegas» sin comprobar el alcance es la primera causa de error en el aula. Lo practicas en el cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb).
 
 ### 4.3 Control
 
-Los ejes se mueven con **servomotores con encoder** en lazo cerrado. El control clásico por eje es **P → PD → PID**; los robots industriales añaden **par calculado** (dinámica inversa). En el DOBOT, la velocidad y la aceleración de cada tramo se fijan con parámetros (`SetPTPJointParams`, `SetPTPCoordinateParams`).
+Los ejes se mueven con **servomotores con encoder** en **lazo cerrado**: el motor «sabe» dónde está y se corrige solo. El control clásico por eje va de **P → PD → PID** (cada vez corrige más: primero el error, luego su velocidad, luego el error acumulado). En el DOBOT, la **velocidad** y la **aceleración** de cada tramo se fijan con parámetros (`SetPTPJointParams`, `SetPTPCoordinateParams`).
 
-> **Definición · Repetibilidad vs. precisión.** La **repetibilidad** es la dispersión al volver al mismo punto programado (**±0,2 mm** en el DOBOT); la **precisión** es si ese punto coincide con el que se quería alcanzar. Un robot puede ser muy repetible y a la vez impreciso. Con *teach pendant* basta la repetibilidad; con programación **offline** (coordenadas de CAD) la precisión es crítica.
+> **Definición · Repetibilidad vs. precisión.** La **repetibilidad** es la dispersión al volver al mismo punto programado (**±0,2 mm** en el DOBOT): si lo mandas 100 veces al mismo punto, ¿cuánto se separa? La **precisión** es si ese punto coincide con el que **querías** alcanzar. Un robot puede ser muy repetible y a la vez impreciso. Con *teach pendant* basta la repetibilidad; con programación **offline** (coordenadas de CAD) la precisión es crítica.
 
 ## 5. Actuadores, sensores y efectores finales
 
