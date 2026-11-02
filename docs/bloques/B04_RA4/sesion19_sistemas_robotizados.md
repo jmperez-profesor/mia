@@ -1,5 +1,5 @@
 ---
-sesion: "21"
+sesion: "19"
 bloque: B04
 ra: RA4
 fecha: 2026-11-04
@@ -7,7 +7,7 @@ duracion: 2 h
 titulo: "Sistemas robotizados. Actuadores"
 ---
 
-# Sesión 21 · Sistemas robotizados. Actuadores (04/11/2026)
+# Sesión 19 · Sistemas robotizados. Actuadores (04/11/2026)
 
 > **RA4.** Analiza sistemas robotizados, evaluando opciones de diseño e implementación. Esta primera sesión asienta la teoría: qué es un robot, su anatomía, la cinemática (FK/IK) y las técnicas de programación.
 
