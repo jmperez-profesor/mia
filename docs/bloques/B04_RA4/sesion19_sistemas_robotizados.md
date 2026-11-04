@@ -24,6 +24,12 @@ titulo: "Sistemas robotizados. Actuadores"
 ??? note "Qué explica el vídeo"
     Presenta el **DOBOT Magician** y por qué es el robot perfecto para **educación**: 4 ejes, efectores intercambiables (pinza, ventosa, portaminas), programación por bloques (Blockly) o con Python, y sus aplicaciones típicas (*pick & place*, dibujo, escritura). Es el brazo que usaremos en el aula, así que sirve de presentación para las sesiones prácticas.
 
+## Cuaderno de la sesión
+
+El código se trabaja en el cuaderno **`sesion19_sistemas_robotizados.ipynb`**:
+
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B04_RA4/sesion19_sistemas_robotizados.ipynb){ .md-button } · [ver en el sitio](sesion19_sistemas_robotizados.ipynb)
+
 ## Qué vas a aprender
 
 | # | Al terminar la sesión serás capaz de… |
