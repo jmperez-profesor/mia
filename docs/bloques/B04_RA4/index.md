@@ -5,7 +5,6 @@ Unidad **UD04** de **12 h**: **3 sesiones presenciales de 2 h + 3 sesiones autó
 - [Apuntes (teoría, sesión 1)](apuntes.md)
 - [Actividades](actividades/act1_cinematica.md)
 - [Cuaderno de la sesión (Colab)](sesion19_sistemas_robotizados.ipynb)
-- [Cuadernos de actividades](colab/UD04_cinematica.ipynb)
 - [Rúbrica del RA4](rubrica.md)
 - [Guía docente](guia_docente.md)
 

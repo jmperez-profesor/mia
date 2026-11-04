@@ -1,6 +1,6 @@
 # Actividad 1 · Cinemática de un manipulador (CE 4a, 4b)
 
-**Trabajo autónomo TA1 (2 h)** · Ficha de problemas + cuaderno Colab [UD04_cinematica.ipynb](../colab/UD04_cinematica.ipynb)
+**Trabajo autónomo TA1 (2 h)** · Ficha de problemas (a mano) + prueba del código en el cuaderno [sesion19_sistemas_robotizados.ipynb](../sesion19_sistemas_robotizados.ipynb)
 
 ## Objetivo
 
@@ -16,19 +16,19 @@ Recopilar los problemas del **modelado y control cinemático** de un manipulador
    - Comprueba cada una con la fórmula de la FK.
 3. **Espacio de trabajo.** ¿Por qué el alcance máximo es `l₁ + l₂`? ¿Qué radio mínimo tiene el espacio de trabajo y por qué?
 
-## Parte B · Con Python (Colab)
+## Parte B · Prueba el código (Colab)
 
-En `UD04_cinematica.ipynb`:
+El cuaderno [sesion19_sistemas_robotizados.ipynb](../sesion19_sistemas_robotizados.ipynb) ya trae implementadas `fk_2r`, `ik_2r` y el dibujo del espacio de trabajo. Tu trabajo es **probarlo**:
 
-1. Implementa `fk_2r(theta1, theta2, l1, l2)` y comprueba la parte A.
-2. Implementa `ik_2r(x, y, l1, l2)` que devuelva **las dos soluciones**.
-3. Dibuja con matplotlib el **espacio de trabajo** (nube de puntos para muchos ángulos) y marca el alcance de 320 mm.
-4. **Extra:** simula una singularidad (brazo totalmente estirado `θ₂ = 0`) y comenta qué le pasa a la IK.
+1. Ejecuta todas las celdas y comprueba que los resultados de la **parte A** coinciden.
+2. Cambia **ángulos** en la FK y **puntos objetivo** en la IK; observa las dos soluciones.
+3. Dibuja el **espacio de trabajo** y localiza el anillo de alcance y el límite de 320 mm.
+4. **Extra:** prueba la singularidad (punto casi en `l₁ + l₂`) y comenta qué le pasa a la IK.
 
 ## Entregables
 
 - Ficha de la parte A (a mano, escaneada o en Markdown).
-- Cuaderno `UD04_cinematica.ipynb` **ejecutado**, con las gráficas y una conclusión de 3 líneas: *¿qué problemas de cinemática has encontrado y cómo se resuelven?* (CE 4a + 4b).
+- Cuaderno **`sesion19_sistemas_robotizados.ipynb`** ejecutado, con las pruebas y una **conclusión de 3–4 líneas**: *¿qué problemas de cinemática has encontrado y cómo se resuelven?* (CE 4a + 4b).
 
 ## Criterios de evaluación (rúbrica RA4)
 

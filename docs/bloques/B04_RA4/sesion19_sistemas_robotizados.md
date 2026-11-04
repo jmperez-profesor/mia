@@ -268,7 +268,7 @@ flowchart LR
 | **Fuera de alcance** | El punto pedido está a más de 270 mm (320 en el DOBOT) | El robot no llega: acercar el objeto o rediseñar la célula |
 | **Límites articulares** | Algún eje no puede girar tanto | Movimiento imposible aunque el punto parezca alcanzable |
 
-**Con el DOBOT:** cuando lo mueves con el *teach pendant* y grabas un punto, es el **controlador** quien resuelve la IK por ti. Por eso programar «a ojo» sin comprobar el alcance es la primera causa de error. Lo practicas en el cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb).
+**Con el DOBOT:** cuando lo mueves con el *teach pendant* y grabas un punto, es el **controlador** quien resuelve la IK por ti. Por eso programar «a ojo» sin comprobar el alcance es la primera causa de error. Lo practicas en el cuaderno [sesion19_sistemas_robotizados.ipynb](sesion19_sistemas_robotizados.ipynb).
 
 ### 4.3 Control
 
@@ -347,11 +347,7 @@ flowchart LR
 
 ## Actividad 1 · Cinemática de un manipulador (autónomo)
 
-Ficha de problemas + cuaderno **`UD04_cinematica.ipynb`**: calcula la **FK/IK de un brazo 2R** a mano y con NumPy, y dibuja su espacio de trabajo.
-
-[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B04_RA4/colab/UD04_cinematica.ipynb){ .md-button } · [ver en el sitio](colab/UD04_cinematica.ipynb)
-
-Detalle en [actividades/act1_cinematica.md](actividades/act1_cinematica.md).
+Prueba el código del **cuaderno de la sesión** (`sesion19_sistemas_robotizados.ipynb`) cambiando ángulos y puntos objetivo, y añade una **conclusión de 3–4 líneas** sobre los problemas de cinemática encontrados. Detalle en [actividades/act1_cinematica.md](actividades/act1_cinematica.md).
 
 ## Puntos clave
 

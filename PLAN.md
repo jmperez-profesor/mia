@@ -125,7 +125,7 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
   - Materiales: `docs/bloques/B04_RA4/apuntes.md`, `guia_docente.md`.
 - **Sesión autónoma A1 · 2026-11-09 · Cinemática (TA1)** *(2 h, entregable)*
   - RA: RA4 · **UD04 TA1**
-  - Alcance: ficha de cinemática a mano + cuaderno `colab/UD04_cinematica.ipynb` (FK/IK 2R con NumPy, dos soluciones, espacio de trabajo, singularidad).
+  - Alcance: ficha de cinemática a mano + cuaderno `sesion19_sistemas_robotizados.ipynb` (FK/IK 2R con NumPy, dos soluciones, espacio de trabajo, singularidad).
   - Entregable: `docs/bloques/B04_RA4/actividades/act1_cinematica.md` + notebook ejecutado.
 - **Sesión 23 · 2026-11-11 · RA4-2 · El brazo I: del guiado al código** *(presencial 2 h)*
   - RA: RA4 · **UD04 S2**
