@@ -163,6 +163,16 @@ Dos enfoques híbridos:
 
     Los umbrales **no son exactos** (1002 en vez de 1000, 6.003 en vez de 6) por el **3 % de ruido**, pero la lógica es **idéntica**: FIGs **recuperó la política latente** a partir solo de los datos, sin que nadie se la escribiera.
 
+??? note "La función sigmoide"
+
+    La **función sigmoide** es una función matemática con forma de **«S»** que transforma cualquier número real en un valor comprendido entre **0 y 1**. Es lo que convierte la suma de FIGs (`sigmoid(sum)`) en una probabilidad.
+
+    **Usos principales en IA y ciencia de datos:**
+
+    - **Regresión logística:** convierte una combinación lineal de variables en una **probabilidad** de clasificación binaria (p. ej. ¿es spam o no?, ¿es fraudulenta la transacción?).
+    - **Capa de salida:** ideal en redes neuronales cuando se requiere una salida **probabilística** para dos clases.
+    - **Compuertas en redes recurrentes:** actúa como regulador o «compuerta» (valores entre 0 y 1) en arquitecturas como **LSTM** o **GRU** para decidir qué información descartar o conservar.
+
 ## 2 · Reglas como guardarraíl de agentes LLM
 
 Un agente LLM propone; las reglas **validan y acotan** antes de ejecutar. Patrón actual en pagos, salud y cloud:
