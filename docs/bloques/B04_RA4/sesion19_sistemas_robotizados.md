@@ -340,7 +340,11 @@ flowchart LR
 
 ## Actividad 1 · Cinemática de un manipulador (autónomo)
 
-Ficha de problemas + cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb): calcula la **FK/IK de un brazo 2R** a mano y con NumPy, y dibuja su espacio de trabajo. Detalle en [actividades/act1_cinematica.md](actividades/act1_cinematica.md).
+Ficha de problemas + cuaderno **`UD04_cinematica.ipynb`**: calcula la **FK/IK de un brazo 2R** a mano y con NumPy, y dibuja su espacio de trabajo.
+
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B04_RA4/colab/UD04_cinematica.ipynb){ .md-button } · [ver en el sitio](colab/UD04_cinematica.ipynb)
+
+Detalle en [actividades/act1_cinematica.md](actividades/act1_cinematica.md).
 
 ## Puntos clave
 
