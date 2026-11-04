@@ -99,7 +99,7 @@ flowchart LR
 
 Un manipulador es una **cadena cinemática**: eslabones rígidos unidos por articulaciones.
 
-> **Definición · Grado de libertad (GDL o DoF).** Cada movimiento independiente de una articulación. Hacen falta **al menos 3** para alcanzar cualquier punto del espacio (posición) y **6** para fijar además la orientación. El DOBOT Magician tiene **4** (base, brazo trasero, antebrazo y rotación de muñeca), lo que basta para *pick & place* y dibujo, pero **no** para orientar libremente una herramienta en 3D.
+> **Definición · Grado de libertad (GDL o DoF).** El número de movimientos independientes que puede realizar un sistema mecánico, determinando su capacidad para posicionarse y orientarse en el espacio. Hacen falta **al menos 3** para alcanzar cualquier punto del espacio (posición) y **6** para fijar además la orientación. El DOBOT Magician tiene **4** (base, brazo trasero, antebrazo y rotación de muñeca), lo que basta para *pick & place* y dibujo, pero **no** para orientar libremente una herramienta en 3D.
 
 | Concepto | Definición |
 |---|---|
