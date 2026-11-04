@@ -124,7 +124,90 @@ flowchart TD
 
 **Configuraciones típicas:** **articulado** (≥3R, el 6-ejes industrial), **cartesiano/pórtico** (3P), **SCARA** (RRP, montaje electrónico) y **delta** (paralelo, empaquetado de alta velocidad).
 
+### Espacio de trabajo
+
+El **espacio de trabajo** es la región del espacio a la que el efector puede llegar. No es ni un cubo ni una esfera completa: lo delimitan la **longitud de los eslabones**, el **alcance máximo** (320 mm en el DOBOT) y los **topes de giro** de cada articulación.
+
+**Vista 1**
+
+![Espacio de trabajo 1](assets/espacio_trabajo1.png)
+
+**Vista 2**
+
+![Espacio de trabajo 2](assets/espacio_trabajo2.png)
+
+*Dos vistas del espacio de trabajo del DOBOT Magician. Observa que hay zonas próximas a la base y por detrás del brazo a las que **no** puede llegar: por eso conviene comprobar el alcance antes de programar un punto.*
+
+### Sistema de coordenadas
+
+El DOBOT Magician usa **dos sistemas de coordenadas** para referirse a la posición del efector: el **espacio articular** (por ángulos) y el **espacio cartesiano** (por coordenadas X, Y, Z y giro).
+
+**Sistema de articulaciones (espacio articular)**
+
+Se describe con el ángulo de cada articulación: `[J1, J2, J3, J4]`. Es como «siente» el robot internamente.
+
+![Sistema de coordenadas de articulaciones](assets/sistema_coordenadas_articular.png)
+
+**Sistema cartesiano (espacio cartesiano)**
+
+Se describe con la pose del efector: `[X, Y, Z, RZ]` (posición en mm + giro de la muñeca). Es como **pensamos** nosotros la posición.
+
+![Sistema de coordenadas cartesiano](assets/sistema_coordenadas_cartesiano.png)
+
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) tiene un **visor 3D del DOBOT Magician** en el navegador (sin instalar nada): rota y haz zoom para ver los **4 ejes** y la cadena cinemática *base → brazo trasero → antebrazo → muñeca*. Complementa la vista XY de `BrazoSimulado` con una perspectiva real en 3D.
+
+### DobotLab
+
+Accede a [DobotLab](https://dobotlab.dobot.cc/#/), la plataforma web de Dobot para **educación en IA** con los brazos Magician. Incluye simulación virtual y programación por bloques. Para conectar con el brazo real hace falta **DobotLink**, un servicio intermedio (solo **Windows**).
+
+**Página de inicio de DobotLab**
+![Página de inicio de DobotLab](assets/dobot_lab_home.png)
+
+**Laboratorio de simulación virtual**
+Haz clic en **Laboratorio de simulación virtual** para practicar movimientos y programas **sin conectar el robot real**.
+
+![Laboratorio de simulación virtual](assets/laboratorio_simluacion_virtual.png)
+
+**Basic scene (escena básica)**
+Haz clic en **Basic scene** para entrar en una escena en la que puedes **mover el brazo y coger piezas**.
+
+![Basic scene (escena básica)](assets/dobotlab_basic_scene.png)
+
+**Laboratorio de DobotBlock**
+Haz clic en **Laboratorio de DobotBlock** para programar por bloques.
+
+![Laboratorio de DobotBlock](assets/laboratorio_de_dobotblock.png)
+
+**Página de inicio de la Basic scene**
+Al entrar en la *Basic scene* te pedirá **permisos de acceso a la cámara**; los puedes rechazar.
+
+![Página de inicio de la Basic scene](assets/dobotlab_basicscene_home.png)
+
+**Instalación de DobotLink**
+Para conectar DobotLab con el brazo real aparece un aviso para instalar **DobotLink**:
+
+![DobotLink no iniciado](assets/dobotlink_no_iniciado.png)
+
+**DobotLink** es una capa de servicio intermedia (desarrollada en Qt5) que actúa de **puente de comunicación** entre DobotLab y el hardware de los brazos Dobot (Magician, Magician Lite, Magician Go).
+
+Al hacer clic en el aviso se abre una ventana para **descargar DobotLink** o, si ya está instalado, pulsar **«Poner en marcha»**:
+
+![Instalar o arrancar el DobotLink](assets/dobotlink_iniciar_o_instalar.png)
+
+DobotLink ya instalado y en marcha:
+
+![DobotLink instalado](assets/dobotlink_instalado.png)
+
+### Barra de herramientas de DobotLink
+
+![Barra de herramientas de DobotLink](assets/barra_herramientas_dobotlink.png)
+
+### Panel de control del Dobot Magician
+
+![Panel de control del Dobot Magician](assets/panel_control_dobotmagician.png)
+
+*Con el panel de control se mueve cada articulación (J1–J4) o se desplaza el efector en cartesianas, y se abren/cierran la pinza o la ventosa.*
+
 
 ## 4. Cinemática: el problema de los manipuladores (CE 4a)
 
