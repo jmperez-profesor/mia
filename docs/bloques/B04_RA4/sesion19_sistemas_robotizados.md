@@ -211,17 +211,22 @@ DobotLink ya instalado y en marcha:
 
 ## 4. Cinemática: el problema de los manipuladores (CE 4a)
 
-**Cinemática** = el estudio del **movimiento**, sin pensar en las fuerzas. Para un brazo robótico, la pregunta de fondo es muy simple: **¿dónde está la punta?** Y se puede plantear en dos direcciones:
+**La idea en una frase.** El robot se mueve por **ángulos** (lo que giran los motores), pero tú piensas en **posiciones** (dónde quieres la pinza). La **cinemática** es el *traductor* entre esos dos mundos: relaciona los ángulos de las articulaciones con la posición de la punta, sin meterse con las fuerzas.
 
-- **Cinemática directa (FK):** *sé los ángulos → ¿dónde acaba la punta?*
-- **Cinemática inversa (IK):** *quiero la punta en un punto → ¿qué ángulos pongo?*
+<iframe width="100%" height="380" src="https://www.youtube.com/embed/la6eiP6hIpY" title="Introducción a la Robótica | Grados de Libertad | Cinemática Directa e Inversa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Ver en YouTube](https://www.youtube.com/watch?v=la6eiP6hIpY) · *Cristian Trejo*. Grados de libertad y cinemática directa e inversa, con diapositivas y animaciones.
+
+**Tu brazo como ejemplo.** Piensa en tu propio brazo (hombro + codo):
+
+- **Cinemática directa (FK)** — la dirección *fácil*: *«si subo el hombro 90° y estiro el codo, mi mano acaba ahí»*. De **ángulos → posición**. Es como seguir una receta: paso a paso, sin sorpresas, y con una única respuesta.
+- **Cinemática inversa (IK)** — la dirección *difícil*: *«quiero coger el vaso que está aquí, ¿qué ángulos pongo en el hombro y el codo?»*. De **posición → ángulos**. Puedo llegar con el **codo arriba o abajo** (dos soluciones) o, si el vaso está lejos, **no llegar**.
 
 ### 4.1 Cinemática directa (FK): de los ángulos a la posición
 
-Piensa en un **brazo plano** (como un brazo humano visto de lado, que solo se mueve en un plano) con **dos eslabones y dos articulaciones**:
+**El problema.** Conoces los ángulos y quieres saber dónde queda la punta. La respuesta es **única y directa**: se **suman los tramos** de cada eslabón.
 
-- `l₁ = 150 mm` (del hombro al codo) y `l₂ = 120 mm` (del codo a la muñeca).
-- Dos ángulos: `θ₁` (gira el primer eslabón) y `θ₂` (gira el segundo **respecto al primero**).
+Imagina un **brazo plano** de dos eslabones (como el tuyo, visto de lado):
 
 ```mermaid
 flowchart LR
@@ -229,30 +234,32 @@ flowchart LR
     C -->|"l₂ = 120 mm<br/>ángulo θ₂"| P["Punta (x, y)"]
 ```
 
-**Paso a paso, ¿dónde queda la punta?**
+??? note "¿Y las cuentas? El brazo 2R, con fórmulas (opcional)"
 
-1. El **primer eslabón** apunta en la dirección `θ₁`; su extremo (el codo) queda en:
-   $$x_1 = l_1\cos\theta_1 \qquad y_1 = l_1\sin\theta_1$$
-2. El **segundo eslabón** sale del codo en la dirección total `θ₁ + θ₂` y añade otro tramo:
-   $$x_2 = l_2\cos(\theta_1+\theta_2) \qquad y_2 = l_2\sin(\theta_1+\theta_2)$$
-3. La **punta** es la suma de los dos tramos:
-   $$x = l_1\cos\theta_1 + l_2\cos(\theta_1+\theta_2)$$
-   $$y = l_1\sin\theta_1 + l_2\sin(\theta_1+\theta_2)$$
+    Con `l₁ = 150 mm` y `l₂ = 120 mm`, y dos ángulos `θ₁` (primer eslabón) y `θ₂` (segundo, respecto al primero):
 
-**Ejemplo con números (con ángulos «fáciles», sin calculadora):**
+    1. El **primer eslabón** apunta en la dirección `θ₁`; su extremo (el codo) queda en:
+       $$x_1 = l_1\cos\theta_1 \qquad y_1 = l_1\sin\theta_1$$
+    2. El **segundo eslabón** sale del codo en la dirección total `θ₁ + θ₂`:
+       $$x_2 = l_2\cos(\theta_1+\theta_2) \qquad y_2 = l_2\sin(\theta_1+\theta_2)$$
+    3. La **punta** es la suma de los dos tramos:
+       $$x = l_1\cos\theta_1 + l_2\cos(\theta_1+\theta_2)$$
+       $$y = l_1\sin\theta_1 + l_2\sin(\theta_1+\theta_2)$$
 
-| Ángulos | Posición de la punta | Qué significa |
-|---|---|---|
-| `θ₁ = 0°`, `θ₂ = 0°` | `(150 + 120, 0) = (270, 0) mm` | Brazo **estirado** hacia delante: alcance máximo |
-| `θ₁ = 90°`, `θ₂ = 0°` | `(0, 150 + 120) = (0, 270) mm` | Brazo **estirado** hacia arriba |
+    **Con números (ángulos «fáciles», sin calculadora):**
 
-**Idea clave:** con el brazo **estirado** (`θ₂ = 0°`), la punta está siempre a `l₁ + l₂ = 270 mm` de la base, sea cual sea `θ₁`. Por eso **270 mm es el alcance máximo** de este brazo. El DOBOT llega a 320 mm, así que 270 mm **cabe** dentro de su zona de trabajo.
+    | Ángulos | Posición de la punta | Qué significa |
+    |---|---|---|
+    | `θ₁ = 0°`, `θ₂ = 0°` | `(150 + 120, 0) = (270, 0) mm` | Brazo **estirado** hacia delante: alcance máximo |
+    | `θ₁ = 90°`, `θ₂ = 0°` | `(0, 150 + 120) = (0, 270) mm` | Brazo **estirado** hacia arriba |
 
-> **En un robot real.** La FK se resuelve encadenando **matrices de transformación homogénea** con los **parámetros de Denavit-Hartenberg (DH)** (4 números por articulación). Es el método estándar de la industria, pero la idea es la misma: **sumar tramos** hasta llegar a la punta.
+    **Idea clave:** con el brazo **estirado** (`θ₂ = 0°`), la punta está siempre a `l₁ + l₂ = 270 mm` de la base. Por eso **270 mm es el alcance máximo**; el DOBOT llega a 320 mm, así que este brazo **cabe** en su zona de trabajo.
+
+    > **En un robot real.** La FK se resuelve encadenando **matrices de transformación homogénea** con los **parámetros de Denavit-Hartenberg (DH)** (4 números por articulación). Es el método estándar de la industria, pero la idea es la misma: **sumar tramos** hasta llegar a la punta.
 
 ### 4.2 Cinemática inversa (IK): de la posición a los ángulos
 
-La **cinemática inversa** hace el camino al revés: **«quiero la punta en (200, 100), ¿qué ángulos pongo?»**. Es el problema **difícil**, porque no siempre tiene una respuesta única (ni siquiera una respuesta). Cuatro problemas típicos:
+**El problema.** Quieres la punta en un punto concreto y preguntas qué ángulos hacen falta. Es **más difícil** porque no siempre hay una única respuesta (y a veces no hay ninguna):
 
 | Problema | En qué consiste | Consecuencia práctica |
 |---|---|---|
@@ -261,7 +268,7 @@ La **cinemática inversa** hace el camino al revés: **«quiero la punta en (200
 | **Fuera de alcance** | El punto pedido está a más de 270 mm (320 en el DOBOT) | El robot no llega: acercar el objeto o rediseñar la célula |
 | **Límites articulares** | Algún eje no puede girar tanto | Movimiento imposible aunque el punto parezca alcanzable |
 
-> **Más información.** Un brazo de 6 ejes puede tener **hasta 16 soluciones** para la IK; el DOBOT, con 4 ejes, tiene menos margen y su **espacio de trabajo** es un casquete alrededor de su base. Programar «a ciegas» sin comprobar el alcance es la primera causa de error en el aula. Lo practicas en el cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb).
+**Con el DOBOT:** cuando lo mueves con el *teach pendant* y grabas un punto, es el **controlador** quien resuelve la IK por ti. Por eso programar «a ojo» sin comprobar el alcance es la primera causa de error. Lo practicas en el cuaderno [UD04_cinematica.ipynb](colab/UD04_cinematica.ipynb).
 
 ### 4.3 Control
 
