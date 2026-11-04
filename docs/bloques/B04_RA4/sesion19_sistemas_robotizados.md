@@ -122,6 +122,10 @@ flowchart TD
 
 *Partes del DOBOT Magician (base, brazo trasero, antebrazo, muñeca y efector). Fuente: UAL Creative Computing Institute.*
 
+<iframe width="100%" height="380" src="https://www.youtube.com/embed/la6eiP6hIpY" title="Introducción a la Robótica | Grados de Libertad | Cinemática Directa e Inversa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Ver en YouTube](https://www.youtube.com/watch?v=la6eiP6hIpY) · *Cristian Trejo*. Grados de libertad y cinemática directa e inversa, con diapositivas y animaciones. Una buena introducción a los **grados de libertad**.
+
 **Configuraciones típicas:** **articulado** (≥3R, el 6-ejes industrial), **cartesiano/pórtico** (3P), **SCARA** (RRP, montaje electrónico) y **delta** (paralelo, empaquetado de alta velocidad).
 
 ### Espacio de trabajo
@@ -212,10 +216,6 @@ DobotLink ya instalado y en marcha:
 ## 4. Cinemática: el problema de los manipuladores (CE 4a)
 
 **La idea en una frase.** El robot se mueve por **ángulos** (lo que giran los motores), pero tú piensas en **posiciones** (dónde quieres la pinza). La **cinemática** es el *traductor* entre esos dos mundos: relaciona los ángulos de las articulaciones con la posición de la punta, sin meterse con las fuerzas.
-
-<iframe width="100%" height="380" src="https://www.youtube.com/embed/la6eiP6hIpY" title="Introducción a la Robótica | Grados de Libertad | Cinemática Directa e Inversa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-[Ver en YouTube](https://www.youtube.com/watch?v=la6eiP6hIpY) · *Cristian Trejo*. Grados de libertad y cinemática directa e inversa, con diapositivas y animaciones.
 
 **Tu brazo como ejemplo.** Piensa en tu propio brazo (hombro + codo):
 
