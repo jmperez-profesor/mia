@@ -33,7 +33,7 @@ El código se trabaja en el cuaderno **`sesion18_motores_reglas_hibridos_guardar
 
 Cuando nadie escribió las reglas pero existen en los datos, un algoritmo puede **recuperarlas** de forma legible. Generamos 4.000 pagos de Pagarium con una política **latente** (`importe > 1000 y antigüedad < 6`, **o** `n_intentos >= 4`) más un 3 % de ruido, y **FIGS** la redescubre casi literal:
 
-**FIGS** (*Fast Interpretable Greedy-Tree Sums*, «sumas de árboles de Greedy, rápidas e interpretables») es un modelo de 2022 que crece **varios árboles pequeños a la vez** y **suma** sus predicciones, limitando el número total de reglas para que el resultado siga siendo legible.
+**FIGS** (*Fast Interpretable Greedy-Tree Sums*, «sumas de árboles de Greedy, rápidas e interpretables») es un modelo de 2022 que hace crecer **varios árboles pequeños a la vez** y **suma** sus predicciones, limitando el número total de reglas para que el resultado siga siendo legible.
 
 ```python
 %pip install imodels scikit-learn
@@ -289,7 +289,7 @@ La **explicación** (de la que MYCIN fue pionero) es hoy obligatoria en varios c
 | Legal / compliance | Reglas normativas y trazabilidad de decisiones |
 | IA generativa | Guardarraíles, enrutado y validación de salidas de LLM/agentes |
 
-**Tendencias:** BRMS con DMN, *policy-as-code*, **neuro-simbólico**, **XAI** (derecho a explicación del RGPD) y reglas como **guardarraíl** del ML generativo.
+**Tendencias:** **BRMS** (*Business Rule Management System*, sistema de gestión de reglas de negocio) con DMN, *policy-as-code*, **neuro-simbólico**, **XAI** (derecho a explicación del RGPD) y reglas como **guardarraíl** del ML generativo.
 
 ## Ejercicios de autoevaluación
 
