@@ -84,7 +84,7 @@ Dos enfoques híbridos:
     | `%pip install imodels scikit-learn` | Celda de notebook (Jupyter/IPython) que instala las dos librerías si aún no están presentes. `%pip` es el *magic* equivalente a `!pip`. |
     | `import numpy as np` | Importa NumPy con el alias `np`. Se usa para generar datos aleatorios y manipular matrices. |
     | `from imodels import FIGSClassifier` | Importa el clasificador **FIGS** (*Fast Interpretable Greedy-Tree Sums*): crece simultáneamente varios árboles pequeños y suma sus predicciones, limitando el número total de reglas para que el modelo sea interpretable. |
-    | `from sklearn.model_selection import train_test_split` | Importa la función que divide los datos en conjuntos de entrenamiento y prueba. |
+    | `from sklearn.model_selection import train_test_split` | Importa la función que divide los datos en conjuntos de entrenamiento y prueba. Ver [documentación de `train_test_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html). |
     | `rng = np.random.default_rng(0)` | Crea un generador pseudoaleatorio con semilla fija (`0`), de modo que **siempre** se generan los mismos datos en cada ejecución (reproducibilidad). |
     | `n = 4000` | Define el número de ejemplos (pagos simulados). |
     | `importe = rng.uniform(0, 2000, n)` | Genera 4000 importes uniformes en [0, 2000) €. |
@@ -96,7 +96,7 @@ Dos enfoques híbridos:
     | `X = np.column_stack([importe, antiguedad, n_intentos])` | Junta las tres variables en una matriz de forma (4000, 3) lista para el modelo. |
     | `X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, random_state=0)` | Divide los datos: **70 %** para entrenar, **30 %** para probar. `random_state=0` hace la división reproducible. |
     | `clf = FIGSClassifier(max_rules=6)` | Crea el clasificador FIGS con un máximo de **6 reglas** (nodos de decisión en total entre todos los árboles). Cuantas menos reglas, más interpretable. |
-    | `clf.fit(X_tr, y_tr)` | **Entrena** el modelo: FIGS crece árboles de forma codicia sobre los datos de entrenamiento, eligiendo en cada paso la división que más reduce la impureza, hasta agotar el presupuesto de 6 reglas. |
+    | `clf.fit(X_tr, y_tr)` | **Entrena** el modelo: FIGS hace crecer árboles de forma codiciosa sobre los datos de entrenamiento, eligiendo en cada paso la división que más reduce la impureza, hasta agotar el presupuesto de 6 reglas. |
     | `print("Accuracy:", round(clf.score(X_te, y_te), 3))` | Evalúa el modelo sobre los datos de prueba (que nunca vio). `clf.score` devuelve la proporción de predicciones correctas. |
     | `print(clf)` | Imprime la representación del modelo entrenado (árbol/árboles con sus reglas), lo que permite **inspeccionar visualmente** qué reglas aprendió. |
 
