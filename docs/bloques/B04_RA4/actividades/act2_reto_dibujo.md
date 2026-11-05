@@ -1,6 +1,6 @@
 # Actividad 2 · Comandos de movimiento y dibujo en el simulador (CE 4b, 4c)
 
-**Sesión presencial S2 (2 h) + trabajo autónomo TA2 (2 h)** · Cuaderno [sesion23_brazo_robotico_1.ipynb](../sesion23_brazo_robotico_1.ipynb)
+**Sesión presencial S2 (2 h) + trabajo autónomo TA2 (2 h)** · Cuaderno [S23_24_brazo_robotico.ipynb](../S23_24_brazo_robotico.ipynb)
 
 ## Objetivo
 
@@ -16,7 +16,7 @@ Practicar los **comandos de movimiento** (MoveJ, MoveL, Jump, Arc) y el **dibujo
 
 ## Fase 2 · Trabajo autónomo (TA2)
 
-En `sesion23_brazo_robotico_1.ipynb` (con `BrazoSimulado`):
+En `S23_24_brazo_robotico.ipynb` (con `BrazoSimulado`):
 
 1. **Comandos de movimiento:** escribe una secuencia tipo *Jump* (subir → desplazarse → bajar) y explica la diferencia entre **MoveJ** (articular) y **MoveL** (lineal).
 2. **Dibujo:** define una figura (cuadrado, triángulo, pentágono o iniciales) con `move_to` y dibuja la trayectoria.
@@ -26,7 +26,7 @@ En `sesion23_brazo_robotico_1.ipynb` (con `BrazoSimulado`):
 
 ## Entregable
 
-- `sesion23_brazo_robotico_1.ipynb` **ejecutado**, con la trayectoria dibujada y la diferencia MoveJ/MoveL explicada.
+- `S23_24_brazo_robotico.ipynb` **ejecutado**, con la trayectoria dibujada y la diferencia MoveJ/MoveL explicada.
 - Envío con asunto `UD04-S2-EQUIPO<N>-movimientos`.
 
 ## Criterios de evaluación (rúbrica RA4)

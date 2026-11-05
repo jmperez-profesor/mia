@@ -15,9 +15,9 @@ titulo: "Brazo robótico 1"
 
 ## Cuaderno de la sesión
 
-El código se trabaja en el cuaderno **`sesion23_brazo_robotico_1.ipynb`**:
+El código se trabaja en el cuaderno **`S23_24_brazo_robotico.ipynb`**:
 
-[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B04_RA4/sesion23_brazo_robotico_1.ipynb){ .md-button } · [ver en el sitio](sesion23_brazo_robotico_1.ipynb)
+[Abrir en Colab](https://colab.research.google.com/github/jmperez-profesor/mia/blob/main/docs/bloques/B04_RA4/S23_24_brazo_robotico.ipynb){ .md-button } · [ver en el sitio](S23_24_brazo_robotico.ipynb)
 
 ## Qué vas a aprender
 
@@ -109,7 +109,7 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 
 ## Actividad 2 · Comandos de movimiento y dibujo (simulador)
 
-Practica los **comandos de movimiento** (MoveJ, MoveL, Jump, Arc) y el **dibujo** con la función «Escribir/Dibujar» del simulador DobotLab (en Blockly o Python), y valida el script con `BrazoSimulado`. Cuaderno [sesion23_brazo_robotico_1.ipynb](sesion23_brazo_robotico_1.ipynb). Detalle en [actividades/act2_reto_dibujo.md](actividades/act2_reto_dibujo.md).
+Practica los **comandos de movimiento** (MoveJ, MoveL, Jump, Arc) y el **dibujo** con la función «Escribir/Dibujar» del simulador DobotLab (en Blockly o Python), y valida el script con `BrazoSimulado`. Cuaderno [S23_24_brazo_robotico.ipynb](S23_24_brazo_robotico.ipynb). Detalle en [actividades/act2_reto_dibujo.md](actividades/act2_reto_dibujo.md).
 
 ## Puntos clave
 

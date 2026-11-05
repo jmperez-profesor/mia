@@ -1,6 +1,6 @@
 # Actividad 3 · Pick & place con ventosa y cinta (CE 4b, 4d)
 
-**Sesión presencial S3 (2 h) + trabajo autónomo TA3 (2 h)** · Cuaderno [UD04_pick_place_plantilla.ipynb](../colab/UD04_pick_place_plantilla.ipynb)
+**Sesión presencial S3 (2 h) + trabajo autónomo TA3 (2 h)** · Cuaderno [S23_24_brazo_robotico.ipynb](../S23_24_brazo_robotico.ipynb)
 
 ## Objetivo
 
@@ -15,7 +15,7 @@ Diseñar e implementar una **célula** de *pick & place* con **ventosa**: coger 
 
 ## Fase 2 · Trabajo autónomo (TA3)
 
-En `UD04_pick_place_plantilla.ipynb`:
+En `S23_24_brazo_robotico.ipynb`:
 
 1. Completa la secuencia con **`BrazoSimulado`** + **`CintaSimulada`** (activar cinta, esperar detección, aspirar, desplazar, soltar).
 2. Define las **alturas Z** (pre-pick, pick, pre-place, place) y los **tiempos de espera** justificados.
@@ -33,9 +33,19 @@ Ampliación natural del pick & place: en vez de dejar **una** pieza, coloca **va
 
 > **Pista:** define las esquinas del palé y calcula el resto de celdas con un paso fijo (`paso_x`, `paso_y`). La **ventosa** repite el mismo recorrido para todas las piezas.
 
+## Fase 4 · (Optativa) Clasificación por color
+
+Con la **cinta** y el **sensor de color**: cuando la fotocélula detecta un cubo, el robot lo coge con la ventosa, **lee su color** (`dType.GetColorSensor(api)` → `[R, G, B]`) y lo deposita en la **zona de su color** (rojo / verde / azul).
+
+1. Define tres **zonas de depósito** `(X, Y)`, una por color.
+2. Usa `sensor.leer()` para decidir a qué zona va cada cubo.
+3. Repite con varios cubos de colores y comprueba que cada uno acaba en su zona.
+
+> En el cuaderno usa la clase `SensorColorSimulado` (sección 8). En el brazo real, `dType.GetColorSensor(api)` devuelve `[R, G, B]`.
+
 ## Entregables
 
-- `UD04_pick_place_plantilla.ipynb` **ejecutado**.
+- `S23_24_brazo_robotico.ipynb` **ejecutado**.
 - **Memoria** con decisiones y propuestas de mejora (alimenta la recuperación del RA4).
 - Envío con asunto `UD04-S3-EQUIPO<N>-pick_place`.
 

@@ -43,7 +43,7 @@ titulo: "Brazo robótico 2"
 
 ## Actividad 3 · Pick & place con ventosa y cinta (presencial + autónomo)
 
-Diseña una célula de pick & place **con ventosa**: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. **Extensión: paletización**, colocando varias piezas en una **cuadrícula** (filas × columnas). Cuaderno [UD04_pick_place_plantilla.ipynb](colab/UD04_pick_place_plantilla.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
+Diseña una célula de pick & place **con ventosa**: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. **Extensión: paletización** (cuadrícula de filas × columnas) y **optativa: clasificación por color** con el sensor de color. Cuaderno [S23_24_brazo_robotico.ipynb](S23_24_brazo_robotico.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) para inspeccionar el brazo y sus ejes antes de montar la célula.
 
