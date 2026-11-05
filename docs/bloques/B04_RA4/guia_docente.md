@@ -11,25 +11,25 @@
 |---|---|---|---|---|
 | **S1** | Presencial | 2 h | Teoría: tipos, anatomía, FK/IK, efectores, célula, técnicas de programación | Apuntes + preguntas |
 | **TA1** | Autónoma | 2 h | Ficha de cinemática (a mano + Colab) | `act1` + notebook |
-| **S2** | Presencial | 2 h | Brazo I: teach, medir espacio de trabajo, reto de dibujo | Guiado + script |
-| **TA2** | Autónoma | 2 h | Script del reto de dibujo validado | `act2` + notebook |
-| **S3** | Presencial | 2 h | Brazo II: pinza/ventosa + pick & place con cinta | `act3` + script |
+| **S2** | Presencial | 2 h | Brazo I: simulador DobotLab (coordenadas y comandos de movimiento) + dibujo + ventosa | Guiado + script |
+| **TA2** | Autónoma | 2 h | Comandos de movimiento y dibujo validados | `act2` + notebook |
+| **S3** | Presencial | 2 h | Brazo II: pick & place **con ventosa** + cinta | `act3` + script |
 | **TA3** | Autónoma | 2 h | Script pick & place + memoria del equipo | Memoria |
 
 **S1 (minuto a minuto):** 0-20 qué es un robot (ISO 8373) y tipos; 20-50 anatomía y GDL; 50-80 cinemática FK/IK con el ejemplo 2D a mano; 80-100 efectores y célula; 100-120 técnicas de programación y cierre.
 
-**S2:** 0-15 presentación del DOBOT y **seguridad**; 15-40 **teach** + medir el espacio de trabajo (papel milimetrado y portaminas); 40-55 el docente ejecuta el script de ejemplo (escribe un nombre); 55-70 entrega de retos a los equipos y análisis «¿cómo lo haríais?»; 70-115 escritura y **ejecución por turnos**; 115-120 cierre y depuración.
+**S2:** 0-15 presentación del DOBOT, **seguridad** y la **ventosa**; 15-45 **simulador DobotLab** (coordenadas cartesianas y comandos MoveJ/MoveL/Jump/Arc, en Blockly y Python); 45-65 **dibujo** con «Escribir/Dibujar» en el simulador; 65-115 práctica por turnos (una pareja en el brazo real con ventosa, el resto en el simulador/Colab); 115-120 cierre y depuración.
 
-**S3:** 0-15 cambio a pinza y prueba de succión; 15-30 repaso de la secuencia de pick & place (pre-pick, pick, pre-place, place); 30-45 misión con la cinta; 45-105 ejecución por turnos y comparación de enfoques; 105-120 puesta en común «¿qué cambiaríais?».
+**S3:** 0-15 repaso de la **ventosa** y prueba de succión; 15-30 repaso de la secuencia de pick & place (pre-pick, pick, pre-place, place); 30-45 misión con la cinta; 45-105 ejecución por turnos (ventosa) y comparación de enfoques; 105-120 puesta en común «¿qué cambiaríais?» y paletización como extensión.
 
 ## 2. Material necesario
 
 - **DOBOT Magician** + portátil de taller con drivers y DobotStudio.
-- **Portaminas/rotulador** (Ø 10 mm) y **tablas de madera** o cartón.
-- **Pinza neumática** y **ventosa** + **bomba de aire**.
+- **Ventosa** + **bomba de aire** (único efector que se monta en el brazo real; el portaminas y la pinza se usan en el simulador).
 - **Cinta transportadora** con **fotocélula** y **sensor de color** + cubos de colores.
-- **Papel milimetrado**, regla y rotuladores para medir el espacio de trabajo.
-- Objetos para pick & place (cubos ligeros, tapones, piezas < 500 g).
+- Acceso a **DobotLab** (simulador web, Blockly/Python) para la sesión 2.
+- Objetos para pick & place con ventosa (piezas **lisas y no porosas**, < 500 g).
+- **Papel milimetrado** y regla para medir el espacio de trabajo.
 
 ## 3. Agrupamiento y roles
 
@@ -40,7 +40,7 @@
 ## 4. Protocolo de entrega de scripts
 
 1. El equipo valida el script en Colab (`BrazoSimulado`, sin errores de rango).
-2. Lo envía con **asunto normalizado:** `UD04-S2-EQUIPO3-reto_dibujo` (y `UD04-S3-EQUIPO3-pick_place`).
+2. Lo envía con **asunto normalizado:** `UD04-S2-EQUIPO3-movimientos` (y `UD04-S3-EQUIPO3-pick_place`).
 3. Adjunta el `.ipynb` **con las celdas ejecutadas** y, si procede, la memoria en PDF.
 4. El docente lo carga en el portátil del brazo y lo ejecuta. Si falla, se analiza y se itera.
 
@@ -61,7 +61,7 @@
 
 - [ ] DOBOT conectado por USB y reconocido (puerto `COMx`/`/dev/ttyUSB0`).
 - [ ] Alimentación 12 V y compresor de aire encendido.
-- [ ] Efector correcto montado (portaminas / pinza / ventosa).
+- [ ] Ventosa montada y bomba de aire encendida.
 - [ ] Espacio de trabajo libre y mesa sujeta.
 - [ ] Cinta conectada y fotocélula probada.
 - [ ] Scripts de los equipos recibidos y revisados.

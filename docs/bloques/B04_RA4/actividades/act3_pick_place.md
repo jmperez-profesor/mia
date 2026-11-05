@@ -1,23 +1,23 @@
-# Actividad 3 · Pick & place con pinza y cinta (CE 4b, 4d)
+# Actividad 3 · Pick & place con ventosa y cinta (CE 4b, 4d)
 
 **Sesión presencial S3 (2 h) + trabajo autónomo TA3 (2 h)** · Cuaderno [UD04_pick_place_plantilla.ipynb](../colab/UD04_pick_place_plantilla.ipynb)
 
 ## Objetivo
 
-Diseñar e implementar una **célula** de *pick & place*: coger un objeto de la **cinta transportadora** y dejarlo en una zona marcada, comparando enfoques y evaluando opciones de diseño (CE 4d).
+Diseñar e implementar una **célula** de *pick & place* con **ventosa**: coger un objeto de la **cinta transportadora** y dejarlo en una zona marcada, comparando enfoques y evaluando opciones de diseño (CE 4d).
 
 ## Fase 1 · En clase (S3)
 
-1. **Cambio de efector:** portaminas → **pinza** (o ventosa). Probar abrir/cerrar y la succión.
-2. **Repaso de la secuencia canónica** de pick & place: punto inicial → pre-pick → pick (abierto) → pick (cerrado) → pre-pick → pre-place → place (cerrado) → place (abierto) → pre-place → inicio.
+1. **Ventosa montada** (es el único efector que se usa en el brazo real). Probar aspirar/soltar (`suck`).
+2. **Repaso de la secuencia canónica** de pick & place: punto inicial → pre-pick → pick (aspirar) → esperar → pre-pick → pre-place → place (soltar) → pre-place → inicio.
 3. **Misión:** la cinta avanza; cuando la **fotocélula** detecta el objeto, el robot lo coge y lo deja en la zona marcada.
-4. Ejecución **por turnos** y comparación de enfoques entre equipos.
+4. Ejecución **por turnos** y comparación de enfoques entre equipos; el resto trabaja en el simulador o en Colab.
 
 ## Fase 2 · Trabajo autónomo (TA3)
 
 En `UD04_pick_place_plantilla.ipynb`:
 
-1. Completa la secuencia con **`BrazoSimulado`** + **`CintaSimulada`** (activar cinta, esperar detección, coger, dejar).
+1. Completa la secuencia con **`BrazoSimulado`** + **`CintaSimulada`** (activar cinta, esperar detección, aspirar, desplazar, soltar).
 2. Define las **alturas Z** (pre-pick, pick, pre-place, place) y los **tiempos de espera** justificados.
 3. Usa **Jump** (o puntos seguros) para no chocar con la cinta.
 4. Redacta la **memoria del equipo** (media página): decisiones de diseño, errores encontrados y soluciones, y **qué cambiaríais**.
@@ -31,7 +31,7 @@ Ampliación natural del pick & place: en vez de dejar **una** pieza, coloca **va
 3. **Parametriza** las posiciones con un **bucle** (`for` sobre filas y columnas) en vez de repetir código a mano.
 4. (Opcional) Añade una **segunda capa** encima de la primera, para un paletizado en 3D.
 
-> **Pista:** define las esquinas del palé y calcula el resto de celdas con un paso fijo (`paso_x`, `paso_y`). La pinza o la ventosa repiten el mismo recorrido para todas las piezas.
+> **Pista:** define las esquinas del palé y calcula el resto de celdas con un paso fijo (`paso_x`, `paso_y`). La **ventosa** repite el mismo recorrido para todas las piezas.
 
 ## Entregables
 

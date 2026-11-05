@@ -127,24 +127,25 @@ Lista de trabajo, sesión a sesión, para redactar el contenido y los ejercicios
   - RA: RA4 · **UD04 TA1**
   - Alcance: ficha de cinemática a mano + cuaderno `sesion19_sistemas_robotizados.ipynb` (FK/IK 2R con NumPy, dos soluciones, espacio de trabajo, singularidad).
   - Entregable: `docs/bloques/B04_RA4/actividades/act1_cinematica.md` + notebook ejecutado.
-- **Sesión 23 · 2026-11-11 · RA4-2 · El brazo I: del guiado al código** *(presencial 2 h)*
+- **Sesión 23 · 2026-11-11 · RA4-2 · El brazo I: simulador y ventosa** *(presencial 2 h)*
   - RA: RA4 · **UD04 S2**
   - Contenidos detallados:
-    - Seguridad, **home** y presentación del DOBOT; modo **teach** y medición del espacio de trabajo.
-    - El docente ejecuta un **script de ejemplo** (escribe un nombre con el portaminas).
-    - **Reto de dibujo por equipos** (cuadrado, triángulo, pentágono, iniciales): escribir en Colab, validar y ejecutar por turnos (CE 4b, 4c).
-  - Materiales: `actividades/act2_reto_dibujo.md`, `colab/UD04_reto_dibujo_plantilla.ipynb`.
-- **Sesión autónoma A2 · 2026-11-13 · Script del reto de dibujo (TA2)** *(2 h, entregable)*
+    - Seguridad, **home** y presentación del DOBOT; en el aula el brazo lleva montada **solo la ventosa**.
+    - **Simulador DobotLab** (Blockly y Python): coordenadas cartesianas y **comandos de movimiento** (MoveJ, MoveL, Jump, Arc) (PDF Prácticas 2 y 3).
+    - **Dibujo** con la función «Escribir/Dibujar» del simulador (sin portaminas real).
+    - **Trabajo por parejas**: una pareja en el brazo real (ventosa) y el resto en el simulador/Colab (CE 4b, 4c).
+  - Materiales: `actividades/act2_reto_dibujo.md`, `sesion23_brazo_robotico_1.ipynb`.
+- **Sesión autónoma A2 · 2026-11-13 · Comandos de movimiento y dibujo (TA2)** *(2 h, entregable)*
   - RA: RA4 · **UD04 TA2**
-  - Alcance: completar `dibujar(figura)` con `BrazoSimulado` (valida rangos y parámetros) y la trayectoria XY; enviar con asunto normalizado.
-  - Entregable: `colab/UD04_reto_dibujo_plantilla.ipynb` ejecutado.
-- **Sesión 24 · 2026-11-11 · RA4-3 · El brazo II: pinza y cinta (pick & place)** *(presencial 2 h)*
+  - Alcance: practicar MoveJ/MoveL/Jump con `BrazoSimulado` y dibujar una figura (cuadrado, triángulo, pentágono, iniciales); validar rangos y la trayectoria XY; enviar con asunto normalizado.
+  - Entregable: `sesion23_brazo_robotico_1.ipynb` ejecutado.
+- **Sesión 24 · 2026-11-11 · RA4-3 · El brazo II: ventosa y cinta (pick & place)** *(presencial 2 h)*
   - RA: RA4 · **UD04 S3**
   - Contenidos detallados:
-    - Cambio de efector (portaminas → **pinza**/**ventosa**); prueba de succión.
+    - **Ventosa** (único efector del brazo real); prueba de succión.
     - **Secuencia canónica** de pick & place (pre-pick, pick, pre-place, place) y alturas Z.
     - Misión con **cinta transportadora** (fotocélula y sensor de color); comparación de enfoques entre equipos (CE 4d).
-    - Cierre: «¿qué cambiaríais de vuestro diseño?».
+    - Cierre: «¿qué cambiaríais de vuestro diseño?» y paletización como extensión.
   - Materiales: `actividades/act3_pick_place.md`, `colab/UD04_pick_place_plantilla.ipynb`.
 - **Sesión autónoma A3 · 2026-11-16 · Script de pick & place + memoria (TA3)** *(2 h, entregable)*
   - RA: RA4 · **UD04 TA3**

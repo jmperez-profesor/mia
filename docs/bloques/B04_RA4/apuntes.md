@@ -181,7 +181,7 @@ flowchart LR
 | **PLC / comunicaciones** | Coordina robot y periféricos (en el DOBOT, por su API) |
 | **Seguridad** | Paradas, límites de movimiento, no invadir la trayectoria |
 
-**Aplicaciones típicas** (las que se practican en el aula): **pick & place**, **paletizado** (dejar piezas en filas y capas), **clasificación por color** y **dibujo/escritura** con portaminas.
+**Aplicaciones típicas** (las que se practican en el aula): **pick & place** con ventosa, **paletizado** (dejar piezas en filas y capas), **clasificación por color** y **dibujo/escritura** (en el simulador).
 
 > **Más información · Diseño centrado en la tarea.** En la industria, la célula se diseña **empezando por la tarea**: qué pieza, qué peso, qué cadencia, qué precisión y qué entorno. Después se elige robot (carga útil, alcance, repetibilidad) y efector. El DOBOT tiene **500 g de carga útil**, **320 mm de alcance** y **±0,2 mm de repetibilidad**: suficiente para piezas ligeras y trabajos de precisión de laboratorio, no para piezas de varios kilos.
 
@@ -274,7 +274,7 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 - **No forzar los ejes a mano** salvo en modo **teach** con el robot habilitado.
 - **Validar siempre en Colab** con `BrazoSimulado` antes de cargar el script: el 90 % de los errores (parámetros, rangos, fuera de alcance) se detectan sin tocar el robot.
 - **Un solo equipo frente al brazo**; el resto trabaja a distancia. Turnos de 10-15 minutos.
-- **Protocolo de entrega:** asunto normalizado (`UD04-S2-EQUIPO3-reto_dibujo`), `.ipynb` con celdas ejecutadas.
+- **Protocolo de entrega:** asunto normalizado (`UD04-S2-EQUIPO3-movimientos`), `.ipynb` con celdas ejecutadas.
 
 > **Más información.** Este protocolo conecta con la idea de **sistema robotizado** del §6: la seguridad no es una propiedad del brazo, sino del **conjunto** robot + herramienta + entorno + tarea. Es el mismo principio que recoge la ISO 10218:2025 para las aplicaciones colaborativas.
 
@@ -283,8 +283,8 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 ??? question "¿Puedo programar el robot sin tenerlo delante?"
     Sí. Es la base de nuestro flujo: se escribe el script, se **valida con `BrazoSimulado`** (rangos, parámetros, trayectoria) y después el docente lo ejecuta en el brazo. Es programación **offline**.
 
-??? question "¿Por qué no usamos un simulador 3D como Webots o CoppeliaSim?"
-    Porque instalarlo y configurarlo genera demasiada fricción para el tiempo disponible. `BrazoSimulado` cubre lo esencial —validar límites y ver la trayectoria XY— dentro del propio cuaderno, sin instalar nada. Si solo se quiere **ver el robot en 3D**, el visor web de [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) sirve en el navegador, sin instalar software.
+??? question "¿Qué simuladores usamos?"
+    Dos: el **simulador DobotLab** ([dobotlab.dobot.cc](https://dobotlab.dobot.cc/#/), escena *Basic scene*), con **Blockly** y **Python**, para practicar movimientos y dibujo de forma visual en el navegador; y la clase **`BrazoSimulado`** en Colab, que valida rangos y dibuja la trayectoria XY dentro del propio cuaderno. Así validamos el script **sin hardware** mientras un grupo ocupa el brazo real. Para solo **ver el robot en 3D**, el visor de [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) también sirve.
 
 ??? question "¿Qué pasa si mi script pide un punto fuera del alcance?"
     `BrazoSimulado` lanza un `ValueError` **antes** de ejecutar (p. ej. radio > 320 mm o X fuera de [150, 320]). En el robot real, el movimiento no se ejecutaría o daría error: mejor detectarlo en el cuaderno.

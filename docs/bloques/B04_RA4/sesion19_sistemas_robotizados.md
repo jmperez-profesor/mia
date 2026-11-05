@@ -323,7 +323,7 @@ flowchart LR
 | **PLC / comunicaciones** | Coordina robot y periféricos (en el DOBOT, por su API) |
 | **Seguridad** | Paradas, límites de movimiento, no invadir la trayectoria |
 
-**Aplicaciones típicas** (las que se practican en el aula): **pick & place**, **paletizado** (dejar piezas en filas y capas), **clasificación por color** y **dibujo/escritura** con portaminas.
+**Aplicaciones típicas** (las que se practican en el aula): **pick & place** con ventosa, **paletizado** (dejar piezas en filas y capas), **clasificación por color** y **dibujo/escritura** (en el simulador).
 
 > **Más información · Diseño centrado en la tarea.** En la industria, la célula se diseña **empezando por la tarea**: qué pieza, qué peso, qué cadencia, qué precisión y qué entorno. Después se elige robot (carga útil, alcance, repetibilidad) y efector. El DOBOT tiene **500 g de carga útil**, **320 mm de alcance** y **±0,2 mm de repetibilidad**: suficiente para piezas ligeras y trabajos de precisión de laboratorio, no para piezas de varios kilos.
 
