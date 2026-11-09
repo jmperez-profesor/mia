@@ -11,16 +11,12 @@
 |---|---|---|---|---|
 | **S1** | Presencial | 2 h | Teoría: tipos, anatomía, FK/IK, efectores, célula, técnicas de programación | Apuntes + preguntas |
 | **TA1** | Autónoma | 2 h | Ficha de cinemática (a mano + Colab) | `act1` + notebook |
-| **S2** | Presencial | 2 h | Brazo I: simulador DobotLab (coordenadas y comandos de movimiento) + dibujo + ventosa | Guiado + script |
-| **TA2** | Autónoma | 2 h | Comandos de movimiento y dibujo validados | `act2` + notebook |
-| **S3** | Presencial | 2 h | Brazo II: pick & place **con ventosa** + cinta | `act3` + script |
-| **TA3** | Autónoma | 2 h | Script pick & place + memoria del equipo | Memoria |
+| **S23-24** | Presencial | 4 h | Práctica: simulador DobotLab (movimientos + dibujo) y pick & place **con ventosa** + cinta y paletización | Guiado + script |
+| **TA** | Autónoma | 4 h | Completar el cuaderno (dos fases) + memoria del equipo | Cuaderno + memoria |
 
 **S1 (minuto a minuto):** 0-20 qué es un robot (ISO 8373) y tipos; 20-50 anatomía y GDL; 50-80 cinemática FK/IK con el ejemplo 2D a mano; 80-100 efectores y célula; 100-120 técnicas de programación y cierre.
 
-**S2:** 0-15 presentación del DOBOT, **seguridad** y la **ventosa**; 15-45 **simulador DobotLab** (coordenadas cartesianas y comandos MoveJ/MoveL/Jump/Arc, en Blockly y Python); 45-65 **dibujo** con «Escribir/Dibujar» en el simulador; 65-115 práctica por turnos (una pareja en el brazo real con ventosa, el resto en el simulador/Colab); 115-120 cierre y depuración.
-
-**S3:** 0-15 repaso de la **ventosa** y prueba de succión; 15-30 repaso de la secuencia de pick & place (pre-pick, pick, pre-place, place); 30-45 misión con la cinta; 45-105 ejecución por turnos (ventosa) y comparación de enfoques; 105-120 puesta en común «¿qué cambiaríais?» y paletización como extensión.
+**S23-24 (4 h, minuto a minuto):** 0-20 presentación del DOBOT, **seguridad** y la **ventosa**; 20-60 **simulador DobotLab** (coordenadas cartesianas y comandos MoveJ/MoveL/Jump/Arc, en Blockly y Python) + **dibujo** con «Escribir/Dibujar»; 60-90 repaso de la secuencia de *pick & place* (pre-pick, pick, pre-place, place) y misión con la **cinta**; 90-225 práctica por turnos (una pareja en el brazo real con ventosa, el resto en el simulador/Colab); 225-240 puesta en común «¿qué cambiaríais?» y paletización como extensión.
 
 ## 2. Material necesario
 
@@ -40,7 +36,7 @@
 ## 4. Protocolo de entrega de scripts
 
 1. El equipo valida el script en Colab (`BrazoSimulado`, sin errores de rango).
-2. Lo envía con **asunto normalizado:** `UD04-S2-EQUIPO3-movimientos` (y `UD04-S3-EQUIPO3-pick_place`).
+2. Lo envía con **asunto normalizado:** `UD04-BRAZO-EQUIPO3`.
 3. Adjunta el `.ipynb` **con las celdas ejecutadas** y, si procede, la memoria en PDF.
 4. El docente lo carga en el portátil del brazo y lo ejecuta. Si falla, se analiza y se itera.
 
@@ -68,6 +64,6 @@
 
 ## 8. Evaluación
 
-- **40 % actividades** (act1, act2, act3 + memoria), con la [rúbrica](rubrica.md).
+- **40 % actividades** (act1 + actividad práctica con memoria), con la [rúbrica](rubrica.md).
 - **60 % prueba escrita** del RA4.
 - La normativa exige **todos los RA** y **≥5 en cada RA** (Orden 8/2025, art. 5.1).

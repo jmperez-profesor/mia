@@ -274,7 +274,7 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 - **No forzar los ejes a mano** salvo en modo **teach** con el robot habilitado.
 - **Validar siempre en Colab** con `BrazoSimulado` antes de cargar el script: el 90 % de los errores (parámetros, rangos, fuera de alcance) se detectan sin tocar el robot.
 - **Un solo equipo frente al brazo**; el resto trabaja a distancia. Turnos de 10-15 minutos.
-- **Protocolo de entrega:** asunto normalizado (`UD04-S2-EQUIPO3-movimientos`), `.ipynb` con celdas ejecutadas.
+- **Protocolo de entrega:** asunto normalizado (`UD04-BRAZO-EQUIPO3`), `.ipynb` con celdas ejecutadas.
 
 > **Más información.** Este protocolo conecta con la idea de **sistema robotizado** del §6: la seguridad no es una propiedad del brazo, sino del **conjunto** robot + herramienta + entorno + tarea. Es el mismo principio que recoge la ISO 10218:2025 para las aplicaciones colaborativas.
 

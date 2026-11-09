@@ -12,7 +12,7 @@ Escala **0-10** (entera). Nota mínima para superar el RA: **5** (Orden 8/2025).
 | **4c** | Características de las técnicas de programación | 20 % |
 | **4d** | Evaluación de opciones de diseño e implementación | 30 % |
 
-**Evidencias:** `act1` (cinemática), `act2` (comandos de movimiento y dibujo en el simulador), `act3` (pick & place con ventosa), **memoria TA3**, observación en aula y prueba escrita.
+**Evidencias:** `act1` (cinemática), **actividad práctica** (movimientos/dibujo en el simulador + pick & place con ventosa), **memoria**, observación en aula y prueba escrita.
 
 ## 4a · Modelado y control cinemático (25 %)
 

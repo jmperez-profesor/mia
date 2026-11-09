@@ -123,8 +123,7 @@ nav:
   - "RA4 - Análisis de sistemas robotizados":
       - Introducción: bloques/B04_RA4/index.md
       - "S19 · Sistemas robotizados. Actuadores (04/11/2026)": bloques/B04_RA4/sesion19_sistemas_robotizados.md
-      - "S23 · Brazo robótico 1 (11/11/2026)": bloques/B04_RA4/sesion23_brazo_robotico_1.md
-      - "S24 · Brazo robótico 2 (11/11/2026)": bloques/B04_RA4/sesion24_brazo_robotico_2.md
+      - "S23-S24 · Práctica con el brazo robótico (11/11/2026)": bloques/B04_RA4/sesion23_24_brazo_robotico.md
 #   - Recursos:
 #       - "Canal DotCSV": recursos/dotcsv.md
 #   - Evaluación:
