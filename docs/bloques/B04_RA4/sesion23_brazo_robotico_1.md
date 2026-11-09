@@ -59,6 +59,8 @@ El código se trabaja en el cuaderno **`S23_24_brazo_robotico.ipynb`**:
 
 > **Simulador DobotLab.** [DobotLab](https://dobotlab.dobot.cc/#/) incluye un **simulador integrado**: entra en **«Basic scene»** para probar movimientos y programas **sin conectar el robot real**. Tiene **Blockly** y **Python**, así que los ejercicios de esta sesión (coordenadas, MoveJ/MoveL/Jump y dibujo) se hacen ahí. Es la herramienta para practicar **mientras un grupo ocupa el brazo real**.
 
+> **Ejemplos de INDA (kit DOBOT).** La carpeta `INDA-Programas-ejemplo/` trae programas de ejemplo para cargar en DobotStudio/DobotLab. Para esta sesión: **`Ejercicios/ejercicio3.py`** — comandos MoveJ/MoveL/Jump/Arc con cambios de velocidad y aceleración (y su versión `.blockly`). El resto (cinta, ventosa, paletizado) se ve en la S24 o como **ampliación optativa**.
+
 > **Definición · Comandos inmediatos vs. encolados.** La API permite ejecutar una orden **ya** (inmediata) o **encolarla** en una cola FIFO (`isQueued=1`). Encolar es lo que permite **construir una secuencia de movimiento** sin esperar: el robot la ejecuta en orden. Es la diferencia entre **teleoperar** (orden a orden) y **programar** (una secuencia completa). Para sincronizar, se puede consultar la pose con `GetPose` hasta que el robot llegue al punto.
 
 ```python

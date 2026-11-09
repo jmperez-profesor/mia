@@ -55,6 +55,11 @@ Diseña una célula de pick & place **con ventosa**: coge un objeto de la cinta 
 
 > **Guía paso a paso.** [Dobot Activity 2: Pick and Place](https://chrisandjimcim.com/dobot-activity-2-pick-and-place/) (Chris and Jim CIM) trae una **ficha descargable en PDF** con la secuencia completa de *pick & place* punto a punto. Es la misma secuencia canónica de esta actividad, aunque está pensada para *teach & playback*: úsala de referencia para ordenar los puntos (inicio → pre-coger → coger → pre-dejar → dejar) y adaptarla a la ventosa.
 
+> **Ejemplos de INDA (kit DOBOT).** La carpeta `INDA-Programas-ejemplo/` trae programas de ejemplo para cargar en DobotStudio/DobotLab:
+> - **Core:** `Pick_Place_Ventosa.py` (pick & place con ventosa, 5 puntos y dos formas de escribirlo), `cinta_ventosa.blockly` (cinta + ventosa) y `paletizado_ventosa.blockly` (paletizado en columnas).
+> - **Optativos:** `cinta_ventosa_paletizado.blockly` (paletizado **por color**), `cinta_ventosa_despaletizado_bucle.blockly` (paletizar y luego **devolver los bloques a la cinta**), `paletizado_parametrizable_ventosa.blockly` (cubo de **N×N×N**), y `cinta_Pinza.py` (clasificación por color con la función `sincronizar_codigo`, aunque use pinza).
+> - **No aplicables** (no tenemos el hardware): los de **pinza** (`maderitas_pinza`, `Pick_Place_Gripper`) y los de **riel móvil** (`Pick_Place_riel`).
+
 > **Extensión opcional · clasificación por color.** Si os sobra tiempo, usad el **sensor de color** de la cinta: cubos rojos a una pila, verdes a otra, azules de vuelta a la cinta. Es el cierre perfecto del módulo: **percepción → decisión → actuación** con IA en el bucle. La matriz 3×3 de [Chris and Jim CIM](https://chrisandjimcim.com/category/robotics/dobot/blockly-resources/) es un buen punto de partida (en Blockly, pero la lógica de decisión es la misma en Python).
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) para inspeccionar el brazo y sus ejes antes de montar la célula.
