@@ -47,6 +47,8 @@ titulo: "Brazo robótico 2"
 
 > **Vídeo · cinta en marcha.** [«01 instruction: Running the conveyor belt»](https://www.youtube.com/watch?v=qUq_txqwN48) programa la cinta por bloques con el sensor de presencia: la misma célula que vas a montar, vista antes de cablear nada.
 
+> **Vídeo · bucles para paletizar.** [«Using ForLoops in Blockly to Perform Pick and Place Operations»](https://www.youtube.com/watch?v=ECfQhEtGI3w) (John Fuller) muestra un *pick & place* repetido con **bucles `for` en Blockly**: la técnica exacta de la extensión de paletización (posiciones calculadas con bucles anidados, no puntos enseñados a mano).
+
 > **Simulador DobotLab.** Recuerda que [DobotLab](https://dobotlab.dobot.cc/#/) (escena de *pick & place*) te permite **ensayar la célula completa sin hardware**: define las posiciones de coger/dejar y prueba la lógica de bucles antes de ocupar tu turno en el brazo real.
 
 Diseña una célula de pick & place **con ventosa**: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. **Extensión: paletización** (cuadrícula de filas × columnas) y **optativa: clasificación por color** con el sensor de color. Cuaderno [S23_24_brazo_robotico.ipynb](S23_24_brazo_robotico.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
