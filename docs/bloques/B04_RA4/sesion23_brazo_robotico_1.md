@@ -42,6 +42,8 @@ El código se trabaja en el cuaderno **`S23_24_brazo_robotico.ipynb`**:
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) muestra el modelo 3D del DOBOT en el navegador para inspeccionar sus 4 ejes antes de programarlo.
 
+> **Vídeo (2 min) · conoce el kit.** [«DoBot Magician Robot Arm: Before you buy»](https://www.youtube.com/watch?v=HnGmRvoSBC0) recorre todos los accesorios del DOBOT (pinza, ventosa, portalápices, compresor) y los prueba en un *pick & place*. Míralo antes de tocar el material del aula.
+
 ![Material necesario para montar el DOBOT](assets/dobot_basic_setup.jpg)
 
 *Montaje básico del DOBOT Magician. Fuente: UAL Creative Computing Institute.*
@@ -49,7 +51,7 @@ El código se trabaja en el cuaderno **`S23_24_brazo_robotico.ipynb`**:
 **Dos formas de programarlo:**
 
 1. **DobotLab** (interfaz web): teach, **Blockly** y editor de script (Python).
-2. **Python** con la API oficial (`dType`) o las librerías **`pydobot`** (Luis Mesas) y **`dobot-python`** (Alex Gustafsson, protocolo v1.1.5).
+2. **Python** con la API oficial (`dType`) o las librerías **`pydobot`** ([Luis Mesas](https://github.com/luismesas/pydobot), `pip install pydobot`) y **`dobot-python`** (Alex Gustafsson, protocolo v1.1.5).
 
 ![Panel de control de DobotLab](assets/dobotlab_control_panel.jpg)
 
@@ -77,6 +79,8 @@ robot.home()
 robot.close()
 ```
 
+> **En `pydobot`:** `move_to(x, y, z, r, wait=True)` espera a que el movimiento termine antes de continuar; con `wait=False` tu script sigue mientras el robot ejecuta. Es el equivalente de alto nivel de encolar (`isQueued=1`) + sondear la pose con `GetPose`: la clave para decidir cuándo **teleoperas** (orden a orden) y cuándo **programas** una secuencia completa.
+
 > **Más información.** En el cuaderno Colab usamos una clase **`BrazoSimulado`** que imita esta API: registra las órdenes, **valida rangos** (X entre 150 y 320 mm, radio ≤ 320 mm, Z dentro de límites) y **dibuja la trayectoria XY** con matplotlib. Es el equivalente en Python al simulador DobotLab: sirve para **verificar el script antes de enviarlo al robot real**.
 
 ## 9. Trabajo por parejas (rotación robot ↔ simulador)
@@ -90,6 +94,8 @@ Con **un solo brazo** y la **ventosa** montada, el grupo se organiza así:
 ## 10. Buenas prácticas y seguridad en el aula
 
 Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita dañar el brazo, la pieza o a un compañero.
+
+> **Vídeo (5 min) · calibración.** [«DOBOT Magician Tutorial – How to Calibrate»](https://www.youtube.com/watch?v=4HtwgLTFIZo) muestra la calibración y el *homing* del brazo antes del primer programa. Véalo el grupo una vez; a partir de ahí, cada pareja calibra al empezar su turno.
 
 - **Antes de ejecutar:** hacer **home**, comprobar que la trayectoria está libre y que **nadie tiene la mano** en el espacio de trabajo.
 - **Velocidad reducida** en los primeros ensayos; subirla solo cuando el movimiento es correcto.

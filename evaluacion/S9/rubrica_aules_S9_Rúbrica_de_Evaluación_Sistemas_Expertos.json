@@ -1,0 +1,47 @@
+{
+  "name": "[S9] Rúbrica de Evaluación: Sistemas expertos (Pagarium)",
+  "maxValue": 4,
+  "levels": 4,
+  "dimensions": [
+    {
+      "name": "Construcción del micro-motor (anatomía del sistema experto)",
+      "weight": 30,
+      "descriptions": [
+        "El alumno completa los cuatro métodos del micro-motor (__init__, hecho, regla y run) con código correcto y limpio, demostrando plena comprensión de los tres almacenes (hechos, reglas y traza) y del ciclo reconocer-actuar.",
+        "El alumno completa los cuatro métodos correctamente y el motor funciona, aunque con algún detalle de estilo o una redundancia menor.",
+        "El alumno identifica los métodos y los tres almacenes, pero deja algún TODO sin resolver o con errores que impiden ejecutar el motor sin ayuda.",
+        "El alumno no logra implementar los métodos del micro-motor: los # TODO quedan sin resolver y el pass produce error al usar la clase."
+      ]
+    },
+    {
+      "name": "Resolución de conflictos (salience y prioridad)",
+      "weight": 30,
+      "descriptions": [
+        "El alumno modifica run() para disparar solo la regla de mayor prioridad y hace las reglas mutuamente excluyentes, explicando correctamente el papel de la salience.",
+        "El alumno resuelve el conflicto correctamente (solo se dispara una regla), aunque la explicación del porqué sea incompleta.",
+        "El alumno intenta resolver el conflicto, pero el motor sigue disparando reglas contradictorias o la prioridad no se aplica correctamente.",
+        "El alumno no aborda la resolución de conflictos: el motor dispara aprobar y rechazar a la vez, o la actividad queda sin hacer."
+      ]
+    },
+    {
+      "name": "Uso de experta y CLIPS (decoradores, RETE y hechos)",
+      "weight": 30,
+      "descriptions": [
+        "El alumno usa correctamente @DefFacts, @Rule, P(lambda...), yield y ejecuta los ejemplos de RETE y CLIPS, entendiendo la diferencia entre un motor programado a mano y una librería de reglas.",
+        "El alumno completa los # TODO de experta y ejecuta CLIPS correctamente, con una comprensión adecuada de los decoradores y los hechos.",
+        "El alumno ejecuta parcialmente experta o CLIPS, con errores en los decoradores, las lambda o la declaración de hechos.",
+        "El alumno no consigue usar experta ni CLIPS, o deja las celdas correspondientes sin ejecutar."
+      ]
+    },
+    {
+      "name": "Entrega en tiempo y forma",
+      "weight": 10,
+      "descriptions": [
+        "El alumno entrega el archivo .ipynb dentro del plazo, con las celdas ejecutadas y el párrafo de resolución de conflictos (3 líneas) incluido.",
+        "El alumno entrega el archivo .ipynb con un retraso leve justificado o con el párrafo final incompleto.",
+        "El alumno entrega el archivo .ipynb fuera de plazo sin justificación.",
+        "El alumno no entrega el archivo .ipynb."
+      ]
+    }
+  ]
+}

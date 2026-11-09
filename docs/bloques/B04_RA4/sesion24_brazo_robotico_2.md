@@ -21,6 +21,8 @@ titulo: "Brazo robótico 2"
 
 ## 9. Aplicaciones actuales y tendencias (2026)
 
+> **Lectura previa (autónoma).** Esta sección se lee **antes de la sesión**; en clase dedicaremos unos 10 minutos a debatir las tendencias y a conectarlas con la célula que vais a montar.
+
 | Ámbito | Ejemplo | Qué aporta |
 |---|---|---|
 | **Industria** | Soldadura, paletizado, *pick & place*, control de calidad | Cadencia y precisión constantes |
@@ -43,7 +45,13 @@ titulo: "Brazo robótico 2"
 
 ## Actividad 3 · Pick & place con ventosa y cinta (presencial + autónomo)
 
+> **Vídeo · cinta en marcha.** [«01 instruction: Running the conveyor belt»](https://www.youtube.com/watch?v=qUq_txqwN48) programa la cinta por bloques con el sensor de presencia: la misma célula que vas a montar, vista antes de cablear nada.
+
+> **Simulador DobotLab.** Recuerda que [DobotLab](https://dobotlab.dobot.cc/#/) (escena de *pick & place*) te permite **ensayar la célula completa sin hardware**: define las posiciones de coger/dejar y prueba la lógica de bucles antes de ocupar tu turno en el brazo real.
+
 Diseña una célula de pick & place **con ventosa**: coge un objeto de la cinta y déjalo en la zona marcada, con memoria del equipo. **Extensión: paletización** (cuadrícula de filas × columnas) y **optativa: clasificación por color** con el sensor de color. Cuaderno [S23_24_brazo_robotico.ipynb](S23_24_brazo_robotico.ipynb). Detalle en [actividades/act3_pick_place.md](actividades/act3_pick_place.md).
+
+> **Extensión opcional · clasificación por color.** Si os sobra tiempo, usad el **sensor de color** de la cinta: cubos rojos a una pila, verdes a otra, azules de vuelta a la cinta. Es el cierre perfecto del módulo: **percepción → decisión → actuación** con IA en el bucle. La matriz 3×3 de [Chris and Jim CIM](https://chrisandjimcim.com/category/robotics/dobot/blockly-resources/) es un buen punto de partida (en Blockly, pero la lógica de decisión es la misma en Python).
 
 > **Ver el DOBOT en 3D.** [RoboDK for Web](https://robodk.com/3D/es/robot/Dobot-Magician) para inspeccionar el brazo y sus ejes antes de montar la célula.
 
