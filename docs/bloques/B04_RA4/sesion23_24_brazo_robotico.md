@@ -121,7 +121,7 @@ Trabajar con un robot real exige un protocolo. No es burocracia: es lo que evita
 
 ## 4. Actividad · Práctica con el brazo robótico (dos fases)
 
-Una única actividad en **dos fases**, entregada en el cuaderno `S23_24_brazo_robotico.ipynb`. Detalle en [actividades/actividad_brazo_robotico.md](actividades/actividad_brazo_robotico.md).
+Una única actividad en **dos fases**, entregada en el cuaderno `S23_24_brazo_robotico.ipynb`. El ciclo es **programar → validar → ejecutar en el brazo → depurar**: cada pareja escribe y valida su script sin hardware, y en su turno lo **lleva al brazo real** (ventosa) para ejecutarlo. Detalle en [actividades/actividad_brazo_robotico.md](actividades/actividad_brazo_robotico.md).
 
 ### Fase 1 · Comandos de movimiento y dibujo (simulador)
 

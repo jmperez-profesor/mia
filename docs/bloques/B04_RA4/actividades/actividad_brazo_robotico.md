@@ -26,6 +26,17 @@ En el cuaderno, con `BrazoSimulado` + `CintaSimulada`:
 5. **Optativa — clasificación por color:** con el **sensor de color**, deposita cada cubo según su color (`rojo` / `verde` / `azul`).
 6. Redacta la **memoria del equipo** (media página): decisiones de diseño, errores y soluciones, y **qué cambiaríais**.
 
+## Ejecución en el brazo real (por turnos)
+
+El ciclo completo de la actividad es **programar → validar → ejecutar → depurar**:
+
+1. Escribís el script en el **cuaderno Colab** (`BrazoSimulado`) y lo **validáis** sin errores de rango ni sintaxis.
+2. Lo **entregáis** (asunto `UD04-BRAZO-EQUIPO<N>`) con las celdas ejecutadas.
+3. **En vuestro turno** (10–15 min), el docente carga vuestro script en el portátil del brazo y lo **ejecuta** con la **ventosa**.
+4. Si falla (punto fuera de alcance, choca con la cinta, la ventosa no aspira), se **depura en directo** y se vuelve a intentar.
+
+> **Clave:** el 90 % de los errores se detectan **antes** de tocar el robot, validando en `BrazoSimulado` o en el simulador DobotLab. El turno en el brazo es para **confirmar** el movimiento real y ajustar alturas y tiempos (Z, velocidad, espera de vacío).
+
 ## Entregable
 
 - `S23_24_brazo_robotico.ipynb` **ejecutado**, con las dos fases y la memoria.
