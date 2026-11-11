@@ -34,3 +34,5 @@ El cuaderno [sesion19_sistemas_robotizados.ipynb](../sesion19_sistemas_robotizad
 
 - **4a:** resuelve FK/IK e identifica múltiples soluciones y singularidades.
 - **4b:** implementa y valida las funciones con NumPy; justifica la solución.
+
+<!-- SOLUCIONES (solo docente): [ver soluciones](act1_cinematica_soluciones.md) -->
